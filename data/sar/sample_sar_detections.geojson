@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "_note": "SYNTHETIC sample of SAR vessel detections for demo only. Real data: export point-level Sentinel-1 SAR detections (with length_m, fishing_score, AIS match status) from the GFW Data Download Portal (Paolo et al., Nature 2024). License: CC BY-NC 4.0 (non-commercial).",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"detection_time": "2024-03-01T04:00:00Z", "length_m": 48.0, "fishing_score": 0.92, "matched_to_ais": false},
+      "geometry": {"type": "Point", "coordinates": [-91.0, -0.5]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"detection_time": "2024-03-01T05:10:00Z", "length_m": 61.0, "fishing_score": 0.88, "matched_to_ais": false},
+      "geometry": {"type": "Point", "coordinates": [-90.5, -0.2]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"detection_time": "2024-03-01T05:40:00Z", "length_m": 55.0, "fishing_score": 0.90, "matched_to_ais": true},
+      "geometry": {"type": "Point", "coordinates": [-91.2, 0.1]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"detection_time": "2024-03-01T06:20:00Z", "length_m": 30.0, "fishing_score": 0.15, "matched_to_ais": false},
+      "geometry": {"type": "Point", "coordinates": [-90.8, 0.3]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"detection_time": "2024-03-02T18:30:00Z", "length_m": 40.0, "fishing_score": 0.85, "matched_to_ais": false},
+      "geometry": {"type": "Point", "coordinates": [147.0, -18.0]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"detection_time": "2024-03-03T12:05:00Z", "length_m": 72.0, "fishing_score": 0.81, "matched_to_ais": false},
+      "geometry": {"type": "Point", "coordinates": [-170.0, 25.0]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"detection_time": "2024-03-04T09:00:00Z", "length_m": 50.0, "fishing_score": 0.95, "matched_to_ais": false},
+      "geometry": {"type": "Point", "coordinates": [-120.0, 0.0]}
+    }
+  ]
+}

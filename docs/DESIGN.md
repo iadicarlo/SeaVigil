@@ -225,7 +225,7 @@ deep-learning frameworks (no GPU), any cloud SDK.
 6. ✅ `dossier.py` + tests (SHAP bounded per incident).
 7. ✅ `alert.py` entrypoint wiring end-to-end + tests.
 8. ✅ Run on real labeled data, commit illustrative `results/incidents/`.
-9. 🔨 `sar.py` dark-fleet dossiers + sample + tests (this is §6.5).
+9. ✅ `sar.py` dark-fleet dossiers + sample + tests (§6.5).
 10. 🔨 `site.py` + `web/` static MapLibre site + Pages workflow (§6.6).
 
 ## 9. How we'll know it works (evaluation)

@@ -99,6 +99,7 @@ def build_dossiers(
     for inc in incidents:
         d = inc.to_dict()
         d.pop("fishing_ids", None)  # internal pointer, not part of the dossier
+        d["type"] = "ais_fishing_incident"
         d["explanation"] = explanations.get(inc.incident_id)
         d["caveats"] = CAVEATS
         dossiers.append(d)
@@ -106,30 +107,52 @@ def build_dossiers(
 
 
 def render_markdown(dossier: dict) -> str:
+    """Render one dossier (AIS incident with SHAP, or SAR dark-vessel detection)."""
     d = dossier
+    is_sar = d.get("type") == "dark_vessel_sar"
+    title = "Dark-vessel detection" if is_sar else "Incident"
+
     lines = [
-        f"# Incident `{d['incident_id']}`",
+        f"# {title} `{d['incident_id']}`",
         "",
         f"- **MPA:** {d['mpa_name']}"
         + (f" (WDPA {d['wdpa_id']})" if d.get("wdpa_id") else ""),
-        f"- **Vessel:** `{d['vessel_id']}`  ·  **gear:** {d['gear']}",
-        f"- **When (UTC):** {d['time_start_utc']} → {d['time_end_utc']} "
-        f"({d['duration_hours']} h)",
-        f"- **Apparent fishing:** {d['n_fishing_positions']} of {d['n_positions']} "
-        f"in-MPA positions; mean p={d['mean_fishing_proba']:.2f}, "
-        f"max p={d['max_fishing_proba']:.2f}",
-        f"- **Where:** {d['centroid_lat']:.3f}, {d['centroid_lon']:.3f} (centroid)",
-        "",
     ]
+    if is_sar:
+        broadcasting = "yes" if d.get("matched_to_ais") else "no (dark)"
+        lines += [
+            f"- **Vessel:** {d['vessel_id']}  ·  **source:** {d['gear']}",
+            f"- **When (UTC):** {d['time_start_utc']}",
+            f"- **Length:** {d.get('length_m', float('nan')):.0f} m  ·  "
+            f"**broadcasting AIS:** {broadcasting}  ·  "
+            f"**GFW fishing-score:** {d['mean_fishing_proba']:.2f}",
+            f"- **Where:** {d['centroid_lat']:.3f}, {d['centroid_lon']:.3f}",
+            "",
+        ]
+    else:
+        lines += [
+            f"- **Vessel:** `{d['vessel_id']}`  ·  **gear:** {d['gear']}",
+            f"- **When (UTC):** {d['time_start_utc']} → {d['time_end_utc']} "
+            f"({d['duration_hours']} h)",
+            f"- **Apparent fishing:** {d['n_fishing_positions']} of {d['n_positions']} "
+            f"in-MPA positions; mean p={d['mean_fishing_proba']:.2f}, "
+            f"max p={d['max_fishing_proba']:.2f}",
+            f"- **Where:** {d['centroid_lat']:.3f}, {d['centroid_lon']:.3f} (centroid)",
+            "",
+        ]
 
     expl = d.get("explanation")
     if expl:
         lines += ["## Why this was flagged", "", f"_{expl['method']}._", ""]
-        lines += ["| feature | mean value | mean SHAP |", "|---|---:|---:|"]
-        for row in expl["top_drivers"]:
-            lines.append(
-                f"| `{row['feature']}` | {row['mean_value']:.3f} | {row['mean_shap']:+.3f} |"
-            )
+        if "top_drivers" in expl:  # AIS: SHAP table
+            lines += ["| feature | mean value | mean SHAP |", "|---|---:|---:|"]
+            for row in expl["top_drivers"]:
+                lines.append(
+                    f"| `{row['feature']}` | {row['mean_value']:.3f} | "
+                    f"{row['mean_shap']:+.3f} |"
+                )
+        elif "drivers" in expl:  # SAR: attribute bullets (no movement track to SHAP)
+            lines += [f"- {x}" for x in expl["drivers"]]
         lines.append("")
 
     lines += ["## Caveats", ""]
@@ -154,17 +177,23 @@ def write_dossiers(dossiers: list[dict], out_dir: str | Path) -> dict:
         p.write_text(render_markdown(d))
         md_paths.append(p.name)
 
-    index = ["# In-MPA fishing incidents", ""]
+    index = ["# In-MPA records", ""]
     if not dossiers:
-        index += ["No incidents found.", ""]
+        index += ["No records found.", ""]
     else:
-        index += [f"{len(dossiers)} incident(s).", ""]
-        index += ["| incident | MPA | gear | start (UTC) | fishing pos | mean p |", "|---|---|---|---|---:|---:|"]
+        n_sar = sum(1 for d in dossiers if d.get("type") == "dark_vessel_sar")
+        n_ais = len(dossiers) - n_sar
+        index += [
+            f"{len(dossiers)} record(s): {n_ais} AIS fishing incident(s), "
+            f"{n_sar} dark-vessel SAR detection(s).",
+            "",
+        ]
+        index += ["| id | type | MPA | start (UTC) | score / mean p |", "|---|---|---|---|---:|"]
         for d in dossiers:
+            typ = "dark SAR" if d.get("type") == "dark_vessel_sar" else "AIS fishing"
             index.append(
-                f"| [{d['incident_id']}]({d['incident_id']}.md) | {d['mpa_name']} | "
-                f"{d['gear']} | {d['time_start_utc']} | {d['n_fishing_positions']} | "
-                f"{d['mean_fishing_proba']:.2f} |"
+                f"| [{d['incident_id']}]({d['incident_id']}.md) | {typ} | {d['mpa_name']} | "
+                f"{d['time_start_utc']} | {d['mean_fishing_proba']:.2f} |"
             )
         index.append("")
     (out_dir / "INDEX.md").write_text("\n".join(index))

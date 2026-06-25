@@ -98,9 +98,9 @@ and the implementation plan.
 | MPA boundary overlay (point-in-polygon) | ✅ implemented |
 | In-MPA incident aggregation | ✅ implemented |
 | Per-incident dossier (JSON + Markdown) | ✅ implemented |
-| Interactive static map (GitHub Pages) | ⬜ next |
+| Dark-fleet SAR dossiers (consume GFW detections; no imagery) | ✅ implemented |
+| Interactive static map (GitHub Pages) | 🔨 in progress |
 | GFW live-API ingestion (consume, don't re-detect) | ⬜ next |
-| AIS + SAR fusion (dark fleet, via GFW's published SAR detections) | ⬜ next |
 
 ## Data
 
@@ -129,10 +129,12 @@ uv run --group dev pytest -q         # tests (no network)
 ```
 
 `seavigil.alert` scores held-out test vessels by default (out-of-sample); `--scope all` scores
-everything (in-sample, for a fuller demonstration), and `--mpa <wdpa.geojson>` swaps the
-approximate sample boundaries for real ones. Outputs land in `results/` (v1: `metrics.json`,
+everything (in-sample, for a fuller demonstration), `--mpa <wdpa.geojson>` swaps the
+approximate sample boundaries for real ones, and `--sample-sar` (or `--sar <detections.geojson>`)
+adds **dark-fleet** dossiers from SAR detections. Outputs land in `results/` (v1: `metrics.json`,
 `SUMMARY.md`, `figures/`; v2: `results/incidents/` with `INDEX.md`, `incidents.json`, and one
-dossier per incident).
+dossier per record — AIS incidents carry a SHAP "why"; dark-vessel SAR detections carry an
+attribute rationale instead, because a radar blip has no movement track to explain).
 
 A committed sample (`results/incidents/`, generated with `--scope all` on the approximate
 sample MPAs) shows the mechanism end-to-end: apparent fishing by drifting longliners inside

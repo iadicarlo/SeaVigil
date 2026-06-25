@@ -120,4 +120,4 @@ def test_shap_is_sampled_for_large_incidents():
 def test_write_empty_dossiers(tmp_path):
     manifest = dossier.write_dossiers([], tmp_path)
     assert manifest["n_incidents"] == 0
-    assert "No incidents found." in (tmp_path / "INDEX.md").read_text()
+    assert "No records found." in (tmp_path / "INDEX.md").read_text()

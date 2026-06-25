@@ -1,11 +1,14 @@
 {
   "scope": "all",
   "mpa_source": "bundled sample (approximate)",
+  "sar_source": "bundled sample",
   "n_mpas": 4,
   "n_scored_positions": 1530684,
   "n_positions_in_mpa": 6610,
   "proba_threshold": 0.5,
   "gap_minutes": 360.0,
-  "n_incidents": 25,
+  "n_incidents": 29,
+  "n_ais_incidents": 25,
+  "n_dark_vessel_sar": 4,
   "out_dir": "/Users/Abdel042/Desktop/SeaVigil/results/incidents"
 }

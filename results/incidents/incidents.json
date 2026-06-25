@@ -14,6 +14,7 @@
     "max_fishing_proba": 0.989815642069067,
     "centroid_lat": -2.3278249700833338,
     "centroid_lon": -170.27078374225835,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
       "top_drivers": [
@@ -62,10 +63,11 @@
     "duration_hours": 84.21,
     "n_positions": 200,
     "n_fishing_positions": 176,
-    "mean_fishing_proba": 0.8965158559863249,
+    "mean_fishing_proba": 0.8965158559863248,
     "max_fishing_proba": 0.9987002800867743,
     "centroid_lat": -2.2077140144352274,
     "centroid_lon": -171.5091039484176,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 176)",
       "top_drivers": [
@@ -118,6 +120,7 @@
     "max_fishing_proba": 0.9982896524421089,
     "centroid_lat": -2.6292564431040812,
     "centroid_lon": -170.98188096649594,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
       "top_drivers": [
@@ -170,6 +173,7 @@
     "max_fishing_proba": 0.9999855386840202,
     "centroid_lat": -2.5401152598432124,
     "centroid_lon": -172.56043509843823,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 965)",
       "top_drivers": [
@@ -222,6 +226,7 @@
     "max_fishing_proba": 0.9931460995918167,
     "centroid_lat": -3.0938663099,
     "centroid_lon": -173.95038771355516,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 174)",
       "top_drivers": [
@@ -274,6 +279,7 @@
     "max_fishing_proba": 0.8895915618318774,
     "centroid_lat": -3.969319664838298,
     "centroid_lon": -174.1988943113539,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 141)",
       "top_drivers": [
@@ -326,6 +332,7 @@
     "max_fishing_proba": 0.9839620938932334,
     "centroid_lat": -3.9493955224712503,
     "centroid_lon": -174.24412631988875,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 160)",
       "top_drivers": [
@@ -378,6 +385,7 @@
     "max_fishing_proba": 0.922078269230484,
     "centroid_lat": -3.6285791354180184,
     "centroid_lon": -171.0228567037522,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 111)",
       "top_drivers": [
@@ -430,6 +438,7 @@
     "max_fishing_proba": 0.9745348971867357,
     "centroid_lat": -3.263758897784348,
     "centroid_lon": -170.20144122579742,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 230)",
       "top_drivers": [
@@ -482,6 +491,7 @@
     "max_fishing_proba": 0.9882816636743498,
     "centroid_lat": -3.4834526081729167,
     "centroid_lon": -171.0584630966271,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 96)",
       "top_drivers": [
@@ -534,6 +544,7 @@
     "max_fishing_proba": 0.9901710424535073,
     "centroid_lat": -3.353053950177994,
     "centroid_lon": -170.62666394872494,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 309)",
       "top_drivers": [
@@ -582,10 +593,11 @@
     "duration_hours": 3.678,
     "n_positions": 172,
     "n_fishing_positions": 172,
-    "mean_fishing_proba": 0.9079936747525946,
+    "mean_fishing_proba": 0.9079936747525945,
     "max_fishing_proba": 0.9808656541289617,
     "centroid_lat": -3.379182377526744,
     "centroid_lon": -170.75779422493488,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 172)",
       "top_drivers": [
@@ -634,10 +646,11 @@
     "duration_hours": 1.734,
     "n_positions": 82,
     "n_fishing_positions": 79,
-    "mean_fishing_proba": 0.6749604843887317,
-    "max_fishing_proba": 0.8204569267091943,
+    "mean_fishing_proba": 0.6749604843887318,
+    "max_fishing_proba": 0.8204569267091945,
     "centroid_lat": -3.3216298773354436,
     "centroid_lon": -170.41236549087472,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 79)",
       "top_drivers": [
@@ -686,10 +699,11 @@
     "duration_hours": 4.064,
     "n_positions": 148,
     "n_fishing_positions": 148,
-    "mean_fishing_proba": 0.8759256747936648,
+    "mean_fishing_proba": 0.8759256747936646,
     "max_fishing_proba": 0.9745435729672601,
     "centroid_lat": -3.4824911581540543,
     "centroid_lon": -171.03756425187566,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 148)",
       "top_drivers": [
@@ -738,10 +752,11 @@
     "duration_hours": 0.0,
     "n_positions": 8,
     "n_fishing_positions": 2,
-    "mean_fishing_proba": 0.5184036404324335,
+    "mean_fishing_proba": 0.5184036404324336,
     "max_fishing_proba": 0.5243088353533769,
     "centroid_lat": -3.3744399548,
     "centroid_lon": -170.4388275146,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
       "top_drivers": [
@@ -794,6 +809,7 @@
     "max_fishing_proba": 0.980659431268784,
     "centroid_lat": -3.4707791745612497,
     "centroid_lon": -170.25107383728374,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 160)",
       "top_drivers": [
@@ -846,6 +862,7 @@
     "max_fishing_proba": 0.9616954196811057,
     "centroid_lat": -3.466194665296551,
     "centroid_lon": -170.16770952597008,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 174)",
       "top_drivers": [
@@ -898,6 +915,7 @@
     "max_fishing_proba": 0.9705257866365766,
     "centroid_lat": -3.4748524500408164,
     "centroid_lon": -170.91491076411427,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 98)",
       "top_drivers": [
@@ -950,6 +968,7 @@
     "max_fishing_proba": 0.5068885261578672,
     "centroid_lat": 28.2245292664,
     "centroid_lon": -163.4335327148,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
       "top_drivers": [
@@ -1002,6 +1021,7 @@
     "max_fishing_proba": 0.9968615875313812,
     "centroid_lat": -4.10171575202723,
     "centroid_lon": -171.86240216227137,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 639)",
       "top_drivers": [
@@ -1054,6 +1074,7 @@
     "max_fishing_proba": 0.9958757485136787,
     "centroid_lat": -3.0311385217645115,
     "centroid_lon": -171.34059000342958,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 727)",
       "top_drivers": [
@@ -1103,9 +1124,10 @@
     "n_positions": 172,
     "n_fishing_positions": 92,
     "mean_fishing_proba": 0.6706078011652573,
-    "max_fishing_proba": 0.8868435624370797,
+    "max_fishing_proba": 0.8868435624370795,
     "centroid_lat": -3.4768415948706526,
     "centroid_lon": -171.91483456155544,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 92)",
       "top_drivers": [
@@ -1158,6 +1180,7 @@
     "max_fishing_proba": 0.5843950170501904,
     "centroid_lat": -3.3905654748333336,
     "centroid_lon": -172.74153645836668,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
       "top_drivers": [
@@ -1210,6 +1233,7 @@
     "max_fishing_proba": 0.7604494716790032,
     "centroid_lat": -3.317087734458824,
     "centroid_lon": -172.86793518065883,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
       "top_drivers": [
@@ -1258,10 +1282,11 @@
     "duration_hours": 6.449,
     "n_positions": 66,
     "n_fishing_positions": 28,
-    "mean_fishing_proba": 0.711970751128616,
+    "mean_fishing_proba": 0.7119707511286159,
     "max_fishing_proba": 0.9289389020219454,
     "centroid_lat": -3.3729707939321423,
     "centroid_lon": -172.7755922589893,
+    "type": "ais_fishing_incident",
     "explanation": {
       "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
       "top_drivers": [
@@ -1295,6 +1320,146 @@
     "caveats": [
       "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
       "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "type": "dark_vessel_sar",
+    "incident_id": "sar__galapagos_marine_reserve_0000",
+    "mpa_name": "Gal\u00e1pagos Marine Reserve",
+    "wdpa_id": null,
+    "vessel_id": "(dark -- no AIS identity)",
+    "gear": "SAR detection",
+    "time_start_utc": "2024-03-01T04:00:00Z",
+    "time_end_utc": "2024-03-01T04:00:00Z",
+    "duration_hours": 0.0,
+    "n_positions": 1,
+    "n_fishing_positions": 1,
+    "mean_fishing_proba": 0.92,
+    "max_fishing_proba": 0.92,
+    "centroid_lat": -0.5,
+    "centroid_lon": -91.0,
+    "length_m": 48.0,
+    "matched_to_ais": false,
+    "explanation": {
+      "method": "SAR detection attributes (no AIS track or identity; not SHAP-explainable)",
+      "drivers": [
+        "inside MPA: Gal\u00e1pagos Marine Reserve",
+        "not broadcasting AIS (dark vessel)",
+        "GFW fishing-score: 0.92",
+        "length: 48 m (industrial)"
+      ]
+    },
+    "caveats": [
+      "Dark vessel: detected by satellite SAR but not broadcasting AIS.",
+      "Not SHAP-explainable -- a SAR detection has no movement track to attribute.",
+      "length_m and fishing_score are GFW model estimates from imagery, not ground truth.",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "type": "dark_vessel_sar",
+    "incident_id": "sar__galapagos_marine_reserve_0001",
+    "mpa_name": "Gal\u00e1pagos Marine Reserve",
+    "wdpa_id": null,
+    "vessel_id": "(dark -- no AIS identity)",
+    "gear": "SAR detection",
+    "time_start_utc": "2024-03-01T05:10:00Z",
+    "time_end_utc": "2024-03-01T05:10:00Z",
+    "duration_hours": 0.0,
+    "n_positions": 1,
+    "n_fishing_positions": 1,
+    "mean_fishing_proba": 0.88,
+    "max_fishing_proba": 0.88,
+    "centroid_lat": -0.2,
+    "centroid_lon": -90.5,
+    "length_m": 61.0,
+    "matched_to_ais": false,
+    "explanation": {
+      "method": "SAR detection attributes (no AIS track or identity; not SHAP-explainable)",
+      "drivers": [
+        "inside MPA: Gal\u00e1pagos Marine Reserve",
+        "not broadcasting AIS (dark vessel)",
+        "GFW fishing-score: 0.88",
+        "length: 61 m (industrial)"
+      ]
+    },
+    "caveats": [
+      "Dark vessel: detected by satellite SAR but not broadcasting AIS.",
+      "Not SHAP-explainable -- a SAR detection has no movement track to attribute.",
+      "length_m and fishing_score are GFW model estimates from imagery, not ground truth.",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "type": "dark_vessel_sar",
+    "incident_id": "sar__great_barrier_reef_marine_park_0000",
+    "mpa_name": "Great Barrier Reef Marine Park",
+    "wdpa_id": null,
+    "vessel_id": "(dark -- no AIS identity)",
+    "gear": "SAR detection",
+    "time_start_utc": "2024-03-02T18:30:00Z",
+    "time_end_utc": "2024-03-02T18:30:00Z",
+    "duration_hours": 0.0,
+    "n_positions": 1,
+    "n_fishing_positions": 1,
+    "mean_fishing_proba": 0.85,
+    "max_fishing_proba": 0.85,
+    "centroid_lat": -18.0,
+    "centroid_lon": 147.0,
+    "length_m": 40.0,
+    "matched_to_ais": false,
+    "explanation": {
+      "method": "SAR detection attributes (no AIS track or identity; not SHAP-explainable)",
+      "drivers": [
+        "inside MPA: Great Barrier Reef Marine Park",
+        "not broadcasting AIS (dark vessel)",
+        "GFW fishing-score: 0.85",
+        "length: 40 m (industrial)"
+      ]
+    },
+    "caveats": [
+      "Dark vessel: detected by satellite SAR but not broadcasting AIS.",
+      "Not SHAP-explainable -- a SAR detection has no movement track to attribute.",
+      "length_m and fishing_score are GFW model estimates from imagery, not ground truth.",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "type": "dark_vessel_sar",
+    "incident_id": "sar__papahanaumokuakea_marine_national_monument_0000",
+    "mpa_name": "Papah\u0101naumoku\u0101kea Marine National Monument",
+    "wdpa_id": null,
+    "vessel_id": "(dark -- no AIS identity)",
+    "gear": "SAR detection",
+    "time_start_utc": "2024-03-03T12:05:00Z",
+    "time_end_utc": "2024-03-03T12:05:00Z",
+    "duration_hours": 0.0,
+    "n_positions": 1,
+    "n_fishing_positions": 1,
+    "mean_fishing_proba": 0.81,
+    "max_fishing_proba": 0.81,
+    "centroid_lat": 25.0,
+    "centroid_lon": -170.0,
+    "length_m": 72.0,
+    "matched_to_ais": false,
+    "explanation": {
+      "method": "SAR detection attributes (no AIS track or identity; not SHAP-explainable)",
+      "drivers": [
+        "inside MPA: Papah\u0101naumoku\u0101kea Marine National Monument",
+        "not broadcasting AIS (dark vessel)",
+        "GFW fishing-score: 0.81",
+        "length: 72 m (industrial)"
+      ]
+    },
+    "caveats": [
+      "Dark vessel: detected by satellite SAR but not broadcasting AIS.",
+      "Not SHAP-explainable -- a SAR detection has no movement track to attribute.",
+      "length_m and fishing_score are GFW model estimates from imagery, not ground truth.",
       "MPA boundary may be approximate; verify against official WDPA limits.",
       "An inspection lead, not courtroom evidence."
     ]

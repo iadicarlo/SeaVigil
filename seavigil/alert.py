@@ -27,7 +27,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import GroupShuffleSplit
 
-from seavigil import data, dossier, features, incidents, model
+from seavigil import data, dossier, features, incidents, model, sar
 from seavigil.features import FEATURE_COLUMNS
 from seavigil.mpa import MPAIndex
 
@@ -88,6 +88,9 @@ def main() -> dict:
                         help="score held-out test vessels (default) or all positions")
     parser.add_argument("--threshold", type=float, default=incidents.DEFAULT_PROBA_THRESHOLD)
     parser.add_argument("--gap-minutes", type=float, default=incidents.DEFAULT_GAP_MINUTES)
+    parser.add_argument("--sar", default=None, help="GeoJSON of SAR vessel detections (dark fleet)")
+    parser.add_argument("--sample-sar", action="store_true", help="use the bundled synthetic SAR sample")
+    parser.add_argument("--sar-min-score", type=float, default=0.5)
     parser.add_argument("--out", default=str(RESULTS / "incidents"))
     args = parser.parse_args()
 
@@ -111,20 +114,38 @@ def main() -> dict:
     n_inside = int((scored["mpa_idx"] >= 0).sum())
     print(f"[alert]   {n_inside:,} of {len(scored):,} scored positions fall inside an MPA")
 
-    print("[alert] 4/5 segmenting incidents + 5/5 writing dossiers ...")
-    manifest = run_alert(
-        scored, rf, threshold=args.threshold, gap_minutes=args.gap_minutes, out_dir=args.out
+    print("[alert] 4/5 segmenting incidents (AIS) ...")
+    incs = incidents.build_incidents(
+        scored, proba_threshold=args.threshold, gap_minutes=args.gap_minutes
     )
+    dossiers = dossier.build_dossiers(incs, scored, rf)
+    n_ais = len(dossiers)
+
+    n_sar = 0
+    if args.sar is not None or args.sample_sar:
+        dets = sar.load_sar_detections(args.sar)  # None -> bundled sample
+        sar_dossiers = sar.build_sar_dossiers(
+            dets, mpa_index, min_fishing_score=args.sar_min_score
+        )
+        dossiers += sar_dossiers
+        n_sar = len(sar_dossiers)
+        print(f"[alert]   {len(dets)} SAR detections -> {n_sar} dark-vessel-in-MPA dossiers")
+
+    print("[alert] 5/5 writing dossiers ...")
+    manifest = dossier.write_dossiers(dossiers, args.out)
 
     summary = {
         "scope": args.scope,
         "mpa_source": args.mpa or "bundled sample (approximate)",
+        "sar_source": (args.sar or "bundled sample") if (args.sar or args.sample_sar) else None,
         "n_mpas": len(mpa_index),
         "n_scored_positions": int(len(scored)),
         "n_positions_in_mpa": n_inside,
         "proba_threshold": args.threshold,
         "gap_minutes": args.gap_minutes,
         "n_incidents": manifest["n_incidents"],
+        "n_ais_incidents": n_ais,
+        "n_dark_vessel_sar": n_sar,
         "out_dir": manifest["out_dir"],
     }
     Path(args.out).mkdir(parents=True, exist_ok=True)
