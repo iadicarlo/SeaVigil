@@ -40,8 +40,9 @@ jobs:
             echo "No AISSTREAM_KEY secret - skipping live refresh."; exit 0
           fi
           # Great Barrier Reef Marine Park bbox (busy waters, a real MPA in the sample set)
+          # Note: --bbox=... (with '=') because the value starts with a negative number.
           uv run --with websockets python scripts/fetch_live_ais.py \
-            --bbox -24.5,142.5,-10.5,154.0 --seconds 90 --max 20000 \
+            --bbox=-24.5,142.5,-10.5,154.0 --seconds 90 --max 20000 \
             --out data/positions/live_ais_real.csv
           uv run python -m seavigil.alert --positions data/positions/live_ais_real.csv
           uv run python -m seavigil.site
