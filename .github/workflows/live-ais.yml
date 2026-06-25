@@ -59,8 +59,14 @@ jobs:
           git config user.email "${NAME}@${HOST}"
           git add results/live web/data/live
           if git diff --staged --quiet; then
-            echo "No data changes."
-          else
-            git commit -m "chore: near-real-time AIS refresh"
-            git push
+            echo "No data changes."; exit 0
           fi
+          git commit -m "chore: near-real-time AIS refresh"
+          # Push is race-prone (a queued run may have advanced main); rebase + retry,
+          # preferring the latest stream on conflict.
+          for attempt in 1 2 3; do
+            if git push; then echo "pushed"; exit 0; fi
+            echo "push rejected; syncing and retrying ($attempt)"
+            git pull --rebase --autostash -X ours origin main || git rebase --abort
+          done
+          echo "push failed after retries"; exit 1
