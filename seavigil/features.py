@@ -111,6 +111,11 @@ def _track_features(track: pd.DataFrame) -> pd.DataFrame:
             "label": t["label"].to_numpy(),
             "vessel_id": t["vessel_id"].to_numpy(),
             "gear": t["gear"].to_numpy(),
+            # Passthrough position/time columns (not model features) so the MPA
+            # overlay and incident builder can locate and timestamp each row.
+            "lat": t["lat"].to_numpy(),
+            "lon": t["lon"].to_numpy(),
+            "timestamp": ts,
         },
         index=t.index,
     )
