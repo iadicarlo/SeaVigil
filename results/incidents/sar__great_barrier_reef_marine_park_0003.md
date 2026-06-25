@@ -1,19 +1,20 @@
-# Dark-vessel detection `sar__great_barrier_reef_marine_park_0000`
+# Dark-vessel detection `sar__great_barrier_reef_marine_park_0003`
 
 - **MPA:** Great Barrier Reef Marine Park
 - **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
-- **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
-- **When (UTC):** 2024-01-01T08:29:59Z
-- **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
-- **Where:** -23.900, 151.510
+- **Vessel:** F.V LARISSA E  ·  **source:** SAR · FISHING  ·  **flag:** 🇦🇺 AUS
+- **When (UTC):** 2024-01-08T19:13:05Z
+- **Length:** n/a  ·  **broadcasting AIS:** yes  ·  **GFW fishing-score:** n/a (Portal-only)
+- **Where:** -22.370, 153.030
 
 ## Why this was flagged
 
 _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
 - inside MPA: Great Barrier Reef Marine Park
-- not broadcasting AIS (dark vessel)
-- satellite detections in window: 6
+- broadcasting AIS: F.V LARISSA E, flag AUS
+- gear type: FISHING
+- satellite detections in window: 1
 
 ## Caveats
 

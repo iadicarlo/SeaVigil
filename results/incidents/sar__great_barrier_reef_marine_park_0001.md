@@ -1,20 +1,19 @@
-# Dark-vessel detection `sar__papahanaumokuakea_marine_national_monument_0000`
+# Dark-vessel detection `sar__great_barrier_reef_marine_park_0001`
 
-- **MPA:** Papahānaumokuākea Marine National Monument
-- **Severity:** HIGH (strict no-take reserve)  ·  boundary sample-approx-2024
+- **MPA:** Great Barrier Reef Marine Park
+- **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
-- **When (UTC):** 2024-03-03T12:05:00Z
-- **Length:** 72 m  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** 0.81
-- **Where:** 25.000, -170.000
+- **When (UTC):** 2024-01-01T08:29:59Z
+- **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
+- **Where:** -10.620, 148.930
 
 ## Why this was flagged
 
 _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
-- inside MPA: Papahānaumokuākea Marine National Monument
+- inside MPA: Great Barrier Reef Marine Park
 - not broadcasting AIS (dark vessel)
-- GFW fishing-score: 0.81
-- length: 72 m (industrial)
+- satellite detections in window: 6
 
 ## Caveats
 

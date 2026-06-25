@@ -1,19 +1,20 @@
-# Dark-vessel detection `sar__great_barrier_reef_marine_park_0000`
+# Dark-vessel detection `sar__great_barrier_reef_marine_park_0011`
 
 - **MPA:** Great Barrier Reef Marine Park
 - **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
-- **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
-- **When (UTC):** 2024-01-01T08:29:59Z
-- **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
-- **Where:** -23.900, 151.510
+- **Vessel:** LURONGYUANYU778  ·  **source:** SAR · DRIFTING_LONGLINES  ·  **flag:** 🇨🇳 CHN
+- **When (UTC):** 2024-01-15T08:13:09Z
+- **Length:** n/a  ·  **broadcasting AIS:** yes  ·  **GFW fishing-score:** n/a (Portal-only)
+- **Where:** -12.110, 153.450
 
 ## Why this was flagged
 
 _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
 - inside MPA: Great Barrier Reef Marine Park
-- not broadcasting AIS (dark vessel)
-- satellite detections in window: 6
+- broadcasting AIS: LURONGYUANYU778, flag CHN
+- gear type: DRIFTING_LONGLINES
+- satellite detections in window: 1
 
 ## Caveats
 

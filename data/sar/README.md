@@ -6,6 +6,11 @@ account or download. Each detection has `length_m`, `fishing_score`, and `matche
 
 **Do not treat the sample as real detections.**
 
+The published showcase no longer uses this synthetic sample: `scripts/swap_real_sar.py`
+selects a temporally and spatially diverse subset of **real** GFW Sentinel-1 dark-vessel
+detections (from the gitignored `gfw_sar_detections.geojson`) that fall inside the MPAs, and
+ships only the derived in-MPA dossiers (not the raw detection database), with attribution.
+
 For real use, export **point-level Sentinel-1 SAR vessel detections** - with `length_m` and
 the fishing/presence/matching scores - from the
 [GFW Data Download Portal](https://globalfishingwatch.org/our-apis/) (the data behind

@@ -3,9 +3,9 @@
 - **MPA:** Galápagos Marine Reserve
 - **Severity:** HIGH (no-take / national-park protection)  ·  boundary sample-approx-2024
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
-- **When (UTC):** 2024-03-01T04:00:00Z
-- **Length:** 48 m  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** 0.92
-- **Where:** -0.500, -91.000
+- **When (UTC):** 2024-01-02T11:42:31Z
+- **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
+- **Where:** -0.860, -89.630
 
 ## Why this was flagged
 
@@ -13,8 +13,7 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
 - inside MPA: Galápagos Marine Reserve
 - not broadcasting AIS (dark vessel)
-- GFW fishing-score: 0.92
-- length: 48 m (industrial)
+- satellite detections in window: 2
 
 ## Caveats
 

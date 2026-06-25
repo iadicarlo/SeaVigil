@@ -119,6 +119,11 @@ def _track_features(track: pd.DataFrame) -> pd.DataFrame:
         },
         index=t.index,
     )
+    # Optional vessel-identity passthrough (present for live / BYO AIS, absent for the
+    # anonymized GFW training labels) so dossiers can show name / flag / destination.
+    for col in ("ship_name", "flag", "destination", "ship_type"):
+        if col in t.columns:
+            out[col] = t[col].to_numpy()
     return out
 
 

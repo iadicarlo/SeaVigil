@@ -10,7 +10,10 @@ scheduled job pulls fresh GFW data and re-runs this; here it runs locally.
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
+
+from seavigil.flags import emoji_for
 
 ROOT = Path(__file__).resolve().parent.parent
 INCIDENTS_JSON = ROOT / "results" / "incidents" / "incidents.json"
@@ -85,8 +88,12 @@ def incidents_to_geojson(dossiers: list[dict]) -> dict:
                     "score": (round(float(d["mean_fishing_proba"]), 2)
                               if d.get("mean_fishing_proba") is not None else None),
                     "vessel": d.get("vessel_id", ""),
+                    "ship_name": d.get("ship_name") or "",
+                    "ship_type": d.get("ship_type") or "",
+                    "destination": d.get("destination") or "",
                     "gear": d.get("gear", ""),
                     "flag": d.get("flag") or "",
+                    "flag_emoji": emoji_for(d.get("flag")),
                     "why": _why(d),
                     "why_full": _why(d, full=True),
                     "baseline": _baseline_line(d),
@@ -112,7 +119,9 @@ def build_site(
     (out_dir / "incidents.geojson").write_text(
         json.dumps(incidents_to_geojson(dossiers))
     )
-    (out_dir / "summary.json").write_text(json.dumps(summarize(dossiers)))
+    summary = summarize(dossiers)
+    summary["generated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    (out_dir / "summary.json").write_text(json.dumps(summary))
 
     # Tracks are written alongside incidents.json by dossier.write_dossiers; copy
     # the LineStrings through to the web data (incidents.json itself is track-free).

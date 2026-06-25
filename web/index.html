@@ -20,9 +20,12 @@
     #header { top:12px; left:12px; max-width:340px; }
     #header h1 { margin:0 0 4px; font-size:17px; font-weight:600; }
     #header p { margin:0; font-size:12.5px; line-height:1.5; color:var(--muted); }
-    #legend { bottom:18px; left:12px; font-size:12.5px; }
+    #legend { bottom:18px; left:12px; font-size:12.5px; max-width:340px; }
     .dot { display:inline-block; width:11px; height:11px; border-radius:50%;
            border:1.5px solid #fff; margin-right:6px; vertical-align:-1px; }
+    .credits { margin-top:8px; padding-top:7px; border-top:1px solid rgba(255,255,255,.12);
+               font-size:10.5px; line-height:1.5; color:var(--muted); }
+    .credits a { color:var(--ais); }
     .disclaimer { margin-top:8px; font-size:11.5px; color:var(--muted); }
     .maplibregl-popup-content { font-size:12.5px; line-height:1.45; max-width:280px; }
     .maplibregl-popup-content h3 { margin:0 0 4px; font-size:13px; }
@@ -32,17 +35,22 @@
     .cav { color:#666; font-style:italic; }
     #detail h3 { margin:0 6px 6px 0; font-size:15px; padding-right:18px; }
     #detail .row { margin:3px 0; }
-    #detail .close { position:absolute; top:8px; right:11px; cursor:pointer; color:var(--muted); font-size:16px; }
+    #detail .close { position:absolute; top:6px; right:8px; cursor:pointer; color:var(--muted);
+                     font-size:18px; line-height:1; background:none; border:0; padding:4px 7px; border-radius:6px; }
+    #detail .close:hover, #detail .close:focus-visible { color:var(--fg); background:rgba(255,255,255,.1); outline:none; }
     .sev { display:inline-block; font-size:11px; padding:1px 7px; border-radius:9px; color:#fff; }
     .sev-high { background:#c0392b; } .sev-medium { background:#d98324; } .sev-low { background:#3b7d54; }
     .why2 { color:#22333b; background:#eef3f6; border-radius:5px; padding:6px 8px; margin:7px 0; }
     .cav2 { color:var(--muted); font-size:11.5px; margin-top:7px; line-height:1.4; }
     #stats, #detail { top:12px; right:52px; max-width:230px; font-size:12.5px; }
     #detail { display:none; max-width:310px; max-height:82vh; overflow:auto; }
+    .mpa-name { font:500 11px 'Poppins',system-ui,sans-serif; color:#06342a; white-space:nowrap;
+                background:rgba(32,225,160,.92); padding:1px 6px; border-radius:4px;
+                pointer-events:none; box-shadow:0 1px 3px rgba(0,0,0,.35); }
     .brand { display:flex; align-items:center; gap:9px; margin:0 0 6px; }
     .brand svg { width:30px; height:30px; flex:0 0 auto; }
     .brand .name { font-family:'Poppins',system-ui,sans-serif; font-weight:600;
-                   font-size:20px; letter-spacing:.3px; line-height:1; }
+                   font-size:20px; letter-spacing:.3px; line-height:1; margin:0; }
     .brand .name .v { color:var(--ais); }
     /* Responsive: phones and small tablets */
     @media (max-width: 760px) {
@@ -74,18 +82,23 @@
         <path d="M11 51.5 Q19 46.5 27 51.5 T43 51.5 T59 51.5" fill="none"
               stroke="#2bd4a8" stroke-width="2.6" stroke-linecap="round" opacity="0.92"/>
       </svg>
-      <span class="name">Sea<span class="v">Vigil</span></span>
+      <h1 class="name">Sea<span class="v">Vigil</span></h1>
     </div>
     <p class="full">Apparent fishing and dark (non-broadcasting) vessels detected inside Marine
        Protected Areas. Click a marker for the per-incident reason.</p>
-    <p class="disclaimer">Illustrative demo: approximate MPA boxes, in-sample scores,
-       <em>apparent</em> fishing - an inspection lead, not proof of illegality.</p>
+    <p class="disclaimer" id="vintage">Illustrative sample: AIS apparent-fishing (2013-2014 GFW labels) +
+       real GFW dark-vessel SAR (2024), approximate MPA boxes. Not live. <em>Apparent</em> fishing, not proof.</p>
     <p class="disclaimer" id="modelink"></p>
   </div>
 
   <div id="legend" class="panel">
     <div><span class="dot" style="background:var(--ais)"></span>AIS apparent fishing (SHAP-explained)</div>
     <div><span class="dot" style="background:var(--sar)"></span>Dark vessel (SAR, not broadcasting AIS)</div>
+    <div class="credits">Data: AIS labels &amp; Sentinel-1 SAR detections
+      <a href="https://globalfishingwatch.org" target="_blank" rel="noopener">Global Fishing Watch</a>
+      (CC BY / CC BY-NC; Paolo et al., <em>Nature</em> 2024) &middot; MPA boundaries
+      <a href="https://www.protectedplanet.net" target="_blank" rel="noopener">UNEP-WCMC &amp; IUCN (2026)</a>,
+      WDPA (non-commercial) &middot; basemap &copy; OpenStreetMap, CARTO</div>
   </div>
 
   <div id="stats" class="panel"></div>
@@ -128,20 +141,45 @@
       // monitor (./data/live) refreshed in the cloud by the live-ais workflow.
       const LIVE = new URLSearchParams(location.search).has('live');
       const DIR = LIVE ? './data/live' : './data';
-      setMode(LIVE);
-      const mpas = await (await fetch(`${DIR}/mpas.geojson`)).json();
-      const incidents = await (await fetch(`${DIR}/incidents.geojson`)).json();
-      const tracks = await (await fetch(`${DIR}/tracks.geojson`)).json();
-      const summary = await (await fetch(`${DIR}/summary.json`)).json();
+      let mpas, incidents, tracks, summary;
+      try {
+        const getJSON = async (p) => {
+          const r = await fetch(p);
+          if (!r.ok) throw new Error(`${p} (${r.status})`);
+          return r.json();
+        };
+        [mpas, incidents, tracks, summary] = await Promise.all([
+          getJSON(`${DIR}/mpas.geojson`), getJSON(`${DIR}/incidents.geojson`),
+          getJSON(`${DIR}/tracks.geojson`), getJSON(`${DIR}/summary.json`),
+        ]);
+      } catch (err) {
+        document.getElementById('stats').innerHTML =
+          `<strong>Data unavailable.</strong><br>Could not load ${err.message}`;
+        return;
+      }
+      setMode(LIVE, summary);
       renderStats(summary);
 
       map.addSource('mpas', { type: 'geojson', data: mpas });
       map.addLayer({ id: 'mpa-fill', type: 'fill', source: 'mpas',
-        paint: { 'fill-color': '#2bd4a8', 'fill-opacity': 0.12 } });
+        paint: { 'fill-color': '#1fb98f', 'fill-opacity': 0.22 } });
       map.addLayer({ id: 'mpa-line', type: 'line', source: 'mpas',
-        paint: { 'line-color': '#2bd4a8', 'line-width': 1.4 } });
-      // MPA names are shown in the stats panel and click popups; a symbol/label
-      // layer is intentionally omitted to avoid an external glyph-font dependency.
+        paint: { 'line-color': '#14e0a0', 'line-width': 2.4, 'line-opacity': 0.95 } });
+      // MPA name labels as HTML markers (no external glyph-font dependency, always
+      // visible even when a polygon is tiny at world zoom).
+      const centroid = (geom) => {
+        let xs = 0, ys = 0, n = 0;
+        const walk = (c) => { if (typeof c[0] === 'number') { xs += c[0]; ys += c[1]; n++; } else c.forEach(walk); };
+        walk(geom.coordinates);
+        return [xs / n, ys / n];
+      };
+      for (const f of mpas.features) {
+        const el = document.createElement('div');
+        el.className = 'mpa-name';
+        el.textContent = f.properties.name || f.properties.NAME || 'MPA';
+        new maplibregl.Marker({ element: el, anchor: 'bottom' })
+          .setLngLat(centroid(f.geometry)).addTo(map);
+      }
 
       map.addSource('tracks', { type: 'geojson', data: tracks });
       map.addLayer({ id: 'track-lines', type: 'line', source: 'tracks',
@@ -158,10 +196,27 @@
           'circle-stroke-color': '#ffffff', 'circle-stroke-width': 1.2, 'circle-opacity': 0.9
         } });
 
-      function setMode(live) {
-        const el = document.getElementById('modelink');
-        el.innerHTML = live
-          ? '<strong style="color:var(--ais)">Near-real-time</strong> (live AIS, Great Barrier Reef, cloud-refreshed). <a href="./" style="color:var(--fg)">Back to showcase</a>'
+      // Frame the live monitor on its single region (the Great Barrier Reef) rather
+      // than a blank world view. The global showcase keeps its Pacific-centred default:
+      // its incidents straddle the antimeridian (GBR ~147 E, Hawaii ~170 W, Galapagos
+      // ~91 W), so a naive fitBounds would wrap the long way and centre on the Atlantic.
+      if (LIVE) {
+        const b = new maplibregl.LngLatBounds();
+        let any = false;
+        const add = (c) => { if (typeof c[0] === 'number') { b.extend(c); any = true; } else c.forEach(add); };
+        const src = incidents.features.length ? incidents : mpas;
+        for (const f of src.features) { if (f.geometry) add(f.geometry.coordinates); }
+        if (any) map.fitBounds(b, { padding: 70, maxZoom: 8.5, duration: 0 });
+      }
+
+      function setMode(live, summary) {
+        const asof = (summary && summary.generated_at) ? ` Data as of ${summary.generated_at} UTC.` : '';
+        const v = document.getElementById('vintage');
+        if (v) v.innerHTML = live
+          ? `Live AIS stream (Great Barrier Reef).${asof} <em>Apparent</em> fishing, an inspection lead, not proof.`
+          : 'Illustrative sample: AIS apparent-fishing (2013-2014 GFW labels) + real GFW dark-vessel SAR (2024), approximate MPA boxes. Not live. <em>Apparent</em> fishing, not proof.';
+        document.getElementById('modelink').innerHTML = live
+          ? '<a href="./" style="color:var(--fg)">&larr; Back to showcase</a>'
           : '<a href="?live" style="color:var(--ais)">View the near-real-time monitor &rarr;</a>';
       }
 
@@ -191,13 +246,16 @@
         map.setFilter('track-hi', ['==', ['get', 'id'], p.id]);
         const sevBit = p.severity
           ? `<span class="sev sev-${p.severity}">${p.severity.toUpperCase()}</span> ${p.severity_reason || ''}` : '';
-        const scoreBit = (p.score !== '' && p.score != null) ? ` · score ${p.score}` : '';
-        const flagBit = p.flag ? ` · flag ${p.flag}` : '';
+        const scoreBit = (p.score !== '' && p.score != null) ? ` &nbsp; score ${p.score}` : '';
+        const who = (p.flag_emoji ? p.flag_emoji + ' ' : '') + (p.ship_name || p.vessel);
+        const idBits = [p.flag, p.ship_type, p.destination ? 'to ' + p.destination : '']
+          .filter(Boolean).join(' &middot; ');
         detail.innerHTML = `
-          <span class="close" title="close">&times;</span>
+          <button type="button" class="close" aria-label="Close incident details">&times;</button>
           <h3>${p.mpa}</h3>
           <div class="row"><span class="pill" style="background:${kindColor(p.kind)}">${kindLabel(p.kind)}</span> ${sevBit}</div>
-          <div class="row"><strong>Vessel:</strong> ${p.vessel}${flagBit}${scoreBit}</div>
+          <div class="row"><strong>Vessel:</strong> ${who}${scoreBit}</div>
+          ${idBits ? `<div class="row" style="color:var(--muted)">${idBits}</div>` : ''}
           <div class="row"><strong>Gear / source:</strong> ${p.gear}</div>
           <div class="row"><strong>When (UTC):</strong> ${p.when}</div>
           ${p.why_full ? `<div class="why2"><strong>Why flagged:</strong> ${p.why_full}</div>` : ''}
@@ -205,11 +263,17 @@
           <div class="cav2">${p.caveats || p.caveat}</div>`;
         detail.style.display = 'block';
         stats.style.display = 'none';
-        detail.querySelector('.close').onclick = () => {
-          detail.style.display = 'none';
-          stats.style.display = 'block';
-          map.setFilter('track-hi', ['==', ['get', 'id'], '__none__']);
-        };
+        const closeBtn = detail.querySelector('.close');
+        closeBtn.onclick = closeDetail;
+        closeBtn.focus();
+      });
+      function closeDetail() {
+        detail.style.display = 'none';
+        stats.style.display = 'block';
+        map.setFilter('track-hi', ['==', ['get', 'id'], '__none__']);
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && detail.style.display === 'block') closeDetail();
       });
       map.on('mouseenter', 'incident-pts', () => map.getCanvas().style.cursor = 'pointer');
       map.on('mouseleave', 'incident-pts', () => map.getCanvas().style.cursor = '');

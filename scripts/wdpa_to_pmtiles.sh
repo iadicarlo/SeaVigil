@@ -11,7 +11,7 @@
 # See docs/DEPLOY.md.
 #
 # Requires: mapshaper (npm i -g mapshaper), tippecanoe, pmtiles
-#   (brew install tippecanoe; brew install pmtiles  — or go install).
+#   (brew install tippecanoe; brew install pmtiles, or go install).
 #
 # Usage: scripts/wdpa_to_pmtiles.sh path/to/wdpa_marine.geojson web/data/mpas.pmtiles
 

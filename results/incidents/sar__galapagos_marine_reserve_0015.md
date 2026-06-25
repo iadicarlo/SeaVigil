@@ -1,19 +1,19 @@
-# Dark-vessel detection `sar__great_barrier_reef_marine_park_0000`
+# Dark-vessel detection `sar__galapagos_marine_reserve_0015`
 
-- **MPA:** Great Barrier Reef Marine Park
-- **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
+- **MPA:** Galápagos Marine Reserve
+- **Severity:** HIGH (no-take / national-park protection)  ·  boundary sample-approx-2024
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
-- **When (UTC):** 2024-01-01T08:29:59Z
+- **When (UTC):** 2024-10-27T00:18:49Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
-- **Where:** -23.900, 151.510
+- **Where:** -0.470, -90.320
 
 ## Why this was flagged
 
 _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
-- inside MPA: Great Barrier Reef Marine Park
+- inside MPA: Galápagos Marine Reserve
 - not broadcasting AIS (dark vessel)
-- satellite detections in window: 6
+- satellite detections in window: 1
 
 ## Caveats
 

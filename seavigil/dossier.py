@@ -18,7 +18,14 @@ import numpy as np
 
 from seavigil.explain import _positive_class_shap
 from seavigil.features import FEATURE_COLUMNS
+from seavigil.flags import emoji_for
 from seavigil.mpa import grade_severity
+
+_IDENTITY = ("ship_name", "flag", "destination", "ship_type")
+
+
+def _na(v):
+    return None if (isinstance(v, float) and v != v) else v
 
 # Carried into every dossier so a flag is never read without its limits.
 CAVEATS = [
@@ -104,6 +111,11 @@ def build_dossiers(
         d["type"] = "ais_fishing_incident"
         sev, reason = grade_severity(d.get("mpa_iucn_cat"), d.get("mpa_no_take"))
         d["severity"], d["severity_reason"] = sev, reason
+        # Vessel identity (present for live / BYO AIS; absent for anonymized labels).
+        if ids:
+            for col in _IDENTITY:
+                if col in scored.columns:
+                    d[col] = _na(scored.loc[ids[0], col])
         # Does the trivial tuned speed-rule also flag these positions, or is the
         # model earning its complexity here?
         if baseline_threshold is not None and ids:
@@ -138,7 +150,8 @@ def render_markdown(dossier: dict) -> str:
         length_str = f"{d['length_m']:.0f} m" if d.get("length_m") is not None else "n/a"
         score = d.get("mean_fishing_proba")
         score_str = f"{score:.2f}" if score is not None else "n/a (Portal-only)"
-        flag_str = f"  ·  **flag:** {d['flag']}" if d.get("flag") else ""
+        flag_str = (f"  ·  **flag:** {emoji_for(d.get('flag'))} {d['flag']}".rstrip()
+                    if d.get("flag") else "")
         lines += [
             f"- **Vessel:** {d['vessel_id']}  ·  **source:** {d['gear']}{flag_str}",
             f"- **When (UTC):** {d['time_start_utc']}",
@@ -148,8 +161,17 @@ def render_markdown(dossier: dict) -> str:
             "",
         ]
     else:
+        flag_e = emoji_for(d.get("flag"))
+        who = (f"{flag_e} " if flag_e else "") + (
+            d["ship_name"] if d.get("ship_name") else f"`{d['vessel_id']}`")
+        extra = []
+        if d.get("ship_type"):
+            extra.append(str(d["ship_type"]))
+        if d.get("destination"):
+            extra.append(f"to {d['destination']}")
+        extra_s = ("  ·  " + "  ·  ".join(extra)) if extra else ""
         ais_lines = [
-            f"- **Vessel:** `{d['vessel_id']}`  ·  **gear:** {d['gear']}",
+            f"- **Vessel:** {who}  ·  **gear:** {d['gear']}{extra_s}",
             f"- **When (UTC):** {d['time_start_utc']} → {d['time_end_utc']} "
             f"({d['duration_hours']} h)",
             f"- **Apparent fishing:** {d['n_fishing_positions']} of {d['n_positions']} "

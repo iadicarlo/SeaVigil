@@ -1,6 +1,6 @@
 # In-MPA records
 
-29 record(s): 25 AIS fishing incident(s), 4 dark-vessel SAR detection(s).
+70 record(s): 25 AIS fishing incident(s), 45 dark-vessel SAR detection(s).
 
 | id | type | MPA | start (UTC) | score / mean p |
 |---|---|---|---|---:|
@@ -29,7 +29,48 @@
 | [phoenix_islands_protected_area__purse_seines_178183327397239_0001](phoenix_islands_protected_area__purse_seines_178183327397239_0001.md) | AIS fishing | Phoenix Islands Protected Area | 2013-11-11T04:38:02Z | 0.55 |
 | [phoenix_islands_protected_area__purse_seines_178183327397239_0002](phoenix_islands_protected_area__purse_seines_178183327397239_0002.md) | AIS fishing | Phoenix Islands Protected Area | 2013-11-11T11:07:33Z | 0.57 |
 | [phoenix_islands_protected_area__purse_seines_178183327397239_0003](phoenix_islands_protected_area__purse_seines_178183327397239_0003.md) | AIS fishing | Phoenix Islands Protected Area | 2013-11-11T21:23:25Z | 0.71 |
-| [sar__galapagos_marine_reserve_0000](sar__galapagos_marine_reserve_0000.md) | dark SAR | Galápagos Marine Reserve | 2024-03-01T04:00:00Z | 0.92 |
-| [sar__galapagos_marine_reserve_0001](sar__galapagos_marine_reserve_0001.md) | dark SAR | Galápagos Marine Reserve | 2024-03-01T05:10:00Z | 0.88 |
-| [sar__great_barrier_reef_marine_park_0000](sar__great_barrier_reef_marine_park_0000.md) | dark SAR | Great Barrier Reef Marine Park | 2024-03-02T18:30:00Z | 0.85 |
-| [sar__papahanaumokuakea_marine_national_monument_0000](sar__papahanaumokuakea_marine_national_monument_0000.md) | dark SAR | Papahānaumokuākea Marine National Monument | 2024-03-03T12:05:00Z | 0.81 |
+| [sar__great_barrier_reef_marine_park_0000](sar__great_barrier_reef_marine_park_0000.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-01T08:29:59Z | - |
+| [sar__galapagos_marine_reserve_0000](sar__galapagos_marine_reserve_0000.md) | dark SAR | Galápagos Marine Reserve | 2024-01-02T11:42:31Z | - |
+| [sar__great_barrier_reef_marine_park_0001](sar__great_barrier_reef_marine_park_0001.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-01T08:29:59Z | - |
+| [sar__galapagos_marine_reserve_0001](sar__galapagos_marine_reserve_0001.md) | dark SAR | Galápagos Marine Reserve | 2024-01-02T11:42:31Z | - |
+| [sar__great_barrier_reef_marine_park_0002](sar__great_barrier_reef_marine_park_0002.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-01T08:29:59Z | - |
+| [sar__galapagos_marine_reserve_0002](sar__galapagos_marine_reserve_0002.md) | dark SAR | Galápagos Marine Reserve | 2024-01-02T11:42:31Z | - |
+| [sar__great_barrier_reef_marine_park_0003](sar__great_barrier_reef_marine_park_0003.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-08T19:13:05Z | - |
+| [sar__galapagos_marine_reserve_0003](sar__galapagos_marine_reserve_0003.md) | dark SAR | Galápagos Marine Reserve | 2024-01-06T00:27:22Z | - |
+| [sar__great_barrier_reef_marine_park_0004](sar__great_barrier_reef_marine_park_0004.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-08T19:13:05Z | - |
+| [sar__galapagos_marine_reserve_0004](sar__galapagos_marine_reserve_0004.md) | dark SAR | Galápagos Marine Reserve | 2024-01-06T00:27:22Z | - |
+| [sar__great_barrier_reef_marine_park_0005](sar__great_barrier_reef_marine_park_0005.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-08T19:13:05Z | - |
+| [sar__galapagos_marine_reserve_0005](sar__galapagos_marine_reserve_0005.md) | dark SAR | Galápagos Marine Reserve | 2024-01-06T00:27:22Z | - |
+| [sar__great_barrier_reef_marine_park_0006](sar__great_barrier_reef_marine_park_0006.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-08T19:13:30Z | - |
+| [sar__galapagos_marine_reserve_0006](sar__galapagos_marine_reserve_0006.md) | dark SAR | Galápagos Marine Reserve | 2024-03-06T00:26:54Z | - |
+| [sar__great_barrier_reef_marine_park_0007](sar__great_barrier_reef_marine_park_0007.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-08T19:13:30Z | - |
+| [sar__galapagos_marine_reserve_0007](sar__galapagos_marine_reserve_0007.md) | dark SAR | Galápagos Marine Reserve | 2024-03-06T00:26:54Z | - |
+| [sar__great_barrier_reef_marine_park_0008](sar__great_barrier_reef_marine_park_0008.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-08T19:13:30Z | - |
+| [sar__galapagos_marine_reserve_0008](sar__galapagos_marine_reserve_0008.md) | dark SAR | Galápagos Marine Reserve | 2024-03-31T11:51:02Z | - |
+| [sar__great_barrier_reef_marine_park_0009](sar__great_barrier_reef_marine_park_0009.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-11T19:34:36Z | - |
+| [sar__galapagos_marine_reserve_0009](sar__galapagos_marine_reserve_0009.md) | dark SAR | Galápagos Marine Reserve | 2024-03-31T11:51:02Z | - |
+| [sar__great_barrier_reef_marine_park_0010](sar__great_barrier_reef_marine_park_0010.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-11T19:34:36Z | - |
+| [sar__galapagos_marine_reserve_0010](sar__galapagos_marine_reserve_0010.md) | dark SAR | Galápagos Marine Reserve | 2024-03-31T11:51:02Z | - |
+| [sar__great_barrier_reef_marine_park_0011](sar__great_barrier_reef_marine_park_0011.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-15T08:13:09Z | - |
+| [sar__galapagos_marine_reserve_0011](sar__galapagos_marine_reserve_0011.md) | dark SAR | Galápagos Marine Reserve | 2024-04-23T00:26:55Z | - |
+| [sar__great_barrier_reef_marine_park_0012](sar__great_barrier_reef_marine_park_0012.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-15T08:13:09Z | - |
+| [sar__galapagos_marine_reserve_0012](sar__galapagos_marine_reserve_0012.md) | dark SAR | Galápagos Marine Reserve | 2024-07-28T00:26:53Z | - |
+| [sar__great_barrier_reef_marine_park_0013](sar__great_barrier_reef_marine_park_0013.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-15T08:13:09Z | - |
+| [sar__galapagos_marine_reserve_0013](sar__galapagos_marine_reserve_0013.md) | dark SAR | Galápagos Marine Reserve | 2024-07-28T00:26:53Z | - |
+| [sar__great_barrier_reef_marine_park_0014](sar__great_barrier_reef_marine_park_0014.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-20T19:13:29Z | - |
+| [sar__galapagos_marine_reserve_0014](sar__galapagos_marine_reserve_0014.md) | dark SAR | Galápagos Marine Reserve | 2024-07-28T00:26:53Z | - |
+| [sar__great_barrier_reef_marine_park_0015](sar__great_barrier_reef_marine_park_0015.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-20T19:13:29Z | - |
+| [sar__galapagos_marine_reserve_0015](sar__galapagos_marine_reserve_0015.md) | dark SAR | Galápagos Marine Reserve | 2024-10-27T00:18:49Z | - |
+| [sar__great_barrier_reef_marine_park_0016](sar__great_barrier_reef_marine_park_0016.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-20T19:13:29Z | - |
+| [sar__great_barrier_reef_marine_park_0017](sar__great_barrier_reef_marine_park_0017.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-21T19:51:20Z | - |
+| [sar__great_barrier_reef_marine_park_0018](sar__great_barrier_reef_marine_park_0018.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-21T19:51:20Z | - |
+| [sar__great_barrier_reef_marine_park_0019](sar__great_barrier_reef_marine_park_0019.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-23T19:34:35Z | - |
+| [sar__great_barrier_reef_marine_park_0020](sar__great_barrier_reef_marine_park_0020.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-23T19:34:35Z | - |
+| [sar__great_barrier_reef_marine_park_0021](sar__great_barrier_reef_marine_park_0021.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-23T19:34:35Z | - |
+| [sar__great_barrier_reef_marine_park_0022](sar__great_barrier_reef_marine_park_0022.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-27T08:13:09Z | - |
+| [sar__great_barrier_reef_marine_park_0023](sar__great_barrier_reef_marine_park_0023.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-27T08:13:09Z | - |
+| [sar__great_barrier_reef_marine_park_0024](sar__great_barrier_reef_marine_park_0024.md) | dark SAR | Great Barrier Reef Marine Park | 2024-01-27T08:13:09Z | - |
+| [sar__great_barrier_reef_marine_park_0025](sar__great_barrier_reef_marine_park_0025.md) | dark SAR | Great Barrier Reef Marine Park | 2024-02-01T19:12:37Z | - |
+| [sar__great_barrier_reef_marine_park_0026](sar__great_barrier_reef_marine_park_0026.md) | dark SAR | Great Barrier Reef Marine Park | 2024-02-01T19:12:37Z | - |
+| [sar__great_barrier_reef_marine_park_0027](sar__great_barrier_reef_marine_park_0027.md) | dark SAR | Great Barrier Reef Marine Park | 2024-02-11T19:29:20Z | - |
+| [sar__great_barrier_reef_marine_park_0028](sar__great_barrier_reef_marine_park_0028.md) | dark SAR | Great Barrier Reef Marine Park | 2024-02-13T08:21:48Z | - |
