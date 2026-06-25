@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SeaVigil — fishing inside Marine Protected Areas</title>
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <style>
+    :root { --bg:#0b1d2a; --panel:rgba(12,29,42,.92); --fg:#eaf2f7; --muted:#9fb3c0;
+            --ais:#f4a236; --sar:#e0455e; }
+    html,body { margin:0; height:100%; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+    #map { position:absolute; inset:0; }
+    .panel { position:absolute; z-index:2; background:var(--panel); color:var(--fg);
+             border-radius:8px; padding:12px 14px; box-shadow:0 2px 10px rgba(0,0,0,.35); }
+    #header { top:12px; left:12px; max-width:340px; }
+    #header h1 { margin:0 0 4px; font-size:17px; font-weight:600; }
+    #header p { margin:0; font-size:12.5px; line-height:1.5; color:var(--muted); }
+    #legend { bottom:18px; left:12px; font-size:12.5px; }
+    .dot { display:inline-block; width:11px; height:11px; border-radius:50%;
+           border:1.5px solid #fff; margin-right:6px; vertical-align:-1px; }
+    .disclaimer { margin-top:8px; font-size:11.5px; color:var(--muted); }
+    .maplibregl-popup-content { font-size:12.5px; line-height:1.45; max-width:280px; }
+    .maplibregl-popup-content h3 { margin:0 0 4px; font-size:13px; }
+    .pill { display:inline-block; font-size:10.5px; padding:1px 6px; border-radius:9px;
+            color:#fff; margin-bottom:5px; }
+    .why { color:#234; background:#eef3f6; border-radius:5px; padding:5px 7px; margin:5px 0; }
+    .cav { color:#666; font-style:italic; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <div id="header" class="panel">
+    <h1>SeaVigil</h1>
+    <p>Apparent fishing and dark (non-broadcasting) vessels detected inside Marine Protected
+       Areas. Click a marker for the per-incident reason.</p>
+    <p class="disclaimer">Illustrative demo: approximate MPA boxes, in-sample scores,
+       <em>apparent</em> fishing — an inspection lead, not proof of illegality.</p>
+  </div>
+
+  <div id="legend" class="panel">
+    <div><span class="dot" style="background:var(--ais)"></span>AIS apparent fishing (SHAP-explained)</div>
+    <div><span class="dot" style="background:var(--sar)"></span>Dark vessel (SAR, not broadcasting AIS)</div>
+  </div>
+
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      // OpenStreetMap raster basemap — no API key. (For production, use a proper
+      // tile provider per OSM's usage policy.)
+      style: {
+        version: 8,
+        sources: {
+          osm: {
+            type: 'raster',
+            tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+            tileSize: 256,
+            attribution: '© OpenStreetMap contributors'
+          }
+        },
+        layers: [{ id: 'osm', type: 'raster', source: 'osm' }]
+      },
+      center: [-175, 0],
+      zoom: 1.6
+    });
+    map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+    map.on('load', async () => {
+      const mpas = await (await fetch('./data/mpas.geojson')).json();
+      const incidents = await (await fetch('./data/incidents.geojson')).json();
+
+      map.addSource('mpas', { type: 'geojson', data: mpas });
+      map.addLayer({ id: 'mpa-fill', type: 'fill', source: 'mpas',
+        paint: { 'fill-color': '#2bd4a8', 'fill-opacity': 0.12 } });
+      map.addLayer({ id: 'mpa-line', type: 'line', source: 'mpas',
+        paint: { 'line-color': '#2bd4a8', 'line-width': 1.4 } });
+      map.addLayer({ id: 'mpa-label', type: 'symbol', source: 'mpas',
+        layout: { 'text-field': ['get', 'name'], 'text-size': 11 },
+        paint: { 'text-color': '#cdeee3', 'text-halo-color': '#06121a', 'text-halo-width': 1.2 } });
+
+      map.addSource('incidents', { type: 'geojson', data: incidents });
+      map.addLayer({ id: 'incident-pts', type: 'circle', source: 'incidents',
+        paint: {
+          'circle-radius': ['interpolate', ['linear'], ['get', 'score'], 0.5, 4, 1, 8],
+          'circle-color': ['match', ['get', 'kind'], 'dark_vessel_sar', '#e0455e', '#f4a236'],
+          'circle-stroke-color': '#ffffff', 'circle-stroke-width': 1.2, 'circle-opacity': 0.9
+        } });
+
+      const kindLabel = k => k === 'dark_vessel_sar' ? 'Dark vessel (SAR)' : 'AIS apparent fishing';
+      const kindColor = k => k === 'dark_vessel_sar' ? '#e0455e' : '#f4a236';
+
+      map.on('click', 'incident-pts', (e) => {
+        const p = e.features[0].properties;
+        const html = `<h3>${p.mpa}</h3>
+          <span class="pill" style="background:${kindColor(p.kind)}">${kindLabel(p.kind)}</span>
+          <div><strong>When:</strong> ${p.when}</div>
+          <div><strong>Score:</strong> ${p.score} &nbsp; <strong>Vessel:</strong> ${p.vessel}</div>
+          ${p.why ? `<div class="why"><strong>Why:</strong> ${p.why}</div>` : ''}
+          <div class="cav">${p.caveat}</div>`;
+        new maplibregl.Popup({ maxWidth: '280px' }).setLngLat(e.lngLat).setHTML(html).addTo(map);
+      });
+      map.on('mouseenter', 'incident-pts', () => map.getCanvas().style.cursor = 'pointer');
+      map.on('mouseleave', 'incident-pts', () => map.getCanvas().style.cursor = '');
+    });
+  </script>
+</body>
+</html>

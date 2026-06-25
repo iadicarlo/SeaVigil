@@ -99,7 +99,7 @@ and the implementation plan.
 | In-MPA incident aggregation | ✅ implemented |
 | Per-incident dossier (JSON + Markdown) | ✅ implemented |
 | Dark-fleet SAR dossiers (consume GFW detections; no imagery) | ✅ implemented |
-| Interactive static map (GitHub Pages) | 🔨 in progress |
+| Interactive static map (MapLibre, GitHub Pages) | ✅ implemented |
 | GFW live-API ingestion (consume, don't re-detect) | ⬜ next |
 
 ## Data
