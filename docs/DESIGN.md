@@ -79,10 +79,12 @@ MPA-entry + dark-vessel alerts **free** to 70+ countries; **Starboard** ships it
 also scientifically closed (Mayorga & Sala et al., *Science* 2025). What survives, in
 priority order:
 
-1. **Per-flag (per-position) SHAP explanation.** No dedicated IUU-fishing tool ships a
-   per-event "why-flagged" narrative (only Windward's paywalled *sanctions* product does, not
-   fishing). GFW disclaims output as "not evidence", with no per-position why. **This is the
-   defensible core.**
+1. **Per-flag (per-position) SHAP explanation _of the fishing detection itself_.** No
+   dedicated IUU-fishing tool ships a per-event feature attribution for *why this position
+   scored as fishing*. Skylight exposes a scalar `fishingScore` (not an attribution); Windward
+   MAI Expert explains *anomalies / risk*, not the detection; GFW disclaims output as "not
+   evidence" with no per-position why. **This is the defensible core** — but scope it to the
+   detection and lead with "SHAP / feature attribution", not the vaguer "explanation".
 2. **Offline / no-account / laptop-CPU + auditable dossier.** Every incumbent (Skylight,
    Starboard, OceanMind, GFW) is cloud/web/managed; Skylight's full version needs a vetted
    account. A sovereign, air-gappable, reproducible triage layer for a low-capacity authority
@@ -100,10 +102,12 @@ SAR detections to close part of it (see §6.5). **Licensing nuance:** the traini
 
 ### 5.1 Re-verify before any public deploy
 
-Three claims are load-bearing and ~time-sensitive — re-check immediately before shipping:
-(1) Skylight still ships **no** per-event explanation; (2) GFW's per-event AI (was "early
-trials" 2026-03) hasn't shipped explainability; (3) UNEP-WCMC sign-off / non-downloadable
-tiles for the MPA layer (the biggest legal blocker — see §6.5).
+Load-bearing and time-sensitive — re-check before shipping (full checklist: `docs/DEPLOY.md`):
+(1) Skylight still ships **no** per-event explanation (confirmed 2026-06-25); (2) **GFW IUU
+Fishing Risk Insights integrates into the public map ~Oct 2026** + per-event AI agents in
+trials → the gap could narrow within months; (3) **Windward MAI Expert** is drifting toward
+the line (already explains IUU *risk/anomalies*) — most likely first mover, monitor; (4)
+UNEP-WCMC sign-off / non-downloadable tiles for the MPA layer (biggest legal blocker — §6.5).
 
 ## 6. What we are actually implementing now (v2)
 

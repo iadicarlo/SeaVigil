@@ -25,9 +25,10 @@ released openly. Re-building that is not new.
 
 What is *not* solved is the **last mile for an under-resourced authority**:
 
-- No IUU-fishing tool exposes a **per-flag explanation**. GFW labels its output **"apparent"**
-  and **"not evidence of wrongdoing"** with no per-position *why*; the others surface a risk
-  score, not a reason. (Verified mid-2026.)
+- No IUU-fishing tool exposes a **per-flag explanation _of the fishing detection itself_** — a
+  SHAP / feature attribution for *why this position scored as fishing*. GFW labels its output
+  **"apparent"** with no per-position *why*; others surface a scalar score, which is not an
+  attribution. (Windward explains *risk / anomalies*, not the detection; verified mid-2026.)
 - The incumbents are all **cloud platforms or managed services that need an account**: GFW's
   stack is cloud/GPU; **Skylight** is free but requires a vetted login; **Starboard** and
   **OceanMind** are paid/enterprise. An officer who can't depend on a foreign-hosted account
@@ -63,7 +64,9 @@ reinvent it; the wedge is the two right-hand columns.
 | **Global Fishing Watch** | ❌ data/portal, no alerts | ❌ | ❌ cloud / API |
 | **SeaVigil** | packages, doesn't claim | ✅ **SHAP per flag** | ✅ **laptop, no account** |
 
-(Competitive state verified June 2026 against vendor docs; re-check before outreach.)
+"Per-flag explanation" = a SHAP / feature attribution **of the fishing detection itself** — a
+scalar confidence score isn't one. Verified June 2026; GFW's risk-indicator layer reaches the
+public map ~Oct 2026, so re-check before then. See [`docs/DEPLOY.md`](docs/DEPLOY.md).
 
 ## How it works
 
