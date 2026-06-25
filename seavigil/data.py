@@ -180,27 +180,20 @@ def load_clean(
     return clean(load_raw(gears, force_download=force_download))
 
 
-# Columns an external (bring-your-own / live-GFW) positions file must provide so the
-# model can score it. These mirror the GFW position schema the model was trained on.
-REQUIRED_POSITION_FIELDS = [
-    "vessel_id",
-    "timestamp",
-    "lat",
-    "lon",
-    "speed",
-    "course",
-    "distance_from_shore",
-    "distance_from_port",
-]
+# Core columns an external (bring-your-own / live) positions file must provide. The
+# distance_from_shore / distance_from_port features are computed (see seavigil.enrich)
+# when absent, since raw AIS feeds don't carry them.
+REQUIRED_POSITION_FIELDS = ["vessel_id", "timestamp", "lat", "lon", "speed", "course"]
 
 
-def load_positions_file(path: str | Path) -> pd.DataFrame:
+def load_positions_file(path: str | Path, *, enrich_distances: bool = True) -> pd.DataFrame:
     """Load an external AIS positions file (CSV or Parquet) for SCORING.
 
-    The model is trained on the GFW labels; this loads *new, unlabeled* positions
-    to run inference on (bring-your-own data, or a live-GFW export). Required
-    columns are REQUIRED_POSITION_FIELDS; ``gear`` is optional (defaults to
-    "unknown"). ``timestamp`` is epoch seconds. No labels are needed.
+    The model is trained on the GFW labels; this loads *new, unlabeled* positions to
+    run inference on (your own AIS/VMS feed, or a live export). Required columns are
+    REQUIRED_POSITION_FIELDS; ``gear`` is optional. ``timestamp`` is epoch seconds.
+    If distance_from_shore / distance_from_port are absent they are computed from
+    bundled coastline + ports (``enrich_distances``).
     """
     path = Path(path)
     df = pd.read_parquet(path) if path.suffix == ".parquet" else pd.read_csv(path)
@@ -208,15 +201,16 @@ def load_positions_file(path: str | Path) -> pd.DataFrame:
     missing = [c for c in REQUIRED_POSITION_FIELDS if c not in df.columns]
     if missing:
         raise ValueError(
-            f"positions file missing columns {missing}; "
-            f"required: {REQUIRED_POSITION_FIELDS}"
+            f"positions file missing columns {missing}; required: {REQUIRED_POSITION_FIELDS}"
         )
 
     df = df.copy()
-    numeric = ["timestamp", "lat", "lon", "speed", "course",
-               "distance_from_shore", "distance_from_port"]
-    for c in numeric:
+    for c in ["timestamp", "lat", "lon", "speed", "course"]:
         df[c] = pd.to_numeric(df[c], errors="coerce")
+    have_dist = {"distance_from_shore", "distance_from_port"} <= set(df.columns)
+    if have_dist:
+        for c in ["distance_from_shore", "distance_from_port"]:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
 
     df = df.replace([np.inf, -np.inf], np.nan).dropna(subset=REQUIRED_POSITION_FIELDS)
     df = df[df["lat"].between(-90, 90) & df["lon"].between(-180, 360) & (df["speed"] >= 0)]
@@ -226,7 +220,14 @@ def load_positions_file(path: str | Path) -> pd.DataFrame:
     df["vessel_id"] = df["vessel_id"].astype(str)
     df["label"] = 0  # unlabeled; present only so build_features can pass it through
     df["datetime"] = pd.to_datetime(df["timestamp"], unit="s", utc=True)
-    return df.reset_index(drop=True)
+    df = df.reset_index(drop=True)
+
+    if not have_dist:
+        if not enrich_distances:
+            raise ValueError("positions lack distance_from_shore/port and enrich_distances=False")
+        from seavigil import enrich  # local import: shapely-heavy, only needed for raw feeds
+        df = enrich.add_distances(df)
+    return df
 
 
 if __name__ == "__main__":

@@ -30,3 +30,4 @@ data/sar/gfw_*.geojson
 .vscode/
 node_modules/
 .claude/launch.json
+data/positions/*_real.csv

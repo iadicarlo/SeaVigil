@@ -108,7 +108,10 @@ and the implementation plan.
 | WDPA severity grading (no-take / IUCN) + boundary versioning | ✅ implemented |
 | Baseline comparison + track snippet + full dossier view in map | ✅ implemented |
 | Real WDPA via GEE export (`scripts/wdpa_from_gee.py`) | ✅ implemented |
-| Out-of-sample validation on a real recent feed; UNEP-WCMC tile sign-off | ⬜ next |
+| Distance enrichment — raw AIS feed → scorable (`seavigil.enrich`) | ✅ implemented |
+| Open-AIS fetch + verified out-of-sample run (`scripts/fetch_open_ais.py`) | ✅ implemented |
+| **Live site**: https://iadicarlo.github.io/SeaVigil | ✅ deployed |
+| UNEP-WCMC tile sign-off for a public WDPA layer | ⬜ next (your action) |
 
 ## Data
 
