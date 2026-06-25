@@ -84,8 +84,10 @@ def run_alert(
 def main() -> dict:
     parser = argparse.ArgumentParser(description="SeaVigil fishing-in-MPA alerting")
     parser.add_argument("--mpa", default=None, help="GeoJSON of MPA polygons (default: bundled sample)")
+    parser.add_argument("--positions", default=None,
+                        help="score an external AIS positions file (CSV/Parquet) instead of the GFW labels")
     parser.add_argument("--scope", choices=["test", "all"], default="test",
-                        help="score held-out test vessels (default) or all positions")
+                        help="score held-out test vessels (default) or all positions (ignored with --positions)")
     parser.add_argument("--threshold", type=float, default=incidents.DEFAULT_PROBA_THRESHOLD)
     parser.add_argument("--gap-minutes", type=float, default=incidents.DEFAULT_GAP_MINUTES)
     parser.add_argument("--sar", default=None, help="GeoJSON of SAR vessel detections (dark fleet)")
@@ -97,20 +99,31 @@ def main() -> dict:
     print("[alert] 1/5 loading + cleaning data ...")
     clean = data.load_clean()
 
-    print("[alert] 2/5 building features + training on train vessels ...")
+    print("[alert] 2/5 building features + training the model ...")
     feats = features.build_features(clean)
-    train_idx, test_idx = _grouped_split_indices(feats)
-    rf = model.train_model(
-        feats.iloc[train_idx][FEATURE_COLUMNS].to_numpy(),
-        feats.iloc[train_idx]["label"].to_numpy(),
-    )
-
     mpa_index = MPAIndex.from_geojson(args.mpa)
-    print(f"[alert] 3/5 scoring scope='{args.scope}' against {len(mpa_index)} MPAs ...")
-    if args.scope == "all":
-        print("[alert]   note: --scope all includes in-sample train vessels (fitted scores).")
-    scope_rows = None if args.scope == "all" else test_idx
-    scored = score_positions(feats, rf, mpa_index, scope_rows=scope_rows)
+
+    if args.positions:
+        # Train on ALL labeled data; score the external (BYO / live-GFW) positions.
+        rf = model.train_model(feats[FEATURE_COLUMNS].to_numpy(), feats["label"].to_numpy())
+        ext = features.build_features(data.load_positions_file(args.positions))
+        print(f"[alert] 3/5 scoring {len(ext):,} external positions "
+              f"({args.positions}) against {len(mpa_index)} MPAs ...")
+        scored = score_positions(ext, rf, mpa_index)
+        scope_desc = f"positions:{args.positions}"
+    else:
+        train_idx, test_idx = _grouped_split_indices(feats)
+        rf = model.train_model(
+            feats.iloc[train_idx][FEATURE_COLUMNS].to_numpy(),
+            feats.iloc[train_idx]["label"].to_numpy(),
+        )
+        print(f"[alert] 3/5 scoring scope='{args.scope}' against {len(mpa_index)} MPAs ...")
+        if args.scope == "all":
+            print("[alert]   note: --scope all includes in-sample train vessels (fitted scores).")
+        scope_rows = None if args.scope == "all" else test_idx
+        scored = score_positions(feats, rf, mpa_index, scope_rows=scope_rows)
+        scope_desc = args.scope
+
     n_inside = int((scored["mpa_idx"] >= 0).sum())
     print(f"[alert]   {n_inside:,} of {len(scored):,} scored positions fall inside an MPA")
 
@@ -135,7 +148,8 @@ def main() -> dict:
     manifest = dossier.write_dossiers(dossiers, args.out)
 
     summary = {
-        "scope": args.scope,
+        "scope": scope_desc,
+        "positions_source": args.positions,
         "mpa_source": args.mpa or "bundled sample (approximate)",
         "sar_source": (args.sar or "bundled sample") if (args.sar or args.sample_sar) else None,
         "n_mpas": len(mpa_index),

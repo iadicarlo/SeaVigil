@@ -1,5 +1,6 @@
 {
   "scope": "all",
+  "positions_source": null,
   "mpa_source": "bundled sample (approximate)",
   "sar_source": "bundled sample",
   "n_mpas": 4,

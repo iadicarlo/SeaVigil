@@ -31,10 +31,41 @@ def test_dark_in_mpa_filtering():
     assert all("not broadcasting AIS (dark vessel)" in d["explanation"]["drivers"] for d in out)
 
 
-def test_matched_detection_excluded_unless_dark_only_false():
-    dets = sar.load_sar_detections()
-    with_matched = sar.build_sar_dossiers(dets, _index(), dark_only=False)
-    assert len(with_matched) == 5  # the matched Galápagos detection now included
+def test_matched_fishing_geartype_is_kept_without_score():
+    import pandas as pd
+    # A matched (broadcasting) detection inside Galápagos with a FISHING geartype and
+    # no fishing_score (the shape of real GFW API data).
+    df = pd.DataFrame([{
+        "lon": -91.0, "lat": -0.5, "detection_time": "2024-03-01T00:00:00Z",
+        "matched_to_ais": True, "length_m": None, "fishing_score": None,
+        "flag": "ECU", "ship_name": "DEMO FISHER", "vessel_type": "FISHING",
+        "geartype": "TUNA_PURSE_SEINES", "mmsi": "123", "detections": 3,
+    }])
+    out = sar.build_sar_dossiers(df, _index())
+    assert len(out) == 1 and out[0]["matched_to_ais"] is True
+    assert out[0]["flag"] == "ECU"
+    assert out[0]["mean_fishing_proba"] is None  # API data carries no score
+    assert "broadcasting AIS: DEMO FISHER" in " ".join(out[0]["explanation"]["drivers"])
+
+
+def test_matched_nonfishing_is_dropped():
+    import pandas as pd
+    df = pd.DataFrame([{
+        "lon": -91.0, "lat": -0.5, "detection_time": "t", "matched_to_ais": True,
+        "length_m": None, "fishing_score": None, "flag": "ECU", "ship_name": "TOUR BOAT",
+        "vessel_type": "PASSENGER", "geartype": "PASSENGER", "mmsi": "9", "detections": 1,
+    }])
+    assert sar.build_sar_dossiers(df, _index()) == []
+
+
+def test_max_dossiers_caps_output():
+    import pandas as pd
+    rows = [{"lon": -91.0, "lat": -0.5, "detection_time": f"t{i}", "matched_to_ais": False,
+             "length_m": None, "fishing_score": None, "flag": None, "ship_name": None,
+             "vessel_type": None, "geartype": None, "mmsi": None, "detections": 1}
+            for i in range(20)]
+    out = sar.build_sar_dossiers(pd.DataFrame(rows), _index(), max_dossiers=5)
+    assert len(out) == 5
 
 
 def test_high_score_threshold_narrows():

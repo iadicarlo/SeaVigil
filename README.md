@@ -103,7 +103,9 @@ and the implementation plan.
 | Per-incident dossier (JSON + Markdown) | ✅ implemented |
 | Dark-fleet SAR dossiers (consume GFW detections; no imagery) | ✅ implemented |
 | Interactive static map (MapLibre, GitHub Pages) | ✅ implemented |
-| GFW live-API ingestion (consume, don't re-detect) | ⬜ next |
+| Score your own AIS/VMS feed (`--positions`, offline) | ✅ implemented |
+| Live GFW SAR ingestion (`fetch_gfw`, real dark-fleet) | ✅ implemented |
+| Wire `fetch_gfw` into the refresh cron / out-of-sample validation | ⬜ next |
 
 ## Data
 
@@ -144,6 +146,24 @@ sample MPAs) shows the mechanism end-to-end: apparent fishing by drifting longli
 the Phoenix Islands Protected Area and Papahānaumokuākea in 2014. It is **illustrative** —
 in-sample scores, approximate boundaries, and "apparent" (era- and rule-dependent) fishing,
 not a finding of illegality.
+
+### Your own data + live dark fleet
+
+```bash
+# Score YOUR OWN AIS/VMS feed (offline; no account). See data/positions/README.md.
+uv run python -m seavigil.alert --positions data/positions/sample_positions.csv --sample-sar
+
+# Pull REAL GFW Sentinel-1 SAR detections (dark fleet) for the MPAs, then score:
+export GFW_TOKEN=...                         # free non-commercial token; kept in .env (gitignored)
+uv run python -m seavigil.fetch_gfw --date-range 2024-01-01,2025-01-01
+uv run python -m seavigil.alert --positions <your_ais.csv> --sar data/sar/gfw_sar_detections.geojson
+```
+
+The model is trained on the GFW labels and runs inference on whatever positions you give it —
+GFW does **not** publish raw AIS, so per-position scoring uses your own feed, while the **dark
+fleet** comes from GFW's published SAR detections (`fetch_gfw`, CC BY-NC; raw pulls are
+gitignored — regenerate with your token). Verified live: ~6,200 detections / ~1,100 dark inside
+the sample MPAs over 2024.
 
 ## Honest caveats
 

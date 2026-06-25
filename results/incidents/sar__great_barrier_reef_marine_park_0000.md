@@ -1,7 +1,7 @@
 # Dark-vessel detection `sar__great_barrier_reef_marine_park_0000`
 
 - **MPA:** Great Barrier Reef Marine Park
-- **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR detection
+- **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-03-02T18:30:00Z
 - **Length:** 40 m  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** 0.85
 - **Where:** -18.000, 147.000

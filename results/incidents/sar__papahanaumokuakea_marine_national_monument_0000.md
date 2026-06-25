@@ -1,7 +1,7 @@
 # Dark-vessel detection `sar__papahanaumokuakea_marine_national_monument_0000`
 
 - **MPA:** Papahānaumokuākea Marine National Monument
-- **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR detection
+- **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-03-03T12:05:00Z
 - **Length:** 72 m  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** 0.81
 - **Where:** 25.000, -170.000

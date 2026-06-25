@@ -165,11 +165,18 @@ inside real MPA boundaries.
 - **Honesty guard:** every dossier carries the model's caveats inline; the word "apparent" is
   load-bearing and stays.
 
-### 6.4 Out of scope (named, not silently dropped)
+### 6.4 Done since (live + your-own data)
 
-Live GFW-API *fetching* (we ingest exported files, not a live token in this repo); prospective
-forecasting; small-boat optical detection; training our own SAR classifier. Each is a
-deliberate later step, not a claim we make now.
+- **`data.load_positions_file` + `alert --positions`**: score *any* AIS/VMS feed (CSV/Parquet)
+  offline — the real deployment model. GFW publishes no raw AIS, so per-position scoring uses
+  your own data; this is the sovereignty claim made concrete.
+- **`fetch_gfw.py`**: pulls **live** GFW Sentinel-1 SAR detections (4Wings report API, token
+  from `GFW_TOKEN`) for the MPA set; unmatched = dark. Matched detections carry identity
+  (flag/ship/gear), so a real **flag-state** breakdown is available. Raw pulls are gitignored
+  (CC BY-NC; don't redistribute in bulk). Verified live: ~6.2k detections / ~1.1k dark over 2024.
+
+Still out of scope: prospective forecasting; small-boat optical detection; training our own
+SAR classifier (re-detection trap).
 
 ### 6.5 Dark-fleet / SAR dossiers (`sar.py`)
 
@@ -231,6 +238,8 @@ deep-learning frameworks (no GPU), any cloud SDK.
 8. ✅ Run on real labeled data, commit illustrative `results/incidents/`.
 9. ✅ `sar.py` dark-fleet dossiers + sample + tests (§6.5).
 10. ✅ `site.py` + `web/` static MapLibre site + Pages workflow (§6.6).
+11. ✅ Bring-your-own AIS scoring (`data.load_positions_file`, `alert --positions`) + tests.
+12. ✅ Live GFW SAR ingestion (`fetch_gfw.py`, token) + richer SAR dossiers + tests (§6.4).
 
 ## 9. How we'll know it works (evaluation)
 

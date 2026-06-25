@@ -62,9 +62,15 @@ interactive web map that lets users **download** the source polygons.
 
 ## 5. Secrets & data refresh ✅
 
-- GFW token lives **only** in GitHub Actions secrets (`GFW_TOKEN`) — never in any shipped file.
-- `.github/workflows/refresh-data.yml` regenerates + commits static data on a schedule; the
-  live-GFW pull is the documented "next" insertion point.
+- GFW token lives **only** in a gitignored `.env` locally and in **GitHub Actions secrets**
+  (`GFW_TOKEN`) for CI — never in any shipped/committed file. `seavigil.fetch_gfw` reads it
+  from the env.
+- Raw GFW pulls (`data/sar/gfw_*.geojson`) are **gitignored** — regenerate with the token;
+  don't redistribute GFW's raw dataset in bulk (CC BY-NC).
+- `.github/workflows/refresh-data.yml`: with the `GFW_TOKEN` secret set it pulls **live** SAR
+  detections via `fetch_gfw` and commits the derived dossiers (opt-in to CC BY-NC redistribution);
+  without it, it regenerates the synthetic demo. Per-position AIS scoring needs your own feed
+  (`--positions`) — GFW publishes no raw AIS.
 
 ## 6. Basemap ⚠️
 

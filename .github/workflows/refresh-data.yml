@@ -4,17 +4,12 @@ name: Refresh SeaVigil data (precompute)
 # schedule and commit them, so GitHub Pages serves fresh static files with no
 # server and no token in the browser.
 #
-# TODAY this regenerates from GFW's static training labels + the bundled SAR
-# sample, so output is stable. To make the refresh MEANINGFUL, add a live-fetch
-# step that pulls current GFW apparent-fishing-effort + Sentinel-1 SAR detections
-# using the official gfw-api-python-client with a token from Actions secrets:
-#
-#   env:
-#     GFW_TOKEN: ${{ secrets.GFW_TOKEN }}
-#   run: uv run python -m seavigil.fetch_gfw   # (roadmap: live ingestion)
-#
-# That live step is the "GFW live-API ingestion" roadmap item; until it lands this
-# job is scaffolding that proves the pipeline + commit path work in CI.
+# If a GFW_TOKEN secret is set, the job pulls LIVE GFW Sentinel-1 SAR detections
+# (the dark fleet) via seavigil.fetch_gfw and scores against them; otherwise it
+# regenerates from the static training labels + the synthetic SAR sample (stable).
+# Note: per-position AIS scoring still needs your own AIS/VMS feed (--positions);
+# GFW does not publish raw AIS. Enabling the token opts into committing real
+# GFW-derived (CC BY-NC, non-commercial) dossiers to this repo.
 
 on:
   schedule:
@@ -38,8 +33,17 @@ jobs:
         with:
           python-version: "3.12"
       - name: Regenerate incidents + web data
+        env:
+          GFW_TOKEN: ${{ secrets.GFW_TOKEN }}
         run: |
-          uv run python -m seavigil.alert --scope all --sample-sar
+          if [ -n "$GFW_TOKEN" ]; then
+            echo "GFW_TOKEN present -> pulling live GFW SAR detections (dark fleet)"
+            uv run python -m seavigil.fetch_gfw --date-range 2024-01-01,2025-01-01
+            uv run python -m seavigil.alert --scope all --sar data/sar/gfw_sar_detections.geojson
+          else
+            echo "no GFW_TOKEN -> regenerating from training labels + synthetic SAR sample"
+            uv run python -m seavigil.alert --scope all --sample-sar
+          fi
           uv run python -m seavigil.site
       - name: Commit refreshed data if changed
         run: |

@@ -51,6 +51,9 @@ def summarize(dossiers: list[dict]) -> dict:
         "by_type": _count(dossiers, "type", default="ais_fishing_incident"),
         "by_mpa": _count(dossiers, "mpa_name"),
         "by_gear": _count(dossiers, "gear"),
+        # Flag-state breakdown is only populated when records carry a flag (real GFW
+        # SAR matched detections); empty for the anonymized AIS training labels.
+        "by_flag": _count([d for d in dossiers if d.get("flag")], "flag"),
     }
 
 
@@ -69,7 +72,8 @@ def incidents_to_geojson(dossiers: list[dict]) -> dict:
                     "kind": d.get("type", "ais_fishing_incident"),
                     "mpa": d["mpa_name"],
                     "when": d["time_start_utc"],
-                    "score": round(float(d["mean_fishing_proba"]), 2),
+                    "score": (round(float(d["mean_fishing_proba"]), 2)
+                              if d.get("mean_fishing_proba") is not None else None),
                     "vessel": d.get("vessel_id", ""),
                     "gear": d.get("gear", ""),
                     "why": _why(d),

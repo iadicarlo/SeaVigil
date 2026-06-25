@@ -180,6 +180,55 @@ def load_clean(
     return clean(load_raw(gears, force_download=force_download))
 
 
+# Columns an external (bring-your-own / live-GFW) positions file must provide so the
+# model can score it. These mirror the GFW position schema the model was trained on.
+REQUIRED_POSITION_FIELDS = [
+    "vessel_id",
+    "timestamp",
+    "lat",
+    "lon",
+    "speed",
+    "course",
+    "distance_from_shore",
+    "distance_from_port",
+]
+
+
+def load_positions_file(path: str | Path) -> pd.DataFrame:
+    """Load an external AIS positions file (CSV or Parquet) for SCORING.
+
+    The model is trained on the GFW labels; this loads *new, unlabeled* positions
+    to run inference on (bring-your-own data, or a live-GFW export). Required
+    columns are REQUIRED_POSITION_FIELDS; ``gear`` is optional (defaults to
+    "unknown"). ``timestamp`` is epoch seconds. No labels are needed.
+    """
+    path = Path(path)
+    df = pd.read_parquet(path) if path.suffix == ".parquet" else pd.read_csv(path)
+
+    missing = [c for c in REQUIRED_POSITION_FIELDS if c not in df.columns]
+    if missing:
+        raise ValueError(
+            f"positions file missing columns {missing}; "
+            f"required: {REQUIRED_POSITION_FIELDS}"
+        )
+
+    df = df.copy()
+    numeric = ["timestamp", "lat", "lon", "speed", "course",
+               "distance_from_shore", "distance_from_port"]
+    for c in numeric:
+        df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    df = df.replace([np.inf, -np.inf], np.nan).dropna(subset=REQUIRED_POSITION_FIELDS)
+    df = df[df["lat"].between(-90, 90) & df["lon"].between(-180, 360) & (df["speed"] >= 0)]
+
+    if "gear" not in df.columns:
+        df["gear"] = "unknown"
+    df["vessel_id"] = df["vessel_id"].astype(str)
+    df["label"] = 0  # unlabeled; present only so build_features can pass it through
+    df["datetime"] = pd.to_datetime(df["timestamp"], unit="s", utc=True)
+    return df.reset_index(drop=True)
+
+
 if __name__ == "__main__":
     frame = load_clean()
     n_pos = int(frame["label"].sum())

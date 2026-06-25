@@ -1,3 +1,8 @@
+# Secrets — never commit API tokens
+.env
+*.env
+!.env.example
+
 # Python / uv
 .venv/
 __pycache__/
@@ -12,6 +17,9 @@ data/processed/
 models/
 *.parquet
 *.csv.gz
+
+# Raw GFW API pulls (CC BY-NC; regenerate with a token, don't redistribute in bulk)
+data/sar/gfw_*.geojson
 
 # Keep placeholders
 !**/.gitkeep

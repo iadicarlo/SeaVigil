@@ -85,7 +85,7 @@
       map.addSource('incidents', { type: 'geojson', data: incidents });
       map.addLayer({ id: 'incident-pts', type: 'circle', source: 'incidents',
         paint: {
-          'circle-radius': ['interpolate', ['linear'], ['get', 'score'], 0.5, 4, 1, 8],
+          'circle-radius': ['interpolate', ['linear'], ['coalesce', ['get', 'score'], 0.8], 0.5, 4, 1, 8],
           'circle-color': ['match', ['get', 'kind'], 'dark_vessel_sar', '#e0455e', '#f4a236'],
           'circle-stroke-color': '#ffffff', 'circle-stroke-width': 1.2, 'circle-opacity': 0.9
         } });
@@ -106,10 +106,11 @@
 
       map.on('click', 'incident-pts', (e) => {
         const p = e.features[0].properties;
+        const scoreBit = (p.score != null) ? `<strong>Score:</strong> ${p.score} &nbsp; ` : '';
         const html = `<h3>${p.mpa}</h3>
           <span class="pill" style="background:${kindColor(p.kind)}">${kindLabel(p.kind)}</span>
+          <div>${scoreBit}<strong>Vessel:</strong> ${p.vessel}</div>
           <div><strong>When:</strong> ${p.when}</div>
-          <div><strong>Score:</strong> ${p.score} &nbsp; <strong>Vessel:</strong> ${p.vessel}</div>
           ${p.why ? `<div class="why"><strong>Why:</strong> ${p.why}</div>` : ''}
           <div class="cav">${p.caveat}</div>`;
         new maplibregl.Popup({ maxWidth: '280px' }).setLngLat(e.lngLat).setHTML(html).addTo(map);

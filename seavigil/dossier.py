@@ -120,12 +120,15 @@ def render_markdown(dossier: dict) -> str:
     ]
     if is_sar:
         broadcasting = "yes" if d.get("matched_to_ais") else "no (dark)"
+        length_str = f"{d['length_m']:.0f} m" if d.get("length_m") is not None else "n/a"
+        score = d.get("mean_fishing_proba")
+        score_str = f"{score:.2f}" if score is not None else "n/a (Portal-only)"
+        flag_str = f"  ·  **flag:** {d['flag']}" if d.get("flag") else ""
         lines += [
-            f"- **Vessel:** {d['vessel_id']}  ·  **source:** {d['gear']}",
+            f"- **Vessel:** {d['vessel_id']}  ·  **source:** {d['gear']}{flag_str}",
             f"- **When (UTC):** {d['time_start_utc']}",
-            f"- **Length:** {d.get('length_m', float('nan')):.0f} m  ·  "
-            f"**broadcasting AIS:** {broadcasting}  ·  "
-            f"**GFW fishing-score:** {d['mean_fishing_proba']:.2f}",
+            f"- **Length:** {length_str}  ·  **broadcasting AIS:** {broadcasting}  ·  "
+            f"**GFW fishing-score:** {score_str}",
             f"- **Where:** {d['centroid_lat']:.3f}, {d['centroid_lon']:.3f}",
             "",
         ]
@@ -191,9 +194,11 @@ def write_dossiers(dossiers: list[dict], out_dir: str | Path) -> dict:
         index += ["| id | type | MPA | start (UTC) | score / mean p |", "|---|---|---|---|---:|"]
         for d in dossiers:
             typ = "dark SAR" if d.get("type") == "dark_vessel_sar" else "AIS fishing"
+            score = d.get("mean_fishing_proba")
+            score_s = f"{score:.2f}" if score is not None else "—"
             index.append(
                 f"| [{d['incident_id']}]({d['incident_id']}.md) | {typ} | {d['mpa_name']} | "
-                f"{d['time_start_utc']} | {d['mean_fishing_proba']:.2f} |"
+                f"{d['time_start_utc']} | {score_s} |"
             )
         index.append("")
     (out_dir / "INDEX.md").write_text("\n".join(index))
