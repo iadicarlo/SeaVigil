@@ -13,6 +13,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from seavigil import evidence
 from seavigil.flags import emoji_for
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -134,6 +135,9 @@ def build_site(
     )
     summary = summarize(dossiers)
     summary["generated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    cal = evidence.calibration_summary()
+    if cal:
+        summary["model_calibration"] = cal
     (out_dir / "summary.json").write_text(json.dumps(summary))
 
     # Tracks are written alongside incidents.json by dossier.write_dossiers; copy

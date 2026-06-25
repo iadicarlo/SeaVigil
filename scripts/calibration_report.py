@@ -65,30 +65,34 @@ def main() -> None:
         "log_loss": round(float(log_loss(yte, np.clip(proba, 1e-6, 1 - 1e-6))), 4),
         "reliability": _reliability(proba, yte),
     }
-
-    # Isotonic recalibration, fit on the held-out split via internal CV (prefit base).
-    print("[cal] fitting isotonic calibration ...")
-    cal = CalibratedClassifierCV(rf, method="isotonic", cv="prefit").fit(Xte, yte)
-    proba_c = cal.predict_proba(Xte)[:, 1]
-    calibrated = {
-        "method": "isotonic",
-        "brier": round(float(brier_score_loss(yte, proba_c)), 4),
-        "log_loss": round(float(log_loss(yte, np.clip(proba_c, 1e-6, 1 - 1e-6))), 4),
-    }
-
     report = {
         "model": "RandomForest (seavigil.model.train_model)",
         "n_train": int(len(Xtr)), "n_test": int(len(Xte)),
         "split": "grouped by vessel (no vessel in both train and test)",
-        "raw": raw, "calibrated": calibrated,
+        "raw": raw,
         "note": ("Brier score: lower is better (0 = perfect). The reliability table shows "
                  "predicted vs observed fishing rate per probability bin; close agreement "
                  "means the probabilities are trustworthy as stated."),
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(report, indent=2))
-    print(f"[cal] raw Brier={raw['brier']} log_loss={raw['log_loss']}; "
-          f"isotonic Brier={calibrated['brier']} -> {OUT}")
+    OUT.write_text(json.dumps(report, indent=2))  # persist raw before the optional step
+
+    # Optional isotonic recalibration (API differs across sklearn versions; best-effort).
+    try:
+        from sklearn.frozen import FrozenEstimator
+        cal = CalibratedClassifierCV(FrozenEstimator(rf), method="isotonic").fit(Xte, yte)
+        proba_c = cal.predict_proba(Xte)[:, 1]
+        report["calibrated"] = {
+            "method": "isotonic",
+            "brier": round(float(brier_score_loss(yte, proba_c)), 4),
+            "log_loss": round(float(log_loss(yte, np.clip(proba_c, 1e-6, 1 - 1e-6))), 4),
+        }
+        OUT.write_text(json.dumps(report, indent=2))
+        print(f"[cal] isotonic Brier={report['calibrated']['brier']}")
+    except Exception as e:  # noqa: BLE001
+        print(f"[cal] isotonic step skipped ({type(e).__name__}); raw metrics saved")
+
+    print(f"[cal] raw Brier={raw['brier']} log_loss={raw['log_loss']} -> {OUT}")
 
 
 if __name__ == "__main__":

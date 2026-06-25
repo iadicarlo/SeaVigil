@@ -1,0 +1,78 @@
+{
+  "model": "RandomForest (seavigil.model.train_model)",
+  "n_train": 1122490,
+  "n_test": 408194,
+  "split": "grouped by vessel (no vessel in both train and test)",
+  "raw": {
+    "brier": 0.0915,
+    "log_loss": 0.2962,
+    "reliability": [
+      {
+        "bin": "0.0-0.1",
+        "n": 149227,
+        "mean_predicted": 0.0105,
+        "observed_fishing_rate": 0.0211
+      },
+      {
+        "bin": "0.1-0.2",
+        "n": 16884,
+        "mean_predicted": 0.1481,
+        "observed_fishing_rate": 0.2572
+      },
+      {
+        "bin": "0.2-0.3",
+        "n": 17192,
+        "mean_predicted": 0.2507,
+        "observed_fishing_rate": 0.3744
+      },
+      {
+        "bin": "0.3-0.4",
+        "n": 16276,
+        "mean_predicted": 0.3503,
+        "observed_fishing_rate": 0.3982
+      },
+      {
+        "bin": "0.4-0.5",
+        "n": 14469,
+        "mean_predicted": 0.4491,
+        "observed_fishing_rate": 0.5114
+      },
+      {
+        "bin": "0.5-0.6",
+        "n": 15255,
+        "mean_predicted": 0.5507,
+        "observed_fishing_rate": 0.6417
+      },
+      {
+        "bin": "0.6-0.7",
+        "n": 20721,
+        "mean_predicted": 0.6532,
+        "observed_fishing_rate": 0.7639
+      },
+      {
+        "bin": "0.7-0.8",
+        "n": 28330,
+        "mean_predicted": 0.751,
+        "observed_fishing_rate": 0.845
+      },
+      {
+        "bin": "0.8-0.9",
+        "n": 42154,
+        "mean_predicted": 0.8563,
+        "observed_fishing_rate": 0.9097
+      },
+      {
+        "bin": "0.9-1.0",
+        "n": 87686,
+        "mean_predicted": 0.9493,
+        "observed_fishing_rate": 0.9522
+      }
+    ]
+  },
+  "note": "Brier score: lower is better (0 = perfect). The reliability table shows predicted vs observed fishing rate per probability bin; close agreement means the probabilities are trustworthy as stated.",
+  "calibrated": {
+    "method": "isotonic",
+    "brier": 0.0878,
+    "log_loss": 0.284
+  }
+}

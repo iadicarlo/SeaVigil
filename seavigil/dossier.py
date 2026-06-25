@@ -221,11 +221,15 @@ def render_markdown(dossier: dict) -> str:
     lines.append("")
 
     if d.get("evidence_hash"):
-        from seavigil.evidence import DISCLAIMER, provenance_for  # noqa: PLC0415
+        from seavigil.evidence import DISCLAIMER, calibration_summary, provenance_for  # noqa: PLC0415
         lines += ["## Provenance & integrity", ""]
         for s in provenance_for(d.get("type")):
             ver = f", {s['version']}" if s.get("version") else ""
             lines.append(f"- {s['dataset']} ({s['reference']}{ver}). {s['license']}.")
+        if d.get("type") == "ais_fishing_incident":
+            cal = calibration_summary()
+            if cal:
+                lines.append(f"- **Model confidence:** {cal['statement']}")
         lines += [
             f"- **Integrity (SHA-256 of canonical facts):** `{d['evidence_hash']}`",
             f"- **Evidence schema:** {d.get('evidence_schema', '')}",

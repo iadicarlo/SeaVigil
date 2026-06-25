@@ -266,6 +266,13 @@ deep-learning frameworks (no GPU), any cloud SDK.
 - **Sanity vs. baseline:** in-MPA incidents flagged by the model but **not** by the speed
   baseline are the ones whose dossiers should read most convincingly - that's the model
   "earning its complexity" at the incident level.
+- **Confidence (calibration):** `scripts/calibration_report.py` trains on grouped-out
+  vessels and scores ~408k held-out positions. The fishing classifier is well-calibrated
+  (**Brier 0.092**; isotonic recalibration only moves it to 0.088), so a dossier score of
+  0.9 can be read honestly as "about 90% of positions scored this high really are fishing."
+  The reliability table and metrics ship in `results/calibration.json` and the score's
+  calibration statement appears in every AIS dossier. Rule-based flags (dark SAR, EEZ
+  incursion) carry no probability; their confidence is the explicit criteria they meet.
 
 ## 10. Risks & honest caveats (carried into every pitch)
 

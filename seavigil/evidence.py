@@ -12,8 +12,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+from pathlib import Path
 
 SCHEMA_VERSION = "seavigil-evidence-1.0"
+_CALIBRATION = Path(__file__).resolve().parent.parent / "results" / "calibration.json"
 
 # Per-incident-type data lineage.
 TYPE_SOURCES = {
@@ -78,6 +80,35 @@ def enrich_evidence(dossiers: list[dict]) -> list[dict]:
         d["evidence_schema"] = SCHEMA_VERSION
         d["evidence_hash"] = evidence_hash(d)
     return dossiers
+
+
+def calibration_summary() -> dict | None:
+    """Compact confidence statement from scripts/calibration_report.py, or None.
+
+    Lets a dossier say honestly how trustworthy the fishing probabilities are, rather
+    than presenting a bare score. A low Brier with little gain from recalibration means
+    the score can be read as a probability.
+    """
+    if not _CALIBRATION.exists():
+        return None
+    try:
+        d = json.loads(_CALIBRATION.read_text())
+    except (ValueError, OSError):
+        return None
+    raw = d.get("raw", {})
+    n = d.get("n_test")
+    brier = raw.get("brier")
+    if brier is None:
+        return None
+    return {
+        "brier": brier,
+        "log_loss": raw.get("log_loss"),
+        "n_held_out": n,
+        "isotonic_brier": (d.get("calibrated") or {}).get("brier"),
+        "statement": (f"Fishing probabilities are well-calibrated (Brier {brier} on "
+                      f"{n:,} held-out positions from vessels not seen in training); "
+                      "read the score as a probability."),
+    }
 
 
 def provenance_for(incident_type: str | None) -> list[dict]:

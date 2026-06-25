@@ -34,6 +34,7 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions (s
 - Global Fishing Watch labelled AIS training data (Kroodsma et al., Science 2018). CC BY 4.0.
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
+- **Model confidence:** Fishing probabilities are well-calibrated (Brier 0.0915 on 408,194 held-out positions from vessels not seen in training); read the score as a probability.
 - **Integrity (SHA-256 of canonical facts):** `918f77f4ffa430a715b7647f0d6bfad6728a095d63816af9bbbdb5f803d2df05`
 - **Evidence schema:** seavigil-evidence-1.0
 

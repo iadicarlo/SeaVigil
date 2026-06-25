@@ -332,6 +332,7 @@
 
     function setMode(live, summary) {
       GENERATED_AT = (summary && summary.generated_at) || null;
+      MODEL_CAL = (summary && summary.model_calibration) || null;
       const asof = (summary && summary.generated_at) ? ` Data as of ${summary.generated_at} UTC.` : '';
       const v = document.getElementById('vintage');
       v.innerHTML = live
@@ -476,9 +477,10 @@
             <span class="shap-track"><span class="shap-mid"></span><span class="shap-bar ${cls}" style="${style}"></span>
             <span class="shap-val" style="${lab}">${d.val >= 0 ? '+' : ''}${d.val.toFixed(2)}</span></span></div>`;
         }).join('');
+        const conf = MODEL_CAL ? `<div style="font-size:10px;color:var(--faint);margin-top:5px">Confidence: ${esc(MODEL_CAL.statement)}</div>` : '';
         return `<div class="why2"><strong>Why flagged</strong> <span style="color:var(--muted)">(SHAP, fishing class)</span>
           <div class="shap">${bars}</div>
-          <div style="font-size:10px;color:var(--faint);margin-top:5px">Red pushes toward fishing, teal away.</div></div>`;
+          <div style="font-size:10px;color:var(--faint);margin-top:5px">Red pushes toward fishing, teal away.</div>${conf}</div>`;
       }
 
       function closeDetail() {
@@ -520,6 +522,7 @@
     ];
     const EVIDENCE_DISCLAIMER = 'Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action.';
     let GENERATED_AT = null;
+    let MODEL_CAL = null;
 
     function downloadDossier(p) {
       const sources = [];
@@ -530,7 +533,8 @@
         incident_id: p.id,
         generated_at: GENERATED_AT,
         detection: { type: p.kind, severity: p.severity || null, severity_reason: p.severity_reason || null,
-          model_fishing_score: (p.score ?? null), explanation: p.why_full || p.why || null },
+          model_fishing_score: (p.score ?? null), explanation: p.why_full || p.why || null,
+          model_calibration: (p.kind === 'ais_fishing_incident' ? MODEL_CAL : null) },
         location: { mpa: p.mpa || null, eez: p.eez || null, eez_sovereign: p.eez_sovereign || null,
           eez_foreign: (p.eez_foreign ?? null), when_utc: p.when || null },
         vessel: { id: p.vessel || null, name: p.ship_name || null, flag: p.flag || null, ship_type: p.ship_type || null },
