@@ -1,0 +1,1302 @@
+[
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_119914759372174_0000",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_119914759372174",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-06-04T03:53:41Z",
+    "time_end_utc": "2014-06-04T13:13:20Z",
+    "duration_hours": 9.328,
+    "n_positions": 28,
+    "n_fishing_positions": 24,
+    "mean_fishing_proba": 0.9311591957732119,
+    "max_fishing_proba": 0.989815642069067,
+    "centroid_lat": -2.3278249700833338,
+    "centroid_lon": -170.27078374225835,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 3.4167,
+          "mean_shap": 0.1619
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 3.8167,
+          "mean_shap": 0.161
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 125720.1784,
+          "mean_shap": 0.0707
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 1.2407,
+          "mean_shap": 0.0375
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": 0.5175,
+          "mean_shap": 0.0051
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_119914759372174_0001",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_119914759372174",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-08-15T06:38:37Z",
+    "time_end_utc": "2014-08-18T18:51:14Z",
+    "duration_hours": 84.21,
+    "n_positions": 200,
+    "n_fishing_positions": 176,
+    "mean_fishing_proba": 0.8965158559863249,
+    "max_fishing_proba": 0.9987002800867743,
+    "centroid_lat": -2.2077140144352274,
+    "centroid_lon": -171.5091039484176,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 176)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 4.3024,
+          "mean_shap": 0.1467
+        },
+        {
+          "feature": "speed",
+          "mean_value": 4.49,
+          "mean_shap": 0.136
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 68715.1031,
+          "mean_shap": 0.0783
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.902,
+          "mean_shap": 0.0463
+        },
+        {
+          "feature": "abs_course_change",
+          "mean_value": 17.74,
+          "mean_shap": 0.0033
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_119914759372174_0002",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_119914759372174",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-08-19T05:46:11Z",
+    "time_end_utc": "2014-08-20T03:52:38Z",
+    "duration_hours": 22.108,
+    "n_positions": 54,
+    "n_fishing_positions": 49,
+    "mean_fishing_proba": 0.8763831776424947,
+    "max_fishing_proba": 0.9982896524421089,
+    "centroid_lat": -2.6292564431040812,
+    "centroid_lon": -170.98188096649594,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 4.7347,
+          "mean_shap": 0.1311
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 5.0253,
+          "mean_shap": 0.1201
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 56943.6153,
+          "mean_shap": 0.0638
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 1.0667,
+          "mean_shap": 0.0405
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 84845.9614,
+          "mean_shap": 0.0135
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0000",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-11-27T23:44:50Z",
+    "time_end_utc": "2014-12-02T02:30:47Z",
+    "duration_hours": 98.766,
+    "n_positions": 1150,
+    "n_fishing_positions": 965,
+    "mean_fishing_proba": 0.8732439985075576,
+    "max_fishing_proba": 0.9999855386840202,
+    "centroid_lat": -2.5401152598432124,
+    "centroid_lon": -172.56043509843823,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 965)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 4.7376,
+          "mean_shap": 0.1219
+        },
+        {
+          "feature": "speed",
+          "mean_value": 4.792,
+          "mean_shap": 0.1182
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 73086.679,
+          "mean_shap": 0.0738
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.4921,
+          "mean_shap": 0.0332
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 148635.6439,
+          "mean_shap": 0.0068
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0001",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-02T10:19:38Z",
+    "time_end_utc": "2014-12-02T17:14:07Z",
+    "duration_hours": 6.908,
+    "n_positions": 174,
+    "n_fishing_positions": 174,
+    "mean_fishing_proba": 0.8728585145871066,
+    "max_fishing_proba": 0.9931460995918167,
+    "centroid_lat": -3.0938663099,
+    "centroid_lon": -173.95038771355516,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 174)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 5.048,
+          "mean_shap": 0.1353
+        },
+        {
+          "feature": "speed",
+          "mean_value": 5.184,
+          "mean_shap": 0.1274
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 60201.0379,
+          "mean_shap": 0.0598
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.5283,
+          "mean_shap": 0.0375
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 249871.4253,
+          "mean_shap": 0.008
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0002",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-02T23:51:10Z",
+    "time_end_utc": "2014-12-03T04:47:09Z",
+    "duration_hours": 4.933,
+    "n_positions": 144,
+    "n_fishing_positions": 141,
+    "mean_fishing_proba": 0.7623697700179294,
+    "max_fishing_proba": 0.8895915618318774,
+    "centroid_lat": -3.969319664838298,
+    "centroid_lon": -174.1988943113539,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 141)",
+      "top_drivers": [
+        {
+          "feature": "hour_cos",
+          "mean_value": 0.8868,
+          "mean_shap": 0.0962
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 304191.0762,
+          "mean_shap": 0.0764
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 7.4144,
+          "mean_shap": 0.0294
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.2339,
+          "mean_shap": 0.018
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": 0.3962,
+          "mean_shap": 0.0106
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0003",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-03T11:06:38Z",
+    "time_end_utc": "2014-12-03T22:57:41Z",
+    "duration_hours": 11.851,
+    "n_positions": 366,
+    "n_fishing_positions": 160,
+    "mean_fishing_proba": 0.9212219462307232,
+    "max_fishing_proba": 0.9839620938932334,
+    "centroid_lat": -3.9493955224712503,
+    "centroid_lon": -174.24412631988875,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 160)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 4.3128,
+          "mean_shap": 0.1708
+        },
+        {
+          "feature": "speed",
+          "mean_value": 4.196,
+          "mean_shap": 0.1664
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 41937.7797,
+          "mean_shap": 0.0343
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.5695,
+          "mean_shap": 0.0332
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": -0.0501,
+          "mean_shap": 0.0057
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0004",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-04T17:12:23Z",
+    "time_end_utc": "2014-12-05T02:13:13Z",
+    "duration_hours": 9.014,
+    "n_positions": 354,
+    "n_fishing_positions": 111,
+    "mean_fishing_proba": 0.7443326841337772,
+    "max_fishing_proba": 0.922078269230484,
+    "centroid_lat": -3.6285791354180184,
+    "centroid_lon": -171.0228567037522,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 111)",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 4.84,
+          "mean_shap": 0.1275
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 4.8708,
+          "mean_shap": 0.1197
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.5275,
+          "mean_shap": 0.0225
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 118198.7931,
+          "mean_shap": -0.0221
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": 0.9317,
+          "mean_shap": -0.0176
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0005",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-05T09:54:39Z",
+    "time_end_utc": "2014-12-05T16:21:08Z",
+    "duration_hours": 6.441,
+    "n_positions": 230,
+    "n_fishing_positions": 230,
+    "mean_fishing_proba": 0.8521691449981248,
+    "max_fishing_proba": 0.9745348971867357,
+    "centroid_lat": -3.263758897784348,
+    "centroid_lon": -170.20144122579742,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 230)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 5.3844,
+          "mean_shap": 0.127
+        },
+        {
+          "feature": "speed",
+          "mean_value": 5.388,
+          "mean_shap": 0.1209
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 76615.0024,
+          "mean_shap": 0.0816
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.4796,
+          "mean_shap": 0.0325
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 175494.7838,
+          "mean_shap": -0.0059
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0006",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-05T22:31:41Z",
+    "time_end_utc": "2014-12-06T03:55:45Z",
+    "duration_hours": 5.401,
+    "n_positions": 96,
+    "n_fishing_positions": 96,
+    "mean_fishing_proba": 0.9490176365400496,
+    "max_fishing_proba": 0.9882816636743498,
+    "centroid_lat": -3.4834526081729167,
+    "centroid_lon": -171.0584630966271,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 96)",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 2.368,
+          "mean_shap": 0.1871
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 2.348,
+          "mean_shap": 0.1751
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 37570.6023,
+          "mean_shap": 0.0509
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.3979,
+          "mean_shap": 0.0161
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": 0.9286,
+          "mean_shap": 0.0144
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0007",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-06T10:07:06Z",
+    "time_end_utc": "2014-12-07T01:40:44Z",
+    "duration_hours": 15.561,
+    "n_positions": 312,
+    "n_fishing_positions": 309,
+    "mean_fishing_proba": 0.8458720551741411,
+    "max_fishing_proba": 0.9901710424535073,
+    "centroid_lat": -3.353053950177994,
+    "centroid_lon": -170.62666394872494,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 309)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 5.9348,
+          "mean_shap": 0.0945
+        },
+        {
+          "feature": "speed",
+          "mean_value": 5.902,
+          "mean_shap": 0.0793
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": 0.0459,
+          "mean_shap": 0.0578
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 132517.8594,
+          "mean_shap": 0.0384
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 41444.697,
+          "mean_shap": 0.0344
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0008",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-07T09:24:41Z",
+    "time_end_utc": "2014-12-07T13:05:21Z",
+    "duration_hours": 3.678,
+    "n_positions": 172,
+    "n_fishing_positions": 172,
+    "mean_fishing_proba": 0.9079936747525946,
+    "max_fishing_proba": 0.9808656541289617,
+    "centroid_lat": -3.379182377526744,
+    "centroid_lon": -170.75779422493488,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 172)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 4.3116,
+          "mean_shap": 0.1601
+        },
+        {
+          "feature": "speed",
+          "mean_value": 4.274,
+          "mean_shap": 0.1569
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 38810.6387,
+          "mean_shap": 0.0331
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.5878,
+          "mean_shap": 0.0267
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": 0.3001,
+          "mean_shap": 0.0166
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0009",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-07T21:40:47Z",
+    "time_end_utc": "2014-12-07T23:24:48Z",
+    "duration_hours": 1.734,
+    "n_positions": 82,
+    "n_fishing_positions": 79,
+    "mean_fishing_proba": 0.6749604843887317,
+    "max_fishing_proba": 0.8204569267091943,
+    "centroid_lat": -3.3216298773354436,
+    "centroid_lon": -170.41236549087472,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 79)",
+      "top_drivers": [
+        {
+          "feature": "hour_cos",
+          "mean_value": 0.9259,
+          "mean_shap": 0.0732
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": -0.3408,
+          "mean_shap": 0.041
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 154754.6147,
+          "mean_shap": 0.0384
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 55539.9281,
+          "mean_shap": 0.0243
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.3043,
+          "mean_shap": 0.0161
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0010",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-13T06:48:46Z",
+    "time_end_utc": "2014-12-13T10:52:38Z",
+    "duration_hours": 4.064,
+    "n_positions": 148,
+    "n_fishing_positions": 148,
+    "mean_fishing_proba": 0.8759256747936648,
+    "max_fishing_proba": 0.9745435729672601,
+    "centroid_lat": -3.4824911581540543,
+    "centroid_lon": -171.03756425187566,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 148)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 4.3384,
+          "mean_shap": 0.1477
+        },
+        {
+          "feature": "speed",
+          "mean_value": 4.42,
+          "mean_shap": 0.1457
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.7249,
+          "mean_shap": 0.0356
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 37370.2643,
+          "mean_shap": 0.0257
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.6585,
+          "mean_shap": 0.0125
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0011",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-13T19:07:29Z",
+    "time_end_utc": "2014-12-13T19:07:29Z",
+    "duration_hours": 0.0,
+    "n_positions": 8,
+    "n_fishing_positions": 2,
+    "mean_fishing_proba": 0.5184036404324335,
+    "max_fishing_proba": 0.5243088353533769,
+    "centroid_lat": -3.3744399548,
+    "centroid_lon": -170.4388275146,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 48413.6875,
+          "mean_shap": -0.0264
+        },
+        {
+          "feature": "speed",
+          "mean_value": 7.4,
+          "mean_shap": -0.0252
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 154543.9375,
+          "mean_shap": 0.0246
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": -0.9576,
+          "mean_shap": 0.0236
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.1837,
+          "mean_shap": 0.0152
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0012",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-14T06:56:25Z",
+    "time_end_utc": "2014-12-14T11:43:42Z",
+    "duration_hours": 4.788,
+    "n_positions": 160,
+    "n_fishing_positions": 160,
+    "mean_fishing_proba": 0.9276648359453681,
+    "max_fishing_proba": 0.980659431268784,
+    "centroid_lat": -3.4707791745612497,
+    "centroid_lon": -170.25107383728374,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 160)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 3.2776,
+          "mean_shap": 0.173
+        },
+        {
+          "feature": "speed",
+          "mean_value": 3.27,
+          "mean_shap": 0.1692
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 57698.5591,
+          "mean_shap": 0.0581
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.579,
+          "mean_shap": 0.0324
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 179125.3853,
+          "mean_shap": -0.0172
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0013",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-14T19:02:23Z",
+    "time_end_utc": "2014-12-14T22:16:53Z",
+    "duration_hours": 3.242,
+    "n_positions": 176,
+    "n_fishing_positions": 174,
+    "mean_fishing_proba": 0.843136756578438,
+    "max_fishing_proba": 0.9616954196811057,
+    "centroid_lat": -3.466194665296551,
+    "centroid_lon": -170.16770952597008,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 174)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 6.1104,
+          "mean_shap": 0.0879
+        },
+        {
+          "feature": "speed",
+          "mean_value": 6.098,
+          "mean_shap": 0.0773
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 66842.8884,
+          "mean_shap": 0.0675
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": -0.7189,
+          "mean_shap": 0.0443
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": 0.6566,
+          "mean_shap": 0.043
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_251022003811177_0014",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_251022003811177",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-12-15T06:25:57Z",
+    "time_end_utc": "2014-12-15T08:53:04Z",
+    "duration_hours": 2.452,
+    "n_positions": 98,
+    "n_fishing_positions": 98,
+    "mean_fishing_proba": 0.9263178873173972,
+    "max_fishing_proba": 0.9705257866365766,
+    "centroid_lat": -3.4748524500408164,
+    "centroid_lon": -170.91491076411427,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 98)",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 3.426,
+          "mean_shap": 0.1735
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 3.502,
+          "mean_shap": 0.1719
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.7404,
+          "mean_shap": 0.0354
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 35579.9894,
+          "mean_shap": 0.0259
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": 0.8958,
+          "mean_shap": 0.0081
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "papahanaumokuakea_marine_national_monument__drifting_longlines_263392518194890_0000",
+    "mpa_name": "Papah\u0101naumoku\u0101kea Marine National Monument",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_263392518194890",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-09-30T21:54:30Z",
+    "time_end_utc": "2014-09-30T21:54:30Z",
+    "duration_hours": 0.0,
+    "n_positions": 42,
+    "n_fishing_positions": 1,
+    "mean_fishing_proba": 0.5068885261578672,
+    "max_fishing_proba": 0.5068885261578672,
+    "centroid_lat": 28.2245292664,
+    "centroid_lon": -163.4335327148,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 592259.875,
+          "mean_shap": 0.1229
+        },
+        {
+          "feature": "speed",
+          "mean_value": 10.1,
+          "mean_shap": -0.1027
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 10.1,
+          "mean_shap": -0.1014
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 626661.5625,
+          "mean_shap": 0.081
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.2449,
+          "mean_shap": 0.0294
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_271347251834362_0000",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_271347251834362",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-06-06T01:39:29Z",
+    "time_end_utc": "2014-06-10T17:13:17Z",
+    "duration_hours": 111.563,
+    "n_positions": 672,
+    "n_fishing_positions": 639,
+    "mean_fishing_proba": 0.9129700787070506,
+    "max_fishing_proba": 0.9968615875313812,
+    "centroid_lat": -4.10171575202723,
+    "centroid_lon": -171.86240216227137,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 639)",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 3.304,
+          "mean_shap": 0.1456
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 3.48,
+          "mean_shap": 0.143
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 51934.7523,
+          "mean_shap": 0.0768
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 145735.4641,
+          "mean_shap": 0.0201
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.1079,
+          "mean_shap": 0.0185
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__drifting_longlines_271347251834362_0001",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "drifting_longlines_271347251834362",
+    "gear": "drifting_longlines",
+    "time_start_utc": "2014-06-21T02:01:39Z",
+    "time_end_utc": "2014-06-26T01:02:46Z",
+    "duration_hours": 119.019,
+    "n_positions": 1004,
+    "n_fishing_positions": 727,
+    "mean_fishing_proba": 0.891466923611614,
+    "max_fishing_proba": 0.9958757485136787,
+    "centroid_lat": -3.0311385217645115,
+    "centroid_lon": -171.34059000342958,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 727)",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 5.302,
+          "mean_shap": 0.1034
+        },
+        {
+          "feature": "speed",
+          "mean_value": 5.24,
+          "mean_shap": 0.0922
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 96878.1578,
+          "mean_shap": 0.0829
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 180864.1625,
+          "mean_shap": 0.0447
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.1319,
+          "mean_shap": 0.0284
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__purse_seines_178183327397239_0000",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "purse_seines_178183327397239",
+    "gear": "purse_seines",
+    "time_start_utc": "2013-11-07T03:03:07Z",
+    "time_end_utc": "2013-11-08T15:27:28Z",
+    "duration_hours": 36.406,
+    "n_positions": 172,
+    "n_fishing_positions": 92,
+    "mean_fishing_proba": 0.6706078011652573,
+    "max_fishing_proba": 0.8868435624370797,
+    "centroid_lat": -3.4768415948706526,
+    "centroid_lon": -171.91483456155544,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions (sampled 50 of 92)",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 2.662,
+          "mean_shap": 0.1317
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 2.9184,
+          "mean_shap": 0.107
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 76022.8283,
+          "mean_shap": -0.044
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.0335,
+          "mean_shap": -0.0314
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": 0.2065,
+          "mean_shap": -0.0251
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__purse_seines_178183327397239_0001",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "purse_seines_178183327397239",
+    "gear": "purse_seines",
+    "time_start_utc": "2013-11-11T04:38:02Z",
+    "time_end_utc": "2013-11-11T04:39:42Z",
+    "duration_hours": 0.028,
+    "n_positions": 52,
+    "n_fishing_positions": 3,
+    "mean_fishing_proba": 0.5509043634552108,
+    "max_fishing_proba": 0.5843950170501904,
+    "centroid_lat": -3.3905654748333336,
+    "centroid_lon": -172.74153645836668,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 9.0,
+          "mean_shap": -0.0758
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 9.4667,
+          "mean_shap": -0.0731
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 130173.6094,
+          "mean_shap": 0.0622
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": 0.9377,
+          "mean_shap": 0.0459
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 130645.1719,
+          "mean_shap": 0.0458
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__purse_seines_178183327397239_0002",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "purse_seines_178183327397239",
+    "gear": "purse_seines",
+    "time_start_utc": "2013-11-11T11:07:33Z",
+    "time_end_utc": "2013-11-11T14:40:01Z",
+    "duration_hours": 3.541,
+    "n_positions": 66,
+    "n_fishing_positions": 17,
+    "mean_fishing_proba": 0.56997498161623,
+    "max_fishing_proba": 0.7604494716790032,
+    "centroid_lat": -3.317087734458824,
+    "centroid_lon": -172.86793518065883,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "speed",
+          "mean_value": 1.0529,
+          "mean_shap": 0.0566
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 1.1678,
+          "mean_shap": 0.0551
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.8329,
+          "mean_shap": -0.0448
+        },
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 1.9294,
+          "mean_shap": 0.0411
+        },
+        {
+          "feature": "hour_sin",
+          "mean_value": -0.4632,
+          "mean_shap": -0.0204
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  },
+  {
+    "incident_id": "phoenix_islands_protected_area__purse_seines_178183327397239_0003",
+    "mpa_name": "Phoenix Islands Protected Area",
+    "wdpa_id": null,
+    "vessel_id": "purse_seines_178183327397239",
+    "gear": "purse_seines",
+    "time_start_utc": "2013-11-11T21:23:25Z",
+    "time_end_utc": "2013-11-12T03:50:22Z",
+    "duration_hours": 6.449,
+    "n_positions": 66,
+    "n_fishing_positions": 28,
+    "mean_fishing_proba": 0.711970751128616,
+    "max_fishing_proba": 0.9289389020219454,
+    "centroid_lat": -3.3729707939321423,
+    "centroid_lon": -172.7755922589893,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "speed_roll_mean",
+          "mean_value": 3.1229,
+          "mean_shap": 0.0719
+        },
+        {
+          "feature": "speed",
+          "mean_value": 3.55,
+          "mean_shap": 0.0598
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 1.44,
+          "mean_shap": 0.0589
+        },
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 132060.4729,
+          "mean_shap": 0.0392
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 132515.5312,
+          "mean_shap": -0.0241
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ]
+  }
+]

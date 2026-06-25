@@ -95,12 +95,12 @@ and the implementation plan.
 |---|---|
 | v1 per-position fishing classifier + SHAP | ✅ implemented |
 | Honest eval (vessel-grouped split, baseline) | ✅ implemented |
-| MPA boundary overlay (point-in-polygon) | 🔨 in progress |
-| In-MPA incident aggregation | 🔨 in progress |
-| Per-incident dossier (JSON + Markdown) | 🔨 in progress |
-| Interactive map | ⬜ later |
-| GFW live-API ingestion (consume, don't re-detect) | ⬜ later |
-| AIS + SAR fusion (dark fleet) | ⬜ later |
+| MPA boundary overlay (point-in-polygon) | ✅ implemented |
+| In-MPA incident aggregation | ✅ implemented |
+| Per-incident dossier (JSON + Markdown) | ✅ implemented |
+| Interactive static map (GitHub Pages) | ⬜ next |
+| GFW live-API ingestion (consume, don't re-detect) | ⬜ next |
+| AIS + SAR fusion (dark fleet, via GFW's published SAR detections) | ⬜ next |
 
 ## Data
 
@@ -120,11 +120,21 @@ and the implementation plan.
 ```bash
 uv sync                              # CPU-only; no GPU
 uv run python -m seavigil.run        # v1: train, evaluate, write results/ + SHAP plots
-uv run --group dev pytest -q         # smoke tests (no network)
+uv run python -m seavigil.alert      # v2: fishing-in-MPA incidents + dossiers (~90 s, full set)
+uv run --group dev pytest -q         # tests (no network)
 ```
 
-Outputs land in `results/` (`metrics.json`, `SUMMARY.md`, `figures/`). The MPA-alerting
-entrypoint is documented in `docs/DESIGN.md` as it lands.
+`seavigil.alert` scores held-out test vessels by default (out-of-sample); `--scope all` scores
+everything (in-sample, for a fuller demonstration), and `--mpa <wdpa.geojson>` swaps the
+approximate sample boundaries for real ones. Outputs land in `results/` (v1: `metrics.json`,
+`SUMMARY.md`, `figures/`; v2: `results/incidents/` with `INDEX.md`, `incidents.json`, and one
+dossier per incident).
+
+A committed sample (`results/incidents/`, generated with `--scope all` on the approximate
+sample MPAs) shows the mechanism end-to-end: apparent fishing by drifting longliners inside
+the Phoenix Islands Protected Area and Papahānaumokuākea in 2014. It is **illustrative** —
+in-sample scores, approximate boundaries, and "apparent" (era- and rule-dependent) fishing,
+not a finding of illegality.
 
 ## Honest caveats
 
