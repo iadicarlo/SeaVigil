@@ -101,6 +101,22 @@ def test_write_dossiers_creates_files(tmp_path):
     assert (tmp_path / f"{loaded[0]['incident_id']}.md").exists()
 
 
+def test_shap_is_sampled_for_large_incidents():
+    rf, X = _tiny_model_and_scored()
+    scored = _scored_with_incident(rf, X)
+    # Inflate the incident to 120 fishing positions by repeating rows.
+    big = pd.concat([scored] * 30, ignore_index=True)
+    base = 1_350_000_000
+    big["timestamp"] = [float(base + k * 60) for k in range(len(big))]
+    big["datetime"] = pd.to_datetime(big["timestamp"], unit="s", utc=True)
+    inc = incidents.build_incidents(big)
+    assert inc[0].n_fishing_positions > 50
+
+    d = dossier.build_dossiers(inc, big, rf, max_shap_per_incident=50)[0]
+    assert "sampled 50 of" in d["explanation"]["method"]
+    assert len(d["explanation"]["top_drivers"]) == 5
+
+
 def test_write_empty_dossiers(tmp_path):
     manifest = dossier.write_dossiers([], tmp_path)
     assert manifest["n_incidents"] == 0

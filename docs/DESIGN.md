@@ -72,24 +72,37 @@ fast.)_
 
 ## 5. What is genuinely new (the wedge)
 
-Three things, none of which a GFW scientist can wave away with "we already do that":
+**Re-verified mid-2026.** One leg of the original wedge is dead: *automated
+fishing-inside-an-MPA alerting is NOT novel.* **Skylight** (Allen Institute) ships real-time
+MPA-entry + dark-vessel alerts **free** to 70+ countries; **Starboard** ships it paid;
+**OceanMind** as a managed service. Do not claim it. The "dark vessel in an MPA" question is
+also scientifically closed (Mayorga & Sala et al., *Science* 2025). What survives, in
+priority order:
 
-1. **Per-flag (per-position) explanation.** GFW exposes scores/events but **no per-position
-   "why"** and disclaims output as "not evidence". SHAP-per-flag is instance-level, not the
-   global feature-importance everyone already does.
-2. **Automated fishing-in-this-MPA alerting.** The one unshipped synthesis — boundaries ×
-   scored positions → per-incident flag. _Integration, not new detection_, and bounded by
-   data latency (be honest: not "real-time").
-3. **Last-mile deployability.** CPU-only, dependency-light, single-machine, auditable — vs a
-   cloud/GPU stack a low-capacity state can't run.
+1. **Per-flag (per-position) SHAP explanation.** No dedicated IUU-fishing tool ships a
+   per-event "why-flagged" narrative (only Windward's paywalled *sanctions* product does, not
+   fishing). GFW disclaims output as "not evidence", with no per-position why. **This is the
+   defensible core.**
+2. **Offline / no-account / laptop-CPU + auditable dossier.** Every incumbent (Skylight,
+   Starboard, OceanMind, GFW) is cloud/web/managed; Skylight's full version needs a vetted
+   account. A sovereign, air-gappable, reproducible triage layer for a low-capacity authority
+   is unoccupied.
 
-Positioning posture, not a capability: **a thin, auditable layer _on top of_ GFW-style
-signals**, built to *consume* detection, not re-do it.
+The MPA *alert* is a commodity we **package** on top of consumed signal — not invent. The
+posture is **a thin, auditable layer _on top of_ GFW-style signals**, consuming detection.
 
 **Honest limits we state ourselves** (so we read as sober collaborators, not a hype clone):
 output is an *inspection-triggering intelligence prompt*, not courtroom proof (VMS outranks
-public AIS/SAR in court); AIS-only is blind to the ~75% dark fleet; GFW data is
-non-commercial.
+public AIS/SAR in court); AIS-only is blind to the ~75% dark fleet — consume GFW's published
+SAR detections to close part of it (see §6.5); GFW data and WDPA boundaries are both
+**non-commercial**.
+
+### 5.1 Re-verify before any public deploy
+
+Three claims are load-bearing and ~time-sensitive — re-check immediately before shipping:
+(1) Skylight still ships **no** per-event explanation; (2) GFW's per-event AI (was "early
+trials" 2026-03) hasn't shipped explainability; (3) UNEP-WCMC sign-off / non-downloadable
+tiles for the MPA layer (the biggest legal blocker — see §6.5).
 
 ## 6. What we are actually implementing now (v2)
 

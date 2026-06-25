@@ -7,9 +7,12 @@ enforcement officer can read, defend, and act on — built to run on a single CP
 cloud account, so an under-resourced coastal authority can actually use it.
 
 It does **not** try to out-detect [Global Fishing Watch](https://globalfishingwatch.org/map)
-(GFW). It sits on top of that kind of signal and adds the three things the detection layer
-deliberately leaves to others: a **per-flag reason**, an **automated "fishing inside *this*
-MPA" alert**, and **deployability on a laptop**.
+(GFW), and it does **not** claim to have invented MPA-incursion alerting — **Skylight**
+(Allen Institute for AI) already ships real-time MPA-entry and dark-vessel alerts, free, to
+70+ countries. What no one ships is the **last mile for a low-capacity authority**: SeaVigil
+adds a **per-flag, SHAP-backed reason** for every call, runs **offline on a laptop with no
+cloud account**, and produces an **auditable per-incident dossier**. The alert itself is a
+commodity it packages — not a thing it claims to have invented.
 
 ---
 
@@ -20,19 +23,19 @@ ecosystems. Detecting apparent fishing from vessel tracks is, at this point, a s
 industrialised problem — it is GFW's flagship product, trained on labeled AIS data they
 released openly. Re-building that is not new.
 
-What is *not* solved is the **last mile**:
+What is *not* solved is the **last mile for an under-resourced authority**:
 
-- GFW explicitly labels its output **"apparent" fishing effort** and **"not evidence of
-  wrongdoing"**, and exposes **no per-position explanation** of *why* a point was called
-  fishing.
-- GFW supplies all the ingredients for MPA monitoring — fishing effort, MPA boundaries, the
-  Marine Manager portal — but **does not ship a turnkey "this vessel is fishing inside this
-  MPA, here's the alert" product**.
-- Its stack is cloud/GPU/GCP. A fisheries officer in a low-capacity coastal state often
-  **cannot run it**.
+- No IUU-fishing tool exposes a **per-flag explanation**. GFW labels its output **"apparent"**
+  and **"not evidence of wrongdoing"** with no per-position *why*; the others surface a risk
+  score, not a reason. (Verified mid-2026.)
+- The incumbents are all **cloud platforms or managed services that need an account**: GFW's
+  stack is cloud/GPU; **Skylight** is free but requires a vetted login; **Starboard** and
+  **OceanMind** are paid/enterprise. An officer who can't depend on a foreign-hosted account
+  **can't run any of them**.
 
-SeaVigil targets exactly that seam: **explain → alert-in-MPA → hand a human a defensible
-dossier**, on hardware they already own.
+SeaVigil targets exactly that seam: **explain → flag-in-MPA → hand a human a defensible
+dossier**, offline, on hardware they already own. The MPA *alert* is a commodity (Skylight
+does it free); what SeaVigil adds is the **reason** and the **offline, auditable dossier**.
 
 > **Honest scope.** SeaVigil output is an *inspection-triggering intelligence prompt*, not
 > courtroom proof. In fisheries law, encrypted VMS outranks public AIS/SAR, and
@@ -46,6 +49,21 @@ dossier**, on hardware they already own.
 | **Is** | An explainable behaviour classifier + an MPA-overlay alerting layer + per-incident dossiers, all CPU-only and reproducible. |
 | **Isn't** | A new fishing detector, a dark-vessel (satellite) detector, a real-time global map, or legal evidence. GFW and partners already do those. |
 | **Builds on** | GFW's open labeled AIS data and (optionally) GFW's live APIs — as a *complement*, not a competitor. |
+
+## Compared to other tools
+
+Detection — and even MPA-incursion alerting — is **already shipped**. SeaVigil does not
+reinvent it; the wedge is the two right-hand columns.
+
+| Tool | MPA-entry / dark-vessel alerts | Per-flag explanation | Offline / no account |
+|---|---|---|---|
+| **Skylight** (Allen Institute) | ✅ free, 70+ countries | ❌ | ❌ vetted account, cloud |
+| **Starboard** | ✅ paid | ❌ | ❌ enterprise SaaS |
+| **OceanMind** | ✅ managed service | ❌ (human analysts) | ❌ |
+| **Global Fishing Watch** | ❌ data/portal, no alerts | ❌ | ❌ cloud / API |
+| **SeaVigil** | packages, doesn't claim | ✅ **SHAP per flag** | ✅ **laptop, no account** |
+
+(Competitive state verified June 2026 against vendor docs; re-check before outreach.)
 
 ## How it works
 

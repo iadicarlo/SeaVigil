@@ -51,27 +51,45 @@ def build_dossiers(
     *,
     feature_columns: list[str] = FEATURE_COLUMNS,
     top_k: int = 5,
+    max_shap_per_incident: int = 50,
+    random_state: int = 42,
 ) -> list[dict]:
     """Build dossier dicts for a list of incidents.
 
     If ``model`` is None, dossiers are built without a SHAP explanation (the facts
-    still stand). Otherwise SHAP is computed once over all fishing positions.
+    still stand). Otherwise SHAP is computed once over the incidents' fishing
+    positions. To stay fast on large incidents, SHAP is estimated from at most
+    ``max_shap_per_incident`` positions per incident (the per-incident mean is
+    well estimated from a sample); the dossier still reports the full counts.
     """
     if not incidents:
         return []
 
     explanations: dict = {}
     if model is not None:
-        all_ids = sorted({i for inc in incidents for i in inc.fishing_ids}, key=str)
+        rng = np.random.default_rng(random_state)
+        sampled_ids: dict = {}
+        for inc in incidents:
+            ids = inc.fishing_ids
+            if len(ids) > max_shap_per_incident:
+                pick = sorted(rng.choice(len(ids), size=max_shap_per_incident, replace=False))
+                ids = [ids[i] for i in pick]
+            sampled_ids[inc.incident_id] = ids
+
+        all_ids = sorted({i for ids in sampled_ids.values() for i in ids}, key=str)
         X_all = scored.loc[all_ids, feature_columns].to_numpy(dtype="float64")
         import shap  # local import: heavy, only needed when explaining
 
         shap_all = _positive_class_shap(shap.TreeExplainer(model), X_all)
         row_of = {rid: r for r, rid in enumerate(all_ids)}
         for inc in incidents:
-            rows = [row_of[i] for i in inc.fishing_ids]
+            rows = [row_of[i] for i in sampled_ids[inc.incident_id]]
+            n_full = len(inc.fishing_ids)
+            method = _SHAP_METHOD
+            if n_full > max_shap_per_incident:
+                method += f" (sampled {max_shap_per_incident} of {n_full})"
             explanations[inc.incident_id] = {
-                "method": _SHAP_METHOD,
+                "method": method,
                 "top_drivers": _aggregate_shap(
                     shap_all[rows], X_all[rows], feature_columns, top_k
                 ),
