@@ -1,165 +1,29 @@
 [
   {
-    "incident_id": "great_barrier_reef_marine_park__503756000_0000",
+    "incident_id": "great_barrier_reef_marine_park__334853000_0000",
     "mpa_name": "Great Barrier Reef Marine Park",
     "wdpa_id": null,
-    "vessel_id": "503756000",
+    "vessel_id": "334853000",
     "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:42:46Z",
-    "time_end_utc": "2026-06-26T06:43:47Z",
-    "duration_hours": 0.017,
-    "n_positions": 2,
-    "n_fishing_positions": 2,
-    "mean_fishing_proba": 0.5618181044115111,
-    "max_fishing_proba": 0.5639318065660807,
-    "centroid_lat": -16.92164,
-    "centroid_lon": 145.78136999999998,
-    "mpa_iucn_cat": "VI",
-    "mpa_no_take": "None",
-    "mpa_version": "sample-approx-2024",
-    "type": "ais_fishing_incident",
-    "severity": "low",
-    "severity_reason": "multi-use protected area",
-    "ship_name": "REEF ADVENTURE",
-    "flag": "AU",
-    "destination": null,
-    "ship_type": null,
-    "baseline_speed_threshold_knots": 10.7,
-    "baseline_agreement": 1.0,
-    "explanation": {
-      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
-      "top_drivers": [
-        {
-          "feature": "distance_from_shore",
-          "mean_value": 6628.9145,
-          "mean_shap": 0.1669
-        },
-        {
-          "feature": "distance_from_port",
-          "mean_value": 1094.2646,
-          "mean_shap": -0.1128
-        },
-        {
-          "feature": "speed",
-          "mean_value": 0.0,
-          "mean_shap": 0.0297
-        },
-        {
-          "feature": "speed_roll_std",
-          "mean_value": 0.0,
-          "mean_shap": -0.0216
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9829,
-          "mean_shap": 0.0122
-        }
-      ]
-    },
-    "caveats": [
-      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
-      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
-      "MPA boundary may be approximate; verify against official WDPA limits.",
-      "An inspection lead, not courtroom evidence."
-    ],
-    "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "35b3eaff3641c9f30a8a5c1c63f39cc60669b9b11770ef84fdce918ada5e60c0"
-  },
-  {
-    "incident_id": "great_barrier_reef_marine_park__503188430_0000",
-    "mpa_name": "Great Barrier Reef Marine Park",
-    "wdpa_id": null,
-    "vessel_id": "503188430",
-    "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:43:19Z",
-    "time_end_utc": "2026-06-26T06:43:29Z",
-    "duration_hours": 0.003,
-    "n_positions": 2,
-    "n_fishing_positions": 2,
-    "mean_fishing_proba": 0.5629151938113988,
-    "max_fishing_proba": 0.5629151938113988,
-    "centroid_lat": -16.9307,
-    "centroid_lon": 145.78007416666665,
-    "mpa_iucn_cat": "VI",
-    "mpa_no_take": "None",
-    "mpa_version": "sample-approx-2024",
-    "type": "ais_fishing_incident",
-    "severity": "low",
-    "severity_reason": "multi-use protected area",
-    "ship_name": "TSS SHOALBUSTER",
-    "flag": "AU",
-    "destination": null,
-    "ship_type": null,
-    "baseline_speed_threshold_knots": 10.7,
-    "baseline_agreement": 1.0,
-    "explanation": {
-      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
-      "top_drivers": [
-        {
-          "feature": "distance_from_shore",
-          "mean_value": 7590.5356,
-          "mean_shap": 0.1657
-        },
-        {
-          "feature": "distance_from_port",
-          "mean_value": 498.4814,
-          "mean_shap": -0.1149
-        },
-        {
-          "feature": "speed",
-          "mean_value": 0.0,
-          "mean_shap": 0.0298
-        },
-        {
-          "feature": "speed_roll_std",
-          "mean_value": 0.0,
-          "mean_shap": -0.0218
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9825,
-          "mean_shap": 0.0148
-        }
-      ]
-    },
-    "caveats": [
-      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
-      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
-      "MPA boundary may be approximate; verify against official WDPA limits.",
-      "An inspection lead, not courtroom evidence."
-    ],
-    "eez_name": "Australia EEZ",
-    "eez_sovereign": "Australia",
-    "eez_iso_sov": "AUS",
-    "eez_foreign": false,
-    "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "9c2c1a8ed917d2f380f1aa054fe58dedb742306f31bce2b7a03fabe97efaa41e"
-  },
-  {
-    "incident_id": "great_barrier_reef_marine_park__503024660_0000",
-    "mpa_name": "Great Barrier Reef Marine Park",
-    "wdpa_id": null,
-    "vessel_id": "503024660",
-    "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:43:37Z",
-    "time_end_utc": "2026-06-26T06:43:37Z",
+    "time_start_utc": "2026-06-26T10:13:33Z",
+    "time_end_utc": "2026-06-26T10:13:33Z",
     "duration_hours": 0.0,
     "n_positions": 1,
     "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.5685756136079343,
-    "max_fishing_proba": 0.5685756136079343,
-    "centroid_lat": -16.96428166666667,
-    "centroid_lon": 145.79497833333335,
+    "mean_fishing_proba": 0.5232193132592444,
+    "max_fishing_proba": 0.5232193132592444,
+    "centroid_lat": -16.940686666666668,
+    "centroid_lon": 145.77930666666668,
     "mpa_iucn_cat": "VI",
     "mpa_no_take": "None",
     "mpa_version": "sample-approx-2024",
     "type": "ais_fishing_incident",
     "severity": "low",
     "severity_reason": "multi-use protected area",
-    "ship_name": "YOUNG BLOOD II",
-    "flag": "AU",
-    "destination": "CAIRNS",
-    "ship_type": "Pleasure craft",
+    "ship_name": "FAKO NJORKU 1",
+    "flag": "HN",
+    "destination": null,
+    "ship_type": null,
     "baseline_speed_threshold_knots": 10.7,
     "baseline_agreement": 1.0,
     "explanation": {
@@ -167,28 +31,28 @@
       "top_drivers": [
         {
           "feature": "distance_from_shore",
-          "mean_value": 10207.1456,
-          "mean_shap": 0.1758
+          "mean_value": 8618.7228,
+          "mean_shap": 0.171
         },
         {
           "feature": "distance_from_port",
-          "mean_value": 4365.7347,
-          "mean_shap": -0.1183
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9825,
-          "mean_shap": 0.0223
+          "mean_value": 1284.6654,
+          "mean_shap": -0.1061
         },
         {
           "feature": "speed",
-          "mean_value": 0.1,
-          "mean_shap": 0.0223
+          "mean_value": 0.0,
+          "mean_shap": 0.027
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.893,
+          "mean_shap": -0.0263
         },
         {
           "feature": "speed_roll_std",
           "mean_value": 0.0,
-          "mean_shap": -0.0176
+          "mean_shap": -0.0231
         }
       ]
     },
@@ -201,9 +65,9 @@
     "eez_name": "Australia EEZ",
     "eez_sovereign": "Australia",
     "eez_iso_sov": "AUS",
-    "eez_foreign": false,
+    "eez_foreign": true,
     "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "99060fd7627673155269c5eb5235159242ae01779b849a050f01781c1a87f0e2"
+    "evidence_hash": "3fbb89ee04e71aaf313c38f62139795f043ed19a7b37f1d07f2878082ed25be3"
   },
   {
     "incident_id": "great_barrier_reef_marine_park__503477300_0000",
@@ -211,15 +75,15 @@
     "wdpa_id": null,
     "vessel_id": "503477300",
     "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:43:43Z",
-    "time_end_utc": "2026-06-26T06:43:43Z",
+    "time_start_utc": "2026-06-26T10:13:39Z",
+    "time_end_utc": "2026-06-26T10:13:39Z",
     "duration_hours": 0.0,
     "n_positions": 1,
     "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.6163238817856503,
-    "max_fishing_proba": 0.6163238817856503,
-    "centroid_lat": -16.956576666666667,
-    "centroid_lon": 145.79727333333332,
+    "mean_fishing_proba": 0.5273645887150167,
+    "max_fishing_proba": 0.5273645887150167,
+    "centroid_lat": -16.956605,
+    "centroid_lon": 145.79724,
     "mpa_iucn_cat": "VI",
     "mpa_no_take": "None",
     "mpa_version": "sample-approx-2024",
@@ -237,28 +101,28 @@
       "top_drivers": [
         {
           "feature": "distance_from_shore",
-          "mean_value": 9332.0073,
-          "mean_shap": 0.1933
+          "mean_value": 9336.4225,
+          "mean_shap": 0.1726
         },
         {
           "feature": "distance_from_port",
-          "mean_value": 3778.9088,
-          "mean_shap": -0.1113
+          "mean_value": 3779.2283,
+          "mean_shap": -0.1042
         },
         {
           "feature": "speed",
           "mean_value": 0.0,
-          "mean_shap": 0.0322
+          "mean_shap": 0.0278
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.893,
+          "mean_shap": -0.0268
         },
         {
           "feature": "speed_roll_std",
           "mean_value": 0.0,
-          "mean_shap": -0.0142
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9825,
-          "mean_shap": 0.0136
+          "mean_shap": -0.0227
         }
       ]
     },
@@ -269,143 +133,7 @@
       "An inspection lead, not courtroom evidence."
     ],
     "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "c30419787e8e19d8167842fd3e287f1775c3c5a590304c28503b6a11dfb5122e"
-  },
-  {
-    "incident_id": "great_barrier_reef_marine_park__311001595_0000",
-    "mpa_name": "Great Barrier Reef Marine Park",
-    "wdpa_id": null,
-    "vessel_id": "311001595",
-    "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:43:47Z",
-    "time_end_utc": "2026-06-26T06:43:47Z",
-    "duration_hours": 0.0,
-    "n_positions": 1,
-    "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.5823803417632623,
-    "max_fishing_proba": 0.5823803417632623,
-    "centroid_lat": -16.925263333333334,
-    "centroid_lon": 145.78092,
-    "mpa_iucn_cat": "VI",
-    "mpa_no_take": "None",
-    "mpa_version": "sample-approx-2024",
-    "type": "ais_fishing_incident",
-    "severity": "low",
-    "severity_reason": "multi-use protected area",
-    "ship_name": "CARNIVAL ADVENTURE",
-    "flag": "BS",
-    "destination": null,
-    "ship_type": null,
-    "baseline_speed_threshold_knots": 10.7,
-    "baseline_agreement": 1.0,
-    "explanation": {
-      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
-      "top_drivers": [
-        {
-          "feature": "distance_from_shore",
-          "mean_value": 7010.212,
-          "mean_shap": 0.173
-        },
-        {
-          "feature": "distance_from_port",
-          "mean_value": 760.3311,
-          "mean_shap": -0.1091
-        },
-        {
-          "feature": "speed",
-          "mean_value": 0.0,
-          "mean_shap": 0.0311
-        },
-        {
-          "feature": "speed_roll_std",
-          "mean_value": 0.0,
-          "mean_shap": -0.0216
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9825,
-          "mean_shap": 0.0133
-        }
-      ]
-    },
-    "caveats": [
-      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
-      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
-      "MPA boundary may be approximate; verify against official WDPA limits.",
-      "An inspection lead, not courtroom evidence."
-    ],
-    "eez_name": "Australia EEZ",
-    "eez_sovereign": "Australia",
-    "eez_iso_sov": "AUS",
-    "eez_foreign": true,
-    "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "93063417ba54c8bea48dc86add9a03986e5dbf5403d752124e6cd3737d1a6d3c"
-  },
-  {
-    "incident_id": "great_barrier_reef_marine_park__518998761_0000",
-    "mpa_name": "Great Barrier Reef Marine Park",
-    "wdpa_id": null,
-    "vessel_id": "518998761",
-    "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:43:49Z",
-    "time_end_utc": "2026-06-26T06:43:49Z",
-    "duration_hours": 0.0,
-    "n_positions": 1,
-    "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.552326787601384,
-    "max_fishing_proba": 0.552326787601384,
-    "centroid_lat": -16.91732,
-    "centroid_lon": 145.78289666666666,
-    "mpa_iucn_cat": "VI",
-    "mpa_no_take": "None",
-    "mpa_version": "sample-approx-2024",
-    "type": "ais_fishing_incident",
-    "severity": "low",
-    "severity_reason": "multi-use protected area",
-    "ship_name": "BELUGA",
-    "flag": "CK",
-    "destination": null,
-    "ship_type": null,
-    "baseline_speed_threshold_knots": 10.7,
-    "baseline_agreement": 1.0,
-    "explanation": {
-      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
-      "top_drivers": [
-        {
-          "feature": "distance_from_shore",
-          "mean_value": 6126.6898,
-          "mean_shap": 0.1557
-        },
-        {
-          "feature": "distance_from_port",
-          "mean_value": 1587.6781,
-          "mean_shap": -0.1113
-        },
-        {
-          "feature": "speed",
-          "mean_value": 0.0,
-          "mean_shap": 0.0286
-        },
-        {
-          "feature": "speed_roll_std",
-          "mean_value": 0.0,
-          "mean_shap": -0.0249
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9825,
-          "mean_shap": 0.0114
-        }
-      ]
-    },
-    "caveats": [
-      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
-      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
-      "MPA boundary may be approximate; verify against official WDPA limits.",
-      "An inspection lead, not courtroom evidence."
-    ],
-    "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "0f78b797088df94d699ed138da38df515a2a4be6de6049d2ee8f0c651e0a3f90"
+    "evidence_hash": "e7eeadf4d2dedbf05514ba8cf16f1d8ecd9126711528c7a17c6b9335b19a6273"
   },
   {
     "incident_id": "great_barrier_reef_marine_park__503102000_0000",
@@ -413,15 +141,15 @@
     "wdpa_id": null,
     "vessel_id": "503102000",
     "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:44:00Z",
-    "time_end_utc": "2026-06-26T06:44:00Z",
+    "time_start_utc": "2026-06-26T10:14:03Z",
+    "time_end_utc": "2026-06-26T10:14:03Z",
     "duration_hours": 0.0,
     "n_positions": 1,
     "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.6149565751693421,
-    "max_fishing_proba": 0.6149565751693421,
-    "centroid_lat": -16.938285,
-    "centroid_lon": 145.779835,
+    "mean_fishing_proba": 0.5243335970540484,
+    "max_fishing_proba": 0.5243335970540484,
+    "centroid_lat": -16.938271666666665,
+    "centroid_lon": 145.77982,
     "mpa_iucn_cat": "VI",
     "mpa_no_take": "None",
     "mpa_version": "sample-approx-2024",
@@ -439,28 +167,28 @@
       "top_drivers": [
         {
           "feature": "distance_from_shore",
-          "mean_value": 8354.9278,
-          "mean_shap": 0.1923
+          "mean_value": 8354.3256,
+          "mean_shap": 0.169
         },
         {
           "feature": "distance_from_port",
-          "mean_value": 1057.9013,
-          "mean_shap": -0.1114
+          "mean_value": 1055.8719,
+          "mean_shap": -0.1048
         },
         {
           "feature": "speed",
           "mean_value": 0.0,
-          "mean_shap": 0.0313
+          "mean_shap": 0.0272
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.8949,
+          "mean_shap": -0.0259
         },
         {
           "feature": "speed_roll_std",
           "mean_value": 0.0,
-          "mean_shap": -0.0139
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9816,
-          "mean_shap": 0.0137
+          "mean_shap": -0.0228
         }
       ]
     },
@@ -475,73 +203,7 @@
     "eez_iso_sov": "AUS",
     "eez_foreign": false,
     "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "29c5e13a316924a530a5ad2100076b7b159d160d2fe9300bfc03c8bc762a0dc7"
-  },
-  {
-    "incident_id": "great_barrier_reef_marine_park__503011670_0000",
-    "mpa_name": "Great Barrier Reef Marine Park",
-    "wdpa_id": null,
-    "vessel_id": "503011670",
-    "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:44:10Z",
-    "time_end_utc": "2026-06-26T06:44:10Z",
-    "duration_hours": 0.0,
-    "n_positions": 1,
-    "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.6163238817856503,
-    "max_fishing_proba": 0.6163238817856503,
-    "centroid_lat": -16.952178333333332,
-    "centroid_lon": 145.77338333333333,
-    "mpa_iucn_cat": "VI",
-    "mpa_no_take": "None",
-    "mpa_version": "sample-approx-2024",
-    "type": "ais_fishing_incident",
-    "severity": "low",
-    "severity_reason": "multi-use protected area",
-    "ship_name": "QPV PERRY IRWIN",
-    "flag": "AU",
-    "destination": null,
-    "ship_type": null,
-    "baseline_speed_threshold_knots": 10.7,
-    "baseline_agreement": 1.0,
-    "explanation": {
-      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
-      "top_drivers": [
-        {
-          "feature": "distance_from_shore",
-          "mean_value": 10044.2067,
-          "mean_shap": 0.1939
-        },
-        {
-          "feature": "distance_from_port",
-          "mean_value": 2507.1698,
-          "mean_shap": -0.1125
-        },
-        {
-          "feature": "speed",
-          "mean_value": 0.0,
-          "mean_shap": 0.0321
-        },
-        {
-          "feature": "speed_roll_std",
-          "mean_value": 0.0,
-          "mean_shap": -0.0137
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9816,
-          "mean_shap": 0.0135
-        }
-      ]
-    },
-    "caveats": [
-      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
-      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
-      "MPA boundary may be approximate; verify against official WDPA limits.",
-      "An inspection lead, not courtroom evidence."
-    ],
-    "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "2de16dac41b8e2d12a2eab9b1495982e9cafc0b397ecbb22e1839f62fb38d842"
+    "evidence_hash": "60ea3040b324bcf41e328508f27b986b6b7b14fee00cb63d07ddfb07ce62578d"
   },
   {
     "incident_id": "great_barrier_reef_marine_park__503172250_0000",
@@ -549,15 +211,15 @@
     "wdpa_id": null,
     "vessel_id": "503172250",
     "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:44:14Z",
-    "time_end_utc": "2026-06-26T06:44:14Z",
+    "time_start_utc": "2026-06-26T10:14:14Z",
+    "time_end_utc": "2026-06-26T10:14:14Z",
     "duration_hours": 0.0,
     "n_positions": 1,
     "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.6163238817856503,
-    "max_fishing_proba": 0.6163238817856503,
-    "centroid_lat": -16.947961666666668,
-    "centroid_lon": 145.77268666666666,
+    "mean_fishing_proba": 0.5277015985189383,
+    "max_fishing_proba": 0.5277015985189383,
+    "centroid_lat": -16.947983333333333,
+    "centroid_lon": 145.77265,
     "mpa_iucn_cat": "VI",
     "mpa_no_take": "None",
     "mpa_version": "sample-approx-2024",
@@ -575,28 +237,28 @@
       "top_drivers": [
         {
           "feature": "distance_from_shore",
-          "mean_value": 9659.1654,
-          "mean_shap": 0.1939
+          "mean_value": 9663.0792,
+          "mean_shap": 0.1726
         },
         {
           "feature": "distance_from_port",
-          "mean_value": 2050.1329,
-          "mean_shap": -0.1123
+          "mean_value": 2053.0888,
+          "mean_shap": -0.1041
         },
         {
           "feature": "speed",
           "mean_value": 0.0,
-          "mean_shap": 0.0323
+          "mean_shap": 0.0278
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.8949,
+          "mean_shap": -0.0272
         },
         {
           "feature": "speed_roll_std",
           "mean_value": 0.0,
-          "mean_shap": -0.014
-        },
-        {
-          "feature": "hour_sin",
-          "mean_value": 0.9816,
-          "mean_shap": 0.0135
+          "mean_shap": -0.0223
         }
       ]
     },
@@ -611,30 +273,96 @@
     "eez_iso_sov": "AUS",
     "eez_foreign": false,
     "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "3a10cf4427f98906c0b2932143ba6a919c8be1af483160cea71a9296e451d3bc"
+    "evidence_hash": "2b75d7187dc23fe1e24d78c73ffb791767143dc1718481dc4ac04c1079be92e4"
   },
   {
-    "incident_id": "great_barrier_reef_marine_park__503754000_0000",
+    "incident_id": "great_barrier_reef_marine_park__529011000_0000",
     "mpa_name": "Great Barrier Reef Marine Park",
     "wdpa_id": null,
-    "vessel_id": "503754000",
+    "vessel_id": "529011000",
     "gear": "unknown",
-    "time_start_utc": "2026-06-26T06:44:14Z",
-    "time_end_utc": "2026-06-26T06:44:14Z",
+    "time_start_utc": "2026-06-26T10:14:17Z",
+    "time_end_utc": "2026-06-26T10:14:17Z",
     "duration_hours": 0.0,
     "n_positions": 1,
     "n_fishing_positions": 1,
-    "mean_fishing_proba": 0.6151723362216198,
-    "max_fishing_proba": 0.6151723362216198,
-    "centroid_lat": -16.940968333333334,
-    "centroid_lon": 145.77815666666666,
+    "mean_fishing_proba": 0.5277015985189383,
+    "max_fishing_proba": 0.5277015985189383,
+    "centroid_lat": -16.94767,
+    "centroid_lon": 145.77168166666667,
     "mpa_iucn_cat": "VI",
     "mpa_no_take": "None",
     "mpa_version": "sample-approx-2024",
     "type": "ais_fishing_incident",
     "severity": "low",
     "severity_reason": "multi-use protected area",
-    "ship_name": "SVITZER GLENROCK",
+    "ship_name": "RKS TEANOAI II",
+    "flag": "KI",
+    "destination": null,
+    "ship_type": null,
+    "baseline_speed_threshold_knots": 10.7,
+    "baseline_agreement": 1.0,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 9678.5414,
+          "mean_shap": 0.1725
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 2036.6582,
+          "mean_shap": -0.1042
+        },
+        {
+          "feature": "speed",
+          "mean_value": 0.0,
+          "mean_shap": 0.0278
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.8949,
+          "mean_shap": -0.0272
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.0,
+          "mean_shap": -0.0222
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ],
+    "evidence_schema": "seavigil-evidence-1.0",
+    "evidence_hash": "e84b0df116c16324877a1a83c068c6b9a16d5291b1c7ab49ada7ba1cd411296f"
+  },
+  {
+    "incident_id": "great_barrier_reef_marine_park__503046340_0000",
+    "mpa_name": "Great Barrier Reef Marine Park",
+    "wdpa_id": null,
+    "vessel_id": "503046340",
+    "gear": "unknown",
+    "time_start_utc": "2026-06-26T10:14:19Z",
+    "time_end_utc": "2026-06-26T10:14:19Z",
+    "duration_hours": 0.0,
+    "n_positions": 1,
+    "n_fishing_positions": 1,
+    "mean_fishing_proba": 0.5762771005603107,
+    "max_fishing_proba": 0.5762771005603107,
+    "centroid_lat": -16.930628333333335,
+    "centroid_lon": 145.98517333333334,
+    "mpa_iucn_cat": "VI",
+    "mpa_no_take": "None",
+    "mpa_version": "sample-approx-2024",
+    "type": "ais_fishing_incident",
+    "severity": "low",
+    "severity_reason": "multi-use protected area",
+    "ship_name": "MALU TROJAN",
     "flag": "AU",
     "destination": null,
     "ship_type": null,
@@ -645,28 +373,28 @@
       "top_drivers": [
         {
           "feature": "distance_from_shore",
-          "mean_value": 8701.98,
-          "mean_shap": 0.1931
-        },
-        {
-          "feature": "distance_from_port",
-          "mean_value": 1282.045,
-          "mean_shap": -0.1118
-        },
-        {
-          "feature": "speed",
-          "mean_value": 0.0,
-          "mean_shap": 0.0313
+          "mean_value": 9039.8403,
+          "mean_shap": 0.1497
         },
         {
           "feature": "speed_roll_std",
           "mean_value": 0.0,
-          "mean_shap": -0.0141
+          "mean_shap": -0.0454
         },
         {
-          "feature": "hour_sin",
-          "mean_value": 0.9816,
-          "mean_shap": 0.0135
+          "feature": "speed_roll_mean",
+          "mean_value": 0.1,
+          "mean_shap": -0.0439
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.8949,
+          "mean_shap": -0.0379
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 22304.2841,
+          "mean_shap": 0.0358
         }
       ]
     },
@@ -681,6 +409,72 @@
     "eez_iso_sov": "AUS",
     "eez_foreign": false,
     "evidence_schema": "seavigil-evidence-1.0",
-    "evidence_hash": "9dd6d77fee86437028271173577b3dd465960ae5bb86701098fc34cab163eaed"
+    "evidence_hash": "fb3cc13634917a59c01146a865bd53fa45ebc3e395a6bfe216742cfcb043cdb8"
+  },
+  {
+    "incident_id": "great_barrier_reef_marine_park__503177400_0000",
+    "mpa_name": "Great Barrier Reef Marine Park",
+    "wdpa_id": null,
+    "vessel_id": "503177400",
+    "gear": "unknown",
+    "time_start_utc": "2026-06-26T10:14:36Z",
+    "time_end_utc": "2026-06-26T10:14:36Z",
+    "duration_hours": 0.0,
+    "n_positions": 1,
+    "n_fishing_positions": 1,
+    "mean_fishing_proba": 0.5236068281136711,
+    "max_fishing_proba": 0.5236068281136711,
+    "centroid_lat": -19.25932,
+    "centroid_lon": 146.84045333333333,
+    "mpa_iucn_cat": "VI",
+    "mpa_no_take": "None",
+    "mpa_version": "sample-approx-2024",
+    "type": "ais_fishing_incident",
+    "severity": "low",
+    "severity_reason": "multi-use protected area",
+    "ship_name": "PMG PRIDE",
+    "flag": "AU",
+    "destination": null,
+    "ship_type": null,
+    "baseline_speed_threshold_knots": 10.7,
+    "baseline_agreement": 1.0,
+    "explanation": {
+      "method": "mean per-position SHAP (fishing class) over the incident's fishing positions",
+      "top_drivers": [
+        {
+          "feature": "distance_from_shore",
+          "mean_value": 8193.058,
+          "mean_shap": 0.1706
+        },
+        {
+          "feature": "distance_from_port",
+          "mean_value": 1895.4627,
+          "mean_shap": -0.1055
+        },
+        {
+          "feature": "speed",
+          "mean_value": 0.0,
+          "mean_shap": 0.027
+        },
+        {
+          "feature": "hour_cos",
+          "mean_value": -0.8949,
+          "mean_shap": -0.0265
+        },
+        {
+          "feature": "speed_roll_std",
+          "mean_value": 0.0,
+          "mean_shap": -0.0229
+        }
+      ]
+    },
+    "caveats": [
+      "Apparent fishing inferred from AIS movement, not proven illegal fishing.",
+      "AIS-only: blind to vessels not broadcasting AIS (~75% of industrial fishing vessels).",
+      "MPA boundary may be approximate; verify against official WDPA limits.",
+      "An inspection lead, not courtroom evidence."
+    ],
+    "evidence_schema": "seavigil-evidence-1.0",
+    "evidence_hash": "278120eabc16b0a5cc749a4175932968d87cdc885187e3fee66bf399aa2eb470"
   }
 ]
