@@ -1,1 +1,1 @@
-{"type": "FeatureCollection", "features": []}
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[145.7742, -16.94486], [145.77414, -16.94482]]}, "properties": {"id": "great_barrier_reef_marine_park__503006170_0000", "kind": "ais_fishing_incident"}}]}
