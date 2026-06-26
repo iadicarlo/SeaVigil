@@ -4,12 +4,12 @@
   "mpa_source": "bundled sample (approximate)",
   "sar_source": null,
   "n_mpas": 4,
-  "n_scored_positions": 18,
-  "n_positions_in_mpa": 18,
+  "n_scored_positions": 10,
+  "n_positions_in_mpa": 10,
   "proba_threshold": 0.5,
   "gap_minutes": 360.0,
-  "n_incidents": 9,
-  "n_ais_incidents": 9,
+  "n_incidents": 5,
+  "n_ais_incidents": 5,
   "n_dark_vessel_sar": 0,
   "out_dir": "results/live"
 }
