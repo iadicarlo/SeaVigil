@@ -1,1 +1,1 @@
-{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[145.77423, -16.94492], [145.77423, -16.94491]]}, "properties": {"id": "great_barrier_reef_marine_park__503006170_0000", "kind": "ais_fishing_incident"}}]}
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[145.77421, -16.94489], [145.77421, -16.94489]]}, "properties": {"id": "great_barrier_reef_marine_park__503006170_0000", "kind": "ais_fishing_incident"}}]}

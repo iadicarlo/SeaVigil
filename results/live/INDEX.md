@@ -4,8 +4,8 @@
 
 | id | type | MPA | start (UTC) | score / mean p |
 |---|---|---|---|---:|
-| [great_barrier_reef_marine_park__503006170_0000](great_barrier_reef_marine_park__503006170_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T15:07:36Z | 0.58 |
-| [great_barrier_reef_marine_park__503024660_0000](great_barrier_reef_marine_park__503024660_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T15:07:50Z | 0.58 |
-| [great_barrier_reef_marine_park__503172250_0000](great_barrier_reef_marine_park__503172250_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T15:08:22Z | 0.58 |
-| [great_barrier_reef_marine_park__529011000_0000](great_barrier_reef_marine_park__529011000_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T15:08:25Z | 0.58 |
-| [great_barrier_reef_marine_park__503683400_0000](great_barrier_reef_marine_park__503683400_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T15:08:31Z | 0.54 |
+| [great_barrier_reef_marine_park__503006170_0000](great_barrier_reef_marine_park__503006170_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T16:55:47Z | 0.54 |
+| [great_barrier_reef_marine_park__503102000_0000](great_barrier_reef_marine_park__503102000_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T16:56:00Z | 0.53 |
+| [great_barrier_reef_marine_park__503475700_0000](great_barrier_reef_marine_park__503475700_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T16:56:13Z | 0.54 |
+| [great_barrier_reef_marine_park__503177400_0000](great_barrier_reef_marine_park__503177400_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T16:56:35Z | 0.53 |
+| [great_barrier_reef_marine_park__503024660_0000](great_barrier_reef_marine_park__503024660_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T16:56:49Z | 0.54 |
