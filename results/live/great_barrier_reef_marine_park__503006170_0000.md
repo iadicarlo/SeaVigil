@@ -4,8 +4,8 @@
 - **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
 - **EEZ:** Australia EEZ (Australia)  (flag matches coastal state)
 - **Vessel:** 🇦🇺 BANDICOOT  ·  **gear:** unknown
-- **When (UTC):** 2026-06-28T02:28:43Z → 2026-06-28T02:28:43Z (0.0 h)
-- **Apparent fishing:** 1 of 1 in-MPA positions; mean p=0.68, max p=0.68
+- **When (UTC):** 2026-06-28T06:53:45Z → 2026-06-28T06:53:45Z (0.0 h)
+- **Apparent fishing:** 1 of 1 in-MPA positions; mean p=0.63, max p=0.63
 - **Where:** -16.945, 145.774 (centroid)
 - **Vs. speed baseline:** the trivial rule (speed < 10.7 kn) also flags 100% of these positions; here the speed rule alone suffices.
 
@@ -15,11 +15,11 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions._
 
 | feature | mean value | mean SHAP |
 |---|---:|---:|
-| `distance_from_shore` | 9283.745 | +0.212 |
-| `distance_from_port` | 1695.000 | -0.105 |
-| `speed` | 0.000 | +0.043 |
-| `hour_cos` | 0.799 | +0.031 |
-| `speed_roll_std` | 0.000 | -0.023 |
+| `distance_from_shore` | 9281.429 | +0.202 |
+| `distance_from_port` | 1692.414 | -0.108 |
+| `speed` | 0.000 | +0.040 |
+| `speed_roll_std` | 0.000 | -0.018 |
+| `hour_sin` | 0.973 | +0.017 |
 
 ## Caveats
 
@@ -34,7 +34,7 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions._
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
 - **Model confidence:** Fishing probabilities are well-calibrated (Brier 0.0915 on 408,194 held-out positions from vessels not seen in training); read the score as a probability.
-- **Integrity (SHA-256 of canonical facts):** `00d82ac63bb7cf47861acf581845496b74bdc978565402005ef2ceceb131d97c`
+- **Integrity (SHA-256 of canonical facts):** `00a5eeeeca69812031b341da2855f47d091da1cd7f9c110a627b92e672c6c8de`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._
