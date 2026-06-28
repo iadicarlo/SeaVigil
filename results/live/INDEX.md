@@ -1,10 +1,11 @@
 # In-MPA records
 
-4 record(s): 4 AIS fishing incident(s), 0 dark-vessel SAR detection(s).
+5 record(s): 5 AIS fishing incident(s), 0 dark-vessel SAR detection(s).
 
 | id | type | MPA | start (UTC) | score / mean p |
 |---|---|---|---|---:|
-| [great_barrier_reef_marine_park__503144690_0000](great_barrier_reef_marine_park__503144690_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T22:53:51Z | 0.67 |
-| [great_barrier_reef_marine_park__334853000_0000](great_barrier_reef_marine_park__334853000_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T22:54:58Z | 0.67 |
-| [great_barrier_reef_marine_park__553111786_0000](great_barrier_reef_marine_park__553111786_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T22:55:04Z | 0.67 |
-| [great_barrier_reef_marine_park__503000239_0000](great_barrier_reef_marine_park__503000239_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T22:55:08Z | 0.79 |
+| [great_barrier_reef_marine_park__503754000_0000](great_barrier_reef_marine_park__503754000_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T23:53:27Z | 0.68 |
+| [great_barrier_reef_marine_park__503006170_0000](great_barrier_reef_marine_park__503006170_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T23:53:37Z | 0.68 |
+| [great_barrier_reef_marine_park__503011670_0000](great_barrier_reef_marine_park__503011670_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T23:53:40Z | 0.68 |
+| [great_barrier_reef_marine_park__557009600_0000](great_barrier_reef_marine_park__557009600_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T23:54:28Z | 0.68 |
+| [great_barrier_reef_marine_park__413526060_0000](great_barrier_reef_marine_park__413526060_0000.md) | AIS fishing | Great Barrier Reef Marine Park | 2026-06-27T23:54:41Z | 0.55 |

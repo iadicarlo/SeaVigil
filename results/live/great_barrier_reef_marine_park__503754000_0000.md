@@ -4,8 +4,8 @@
 - **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
 - **EEZ:** Australia EEZ (Australia)  (flag matches coastal state)
 - **Vessel:** 🇦🇺 SVITZER GLENROCK  ·  **gear:** unknown  ·  Tug  ·  to CAIRNS
-- **When (UTC):** 2026-06-27T21:53:26Z → 2026-06-27T21:53:26Z (0.0 h)
-- **Apparent fishing:** 1 of 1 in-MPA positions; mean p=0.66, max p=0.66
+- **When (UTC):** 2026-06-27T23:53:27Z → 2026-06-27T23:53:27Z (0.0 h)
+- **Apparent fishing:** 1 of 1 in-MPA positions; mean p=0.68, max p=0.68
 - **Where:** -16.941, 145.778 (centroid)
 - **Vs. speed baseline:** the trivial rule (speed < 10.7 kn) also flags 100% of these positions; here the speed rule alone suffices.
 
@@ -15,11 +15,11 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions._
 
 | feature | mean value | mean SHAP |
 |---|---:|---:|
-| `distance_from_shore` | 8701.895 | +0.209 |
-| `distance_from_port` | 1281.825 | -0.102 |
-| `speed` | 0.000 | +0.049 |
-| `hour_cos` | 0.850 | +0.029 |
-| `speed_roll_std` | 0.000 | -0.026 |
+| `distance_from_shore` | 8702.642 | +0.207 |
+| `distance_from_port` | 1282.768 | -0.087 |
+| `speed` | 0.000 | +0.046 |
+| `hour_cos` | 1.000 | +0.028 |
+| `speed_roll_std` | 0.000 | -0.023 |
 
 ## Caveats
 
@@ -34,7 +34,7 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions._
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
 - **Model confidence:** Fishing probabilities are well-calibrated (Brier 0.0915 on 408,194 held-out positions from vessels not seen in training); read the score as a probability.
-- **Integrity (SHA-256 of canonical facts):** `640067ea778365a9641fb163c8770af101cd98b421d2047e6ffd9f50972693df`
+- **Integrity (SHA-256 of canonical facts):** `43b64d055f5c3934a84d759eec9f6d6ae8ad610cdf6b61b03cde935ce18c17ef`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._
