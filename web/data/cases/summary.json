@@ -1,0 +1,15 @@
+{
+ "n_detections": 724,
+ "n_cases": 529,
+ "n_corroborated_multi_sensor": 4,
+ "by_sensor_count": {
+  "1": 525,
+  "2": 4
+ },
+ "generated_from": [
+  "incidents",
+  "live",
+  "sar",
+  "behaviors"
+ ]
+}
