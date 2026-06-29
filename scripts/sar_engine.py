@@ -133,10 +133,10 @@ def main() -> None:
                "--vds", a.vds, "--scene", name, "--bbox", *[str(x) for x in aoi],
                "--out", str(per), "--conf", str(a.conf), "--device", a.device]
         r = subprocess.run(cmd)
-        processed.append(name)
         if r.returncode != 0 or not per.exists():
-            print(f"    detection failed for {name}; recorded as processed, skipping")
+            print(f"    detection failed for {name}; will retry next run")
             continue
+        processed.append(name)   # mark done only on a successful detection (transient failures retry)
         with open(per) as f:
             rd = csv.reader(f)
             h = next(rd, None)

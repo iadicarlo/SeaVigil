@@ -48,6 +48,14 @@ import sys
 import tempfile
 from pathlib import Path
 
+# Make PROJ and GDAL find their data dirs even when this interpreter is invoked directly (the SAR
+# engine does, in CI, with no conda activation). Without PROJ_DATA, gdal.Warp with an SRS fails
+# with "PROJ: proj_create_from_database ... failed / Invalid SRS for -te_srs".
+for _var, _sub in (("PROJ_DATA", "proj"), ("PROJ_LIB", "proj"), ("GDAL_DATA", "gdal")):
+    _cand = os.path.join(sys.prefix, "share", _sub)
+    if os.path.isdir(_cand):
+        os.environ.setdefault(_var, _cand)
+
 # zoom-13 web-mercator pixel: exactly what the model's preprocessing warps S1 GRD to.
 PX_3857 = 2 * math.pi * 6378137 / 512 / (2 ** 13)  # 9.5547 m
 S3_ENDPOINT = "eodata.dataspace.copernicus.eu"
