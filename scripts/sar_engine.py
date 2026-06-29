@@ -36,6 +36,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))   # so seavigil.landmask is importable for water-targeting the AOI
 CATALOG = "https://catalogue.dataspace.copernicus.eu/odata/v1/Products"
 WATCHLIST = ROOT / "data" / "watchlist.json"
 STATE = ROOT / "data" / "sar_state.json"
@@ -72,13 +73,44 @@ def _footprint_centroid(wkt):
         return None
 
 
+def _scene_polygon(wkt):
+    """Parse the scene footprint WKT (geography'SRID=4326;POLYGON((...))') to a shapely polygon."""
+    if not wkt or "POLYGON" not in wkt:
+        return None
+    try:
+        from shapely import wkt as shp_wkt
+        return shp_wkt.loads(wkt[wkt.index("POLYGON"):])
+    except Exception:
+        return None
+
+
 def _aoi_for(scene_wkt, area_bbox, aoi_deg):
-    """A bounded AOI: an aoi_deg box around the scene centroid, clamped inside the area bbox."""
+    """A bounded AOI over WATER: an aoi_deg box near the scene centroid, clamped to the area bbox.
+    If the centroid is on land (a coastal scene), pick the water point inside both the scene
+    footprint and the area nearest the centroid, so the engine detects ocean and not bright land."""
+    from seavigil.landmask import is_land
     w, s, e, n = area_bbox
     c = _footprint_centroid(scene_wkt)
     cx, cy = c if c else ((w + e) / 2, (s + n) / 2)
     cx = min(max(cx, w), e)
     cy = min(max(cy, s), n)
+    if is_land(cx, cy):
+        import itertools
+        from shapely.geometry import Point
+        poly = _scene_polygon(scene_wkt)
+        best = None
+        for i, j in itertools.product(range(9), range(9)):
+            px = w + (e - w) * (i + 0.5) / 9
+            py = s + (n - s) * (j + 0.5) / 9
+            if poly is not None and not poly.contains(Point(px, py)):
+                continue
+            if is_land(px, py):
+                continue
+            d = (px - cx) ** 2 + (py - cy) ** 2
+            if best is None or d < best[0]:
+                best = (d, px, py)
+        if best:
+            cx, cy = best[1], best[2]
     h = aoi_deg / 2
     return [max(cx - h, w), max(cy - h, s), min(cx + h, e), min(cy + h, n)]
 
