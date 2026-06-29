@@ -56,3 +56,7 @@ data/natural_earth/
 
 # Transient live-monitor auth cache (re-queried each run)
 data/authorizations_live.json
+
+# Rolling AIS buffer for live spoofing (persisted via Actions cache, not committed)
+data/positions/ais_buffer.csv
+data/positions/ais_new.csv

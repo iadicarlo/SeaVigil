@@ -1,16 +1,18 @@
-name: Near-real-time monitor (GFW events)
+name: Near-real-time monitor (GFW events + AIS spoofing)
 
-# Pulls recent Global Fishing Watch events (gaps = going dark, encounters = transshipment),
-# keeps the high-signal ones (a foreign or unauthorized vessel inside another state's EEZ, or
-# a no-take reserve incursion), grades + evidences them, and republishes the ?live view and
-# the alerts feed (alerts.json + alerts.xml). Runs on GitHub's servers so it works whether or
-# not your computer is on. Needs the GFW_TOKEN repo secret (events + authorization both use it).
-# GitHub cron is best-effort; the job commits when data changes, which keeps the scheduled
-# workflow from being auto-disabled after 60 days of no commits.
+# Two near-real-time sources, republished to the ?live view and the alerts feed each hour:
+#  1. GFW Events API: recent gaps (going dark) + encounters (transshipment), kept when a
+#     foreign or unauthorized vessel is inside another state's EEZ, or a no-take incursion.
+#  2. AIS spoofing: live AIS (aisstream) is streamed into a rolling 12h buffer (persisted by
+#     the Actions cache, not committed) so the detector accumulates enough per-vessel track
+#     to flag impossible-speed jumps or two vessels sharing one MMSI.
+# GFW_TOKEN (events + authorization) is required. AISSTREAM_KEY enables the spoofing stream;
+# without it, the run does GFW events only (logged, not silent). The job commits when the
+# data changes, which keeps the scheduled workflow from being auto-disabled.
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours (GFW events lag ~3-4 days, so daily-ish is plenty)
+    - cron: "17 * * * *"   # hourly (offset :17); each run adds AIS to the rolling buffer
   workflow_dispatch:
 
 permissions:
@@ -29,9 +31,28 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.12"
-      - name: Pull recent GFW events, grade, rebuild live view + alerts
+      - name: Restore rolling AIS buffer (12h, for spoofing)
+        uses: actions/cache@v4
+        with:
+          path: data/positions/ais_buffer.csv
+          key: ais-buffer-${{ github.run_id }}
+          restore-keys: ais-buffer-
+      - name: Stream live AIS into the rolling buffer
+        env:
+          AISSTREAM_KEY: ${{ secrets.AISSTREAM_KEY }}
+        run: |
+          if [ -z "$AISSTREAM_KEY" ]; then
+            echo "No AISSTREAM_KEY; spoofing disabled this run (GFW events still run)."; exit 0
+          fi
+          uv run --with websockets python scripts/fetch_live_ais.py \
+            --bbox=-85,-180,85,180 --seconds 200 --max 30000 \
+            --out data/positions/ais_new.csv || echo "stream incomplete; continuing with what was captured"
+          uv run python scripts/update_ais_buffer.py \
+            --new data/positions/ais_new.csv --buffer data/positions/ais_buffer.csv --hours 12
+      - name: Pull GFW events, detect spoofing, rebuild live view + alerts
         env:
           GFW_TOKEN: ${{ secrets.GFW_TOKEN }}
+          AIS_BUFFER: data/positions/ais_buffer.csv
         run: |
           if [ -z "$GFW_TOKEN" ]; then
             echo "No GFW_TOKEN secret; the near-real-time monitor needs it for events + authorization."; exit 1
@@ -47,8 +68,7 @@ jobs:
             echo "No data changes."; exit 0
           fi
           git commit -m "chore: near-real-time monitor refresh"
-          # Push is race-prone (a queued run may have advanced main); rebase + retry,
-          # preferring the latest run on conflict.
+          # Push is race-prone (a queued run may have advanced main); rebase + retry.
           for attempt in 1 2 3; do
             if git push; then echo "pushed"; exit 0; fi
             echo "push rejected; syncing and retrying ($attempt)"

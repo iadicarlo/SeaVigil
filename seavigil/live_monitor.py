@@ -18,6 +18,7 @@ import json
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from seavigil.flags import emoji_for
 
@@ -146,6 +147,34 @@ def encounter_to_dossier(e: dict) -> dict | None:
     ]}
     d["caveats"] = _ENC_CAVEATS
     return d
+
+
+def spoofing_dossiers(buffer_path: str | Path) -> list[dict]:
+    """Run the AIS-spoofing detector over the rolling positions buffer.
+
+    Spoofing (impossible-speed jumps, or two vessels broadcasting one MMSI) needs a time
+    series per vessel, which a single short stream cannot give; the buffer accumulates
+    hours of aisstream fixes across runs so vessels build up enough track to flag.
+    incident_id is keyed by MMSI so a persistent spoofer is one stable alert, not a new
+    one each run. Returns [] if the buffer is absent or empty (the bootstrap case).
+    """
+    import pandas as pd  # noqa: PLC0415
+
+    from seavigil import spoofing  # noqa: PLC0415
+
+    p = Path(buffer_path)
+    if not p.exists():
+        return []
+    df = pd.read_csv(p)
+    if df.empty:
+        return []
+    out = spoofing.build_spoofing_dossiers(df)
+    for d in out:
+        d["incident_id"] = f"live_spoof_{d['vessel_id']}"
+        d["flag_emoji"] = emoji_for(d.get("flag"))
+        d["_no_take"] = False
+        d["_rfmo"] = []
+    return out
 
 
 def build_dossiers(token: str, *, days: int = 14, max_per_type: int = 1000) -> list[dict]:

@@ -122,16 +122,25 @@ def main() -> None:
     dossiers = live_monitor.build_dossiers(token, days=14, max_per_type=1500)
     enrich_jurisdiction(dossiers)  # eez_name / sovereign / foreign (from the GFW event flag)
     # High signal only: a foreign vessel inside another state's EEZ, or a no-take incursion.
-    feed = [d for d in dossiers if d.get("eez_foreign") is True or d.get("_no_take")]
-    feed.sort(key=lambda d: d.get("time_end_utc") or "", reverse=True)
-    feed = feed[:MAX_FEED]
-    print(f"fetched {len(dossiers)} recent events -> {len(feed)} high-signal (foreign / no-take)")
+    gfw = [d for d in dossiers if d.get("eez_foreign") is True or d.get("_no_take")]
+    gfw.sort(key=lambda d: d.get("time_end_utc") or "", reverse=True)
+
+    # AIS spoofing over the rolling positions buffer (always kept; the anomaly is the signal).
+    buffer = os.environ.get("AIS_BUFFER")
+    spoof: list[dict] = []
+    if buffer:
+        spoof = live_monitor.spoofing_dossiers(buffer)
+        enrich_jurisdiction(spoof)
+    feed = (spoof + gfw)[:MAX_FEED]
+    print(f"fetched {len(dossiers)} recent events -> {len(gfw)} high-signal (foreign / no-take) "
+          f"+ {len(spoof)} spoofing")
 
     mmsis = [d["vessel_id"] for d in feed if str(d.get("vessel_id") or "").isdigit()]
     cache = authorization.build_cache(mmsis, token, out_path=LIVE_AUTH_CACHE)
     authorization.enrich_authorization(feed, cache)
     for d in feed:
-        d["severity"], d["severity_reason"] = _severity(d)
+        if d.get("type") != "ais_spoofing":  # spoofing keeps the detector's own severity
+            d["severity"], d["severity_reason"] = _severity(d)
 
     evidence.enrich_evidence(feed)
     LIVE_INC.mkdir(parents=True, exist_ok=True)
