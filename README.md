@@ -2,7 +2,7 @@
 
 **A near-real-time, explainable, open-source monitor for illegal-fishing behaviors - with a reason, an authorization check, and an auditable evidence dossier for every flag.**
 
-Live: **https://iadicarlo.github.io/seavigil** - a worldwide showcase, a near-real-time `?live` monitor, and an [alerts feed](https://iadicarlo.github.io/seavigil/alerts.html).
+Live: **https://iadicarlo.github.io/seavigil** - the front page is the near-real-time monitor (our own Sentinel-1 dark-vessel detection merged with live AIS and consumed GFW events); the historical worldwide sample is at `?showcase`, with an [alerts feed](https://iadicarlo.github.io/seavigil/alerts.html).
 
 SeaVigil flags vessels that show seemingly illegal behavior and, for each one, answers the questions a monitoring platform usually leaves open: *why* was it flagged, *is the vessel authorized* to be there, and *can the record be audited*. It runs as a static site (no server, no cloud account) and the whole pipeline is open source.
 
@@ -24,8 +24,8 @@ Every flag is tagged with the EEZ it falls in (global Marine Regions boundaries)
 
 ## Three ways to see it
 
-- **Showcase** (the homepage): an illustrative 584 records across 132 EEZs and 59 flag states, on real WDPA + EEZ boundaries.
-- **Near-real-time monitor** (`?live`): the GFW Events API (gaps + encounters, about a 3-4 day lag) plus live AIS spoofing, filtered to the high-signal subset (a foreign or unauthorized vessel inside another state's EEZ, or a no-take incursion), refreshed hourly by a GitHub Action.
+- **Near-real-time monitor** (the homepage): our own Sentinel-1 dark-vessel detections merged with live AIS spoofing and the GFW Events API (gaps + encounters, about a 3-4 day lag), filtered to the high-signal subset (a foreign or unauthorized vessel inside another state's EEZ, or a no-take incursion). Our SAR engine refreshes within hours of each satellite pass; the events refresh hourly, by GitHub Actions.
+- **Worldwide showcase** (`?showcase`): an illustrative 584 records across 132 EEZs and 59 flag states, on real WDPA + EEZ boundaries.
 - **Alerts** ([alerts.html](https://iadicarlo.github.io/seavigil/alerts.html) + an [RSS feed](https://iadicarlo.github.io/seavigil/alerts.xml)): new high-severity leads, each carrying its flag, EEZ, authorization status, and reason.
 
 The SAR (dark-vessel) layer can be either **consumed** from GFW or **run by us on demand**. The `?sar` view shows a real run: our own pass of the open, pre-trained **Allen Institute** Sentinel-1 detector (Apache-2.0, the model behind Skylight) over a June 2026 Copernicus scene of the **Galapagos Marine Reserve**, reading just the chosen area of interest straight from the Cloud-Optimized GeoTIFFs on S3 (no bulk download). [`scripts/run_sentinel1_detection.py`](scripts/run_sentinel1_detection.py) runs it locally on CPU, and [`notebooks/sentinel1_vessel_detection.ipynb`](notebooks/sentinel1_vessel_detection.ipynb) runs the same path on a free Colab GPU; [`scripts/sar_detections_to_incidents.py`](scripts/sar_detections_to_incidents.py) then folds the detections (length, heading, fishing-vessel class) into the `?sar` view with jurisdiction, dark-vessel AIS matching, and evidence. So we control where and when we look, instead of waiting for GFW to publish.
