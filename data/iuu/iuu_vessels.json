@@ -1,0 +1,287 @@
+{
+ "vessels": [
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Amorinn",
+   "aliases": [
+    "Iceberg II",
+    "Lome",
+    "Noemi"
+   ],
+   "flag": "",
+   "imo": "7036345",
+   "callsign": "5VAN9",
+   "date_listed": "2003"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Antony",
+   "aliases": [
+    "Urgora",
+    "Atlantic Oji Maru No. 33",
+    "Oji Maru No. 33"
+   ],
+   "flag": "",
+   "imo": "7236634",
+   "callsign": "PQMG",
+   "date_listed": "2016"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Asian Warrior",
+   "aliases": [
+    "Kunlun",
+    "Taishan",
+    "Chang Bai",
+    "Hongshui",
+    "Huang He 22",
+    "Sima Qian Baru 22",
+    "Corvus",
+    "Galaxy",
+    "Ina Maka",
+    "Black Moon",
+    "Red Moon",
+    "Eolo",
+    "Thule",
+    "Magnus",
+    "Dorita"
+   ],
+   "flag": "",
+   "imo": "7322897",
+   "callsign": "",
+   "date_listed": "2003"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Atlantic Wind",
+   "aliases": [
+    "Zemour 2",
+    "Luampa",
+    "Yongding",
+    "Jiangfeng",
+    "Chengdu",
+    "Shaanxi Henan 33",
+    "Xiong Nu Baru 33",
+    "Draco I",
+    "Liberty",
+    "Chilbo San 33",
+    "Hammer",
+    "Seo Yang No. 88",
+    "Carran"
+   ],
+   "flag": "",
+   "imo": "9042001",
+   "callsign": "5IM813",
+   "date_listed": "2004"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Baroon",
+   "aliases": [
+    "Lana",
+    "Zeus",
+    "Triton I"
+   ],
+   "flag": "",
+   "imo": "9037537",
+   "callsign": "5IM376",
+   "date_listed": "2007"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Challenge",
+   "aliases": [
+    "Perseverance",
+    "Mila"
+   ],
+   "flag": "",
+   "imo": "6622642",
+   "callsign": "HO5381",
+   "date_listed": "2006"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Cobija",
+   "aliases": [
+    "Cape Flower",
+    "Cape Wrath II"
+   ],
+   "flag": "",
+   "imo": "7330399",
+   "callsign": "CPB3000",
+   "date_listed": "2023"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Good Hope",
+   "aliases": [
+    "Toto"
+   ],
+   "flag": "Nigeria",
+   "imo": "7020126",
+   "callsign": "5NMU",
+   "date_listed": "2007"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Heavy Sea",
+   "aliases": [
+    "Duero",
+    "Julius",
+    "Keta",
+    "Sherpa Uno"
+   ],
+   "flag": "",
+   "imo": "7322926",
+   "callsign": "3ENF8",
+   "date_listed": "2004"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Jinzhang",
+   "aliases": [
+    "Hai Lung",
+    "Yele",
+    "Ray",
+    "Kily",
+    "Constant",
+    "Tropic",
+    "Isla Graciosa"
+   ],
+   "flag": "",
+   "imo": "6607666",
+   "callsign": "PQBT",
+   "date_listed": "2006"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Koosha 4",
+   "aliases": [],
+   "flag": "Iran, Islamic Republic of",
+   "imo": "7905443",
+   "callsign": "9BQK",
+   "date_listed": "2011"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Limpopo",
+   "aliases": [
+    "Ross",
+    "Alos",
+    "Lena",
+    "Cap George"
+   ],
+   "flag": "",
+   "imo": "7388267",
+   "callsign": "",
+   "date_listed": "2003"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Nika",
+   "aliases": [],
+   "flag": "",
+   "imo": "8808654",
+   "callsign": "HP6686",
+   "date_listed": "2020"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Northern Warrior",
+   "aliases": [
+    "Millennium",
+    "Sip 3"
+   ],
+   "flag": "Angola",
+   "imo": "8808903",
+   "callsign": "PJSA",
+   "date_listed": "2016"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Perlon",
+   "aliases": [
+    "Cherne",
+    "Bigaro",
+    "Hoking",
+    "Sargo",
+    "Lugalpesca"
+   ],
+   "flag": "",
+   "imo": "5062479",
+   "callsign": "5NTV21",
+   "date_listed": "2003"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Pescacisne 1, Pescacisne 2",
+   "aliases": [
+    "Zemour 1",
+    "Kadei",
+    "Songhua",
+    "Yunnan",
+    "Nihewan",
+    "Huiquan",
+    "Wutaishan Anhui 44",
+    "Yangzi Hua 44",
+    "Trosky",
+    "Paloma V"
+   ],
+   "flag": "",
+   "imo": "9319856",
+   "callsign": "9LU2119",
+   "date_listed": "2008"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "Sea Urchin",
+   "aliases": [
+    "Aldabra",
+    "Omoa I"
+   ],
+   "flag": "",
+   "imo": "7424891",
+   "callsign": "5IM207",
+   "date_listed": "2007"
+  },
+  {
+   "source": "CCAMLR",
+   "list": "Non-Contracting Party",
+   "name": "STS-50",
+   "aliases": [
+    "Ayda",
+    "Sea Breeze",
+    "Andrey Dolgov",
+    "Std No. 2",
+    "Sun Tai No. 2",
+    "Shinsei Maru No. 2"
+   ],
+   "flag": "",
+   "imo": "8514772",
+   "callsign": "5VDR2",
+   "date_listed": "2016"
+  }
+ ],
+ "sources": [
+  "CCAMLR Non-Contracting Party",
+  "CCAMLR Contracting Party"
+ ],
+ "errors": []
+}
