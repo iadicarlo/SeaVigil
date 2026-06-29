@@ -205,7 +205,12 @@ def _match_ais(dossiers, ais_csv, radius_nm=2.0, coverage_nm=50.0, window_min=30
 
 
 def build(detections_csv: str, ais_csv: str | None = None) -> list[dict]:
-    mpa = MPAIndex.from_geojson(str(MPA_GEOJSON))
+    # WDPA is not redistributed as raw GeoJSON (license), so the reserve set may be absent (e.g. on
+    # a fresh CI checkout). Without it, detections are still graded by EEZ + dark + activity, just
+    # without the "inside a reserve" tag.
+    mpa = MPAIndex.from_geojson(str(MPA_GEOJSON)) if MPA_GEOJSON.exists() else None
+    if mpa is None:
+        print(f"note: {MPA_GEOJSON.name} absent; grading by EEZ + activity, no reserve tagging.")
     dossiers = []
     with open(detections_csv) as f:
         for seq, r in enumerate(csv.DictReader(f)):
@@ -214,7 +219,7 @@ def build(detections_csv: str, ais_csv: str | None = None) -> list[dict]:
             except (KeyError, ValueError):
                 continue
             scene = r.get("scene_id", "")
-            mi = int(mpa.assign([lon], [lat])[0]) if len(mpa) else -1
+            mi = int(mpa.assign([lon], [lat])[0]) if (mpa and len(mpa)) else -1
             in_mpa = mi >= 0
             m = mpa.mpas[mi] if in_mpa else None
             dossiers.append(_dossier(
