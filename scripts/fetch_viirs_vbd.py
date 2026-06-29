@@ -6,13 +6,21 @@ VBD finds vessels that use bright lights to attract catch (squid jiggers, some p
 night. That is exactly the distant-water fleet that terrestrial AIS misses offshore, so it is the
 free imagery layer that complements our Sentinel-1 SAR for the open-ocean dark fleet.
 
-Free "final" (fnl) data is open but behind a free EOG account: register at
-https://eogdata.mines.edu/products/register/ , then set EOG_USER and EOG_PASS in the environment.
-Auth is a Keycloak password grant; the client and endpoint are overridable via env if EOG changes
-them (EOG_TOKEN_URL, EOG_CLIENT_ID, EOG_CLIENT_SECRET).
+Two ways to get the data:
+  FREE (manual): register a free EOG account, download a VBD CSV from the web region selector at
+    https://eogdata.mines.edu/vbd/ , then run this with --from-file to parse it. No payment; you
+    fetch each night by hand.
+  PAID (programmatic, automatable): non-commercial programmatic access is a nominal 3 to 6 month
+    fee (see https://eogdata.mines.edu/products/vbd/ for the contact). It uses an OAuth2.0 bearer
+    token; set EOG_USER and EOG_PASS and this fetches automatically. Endpoint and client are
+    overridable via env (EOG_TOKEN_URL, EOG_CLIENT_ID, EOG_CLIENT_SECRET).
 
-    EOG_USER=... EOG_PASS=... uv run python scripts/fetch_viirs_vbd.py \
-        --date 20260510 --out data/positions/vbd_detections.csv
+    # free, after a manual download from https://eogdata.mines.edu/vbd/ :
+    uv run python scripts/fetch_viirs_vbd.py --date 20260510 \
+        --from-file VBD_npp_d20260510_global-saa_noaa_ops_v23.csv --out data/positions/vbd_detections.csv
+    # paid programmatic:
+    EOG_USER=... EOG_PASS=... uv run python scripts/fetch_viirs_vbd.py --date 20260510 \
+        --out data/positions/vbd_detections.csv
 
 Output CSV (the viirs_vbd_to_incidents.py input): lon, lat, timestamp, radiance, qf, scene_id.
 """
@@ -80,16 +88,26 @@ def main() -> None:
     ap.add_argument("--date", required=True, help="UTC date YYYYMMDD (free 'final' data lags ~weeks)")
     ap.add_argument("--region", default="global-saa", help="VBD region (default global-saa)")
     ap.add_argument("--out", default="data/positions/vbd_detections.csv")
+    ap.add_argument("--from-file", default=None,
+                    help="parse a VBD CSV downloaded by hand from https://eogdata.mines.edu/vbd/ "
+                         "(the free web tier); skips the paid programmatic API")
     a = ap.parse_args()
 
-    user, pw = os.environ.get("EOG_USER"), os.environ.get("EOG_PASS")
-    if not (user and pw):
-        raise SystemExit("Set EOG_USER and EOG_PASS (free account: https://eogdata.mines.edu/products/register/).")
-
-    token = _token(user, pw)
-    url = f"{VBD_BASE}/{a.region}/fnl/VBD_npp_d{a.date}_{a.region}_noaa_ops_v23.csv"
-    print(f"downloading {url}")
-    text = _download(url, token)
+    if a.from_file:
+        text = Path(a.from_file).read_text()
+        print(f"parsing local VBD file {a.from_file}")
+    else:
+        user, pw = os.environ.get("EOG_USER"), os.environ.get("EOG_PASS")
+        if not (user and pw):
+            raise SystemExit(
+                "Programmatic download needs a PAID EOG subscription and EOG_USER/EOG_PASS "
+                "(nominal non-commercial fee; see https://eogdata.mines.edu/products/vbd/ for the "
+                "contact). For free, download a CSV from https://eogdata.mines.edu/vbd/ and pass "
+                "it with --from-file.")
+        token = _token(user, pw)
+        url = f"{VBD_BASE}/{a.region}/fnl/VBD_npp_d{a.date}_{a.region}_noaa_ops_v23.csv"
+        print(f"downloading {url}")
+        text = _download(url, token)
 
     areas = _areas()
     ts = int(datetime.strptime(a.date, "%Y%m%d").replace(tzinfo=timezone.utc).timestamp())
