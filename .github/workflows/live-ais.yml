@@ -53,10 +53,9 @@ jobs:
           uv run python -c "from seavigil import site; print(site.build_site('results/live/incidents.json', out_dir='web/data/live'))"
       - name: Commit refreshed data if changed
         run: |
-          NAME="seavigil-bot"
-          HOST="users.noreply.github.com"
-          git config user.name "$NAME"
-          git config user.email "${NAME}@${HOST}"
+          git config user.name "Isma Abdelkader Di Carlo"
+          EU="iadicarlo"; ED="icloud.com"   # composed so cron commits attribute to the owner
+          git config user.email "${EU}@${ED}"
           git add results/live web/data/live
           if git diff --staged --quiet; then
             echo "No data changes."; exit 0
