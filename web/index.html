@@ -218,7 +218,7 @@
         hdr_global: "{total} records across {n} EEZs worldwide", hdr_local: "{total} records in monitored waters",
         by_type: "by type", by_severity: "by severity", by_eez: "by jurisdiction (EEZ)", by_flag: "by flag state", by_auth: "by authorization",
         more_eez: "and {n} more EEZs", more_flags: "and {n} more flags",
-        type_ais: "AIS fishing", type_sar: "Dark (SAR)", type_spoof: "AIS spoofing", type_dark: "Going dark", type_enc: "Encounter",
+        type_ais: "AIS fishing", type_sar: "Dark (SAR)", type_vbd: "Light boat (VIIRS)", type_spoof: "AIS spoofing", type_dark: "Going dark", type_enc: "Encounter",
         sev_high: "high", sev_medium: "medium", sev_low: "low",
         auth_no_record: "no authorization on record", auth_lapsed: "authorization lapsed", auth_authorized: "authorized",
         auth_domestic: "domestic flag", auth_flag_unknown: "flag unknown", auth_unverifiable: "no vessel identity",
@@ -254,7 +254,7 @@
         hdr_global: "{total} registros en {n} ZEE de todo el mundo", hdr_local: "{total} registros en aguas monitoreadas",
         by_type: "por tipo", by_severity: "por gravedad", by_eez: "por jurisdicción (ZEE)", by_flag: "por estado de pabellón", by_auth: "por autorización",
         more_eez: "y {n} ZEE más", more_flags: "y {n} pabellones más",
-        type_ais: "Pesca AIS", type_sar: "Oscuro (SAR)", type_spoof: "Suplantación AIS", type_dark: "Apagado AIS", type_enc: "Encuentro",
+        type_ais: "Pesca AIS", type_sar: "Oscuro (SAR)", type_vbd: "Barco con luz (VIIRS)", type_spoof: "Suplantación AIS", type_dark: "Apagado AIS", type_enc: "Encuentro",
         sev_high: "alta", sev_medium: "media", sev_low: "baja",
         auth_no_record: "sin autorización registrada", auth_lapsed: "autorización vencida", auth_authorized: "autorizado",
         auth_domestic: "pabellón nacional", auth_flag_unknown: "pabellón desconocido", auth_unverifiable: "sin identidad del buque",
@@ -290,7 +290,7 @@
         hdr_global: "{total} signalements dans {n} ZEE à travers le monde", hdr_local: "{total} signalements dans les eaux surveillées",
         by_type: "par type", by_severity: "par gravité", by_eez: "par juridiction (ZEE)", by_flag: "par État du pavillon", by_auth: "par autorisation",
         more_eez: "et {n} ZEE de plus", more_flags: "et {n} pavillons de plus",
-        type_ais: "Pêche AIS", type_sar: "Obscur (SAR)", type_spoof: "Usurpation AIS", type_dark: "Extinction AIS", type_enc: "Rencontre",
+        type_ais: "Pêche AIS", type_sar: "Obscur (SAR)", type_vbd: "Bateau lumineux (VIIRS)", type_spoof: "Usurpation AIS", type_dark: "Extinction AIS", type_enc: "Rencontre",
         sev_high: "élevée", sev_medium: "moyenne", sev_low: "faible",
         auth_no_record: "aucune autorisation enregistrée", auth_lapsed: "autorisation expirée", auth_authorized: "autorisé",
         auth_domestic: "pavillon national", auth_flag_unknown: "pavillon inconnu", auth_unverifiable: "identité du navire inconnue",
@@ -326,7 +326,7 @@
         hdr_global: "{total} registos em {n} ZEE de todo o mundo", hdr_local: "{total} registos em águas monitorizadas",
         by_type: "por tipo", by_severity: "por gravidade", by_eez: "por jurisdição (ZEE)", by_flag: "por Estado de bandeira", by_auth: "por autorização",
         more_eez: "e mais {n} ZEE", more_flags: "e mais {n} bandeiras",
-        type_ais: "Pesca AIS", type_sar: "Oculta (SAR)", type_spoof: "Falsificação AIS", type_dark: "Desligamento AIS", type_enc: "Encontro",
+        type_ais: "Pesca AIS", type_sar: "Oculta (SAR)", type_vbd: "Barco com luz (VIIRS)", type_spoof: "Falsificação AIS", type_dark: "Desligamento AIS", type_enc: "Encontro",
         sev_high: "alta", sev_medium: "média", sev_low: "baixa",
         auth_no_record: "sem autorização registada", auth_lapsed: "autorização expirada", auth_authorized: "autorizado",
         auth_domestic: "bandeira nacional", auth_flag_unknown: "bandeira desconhecida", auth_unverifiable: "sem identidade da embarcação",
@@ -474,8 +474,8 @@
           summary: await getJSON(`${d}/summary.json`),
         });
         if (MODE === 'realtime') {
-          // Merge our SAR detections (data/sar) with the live events monitor (data/live).
-          const got = (await Promise.allSettled([loadDir('./data/sar'), loadDir('./data/live')]))
+          // Merge our SAR detections, VIIRS night-light boats, and the live events monitor.
+          const got = (await Promise.allSettled([loadDir('./data/sar'), loadDir('./data/vbd'), loadDir('./data/live')]))
             .filter(r => r.status === 'fulfilled').map(r => r.value);
           if (!got.length) throw new Error('real-time data unavailable');
           incidents = { type: 'FeatureCollection', features: got.flatMap(g => g.incidents.features) };
@@ -524,12 +524,12 @@
       map.addLayer({ id: 'incident-glow', type: 'circle', source: 'incidents',
         paint: {
           'circle-radius': ['interpolate', ['linear'], ['coalesce', ['get', 'score'], 0.8], 0.5, 9, 1, 16],
-          'circle-color': ['match', ['get', 'kind'], 'dark_vessel_sar', '#e0455e', 'ais_spoofing', '#c084fc', 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#f4a236'],
+          'circle-color': ['match', ['get', 'kind'], 'dark_vessel_sar', '#e0455e', 'viirs_boat', '#fb923c', 'ais_spoofing', '#c084fc', 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#f4a236'],
           'circle-opacity': 0.28, 'circle-blur': 1 } });
       map.addLayer({ id: 'incident-pts', type: 'circle', source: 'incidents',
         paint: {
           'circle-radius': ['interpolate', ['linear'], ['coalesce', ['get', 'score'], 0.8], 0.5, 3.5, 1, 7],
-          'circle-color': ['match', ['get', 'kind'], 'dark_vessel_sar', '#e0455e', 'ais_spoofing', '#c084fc', 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#f4a236'],
+          'circle-color': ['match', ['get', 'kind'], 'dark_vessel_sar', '#e0455e', 'viirs_boat', '#fb923c', 'ais_spoofing', '#c084fc', 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#f4a236'],
           'circle-stroke-color': ['case',
             ['boolean', ['feature-state', 'selected'], false], '#3ff0c0',
             ['boolean', ['feature-state', 'hover'], false], '#ffffff', '#081620'],
@@ -599,7 +599,7 @@
       const rows = o => Object.entries(o).map(([k, v]) =>
         `<div class="stat-row"><span>${k}</span><span>${v}</span></div>`).join('');
       const tl = { ais_fishing_incident: t('type_ais'), dark_vessel_sar: t('type_sar'),
-        ais_spoofing: t('type_spoof'), ais_disabling: t('type_dark'), encounter: t('type_enc') };
+        viirs_boat: t('type_vbd'), ais_spoofing: t('type_spoof'), ais_disabling: t('type_dark'), encounter: t('type_enc') };
       const byType = Object.fromEntries(Object.entries(s.by_type).map(([k, v]) => [tl[k] || k, v]));
       const sev = s.by_severity || {};
       const bySev = ['high', 'medium', 'low'].filter(k => sev[k]);
