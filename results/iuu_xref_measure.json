@@ -1,0 +1,38 @@
+{
+  "listed_vessels": 18,
+  "recall_by_imo": {
+    "hit": 18,
+    "total": 18,
+    "rate": 1.0
+  },
+  "recall_by_alias_name": {
+    "hit": 81,
+    "total": 82,
+    "rate": 0.988
+  },
+  "name_collision_risk": {
+    "generic_aliases": 42,
+    "of_aliases": 82,
+    "examples": [
+      "Aldabra",
+      "Alos",
+      "Ayda",
+      "Bigaro",
+      "Carran",
+      "Chengdu",
+      "Cherne",
+      "Corvus",
+      "Dorita",
+      "Duero",
+      "Eolo",
+      "Galaxy"
+    ],
+    "note": "short single-word aliases; as a name alone they could match an unrelated legitimate vessel, which is why a name-only hit is surfaced as 'verify', not asserted as listed."
+  },
+  "negative_control": {
+    "size": 10,
+    "strong_false_positives": 0,
+    "name_only_collisions": [],
+    "note": "strong (IMO/callsign) false positives should be 0; a name-only collision here is the very low-precision case the design downgrades to 'verify'."
+  }
+}
