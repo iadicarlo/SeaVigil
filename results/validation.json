@@ -1,0 +1,261 @@
+{
+  "summary": {
+    "total": 18,
+    "gfw_resolved": 8,
+    "gfw_iuu_tagged": 5,
+    "resolved_with_no_current_authorization": 8,
+    "ground_truth": "CCAMLR Non-Contracting Party IUU Vessel List (2025/26)",
+    "ground_truth_url": "https://www.ccamlr.org/en/compliance/non-contracting-party-iuu-vessel-list",
+    "checked": "2026-06-29"
+  },
+  "vessels": [
+    {
+      "name": "Amorinn",
+      "imo": "7036345",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Antony",
+      "imo": "7236634",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Asian Warrior",
+      "imo": "7322897",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Atlantic Wind",
+      "imo": "9042001",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "ATLANTIC WIND",
+      "gfw_flag": "TZA",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [
+        "IUU"
+      ],
+      "iuu_tagged_by_gfw": true,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    },
+    {
+      "name": "Baroon",
+      "imo": "9037537",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "BAROON",
+      "gfw_flag": "TZA",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [
+        "IUU"
+      ],
+      "iuu_tagged_by_gfw": true,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    },
+    {
+      "name": "Challenge",
+      "imo": "6622642",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Cobija",
+      "imo": "7330399",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "COBIJA",
+      "gfw_flag": "BOL",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [
+        "IUU"
+      ],
+      "iuu_tagged_by_gfw": true,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    },
+    {
+      "name": "Good Hope",
+      "imo": "7020126",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "GOOD HOPE",
+      "gfw_flag": "NGA",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [
+        "IUU"
+      ],
+      "iuu_tagged_by_gfw": true,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    },
+    {
+      "name": "Heavy Sea",
+      "imo": "7322926",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Jinzhang",
+      "imo": "6607666",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "JINZHANG",
+      "gfw_flag": "GNQ",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [
+        "IUU"
+      ],
+      "iuu_tagged_by_gfw": true,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    },
+    {
+      "name": "Koosha 4",
+      "imo": "7905443",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Limpopo",
+      "imo": "7388267",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Nika",
+      "imo": "8808654",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "ECLIPSE",
+      "gfw_flag": "KHM",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    },
+    {
+      "name": "Northern Warrior",
+      "imo": "8808903",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "NORTHERN WARRIOR",
+      "gfw_flag": "BES",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    },
+    {
+      "name": "Perlon",
+      "imo": "5062479",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Pescacisne 1",
+      "imo": "9319856",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "Sea Urchin",
+      "imo": "7424891",
+      "ccamlr_listed": true,
+      "gfw_resolved": false,
+      "gfw_name": "",
+      "gfw_flag": "",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "not in GFW registry (predates or evades AIS, the dark-fleet problem)"
+    },
+    {
+      "name": "STS-50",
+      "imo": "8514772",
+      "ccamlr_listed": true,
+      "gfw_resolved": true,
+      "gfw_name": "ANDREY DOLGOV",
+      "gfw_flag": "KHM",
+      "gfw_mmsi": "",
+      "authorizations_on_record": [
+        "CCSBT",
+        "FFA",
+        "IOTC"
+      ],
+      "iuu_tagged_by_gfw": false,
+      "current_fishing_authorizations": [],
+      "seavigil_grade": "no current fishing authorization; would flag as unauthorized if seen in an EEZ"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "source": "CCAMLR Non-Contracting Party IUU Vessel List (2025/26)",
+  "source_url": "https://www.ccamlr.org/en/compliance/non-contracting-party-iuu-vessel-list",
+  "note": "Vessels the Commission for the Conservation of Antarctic Marine Living Resources has determined engaged in IUU fishing. Authoritative, independent ground truth (not derived from any SeaVigil signal). Flags are the CCAMLR-listed flag where shown; GFW returns its own registry flag.",
+  "vessels": [
+    {"name": "Amorinn", "imo": "7036345", "flag": null},
+    {"name": "Antony", "imo": "7236634", "flag": null},
+    {"name": "Asian Warrior", "imo": "7322897", "flag": null},
+    {"name": "Atlantic Wind", "imo": "9042001", "flag": null},
+    {"name": "Baroon", "imo": "9037537", "flag": null},
+    {"name": "Challenge", "imo": "6622642", "flag": null},
+    {"name": "Cobija", "imo": "7330399", "flag": null},
+    {"name": "Good Hope", "imo": "7020126", "flag": "NG"},
+    {"name": "Heavy Sea", "imo": "7322926", "flag": null},
+    {"name": "Jinzhang", "imo": "6607666", "flag": null},
+    {"name": "Koosha 4", "imo": "7905443", "flag": "IR"},
+    {"name": "Limpopo", "imo": "7388267", "flag": null},
+    {"name": "Nika", "imo": "8808654", "flag": null},
+    {"name": "Northern Warrior", "imo": "8808903", "flag": "AO"},
+    {"name": "Perlon", "imo": "5062479", "flag": null},
+    {"name": "Pescacisne 1", "imo": "9319856", "flag": null},
+    {"name": "Sea Urchin", "imo": "7424891", "flag": null},
+    {"name": "STS-50", "imo": "8514772", "flag": null}
+  ]
+}

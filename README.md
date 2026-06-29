@@ -71,6 +71,11 @@ AIS / SAR / GFW events ─▶ behavior detection ─▶ per-flag reason (SHAP or
 - **Evidence.** Each incident is a structured dossier with a SHA-256 integrity hash and full provenance, downloadable as JSON.
 - **Near-real-time.** An hourly GitHub Action pulls recent GFW events and streams live AIS into a rolling 12h buffer for spoofing, republishing the `?live` view and the alerts feed.
 
+## Model card and validation
+
+- **[Model card](docs/MODEL_CARD.md)** for the apparent-fishing classifier: ROC-AUC **0.946**, PR-AUC 0.928, F1 0.871 on held-out vessels (grouped split), Brier 0.0915 (0.0878 calibrated), with intended use, ethical considerations, and limitations.
+- **[Validation](docs/VALIDATION.md)** against an independent authority: of the 18 vessels on the **CCAMLR IUU list**, GFW's registry (which SeaVigil's authorization layer queries) resolves 8, tags 5 as `IUU` outright, and SeaVigil grades all 8 as **unauthorized** - the high-severity flag the listing implies. The rest predate or evade AIS (the dark fleet). Reproduce with `uv run python scripts/validate_iuu.py`.
+
 ## Reproduce
 
 ```bash
