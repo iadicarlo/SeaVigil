@@ -3,6 +3,7 @@
 - **MPA:** Galapagos Marine Reserve (WDPA 11753)
 - **Severity:** HIGH (dark vessel inside MPA)  ·  boundary WDPA/WD-OECM Jun2026
 - **EEZ:** Ecuadorian Exclusive Economic Zone (Galapagos) (Ecuador)
+- **Authorization:** No vessel identity; authorization not checkable
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-10-27T00:18:49Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)

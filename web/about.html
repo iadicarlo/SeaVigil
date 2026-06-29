@@ -102,20 +102,29 @@
     rationale is attribute-based (unmatched, inside-zone, length, recurrence), not SHAP, because a
     radar blip carries no movement track to attribute.</p>
 
-    <h3><span class="pill p-eez">EEZ incursion</span> and foreign-flag check</h3>
-    <p>Every incident is tagged with the Exclusive Economic Zone it sits in and the coastal state.
-    When a vessel's flag (derived from its MMSI maritime identification digits) differs from the EEZ
-    sovereign, it is marked foreign. A foreign vessel apparent-fishing inside another state's EEZ is
-    the canonical IUU lead; it is not proof, because the vessel may be licensed, so the dossier says so.</p>
+    <h3><span class="pill p-eez">EEZ incursion</span>, flag, and authorization</h3>
+    <p>Every incident is tagged with the Exclusive Economic Zone it sits in (point-in-polygon against the
+    global Marine Regions EEZ set) and the coastal state. When a vessel's flag differs from the EEZ
+    sovereign it is marked foreign. A foreign vessel inside another state's EEZ is the canonical IUU lead,
+    but on its own it is not proof: the vessel may be licensed.</p>
+    <p>So for every incident that carries a vessel identity (MMSI), SeaVigil looks the vessel up in the
+    Global Fishing Watch vessel-identity registry to get its authoritative flag and the authorizations on
+    record (RFMO and regional bodies such as FFA, WCPFC, IOTC, ICCAT, IATTC, CCSBT, CCAMLR), then grades
+    the incident against the incident date: <em>authorized</em> (an authorization covering the date is on
+    record), <em>authorization lapsed</em> (one existed but expired before the date), <em>no authorization
+    on record</em> (foreign, nothing found), <em>domestic flag</em>, or <em>no vessel identity</em>
+    (anonymized AIS labels and dark SAR cannot be checked). This turns a bare "foreign" flag into a graded,
+    sourced status. The honest limit: national EEZ fishing licences are not public, so an empty
+    authorization record means "no public record", not proof of illegality; the cleanest signal here is a
+    lapsed or absent RFMO authorization for a foreign vessel.</p>
 
-    <h3>In progress: going dark and transshipment</h3>
-    <p>Two AIS behaviors are designed but not yet demonstrated, pending a continuous, identity-bearing
-    AIS track dataset: intentional AIS disabling
+    <h3>Going dark and at-sea transshipment, worldwide</h3>
+    <p>Both behaviors are demonstrated globally, consumed from Global Fishing Watch's published satellite
+    datasets (terrestrial AIS cannot see them) and tagged to the EEZ they fall in: intentional AIS disabling
     (<a href="https://doi.org/10.1126/sciadv.abq2109" target="_blank" rel="noopener">Welch et al., 2022</a>;
-    a gap of at least 12 hours, more than 50 nautical miles offshore, after excluding poor-reception
-    areas) and at-sea transshipment
+    a multi-hour gap well offshore, after excluding poor-reception areas) and at-sea transshipment
     (<a href="https://doi.org/10.3389/fmars.2018.00240" target="_blank" rel="noopener">Miller et al., 2018</a>;
-    a fishing vessel and a carrier within 500 metres, for at least 2 hours, below 2 knots, away from port).</p>
+    a fishing vessel and a carrier close together for hours, below a few knots, away from port).</p>
 
     <h2>Model and confidence</h2>
     <p>The fishing classifier is evaluated on held-out vessels (grouped split, so no vessel appears in
@@ -143,6 +152,9 @@
           <td class="lic">CC BY 4.0</td></tr>
         <tr><td>GFW Sentinel-1 SAR vessel detections</td>
           <td>Paolo et al., <em>Nature</em> 2024. <a href="https://doi.org/10.1038/s41586-023-06825-8" target="_blank" rel="noopener">10.1038/s41586-023-06825-8</a></td>
+          <td class="lic">CC BY-NC 4.0</td></tr>
+        <tr><td>GFW vessel identity and authorizations</td>
+          <td>Global Fishing Watch vessel-identity dataset (registry flag + RFMO/regional authorizations: FFA, WCPFC, IOTC, ICCAT, IATTC, CCSBT, CCAMLR). <a href="https://globalfishingwatch.org" target="_blank" rel="noopener">globalfishingwatch.org</a></td>
           <td class="lic">CC BY-NC 4.0</td></tr>
         <tr><td>Marine Protected Areas (WDPA / WD-OECM)</td>
           <td>UNEP-WCMC and IUCN (2026), Protected Planet, June 2026. <a href="https://www.protectedplanet.net" target="_blank" rel="noopener">protectedplanet.net</a></td>

@@ -3,6 +3,7 @@
 - **MPA:** Phoenix Islands Protected Area (WDPA 309888)
 - **Severity:** MEDIUM (protected area (category not reported))  ·  boundary WDPA/WD-OECM Jun2026
 - **EEZ:** Kiribati Exclusive Economic Zone (Phoenix Group) (Kiribati)
+- **Authorization:** No vessel identity; authorization not checkable
 - **Vessel:** `drifting_longlines_271347251834362`  ·  **gear:** drifting_longlines
 - **When (UTC):** 2014-06-21T02:01:39Z → 2014-06-26T01:02:46Z (119.019 h)
 - **Apparent fishing:** 727 of 1004 in-MPA positions; mean p=0.89, max p=1.00

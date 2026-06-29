@@ -17,6 +17,7 @@ from pathlib import Path
 import numpy as np
 
 from seavigil.explain import _positive_class_shap
+from seavigil.authorization import summary_label as authorization_label
 from seavigil.features import FEATURE_COLUMNS
 from seavigil.flags import emoji_for
 from seavigil.mpa import grade_severity
@@ -147,9 +148,13 @@ def render_markdown(dossier: dict) -> str:
         )
     if d.get("eez_name"):
         foreign = d.get("eez_foreign")
-        tag = (" -- FOREIGN-flagged vessel (licensing not verified)" if foreign is True
+        tag = (" -- FOREIGN-flagged vessel" if foreign is True
                else "  (flag matches coastal state)" if foreign is False else "")
         lines.append(f"- **EEZ:** {d['eez_name']} ({d.get('eez_sovereign')}){tag}")
+    if d.get("authorization_status"):
+        imo = d.get("registry_imo")
+        imo_str = f"  ·  IMO {imo}" if imo else ""
+        lines.append(f"- **Authorization:** {authorization_label(d)}{imo_str}")
     if is_sar:
         broadcasting = "yes" if d.get("matched_to_ais") else "no (dark)"
         length_str = f"{d['length_m']:.0f} m" if d.get("length_m") is not None else "n/a"

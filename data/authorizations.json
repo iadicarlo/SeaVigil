@@ -1,0 +1,7292 @@
+{
+"100000014": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"146190011": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"196200000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"204400000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"204827000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"204851000": {
+"authorizations": [
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "PRT",
+"found": true,
+"geartype": "POLE_AND_LINE",
+"imo": "9193408",
+"shipname": "CABO DA PRAIA"
+},
+"224000220": {
+"authorizations": [
+{
+"date_from": "2014-05-15",
+"date_to": "2025-12-28",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "8731045",
+"shipname": "ARRIGORRI"
+},
+"224005190": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2023-05-01",
+"date_to": "2023-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-03-23",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9212591",
+"shipname": "PESCABERBES TRES"
+},
+"224016530": {
+"authorizations": [
+{
+"date_from": "2016-01-01",
+"date_to": "2017-12-31",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8684591",
+"shipname": "FRANIVAN"
+},
+"224019630": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224021580": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "OTHER_PURSE_SEINES",
+"imo": "2847622",
+"shipname": "MARUXIA DOUS"
+},
+"224024480": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-30",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "POLE_AND_LINE",
+"imo": "6403979",
+"shipname": "NUEVO SAN LUIS"
+},
+"224049460": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2024-12-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2025-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2023-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-06-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2025-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2023-12-31",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2024-12-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2023-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-06-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2023-12-31",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2024-12-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2023-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-06-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2023-12-31",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2024-12-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2023-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-06-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2023-12-31",
+"source": "IOTC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9183104",
+"shipname": "OCEANA VAZ"
+},
+"224068980": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2021-01-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-30",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2021-01-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-30",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2021-01-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-30",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2021-01-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-30",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8900907",
+"shipname": "EL TIMPLE"
+},
+"224081180": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224081690": {
+"authorizations": [
+{
+"date_from": "2021-09-16",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2021-01-01",
+"date_to": "2026-04-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2020-01-01",
+"source": "IOTC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8903600",
+"shipname": "NUEVO SALMON"
+},
+"224089000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224098930": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "POLE_AND_LINE",
+"imo": "9297450",
+"shipname": "BERRIZ SAN FRANCISCO"
+},
+"224115880": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224147740": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "OTHER_FISHING",
+"imo": "8797726",
+"shipname": "NUEVO JUAN SANTANA"
+},
+"224155950": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2026-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2026-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2014-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2026-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8744004",
+"shipname": "BONITO DOS"
+},
+"224170000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224292000": {
+"authorizations": [],
+"flag": "ESP",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9192806",
+"shipname": "ISLA DE SANTA"
+},
+"224324000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224405000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224464000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2025-12-29",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "IOTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2023-11-01",
+"source": "WCPFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9130779",
+"shipname": "DONIENE"
+},
+"224526000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224587000": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2023-11-01",
+"source": "WCPFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8906456",
+"shipname": "ZUBEROA"
+},
+"224651000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-27",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-27",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-27",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9156058",
+"shipname": "AURORAB"
+},
+"224709000": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2023-10-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2015-02-26",
+"source": "IOTC"
+},
+{
+"date_from": "2015-02-27",
+"date_to": "2019-01-01",
+"source": "IOTC"
+},
+{
+"date_from": "2023-10-20",
+"date_to": "2025-10-10",
+"source": "ICCAT"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7817323",
+"shipname": "MONTEMAIOR"
+},
+"224732000": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2022-12-01",
+"source": "NEAFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8512645",
+"shipname": "PLAYA DE SARTAXENS"
+},
+"224770000": {
+"authorizations": [],
+"flag": "ESP",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9306598",
+"shipname": "PLAYAPESMAR2"
+},
+"224888000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"224933000": {
+"authorizations": [
+{
+"date_from": "2016-01-01",
+"date_to": "2017-12-31",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2023-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2020-01-01",
+"source": "IOTC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8960517",
+"shipname": "AGIOS NIKOLAUS"
+},
+"225381000": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "ESP",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "9476446",
+"shipname": "PINO MONTERO TRES"
+},
+"227370000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"227549000": {
+"authorizations": [],
+"flag": "FRA",
+"found": true,
+"geartype": "PURSE_SEINES",
+"imo": "8912986",
+"shipname": "GUEOTEC"
+},
+"228067700": {
+"authorizations": [],
+"flag": "FRA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9108013",
+"shipname": "PLAYA DE TUYA"
+},
+"228071900": {
+"authorizations": [
+{
+"date_from": "2016-06-24",
+"date_to": "2023-10-25",
+"source": "ICCAT"
+},
+{
+"date_from": "2016-06-24",
+"date_to": "2020-12-31",
+"source": "IOTC"
+},
+{
+"date_from": "2023-10-26",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "FRA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9741102",
+"shipname": "PENDRUC"
+},
+"228128000": {
+"authorizations": [
+{
+"date_from": "2016-01-01",
+"date_to": "2024-10-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2014-02-28",
+"source": "IOTC"
+},
+{
+"date_from": "2015-07-20",
+"date_to": "2021-12-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2025-12-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2025-12-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "FRA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8812186",
+"shipname": "VIA AVENIR"
+},
+"228206600": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2023-12-01",
+"source": "NEAFC"
+}
+],
+"flag": "FRA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9305037",
+"shipname": "JEAN CLAUDE COULONII"
+},
+"228280000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"231084000": {
+"authorizations": [
+{
+"date_from": "2021-01-01",
+"date_to": "2023-10-01",
+"source": "FRO"
+},
+{
+"date_from": "2024-02-09",
+"date_to": "2024-06-01",
+"source": "FRO"
+}
+],
+"flag": "FRO",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8516811",
+"shipname": "BRESTIR"
+},
+"231180000": {
+"authorizations": [],
+"flag": "FRO",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "5167968",
+"shipname": "CARLTON"
+},
+"231307000": {
+"authorizations": [
+{
+"date_from": "2021-01-01",
+"date_to": "2023-10-01",
+"source": "FRO"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2024-04-01",
+"source": "FRO"
+},
+{
+"date_from": "2020-01-07",
+"date_to": "2024-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "FRO",
+"found": true,
+"geartype": "OTHER_PURSE_SEINES",
+"imo": "9279238",
+"shipname": "FINNUR FR\u00cd\u00d0I"
+},
+"232006270": {
+"authorizations": [],
+"flag": "GBR",
+"found": true,
+"geartype": "SET_GILLNETS",
+"imo": "7214674",
+"shipname": "CHRISTIAN M"
+},
+"234052000": {
+"authorizations": [],
+"flag": "GBR",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9119696",
+"shipname": "OCEAN WAY"
+},
+"235059379": {
+"authorizations": [
+{
+"date_from": "2021-08-20",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2021-08-20",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2021-08-20",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+}
+],
+"flag": "GBR",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9107992",
+"shipname": "SANAMEDIO"
+},
+"247146630": {
+"authorizations": [
+{
+"date_from": "2020-10-02",
+"date_to": "2026-05-01",
+"source": "GFCM"
+},
+{
+"date_from": "2018-01-01",
+"date_to": "2026-02-28",
+"source": "ICCAT"
+}
+],
+"flag": "ITA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8589428",
+"shipname": "GAETANO FERLITO"
+},
+"247147480": {
+"authorizations": [
+{
+"date_from": "2020-10-02",
+"date_to": "2026-05-01",
+"source": "GFCM"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2019-03-05",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "ITA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8688456",
+"shipname": "TRAMONTANA"
+},
+"247153450": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"250003792": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2023-12-01",
+"source": "NEAFC"
+}
+],
+"flag": "IRL",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9171797",
+"shipname": "RESILIENT"
+},
+"251227000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-03-06",
+"source": "ISL"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2021-01-01",
+"source": "ISL"
+},
+{
+"date_from": "2020-01-02",
+"date_to": "2025-12-31",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-07-30",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "ISL",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9532707",
+"shipname": "HEIMAEY"
+},
+"251290110": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-03-06",
+"source": "ISL"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2021-01-01",
+"source": "ISL"
+}
+],
+"flag": "ISL",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "5424380",
+"shipname": "HAMAR"
+},
+"251307110": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"251804110": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"257388000": {
+"authorizations": [
+{
+"date_from": "2019-01-01",
+"date_to": "2020-12-31",
+"source": "NOR"
+}
+],
+"flag": "NOR",
+"found": true,
+"geartype": "OTHER_SEINES",
+"imo": "8906949",
+"shipname": "HUNTER"
+},
+"257406000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"257806000": {
+"authorizations": [
+{
+"date_from": "2024-05-30",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2020-12-31",
+"source": "NOR"
+}
+],
+"flag": "NOR",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9756145",
+"shipname": "HOLMOY"
+},
+"259023000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"259292000": {
+"authorizations": [
+{
+"date_from": "2022-01-01",
+"date_to": "2025-01-01",
+"source": "NAFO"
+},
+{
+"date_from": "2020-01-10",
+"date_to": "2025-12-31",
+"source": "NEAFC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2020-12-31",
+"source": "NOR"
+}
+],
+"flag": "NOR",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "9649366",
+"shipname": "VESTLINER"
+},
+"259562000": {
+"authorizations": [
+{
+"date_from": "2024-03-01",
+"date_to": "2025-05-01",
+"source": "NAFO"
+},
+{
+"date_from": "2025-10-22",
+"date_to": "2025-12-31",
+"source": "NEAFC"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2020-12-31",
+"source": "NOR"
+}
+],
+"flag": "NOR",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "8943959",
+"shipname": "O. HUSBY"
+},
+"261522000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-01-01",
+"source": "ISL"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2017-12-31",
+"source": "SPRFMO"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "POL",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8907137",
+"shipname": "ALINA"
+},
+"263401270": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "PRT",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9207259",
+"shipname": "VILA DO INFANTE"
+},
+"263403770": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"263408380": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2025-12-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2018-06-18",
+"date_to": "2025-12-31",
+"source": "IOTC"
+}
+],
+"flag": "PRT",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8602658",
+"shipname": "CARMEN"
+},
+"263422240": {
+"authorizations": [
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "PRT",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "2858815",
+"shipname": "CARLOS CUNHA"
+},
+"273212100": {
+"authorizations": [
+{
+"date_from": "2020-09-01",
+"date_to": "2026-05-01",
+"source": "NAFO"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2020-09-01",
+"date_to": "2026-05-01",
+"source": "NAFO"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8415574",
+"shipname": "OSVEYSKOYE"
+},
+"273216200": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273219600": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273250200": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8729664",
+"shipname": "LAZURNYY"
+},
+"273332560": {
+"authorizations": [
+{
+"date_from": "2013-01-01",
+"date_to": "2013-06-05",
+"source": "SPRFMO"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8907046",
+"shipname": "KAPITAN NAZIN"
+},
+"273345950": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273349130": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273350650": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273352910": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273353060": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273355780": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273359630": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8619560",
+"shipname": "BRATTEGG"
+},
+"273366690": {
+"authorizations": [
+{
+"date_from": "2018-02-24",
+"date_to": "2020-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8228543",
+"shipname": "RIGHT WHALE"
+},
+"273380310": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2023-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-01-04",
+"date_to": "2025-12-31",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9746607",
+"shipname": "PECHORA"
+},
+"273387270": {
+"authorizations": [
+{
+"date_from": "2017-06-24",
+"date_to": "2017-09-08",
+"source": "NPFC"
+},
+{
+"date_from": "2018-01-01",
+"date_to": "2018-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2019-04-17",
+"date_to": "2022-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2023-07-12",
+"date_to": "2023-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2024-03-25",
+"date_to": "2024-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2025-04-25",
+"date_to": "2025-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2016-02-17",
+"date_to": "2016-12-31",
+"source": "SPRFMO"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8907113",
+"shipname": "PETR1"
+},
+"273390570": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "FISHING",
+"imo": "8938435",
+"shipname": "REAL"
+},
+"273429800": {
+"authorizations": [
+{
+"date_from": "2020-05-25",
+"date_to": "2020-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2021-05-25",
+"date_to": "2021-12-01",
+"source": "NPFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8131661",
+"shipname": "OSTROVNOY-11"
+},
+"273431440": {
+"authorizations": [
+{
+"date_from": "2024-09-04",
+"date_to": "2024-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-03-19",
+"date_to": "2025-12-31",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-09-04",
+"date_to": "2024-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-03-19",
+"date_to": "2025-12-31",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-09-04",
+"date_to": "2024-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-03-19",
+"date_to": "2025-12-31",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9108336",
+"shipname": "KAPITAN DURACHENKO"
+},
+"273440840": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273445610": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "7825590",
+"shipname": "ONEGA"
+},
+"273457300": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8831649",
+"shipname": "BORODINO"
+},
+"273516600": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8116295",
+"shipname": "VLADIMIRBRODYUK"
+},
+"273523100": {
+"authorizations": [
+{
+"date_from": "2025-01-03",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-01-03",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-01-03",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-01-03",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2025-01-03",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8801187",
+"shipname": "SEVRYBA-1"
+},
+"273523300": {
+"authorizations": [
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2018-02-24",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8607177",
+"shipname": "ALEKSANDR MIRONENKO"
+},
+"273526700": {
+"authorizations": [
+{
+"date_from": "2018-02-24",
+"date_to": "2020-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8607282",
+"shipname": "PAVELKUTAKHOV"
+},
+"273529300": {
+"authorizations": [
+{
+"date_from": "2016-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2025-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2024-01-01",
+"date_to": "2026-05-01",
+"source": "SPRFMO"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8607218",
+"shipname": "ADMIRALSTARIKOV"
+},
+"273822210": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273825000": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8729652",
+"shipname": "EGLAINE"
+},
+"273828110": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8721167",
+"shipname": "ILYAKONOVALOV"
+},
+"273828310": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273829310": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273840900": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "9055242",
+"shipname": "TIBURON"
+},
+"273842020": {
+"authorizations": [
+{
+"date_from": "2017-06-06",
+"date_to": "2017-09-08",
+"source": "NPFC"
+},
+{
+"date_from": "2018-01-01",
+"date_to": "2018-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2019-04-17",
+"date_to": "2019-12-01",
+"source": "NPFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8721210",
+"shipname": "VLADIMIR BABICH"
+},
+"273842510": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273844800": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273848100": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273873400": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"273892000": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2026-05-01",
+"source": "NEAFC"
+}
+],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9053282",
+"shipname": "MYS CHIKHACHEVA"
+},
+"273895200": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8859938",
+"shipname": "MYS OLYUTORSKIY"
+},
+"273899300": {
+"authorizations": [],
+"flag": "RUS",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8721882",
+"shipname": "TALANG"
+},
+"275131000": {
+"authorizations": [],
+"flag": "LVA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8033869",
+"shipname": "MARSHALVASILEVSKIY"
+},
+"303343000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-26",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-06-18",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9018892",
+"shipname": "CAPE ELIZABETH III"
+},
+"303430000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"306034000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"306094000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"306783000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"312189000": {
+"authorizations": [],
+"flag": "BLZ",
+"found": true,
+"geartype": "FISH_FACTORY",
+"imo": "7705051",
+"shipname": "VARDBERG"
+},
+"316002445": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"316002518": {
+"authorizations": [],
+"flag": "CAN",
+"found": true,
+"geartype": "FISH_TENDER",
+"imo": "9046552",
+"shipname": "OCEAN PROVIDER I"
+},
+"316003365": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"316007789": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"316012580": {
+"authorizations": [],
+"flag": "CAN",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8908674",
+"shipname": "FORTUNE LADY"
+},
+"316013660": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"316021342": {
+"authorizations": [],
+"flag": "CAN",
+"found": true,
+"geartype": "FISHING",
+"imo": "",
+"shipname": "SKICINUWEY"
+},
+"316039286": {
+"authorizations": [],
+"flag": "CAN",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8508307",
+"shipname": "LINGBANK"
+},
+"316094000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"331036000": {
+"authorizations": [
+{
+"date_from": "2020-01-01",
+"date_to": "2021-01-01",
+"source": "ISL"
+},
+{
+"date_from": "2020-07-17",
+"date_to": "2020-12-01",
+"source": "NEAFC"
+},
+{
+"date_from": "2021-07-12",
+"date_to": "2021-12-01",
+"source": "NEAFC"
+}
+],
+"flag": "GRL",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8705838",
+"shipname": "TASERMIUT"
+},
+"332001000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"332154000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"338081000": {
+"authorizations": [
+{
+"date_from": "2017-09-12",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9098270",
+"shipname": "SIVAIMOANA"
+},
+"338186925": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "PASSENGER",
+"imo": "",
+"shipname": "TYEE"
+},
+"338316000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"338539000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-07-06",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7823360",
+"shipname": "SEA ENCOUNTER"
+},
+"338793000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2021-02-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-06-18",
+"date_to": "2021-01-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2021-02-02",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2021-01-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9517264",
+"shipname": "OCEAN CHALLENGER"
+},
+"341136000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"341172000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"345080010": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "MEX",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9363235",
+"shipname": "FRANZ"
+},
+"345080023": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "MEX",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8812215",
+"shipname": "AZTECA 10"
+},
+"345080024": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "MEX",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8102309",
+"shipname": "AZTECA 9"
+},
+"345140011": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "MEX",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9698549",
+"shipname": "OAXACA"
+},
+"345903504": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"347002000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"347003300": {
+"authorizations": [],
+"flag": "FRA",
+"found": true,
+"geartype": "POTS_AND_TRAPS",
+"imo": "",
+"shipname": "INTREPIDE"
+},
+"352419000": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "PAN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8102892",
+"shipname": "TIUNA"
+},
+"353171000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"353770000": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2019-02-16",
+"source": "IATTC"
+},
+{
+"date_from": "2020-11-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "PAN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8719310",
+"shipname": "TXOPITUNA"
+},
+"359101000": {
+"authorizations": [
+{
+"date_from": "2016-02-25",
+"date_to": "2026-03-09",
+"source": "ICCAT"
+}
+],
+"flag": "SLV",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7409176",
+"shipname": "MONTEFRISA NUEVE"
+},
+"361000800": {
+"authorizations": [],
+"flag": "FRA",
+"found": true,
+"geartype": "SET_GILLNETS",
+"imo": "8514588",
+"shipname": "BEOTHUK"
+},
+"366218620": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"366245070": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2021-10-01",
+"source": "IATTC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "7223869",
+"shipname": "LAST STRAW"
+},
+"366270000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"366749490": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"366903000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2018-06-18",
+"date_to": "2019-11-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2020-01-09",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-12-30",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9097355",
+"shipname": "SEA QUEST"
+},
+"366934770": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2021-10-01",
+"source": "IATTC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8938954",
+"shipname": "NOAH'S ARK"
+},
+"367128410": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2023-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2023-03-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-07-23",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "",
+"shipname": "SEA MOON"
+},
+"367132160": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "FISHING",
+"imo": "8854524",
+"shipname": "KARI MARIE"
+},
+"367150430": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-04-22",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8852447",
+"shipname": "KATY MARY"
+},
+"367152680": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2023-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2024-05-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-31",
+"date_to": "2022-06-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2022-06-02",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8854495",
+"shipname": "KAMI M"
+},
+"367167180": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "FISH_TENDER",
+"imo": "8860286",
+"shipname": "PERSEVERANCE"
+},
+"367178220": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"367346750": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"367373170": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"367384840": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"367588710": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"367650780": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "9731963",
+"shipname": "ARAHO"
+},
+"367664560": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "",
+"shipname": "EXCALIBUR"
+},
+"367711550": {
+"authorizations": [
+{
+"date_from": "2019-07-23",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8438459",
+"shipname": "LADY MOCHA II"
+},
+"367741839": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "FISHING",
+"imo": "9772163",
+"shipname": "BLUE NORTH"
+},
+"367794880": {
+"authorizations": [
+{
+"date_from": "2012-06-13",
+"date_to": "2017-09-06",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2023-04-01",
+"source": "IATTC"
+},
+{
+"date_from": "2017-07-27",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-27",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2023-04-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-07-23",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9018880",
+"shipname": "CAPT. VINCENT GANN"
+},
+"368046000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2018-11-15",
+"date_to": "2025-11-12",
+"source": "ICCAT"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8996190",
+"shipname": "SEA DEFENDER"
+},
+"368526000": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "POTS_AND_TRAPS",
+"imo": "7809455",
+"shipname": "PATRICIA LEE"
+},
+"369059000": {
+"authorizations": [
+{
+"date_from": "2016-08-22",
+"date_to": "2017-08-21",
+"source": "FFA"
+},
+{
+"date_from": "2018-07-15",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "USA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8976994",
+"shipname": "TRACEY C"
+},
+"369188000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"369189000": {
+"authorizations": [],
+"flag": "USA",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8017475",
+"shipname": "TIFAIMOANA"
+},
+"371216000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"371696000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"374573000": {
+"authorizations": [
+{
+"date_from": "2015-04-21",
+"date_to": "2024-02-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2024-02-09",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "PAN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9699050",
+"shipname": "CAPE CORAL"
+},
+"412200335": {
+"authorizations": [
+{
+"date_from": "2016-05-07",
+"date_to": "2026-05-01",
+"source": "SPRFMO"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8680076",
+"shipname": "GUO JI 901"
+},
+"412210323": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412211523": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412320034": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412322630": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2014-10-02",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2020-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2022-08-13",
+"date_to": "2023-08-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-02-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-08-01",
+"date_to": "2025-01-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2014-10-02",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2020-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2022-08-13",
+"date_to": "2023-08-01",
+"source": "FFA"
+},
+{
+"date_from": "2025-02-13",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-02-01",
+"source": "IATTC"
+},
+{
+"date_from": "2025-12-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-08-01",
+"date_to": "2025-01-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2025-01-10",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8749999",
+"shipname": "RONG DA YANG 9"
+},
+"412326854": {
+"authorizations": [
+{
+"date_from": "2012-08-27",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8676702",
+"shipname": "TAI XIANG 1"
+},
+"412326858": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412326906": {
+"authorizations": [
+{
+"date_from": "2012-01-07",
+"date_to": "2018-01-06",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-01",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-04-11",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8629058",
+"shipname": "ZHONG SHUI 810"
+},
+"412329405": {
+"authorizations": [
+{
+"date_from": "2015-02-10",
+"date_to": "2016-02-09",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2016-06-20",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9714484",
+"shipname": "LU WEI YUAN YU 188"
+},
+"412329425": {
+"authorizations": [
+{
+"date_from": "2013-07-08",
+"date_to": "2014-07-07",
+"source": "FFA"
+},
+{
+"date_from": "2019-03-18",
+"date_to": "2020-03-01",
+"source": "FFA"
+},
+{
+"date_from": "2022-01-12",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-04-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8663315",
+"shipname": "LU RONG YUAN YU 208"
+},
+"412331029": {
+"authorizations": [
+{
+"date_from": "2014-08-12",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-10",
+"date_to": "2022-09-30",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2022-11-14",
+"date_to": "2026-03-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2019-09-23",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9748526",
+"shipname": "LU QING YUAN YU 023"
+},
+"412331085": {
+"authorizations": [
+{
+"date_from": "2014-10-17",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9033191",
+"shipname": "TAIH0NG6"
+},
+"412341272": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412371181": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412371194": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412371197": {
+"authorizations": [
+{
+"date_from": "2014-07-11",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-04-04",
+"date_to": "2021-07-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-06-14",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9745952",
+"shipname": "HU YU 918"
+},
+"412371233": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412420341": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412420377": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412420382": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412420851": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412420875": {
+"authorizations": [
+{
+"date_from": "2019-04-27",
+"date_to": "2020-04-01",
+"source": "FFA"
+},
+{
+"date_from": "2023-03-29",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-04-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8670540",
+"shipname": "HONGYANG8"
+},
+"412420911": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412420913": {
+"authorizations": [
+{
+"date_from": "2016-07-09",
+"date_to": "2017-07-08",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-16",
+"date_to": "2021-07-01",
+"source": "FFA"
+},
+{
+"date_from": "2022-03-29",
+"date_to": "2026-04-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-06-17",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9775878",
+"shipname": "XIN SHI JI 208"
+},
+"412421005": {
+"authorizations": [],
+"flag": "CHN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8776590",
+"shipname": ""
+},
+"412427001": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412427003": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412439617": {
+"authorizations": [
+{
+"date_from": "2015-10-29",
+"date_to": "2026-03-01",
+"source": "NPFC"
+},
+{
+"date_from": "2015-10-29",
+"date_to": "2026-03-01",
+"source": "NPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "9789221",
+"shipname": "YONG FA 5"
+},
+"412440016": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412440032": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412440563": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-07-16",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9829265",
+"shipname": "FUYUANYU7001"
+},
+"412460083": {
+"authorizations": [
+{
+"date_from": "2014-10-24",
+"date_to": "2017-10-29",
+"source": "FFA"
+},
+{
+"date_from": "2019-10-30",
+"date_to": "2021-10-01",
+"source": "FFA"
+},
+{
+"date_from": "2022-03-29",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2022-03-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-07-30",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9742364",
+"shipname": "GUANG YUAN YU 339"
+},
+"412460116": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412480559": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"412679810": {
+"authorizations": [
+{
+"date_from": "2025-07-09",
+"date_to": "2026-05-01",
+"source": "SPRFMO"
+},
+{
+"date_from": "2016-03-18",
+"date_to": "2025-12-01",
+"source": "SPRFMO"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8774839",
+"shipname": "LIAO YU YI HAO"
+},
+"412689540": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-26",
+"date_to": "2020-02-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-27",
+"date_to": "2021-04-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8648846",
+"shipname": "LU RONG YU 2224"
+},
+"413270430": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-07-03",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2022-04-11",
+"date_to": "2026-03-30",
+"source": "ICCAT"
+},
+{
+"date_from": "2016-10-09",
+"date_to": "2025-03-31",
+"source": "IOTC"
+},
+{
+"date_from": "2017-12-08",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9105281",
+"shipname": "JIN SHENG NO.2"
+},
+"416000029": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416000301": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416000763": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416002039": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416002515": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416002526": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416002615": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416002616": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416003315": {
+"authorizations": [
+{
+"date_from": "2017-01-01",
+"date_to": "2018-01-31",
+"source": "IOTC"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2019-01-31",
+"source": "IOTC"
+},
+{
+"date_from": "2019-04-18",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8542808",
+"shipname": "SHUN YI SIN"
+},
+"416004168": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2013-10-07",
+"source": "FFA"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2025-02-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-08-14",
+"date_to": "2020-03-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8778885",
+"shipname": "TENNMINGYANG668"
+},
+"416004545": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416004564": {
+"authorizations": [
+{
+"date_from": "2017-04-01",
+"date_to": "2017-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2018-04-01",
+"date_to": "2018-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2019-04-01",
+"date_to": "2019-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2020-04-01",
+"date_to": "2024-10-01",
+"source": "NPFC"
+},
+{
+"date_from": "2025-02-10",
+"date_to": "2026-05-01",
+"source": "NPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8676685",
+"shipname": "CHUN HAO"
+},
+"416004638": {
+"authorizations": [
+{
+"date_from": "2017-06-19",
+"date_to": "2017-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2018-04-01",
+"date_to": "2018-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2019-04-01",
+"date_to": "2019-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2020-04-01",
+"date_to": "2022-08-01",
+"source": "NPFC"
+},
+{
+"date_from": "2022-01-01",
+"date_to": "2026-05-01",
+"source": "NPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "9766748",
+"shipname": "MAN SHUEN FA"
+},
+"416018500": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416018900": {
+"authorizations": [
+{
+"date_from": "2016-06-30",
+"date_to": "2017-12-31",
+"source": "SPRFMO"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8827698",
+"shipname": "JIH FA NO.3"
+},
+"416031900": {
+"authorizations": [
+{
+"date_from": "2014-01-01",
+"date_to": "2014-12-31",
+"source": "SPRFMO"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "",
+"shipname": "SHIUH DAH MING"
+},
+"416036325": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416043800": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416101900": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-04-27",
+"date_to": "2023-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-06-28",
+"date_to": "2022-12-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "FISH_TENDER",
+"imo": "8524052",
+"shipname": "YUH CHANG NO.3"
+},
+"416127900": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-04-27",
+"date_to": "2023-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-06-28",
+"date_to": "2022-12-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8778483",
+"shipname": "YUHYI12"
+},
+"416154700": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-07-28",
+"source": "FFA"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "",
+"shipname": "YISIANG"
+},
+"416168500": {
+"authorizations": [
+{
+"date_from": "2018-03-01",
+"date_to": "2019-08-31",
+"source": "CCSBT"
+},
+{
+"date_from": "2021-09-01",
+"date_to": "2021-11-01",
+"source": "IATTC"
+},
+{
+"date_from": "2024-02-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-05-17",
+"date_to": "2021-08-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2021-11-16",
+"date_to": "2024-01-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2021-09-06",
+"date_to": "2021-11-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2022-12-16",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2016-04-01",
+"date_to": "2019-06-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2018-03-01",
+"date_to": "2019-08-31",
+"source": "CCSBT"
+},
+{
+"date_from": "2021-09-01",
+"date_to": "2021-11-01",
+"source": "IATTC"
+},
+{
+"date_from": "2024-02-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-05-17",
+"date_to": "2021-08-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2021-11-16",
+"date_to": "2024-01-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2019-11-01",
+"source": "IOTC"
+},
+{
+"date_from": "2021-09-06",
+"date_to": "2021-11-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2022-12-16",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8647995",
+"shipname": "WEN YU NO.168"
+},
+"416173900": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2016-05-05",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2024-10-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-09-02",
+"date_to": "2024-10-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9178173",
+"shipname": "HAIZEAN31"
+},
+"416196700": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416225500": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416229800": {
+"authorizations": [
+{
+"date_from": "2017-04-01",
+"date_to": "2017-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2018-04-01",
+"date_to": "2018-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2019-04-01",
+"date_to": "2019-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2020-04-01",
+"date_to": "2022-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2023-01-01",
+"date_to": "2024-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2025-02-05",
+"date_to": "2026-05-01",
+"source": "NPFC"
+},
+{
+"date_from": "2021-01-01",
+"date_to": "2022-12-01",
+"source": "SPRFMO"
+},
+{
+"date_from": "2023-05-04",
+"date_to": "2024-12-01",
+"source": "SPRFMO"
+},
+{
+"date_from": "2025-07-23",
+"date_to": "2026-05-01",
+"source": "SPRFMO"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8686020",
+"shipname": "SHUENN MAN NO.99"
+},
+"416229900": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2012-07-16",
+"source": "FFA"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2025-02-01",
+"source": "IOTC"
+},
+{
+"date_from": "2022-07-25",
+"date_to": "2022-12-25",
+"source": "SIOFA"
+},
+{
+"date_from": "2023-08-17",
+"date_to": "2025-12-31",
+"source": "SIOFA"
+},
+{
+"date_from": "2019-04-09",
+"date_to": "2020-03-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8780620",
+"shipname": "DERHAE2"
+},
+"416231600": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-09",
+"date_to": "2020-07-09",
+"source": "FFA"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2019-01-31",
+"source": "IOTC"
+},
+{
+"date_from": "2019-10-05",
+"date_to": "2026-01-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8777910",
+"shipname": "YU SHUN"
+},
+"416232900": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-09-06",
+"source": "FFA"
+},
+{
+"date_from": "2016-05-14",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-15",
+"date_to": "2025-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2025-08-10",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2016-04-20",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "FSM",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8795651",
+"shipname": "CFA 26"
+},
+"416233500": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-09-06",
+"source": "FFA"
+},
+{
+"date_from": "2016-05-12",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-15",
+"date_to": "2025-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2025-08-10",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2016-04-20",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2016-05-12",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-15",
+"date_to": "2025-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2025-08-10",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2016-04-20",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "FSM",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8795663",
+"shipname": "CFA27"
+},
+"416234800": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416238800": {
+"authorizations": [
+{
+"date_from": "2012-10-17",
+"date_to": "2017-10-16",
+"source": "FFA"
+},
+{
+"date_from": "2019-10-17",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-18",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9674244",
+"shipname": "FONGKUO889"
+},
+"416240500": {
+"authorizations": [
+{
+"date_from": "2017-04-01",
+"date_to": "2017-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2018-04-01",
+"date_to": "2018-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2019-04-01",
+"date_to": "2019-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2020-04-01",
+"date_to": "2026-05-01",
+"source": "NPFC"
+},
+{
+"date_from": "2017-08-25",
+"date_to": "2018-01-30",
+"source": "SPRFMO"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2019-12-31",
+"source": "SPRFMO"
+},
+{
+"date_from": "2023-12-22",
+"date_to": "2024-12-01",
+"source": "SPRFMO"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8676635",
+"shipname": "AN FONG NO.111"
+},
+"416241500": {
+"authorizations": [
+{
+"date_from": "2014-02-13",
+"date_to": "2018-02-12",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-13",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-18",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2014-02-13",
+"date_to": "2018-02-12",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-13",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-18",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9732876",
+"shipname": "JIHYU668"
+},
+"416241700": {
+"authorizations": [
+{
+"date_from": "2023-01-01",
+"date_to": "2026-05-01",
+"source": "NPFC"
+},
+{
+"date_from": "2017-04-01",
+"date_to": "2017-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2018-04-01",
+"date_to": "2018-12-31",
+"source": "NPFC"
+},
+{
+"date_from": "2019-04-01",
+"date_to": "2019-12-01",
+"source": "NPFC"
+},
+{
+"date_from": "2020-04-01",
+"date_to": "2023-05-01",
+"source": "NPFC"
+},
+{
+"date_from": "2023-01-01",
+"date_to": "2026-05-01",
+"source": "NPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8676491",
+"shipname": "SHIN YANG"
+},
+"416243700": {
+"authorizations": [
+{
+"date_from": "2013-11-29",
+"date_to": "2017-11-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-11-29",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-18",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9720213",
+"shipname": "FONGKUO189"
+},
+"416244700": {
+"authorizations": [
+{
+"date_from": "2014-04-01",
+"date_to": "2016-09-30",
+"source": "CCSBT"
+},
+{
+"date_from": "2018-03-01",
+"date_to": "2018-11-08",
+"source": "CCSBT"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2025-02-01",
+"source": "IOTC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8674728",
+"shipname": "DARLONGCHENG288"
+},
+"416245900": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416298160": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416336000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416527000": {
+"authorizations": [
+{
+"date_from": "2017-04-01",
+"date_to": "2017-09-08",
+"source": "NPFC"
+},
+{
+"date_from": "2018-04-01",
+"date_to": "2018-04-09",
+"source": "NPFC"
+},
+{
+"date_from": "2018-01-01",
+"date_to": "2018-12-31",
+"source": "SPRFMO"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "SQUID_JIGGER",
+"imo": "8747355",
+"shipname": "WIN FU LAI"
+},
+"416529000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416705000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416826000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416842000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416889000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"416898000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-18",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8747252",
+"shipname": "WINFAR636"
+},
+"416899000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2020-06-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-18",
+"date_to": "2020-06-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2020-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2020-05-21",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "TWN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8747238",
+"shipname": "WINFAR606"
+},
+"417001066": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"422223000": {
+"authorizations": [
+{
+"date_from": "2024-04-03",
+"date_to": "2025-04-02",
+"source": "IOTC"
+}
+],
+"flag": "IRN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7910694",
+"shipname": "HAVOOR 1"
+},
+"431424000": {
+"authorizations": [
+{
+"date_from": "2020-02-27",
+"date_to": "2021-08-01",
+"source": "GFCM"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2022-03-01",
+"source": "IATTC"
+},
+{
+"date_from": "2017-08-01",
+"date_to": "2022-03-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2022-03-01",
+"source": "IOTC"
+},
+{
+"date_from": "2017-10-27",
+"date_to": "2022-02-01",
+"source": "WCPFC"
+}
+],
+"flag": "JPN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8717128",
+"shipname": "SUMIYOSHI MARU NO.71"
+},
+"431487000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2024-08-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2017-10-13",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "JPN",
+"found": true,
+"geartype": "POLE_AND_LINE",
+"imo": "9194945",
+"shipname": "KYOYOMARU3"
+},
+"431500420": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"431501786": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"431601098": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"431704110": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2012-10-10",
+"date_to": "2017-09-25",
+"source": "FFA"
+},
+{
+"date_from": "2019-12-11",
+"date_to": "2023-10-01",
+"source": "FFA"
+},
+{
+"date_from": "2024-11-05",
+"date_to": "2025-11-01",
+"source": "FFA"
+},
+{
+"date_from": "2020-02-27",
+"date_to": "2021-08-01",
+"source": "GFCM"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2017-08-01",
+"date_to": "2026-05-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "IOTC"
+},
+{
+"date_from": "2017-10-27",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "JPN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9011351",
+"shipname": "HOSHIN MARU NO.62"
+},
+"440104000": {
+"authorizations": [
+{
+"date_from": "2014-04-01",
+"date_to": "2018-03-31",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-04",
+"date_to": "2020-03-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-03-19",
+"date_to": "2020-11-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9683647",
+"shipname": "LIMDISCOVERER"
+},
+"440150230": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440167000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440191000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440195000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440357000": {
+"authorizations": [
+{
+"date_from": "2016-02-15",
+"date_to": "2018-02-14",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-15",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-04-24",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9743435",
+"shipname": "HANARA"
+},
+"440450000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "IOTC"
+},
+{
+"date_from": "2018-09-05",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8812203",
+"shipname": "SHILLA EXPLORER"
+},
+"440492000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-09-07",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8813489",
+"shipname": "SHILLA CHALLENGER"
+},
+"440574000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-16",
+"date_to": "2020-07-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2016-02-05",
+"source": "IOTC"
+},
+{
+"date_from": "2018-04-04",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9042013",
+"shipname": "DONGWON208"
+},
+"440617000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2020-06-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-11-23",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8916360",
+"shipname": "PANALOX 502"
+},
+"440620000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-16",
+"date_to": "2020-07-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-16",
+"date_to": "2020-07-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2015-09-22",
+"date_to": "2020-09-21",
+"source": "ICCAT"
+},
+{
+"date_from": "2015-09-22",
+"date_to": "2020-09-21",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2020-03-03",
+"source": "IOTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2020-03-03",
+"source": "IOTC"
+},
+{
+"date_from": "2018-04-04",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2018-04-04",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8843111",
+"shipname": "DONGWON212"
+},
+"440704000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2021-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2015-10-08",
+"date_to": "2020-08-08",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2020-08-08",
+"source": "IOTC"
+},
+{
+"date_from": "2022-02-24",
+"date_to": "2026-05-01",
+"source": "IOTC"
+},
+{
+"date_from": "2017-05-26",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8717867",
+"shipname": "ORYONG NO.715"
+},
+"440751000": {
+"authorizations": [],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8714102",
+"shipname": "NAMGUNG 518"
+},
+"440772000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2022-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2024-12-13",
+"source": "IOTC"
+},
+{
+"date_from": "2016-06-30",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2022-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2024-12-13",
+"source": "IOTC"
+},
+{
+"date_from": "2016-06-30",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8714061",
+"shipname": "AGNES 82"
+},
+"440778000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440782000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440788000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-10-25",
+"date_to": "2020-09-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2025-01-01",
+"source": "IATTC"
+},
+{
+"date_from": "2025-01-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2020-03-03",
+"source": "IOTC"
+},
+{
+"date_from": "2018-04-04",
+"date_to": "2024-11-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2020-08-17",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-10-25",
+"date_to": "2020-09-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2025-01-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2020-03-03",
+"source": "IOTC"
+},
+{
+"date_from": "2018-04-04",
+"date_to": "2024-11-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8717817",
+"shipname": "SNB101"
+},
+"440821000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440900000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2021-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2014-07-03",
+"date_to": "2019-07-02",
+"source": "ICCAT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-07-02",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8815669",
+"shipname": "DONGWON618"
+},
+"440990000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"440992000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"441024000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2017-11-07",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2017-11-07",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9386665",
+"shipname": "OCEANACE"
+},
+"441062000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2014-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2020-09-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2017-06-21",
+"source": "IOTC"
+},
+{
+"date_from": "2015-07-15",
+"date_to": "2020-11-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8805303",
+"shipname": "OYANG106"
+},
+"441098000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-14",
+"date_to": "2021-07-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-07-15",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8905593",
+"shipname": "OYANG355"
+},
+"441166000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"441226315": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-16",
+"date_to": "2022-07-15",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-23",
+"date_to": "2022-10-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-16",
+"date_to": "2022-07-15",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-23",
+"date_to": "2022-10-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8628896",
+"shipname": "ZHONG SHUI 608"
+},
+"441251000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2020-06-01",
+"source": "FFA"
+},
+{
+"date_from": "2021-03-29",
+"date_to": "2023-03-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2021-04-01",
+"source": "IATTC"
+},
+{
+"date_from": "2021-04-01",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-04-13",
+"date_to": "2021-03-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2021-03-11",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9005297",
+"shipname": "NO.8 KYUNG YANG"
+},
+"441645000": {
+"authorizations": [],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9016399",
+"shipname": "DONG WON 638"
+},
+"441650000": {
+"authorizations": [],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9047893",
+"shipname": "ORYONG 377"
+},
+"441807000": {
+"authorizations": [
+{
+"date_from": "2012-02-23",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2014-04-25",
+"date_to": "2017-02-09",
+"source": "IOTC"
+},
+{
+"date_from": "2019-05-24",
+"date_to": "2026-05-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-08-27",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-02-23",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2014-04-25",
+"date_to": "2017-02-09",
+"source": "IOTC"
+},
+{
+"date_from": "2019-05-24",
+"date_to": "2026-05-01",
+"source": "IOTC"
+},
+{
+"date_from": "2019-08-27",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9634919",
+"shipname": "SHILLA HARVESTER"
+},
+"441811000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2022-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2016-12-05",
+"source": "IOTC"
+},
+{
+"date_from": "2019-07-03",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8734255",
+"shipname": "KYUNGYANG6"
+},
+"441837000": {
+"authorizations": [
+{
+"date_from": "2012-05-31",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-28",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KOR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9634945",
+"shipname": "SHILLA SPRINTER"
+},
+"473419326": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"488888888": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"503045210": {
+"authorizations": [],
+"flag": "AUS",
+"found": true,
+"geartype": "FISHING",
+"imo": "",
+"shipname": "SEADAR-BAY"
+},
+"503584700": {
+"authorizations": [
+{
+"date_from": "2014-12-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+}
+],
+"flag": "AUS",
+"found": true,
+"geartype": "FISHING",
+"imo": "8019954",
+"shipname": "EMPRIS LADY"
+},
+"503659100": {
+"authorizations": [],
+"flag": "AUS",
+"found": true,
+"geartype": "FISHING",
+"imo": "",
+"shipname": "EUBALAENA"
+},
+"503667400": {
+"authorizations": [],
+"flag": "AUS",
+"found": true,
+"geartype": "POTS_AND_TRAPS",
+"imo": "",
+"shipname": "MEGAN M"
+},
+"503770000": {
+"authorizations": [
+{
+"date_from": "2013-04-08",
+"date_to": "2025-11-01",
+"source": "CCAMLR"
+},
+{
+"date_from": "2016-10-18",
+"date_to": "2025-04-01",
+"source": "SIOFA"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2018-01-30",
+"source": "SPRFMO"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-11-01",
+"source": "SPRFMO"
+},
+{
+"date_from": "2013-04-08",
+"date_to": "2025-11-01",
+"source": "CCAMLR"
+},
+{
+"date_from": "2016-10-18",
+"date_to": "2025-04-01",
+"source": "SIOFA"
+},
+{
+"date_from": "2017-01-01",
+"date_to": "2018-01-30",
+"source": "SPRFMO"
+},
+{
+"date_from": "2019-01-01",
+"date_to": "2025-11-01",
+"source": "SPRFMO"
+}
+],
+"flag": "AUS",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "9111694",
+"shipname": "ISLA EDEN"
+},
+"510056000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2017-07-19",
+"source": "FFA"
+},
+{
+"date_from": "2019-10-31",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "FSM",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8030453",
+"shipname": "MELISSA"
+},
+"512000192": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-12-31",
+"source": "CCSBT"
+},
+{
+"date_from": "2022-01-01",
+"date_to": "2026-05-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2016-05-04",
+"date_to": "2018-01-30",
+"source": "SPRFMO"
+},
+{
+"date_from": "2018-06-26",
+"date_to": "2022-04-01",
+"source": "SPRFMO"
+}
+],
+"flag": "NZL",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8510805",
+"shipname": "AMALTAL EXPLORER"
+},
+"512000659": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"512001685": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"512027000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"512207100": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"515844000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2015-03-05",
+"source": "CCSBT"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2016-03-05",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2015-12-14",
+"source": "IOTC"
+}
+],
+"flag": "KHM",
+"found": true,
+"geartype": "REEFER",
+"imo": "8514772",
+"shipname": "ANDREY DOLGOV"
+},
+"520074000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-26",
+"date_to": "2023-09-01",
+"source": "FFA"
+},
+{
+"date_from": "2023-12-21",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-01-22",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "FJI",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8749676",
+"shipname": "YONGXING3"
+},
+"520180000": {
+"authorizations": [
+{
+"date_from": "2015-09-02",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-09",
+"date_to": "2020-01-09",
+"source": "FFA"
+},
+{
+"date_from": "2020-09-02",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-26",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "FJI",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8748971",
+"shipname": "SUNSHINE NO.18"
+},
+"520226000": {
+"authorizations": [],
+"flag": "FJI",
+"found": true,
+"geartype": "NON_FISHING",
+"imo": "9633692",
+"shipname": "VUNILAGI"
+},
+"529440000": {
+"authorizations": [
+{
+"date_from": "2012-01-05",
+"date_to": "2018-01-04",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-01",
+"date_to": "2026-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-12-31",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KIR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8003230",
+"shipname": "MARIRAOI"
+},
+"529469000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"529676000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2014-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2013-11-23",
+"source": "IOTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2024-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-12-31",
+"date_to": "2023-11-01",
+"source": "WCPFC"
+}
+],
+"flag": "KIR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7503142",
+"shipname": "JOONDISCOVERER"
+},
+"529729000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2014-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-20",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-12-31",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-20",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-12-31",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KIR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7806491",
+"shipname": "MARAWA II"
+},
+"529783000": {
+"authorizations": [
+{
+"date_from": "2014-12-19",
+"date_to": "2017-12-18",
+"source": "FFA"
+},
+{
+"date_from": "2018-12-19",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "KIR",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9699581",
+"shipname": "MOAKONA"
+},
+"533333005": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"538008812": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"538060016": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-07",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-07",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "MHL",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9583419",
+"shipname": "LOMETO"
+},
+"540010700": {
+"authorizations": [
+{
+"date_from": "2019-07-20",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "NCL",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "",
+"shipname": "LA RENAISSANCE"
+},
+"540010800": {
+"authorizations": [
+{
+"date_from": "2019-07-20",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "NCL",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "",
+"shipname": "LA VOIE DU NORD"
+},
+"548227100": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-10",
+"date_to": "2021-09-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-06",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "PHL",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7303724",
+"shipname": "RESTY B.T."
+},
+"548428100": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-03-22",
+"source": "FFA"
+},
+{
+"date_from": "2019-03-23",
+"date_to": "2020-03-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-05-06",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "PHL",
+"found": true,
+"geartype": "PATROL_VESSEL",
+"imo": "8122799",
+"shipname": "MARTINA MARIE"
+},
+"548905000": {
+"authorizations": [
+{
+"date_from": "2015-01-19",
+"date_to": "2018-01-18",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-19",
+"date_to": "2023-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-02-10",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "PHL",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9763681",
+"shipname": "DOLORES 859"
+},
+"553111744": {
+"authorizations": [
+{
+"date_from": "2014-11-29",
+"date_to": "2017-11-28",
+"source": "FFA"
+}
+],
+"flag": "PNG",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9699579",
+"shipname": "MAJESTICSTAR"
+},
+"553111750": {
+"authorizations": [
+{
+"date_from": "2019-09-09",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-26",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2014-12-19",
+"date_to": "2017-12-18",
+"source": "FFA"
+},
+{
+"date_from": "2014-12-19",
+"date_to": "2017-12-18",
+"source": "FFA"
+}
+],
+"flag": "PNG",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9217357",
+"shipname": "ATUN PLANTI"
+},
+"553111751": {
+"authorizations": [
+{
+"date_from": "2014-10-24",
+"date_to": "2017-10-23",
+"source": "FFA"
+},
+{
+"date_from": "2017-06-21",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-06-21",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-04-10",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "PNG",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9215000",
+"shipname": "MAX102"
+},
+"553111756": {
+"authorizations": [
+{
+"date_from": "2019-09-09",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-26",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2015-02-17",
+"date_to": "2018-02-16",
+"source": "FFA"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2017-09-06",
+"source": "FFA"
+}
+],
+"flag": "PNG",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8996097",
+"shipname": "ATUN STA"
+},
+"553111765": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"553111771": {
+"authorizations": [
+{
+"date_from": "2020-04-16",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2020-04-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2015-05-11",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-11-05",
+"date_to": "2020-03-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-07",
+"date_to": "2020-03-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2020-04-16",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2020-04-01",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "PNG",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9771951",
+"shipname": "NUPLA KUMUL"
+},
+"576678000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"576696000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-08",
+"date_to": "2024-09-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-12-25",
+"date_to": "2025-08-01",
+"source": "WCPFC"
+}
+],
+"flag": "VUT",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8664230",
+"shipname": "YUHYI22"
+},
+"576754000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-07-25",
+"date_to": "2024-09-01",
+"source": "FFA"
+},
+{
+"date_from": "2018-12-25",
+"date_to": "2025-08-01",
+"source": "WCPFC"
+}
+],
+"flag": "VUT",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8664254",
+"shipname": "YUH CHANG NO.2"
+},
+"576843000": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2012-01-01",
+"date_to": "2013-05-15",
+"source": "IOTC"
+},
+{
+"date_from": "2019-05-10",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "VUT",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9254991",
+"shipname": "MORE RICH"
+},
+"577101000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"584779200": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"601565000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"601799000": {
+"authorizations": [
+{
+"date_from": "2013-02-07",
+"date_to": "2026-03-01",
+"source": "CCSBT"
+},
+{
+"date_from": "2017-01-02",
+"date_to": "2026-02-27",
+"source": "ICCAT"
+},
+{
+"date_from": "2013-03-01",
+"date_to": "2021-01-31",
+"source": "IOTC"
+},
+{
+"date_from": "2023-03-01",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "ZAF",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "7385253",
+"shipname": "UBUNTU"
+},
+"603100179": {
+"authorizations": [],
+"flag": "AGO",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8617457",
+"shipname": "AROSA DOCE"
+},
+"616563000": {
+"authorizations": [],
+"flag": "GNB",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8522092",
+"shipname": "FLIPPER4"
+},
+"616708000": {
+"authorizations": [],
+"flag": "COM",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8522262",
+"shipname": "FLIPPER 5"
+},
+"616807000": {
+"authorizations": [],
+"flag": "COM",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8606941",
+"shipname": "FLIPPER 3"
+},
+"617095000": {
+"authorizations": [
+{
+"date_from": "2021-01-05",
+"date_to": "2023-05-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2023-05-17",
+"date_to": "2025-07-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2017-10-28",
+"date_to": "2021-05-01",
+"source": "ICCAT"
+},
+{
+"date_from": "2025-07-01",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "CPV",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9710995",
+"shipname": "EGALABUR"
+},
+"627163000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2013-06-30",
+"source": "FFA"
+},
+{
+"date_from": "2015-01-01",
+"date_to": "2023-07-01",
+"source": "ICCAT"
+}
+],
+"flag": "GHA",
+"found": true,
+"geartype": "POLE_AND_LINE",
+"imo": "9078555",
+"shipname": "SANKOFA"
+},
+"627610000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"627691000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"627694000": {
+"authorizations": [
+{
+"date_from": "2015-01-01",
+"date_to": "2025-12-31",
+"source": "ICCAT"
+}
+],
+"flag": "GHA",
+"found": true,
+"geartype": "POLE_AND_LINE",
+"imo": "7395870",
+"shipname": "MARINE 711"
+},
+"627880000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"635000300": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-11-12",
+"source": "CCAMLR"
+},
+{
+"date_from": "2016-10-18",
+"date_to": "2023-11-30",
+"source": "SIOFA"
+}
+],
+"flag": "FRA",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "9245421",
+"shipname": "ILE BOURBON"
+},
+"635212000": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2020-09-01",
+"source": "CCAMLR"
+},
+{
+"date_from": "2016-10-18",
+"date_to": "2024-11-30",
+"source": "SIOFA"
+}
+],
+"flag": "FRA",
+"found": true,
+"geartype": "SET_LONGLINES",
+"imo": "9245407",
+"shipname": "MASCAREIGNES III"
+},
+"635218000": {
+"authorizations": [
+{
+"date_from": "2016-10-18",
+"date_to": "2024-11-30",
+"source": "SIOFA"
+}
+],
+"flag": "ATF",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9245433",
+"shipname": "ALBIUS"
+},
+"650026000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"650204000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"650206000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"659257000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"659308000": {
+"authorizations": [
+{
+"date_from": "2018-03-27",
+"date_to": "2023-08-01",
+"source": "IOTC"
+},
+{
+"date_from": "2016-12-13",
+"date_to": "2025-12-29",
+"source": "ICCAT"
+},
+{
+"date_from": "2018-03-27",
+"date_to": "2023-08-01",
+"source": "IOTC"
+}
+],
+"flag": "KEN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "7902790",
+"shipname": "SEAMAR2"
+},
+"659388000": {
+"authorizations": [
+{
+"date_from": "2016-12-13",
+"date_to": "2025-12-29",
+"source": "ICCAT"
+}
+],
+"flag": "NAM",
+"found": true,
+"geartype": "POLE_AND_LINE",
+"imo": "8744511",
+"shipname": "MAXIMUS CASTRO"
+},
+"663136000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"664095000": {
+"authorizations": [
+{
+"date_from": "2015-08-20",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "SYC",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9787039",
+"shipname": "NF INDIAN TUNA NO.9"
+},
+"664097000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"664145000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"664158000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"664268000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"664396000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"664572000": {
+"authorizations": [
+{
+"date_from": "2014-01-10",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "SYC",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9176917",
+"shipname": "PLAYA DE ANZORAS"
+},
+"664576000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"664579000": {
+"authorizations": [
+{
+"date_from": "2015-01-29",
+"date_to": "2026-05-01",
+"source": "IOTC"
+}
+],
+"flag": "SYC",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9733478",
+"shipname": "JAI ALAI"
+},
+"701000725": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"701045000": {
+"authorizations": [],
+"flag": "ARG",
+"found": true,
+"geartype": "TRAWLERS",
+"imo": "8512657",
+"shipname": "VERDEL"
+},
+"712113001": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"713342592": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"725000215": {
+"authorizations": [],
+"flag": "CHL",
+"found": true,
+"geartype": "FISHING",
+"imo": "6707959",
+"shipname": "ANA CRISTINA"
+},
+"725000755": {
+"authorizations": [],
+"flag": "CHL",
+"found": true,
+"geartype": "CARGO",
+"imo": "7434092",
+"shipname": "SAINTBRANDAN"
+},
+"725000957": {
+"authorizations": [],
+"flag": "CHL",
+"found": true,
+"geartype": "FISHING",
+"imo": "9044970",
+"shipname": "SEINES"
+},
+"725001221": {
+"authorizations": [],
+"flag": "CHL",
+"found": true,
+"geartype": "WELL_BOAT",
+"imo": "9324514",
+"shipname": "ORCAYAGAN"
+},
+"725004310": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"730019000": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "COL",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "9050034",
+"shipname": "CABO DE HORNOS"
+},
+"735057523": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"735057573": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"735057841": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+}
+],
+"flag": "ECU",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7120201",
+"shipname": "SANSUN RANGER"
+},
+"735059089": {
+"authorizations": [
+{
+"date_from": "2012-01-01",
+"date_to": "2018-04-28",
+"source": "FFA"
+},
+{
+"date_from": "2019-08-27",
+"date_to": "2026-05-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-06-15",
+"date_to": "2026-05-01",
+"source": "WCPFC"
+}
+],
+"flag": "ECU",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "8111087",
+"shipname": "GUAYATUNA DOS"
+},
+"740366000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"760100091": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"760999991": {
+"authorizations": [],
+"flag": "PER",
+"found": true,
+"geartype": "TUG",
+"imo": "9235971",
+"shipname": "KUELAP"
+},
+"770576134": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"770576321": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"775005037": {
+"authorizations": [
+{
+"date_from": "2019-06-01",
+"date_to": "2020-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-09-06",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2019-06-01",
+"date_to": "2020-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-09-06",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+}
+],
+"flag": "VEN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8970081",
+"shipname": "MISS ANGELA"
+},
+"775008412": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"775610060": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2020-09-06",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2020-09-06",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2020-09-06",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+}
+],
+"flag": "VEN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7407908",
+"shipname": "VENTUARI"
+},
+"775615000": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-02-05",
+"date_to": "2019-02-04",
+"source": "ICCAT"
+},
+{
+"date_from": "2021-08-26",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-02-05",
+"date_to": "2019-02-04",
+"source": "ICCAT"
+},
+{
+"date_from": "2021-08-26",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+}
+],
+"flag": "VEN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7827471",
+"shipname": "DON FRANCESCO"
+},
+"775627000": {
+"authorizations": [
+{
+"date_from": "2019-01-16",
+"date_to": "2026-05-01",
+"source": "IATTC"
+},
+{
+"date_from": "2018-02-05",
+"date_to": "2019-02-04",
+"source": "ICCAT"
+},
+{
+"date_from": "2019-06-01",
+"date_to": "2020-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2021-08-26",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+}
+],
+"flag": "VEN",
+"found": true,
+"geartype": "TUNA_PURSE_SEINES",
+"imo": "7601736",
+"shipname": "CAYUDE"
+},
+"775630000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"775634000": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"775993100": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"775993501": {
+"authorizations": [
+{
+"date_from": "2018-06-19",
+"date_to": "2020-05-31",
+"source": "ICCAT"
+},
+{
+"date_from": "2020-09-06",
+"date_to": "2025-05-31",
+"source": "ICCAT"
+}
+],
+"flag": "VEN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "8940141",
+"shipname": "DREAM COME TRUE"
+},
+"800038716": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"900028980": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"900200029": {
+"authorizations": [
+{
+"date_from": "2012-11-13",
+"date_to": "2017-11-22",
+"source": "FFA"
+},
+{
+"date_from": "2012-11-13",
+"date_to": "2017-11-22",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-01",
+"date_to": "2024-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-01",
+"date_to": "2024-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2025-06-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-08-06",
+"date_to": "2025-06-01",
+"source": "WCPFC"
+},
+{
+"date_from": "2012-11-13",
+"date_to": "2017-11-22",
+"source": "FFA"
+},
+{
+"date_from": "2019-09-01",
+"date_to": "2024-01-01",
+"source": "FFA"
+},
+{
+"date_from": "2019-01-16",
+"date_to": "2025-06-01",
+"source": "IATTC"
+},
+{
+"date_from": "2019-08-06",
+"date_to": "2025-06-01",
+"source": "WCPFC"
+}
+],
+"flag": "CHN",
+"found": true,
+"geartype": "DRIFTING_LONGLINES",
+"imo": "9671797",
+"shipname": "ZHONG YANG 29"
+},
+"900412888": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"952000264": {
+"authorizations": [],
+"flag": "",
+"found": true,
+"geartype": "",
+"imo": "",
+"shipname": ""
+},
+"999000100": {
+"authorizations": [
+{
+"date_from": "2020-04-01",
+"date_to": "2023-11-01",
+"source": "PER"
+},
+{
+"date_from": "2024-04-01",
+"date_to": "2026-05-01",
+"source": "PER"
+},
+{
+"date_from": "2024-12-17",
+"date_to": "2026-05-01",
+"source": "SPRFMO"
+}
+],
+"flag": "PER",
+"found": true,
+"geartype": "PURSE_SEINES",
+"imo": "",
+"shipname": "CUZCO 4"
+}
+}

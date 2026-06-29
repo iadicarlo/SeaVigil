@@ -27,6 +27,7 @@ from pathlib import Path
 # Make `seavigil` importable when run as a standalone script (package is not installed).
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from seavigil.authorization import enrich_authorization, load_cache  # noqa: E402
 from seavigil.dossier import write_dossiers  # noqa: E402
 from seavigil.evidence import enrich_evidence  # noqa: E402
 from seavigil.jurisdiction import enrich_jurisdiction  # noqa: E402
@@ -222,6 +223,7 @@ def main() -> None:
             p.unlink()
 
     merged = enrich_jurisdiction(ais + sar + behaviors)  # tag each with its EEZ + foreign flag
+    enrich_authorization(merged, load_cache())            # grade foreign -> authorization status
     enrich_evidence(merged)                               # stamp tamper-evident hash + schema
     write_dossiers(merged, INC_DIR)
 

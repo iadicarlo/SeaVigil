@@ -3,6 +3,7 @@
 - **MPA:** Australia EEZ (outside MPA)
 - **Severity:** MEDIUM (dark vessel inside national EEZ, outside any protected area)
 - **EEZ:** Australian Exclusive Economic Zone (Australia)
+- **Authorization:** No vessel identity; authorization not checkable
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-01-01T08:29:59Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)

@@ -404,6 +404,16 @@
           + (fe.length > TOPF
             ? `<div class="stat-row stat-more"><span>and ${fe.length - TOPF} more flags</span><span></span></div>` : '')
         : '';
+      // Authorization: foreign vessels graded against registry / RFMO records.
+      const authLabels = { authorized: 'authorized', authorization_lapsed: 'authorization lapsed',
+        no_record: 'no authorization on record', domestic: 'domestic flag',
+        flag_unknown: 'flag unknown', unverifiable: 'no vessel identity' };
+      const ba = s.by_authorization || {};
+      const authOrder = ['no_record', 'authorization_lapsed', 'authorized', 'domestic', 'flag_unknown', 'unverifiable'];
+      const authHtml = Object.keys(ba).length
+        ? `<div class="stat-sub">by authorization</div>` + authOrder.filter(k => ba[k]).map(k =>
+            `<div class="stat-row"><span>${authLabels[k] || k}</span><span>${ba[k]}</span></div>`).join('')
+        : '';
       const header = ze.length > 6
         ? `${s.total} records across ${ze.length} EEZs worldwide`
         : `${s.total} records in monitored waters`;
@@ -412,7 +422,8 @@
          <div class="stat-sub">by type</div>${rows(byType)}
          ${sevHtml}
          <div class="stat-sub">by jurisdiction (EEZ)</div>${zoneHtml}
-         ${flagHtml}`;
+         ${flagHtml}
+         ${authHtml}`;
       document.querySelectorAll('#stats .mpa-link').forEach(el => {
         el.onclick = () => flyToZone(el.dataset.zone);
       });
@@ -510,6 +521,7 @@
           <div class="row"><strong>Vessel:</strong> ${esc(who)}${scoreBit}</div>
           ${idBits ? `<div class="row" style="color:var(--muted)">${esc(idBits)}</div>` : ''}
           ${eezRow(p)}
+          ${authRow(p)}
           <div class="row"><strong>Gear / source:</strong> ${esc(p.gear || 'n/a')}</div>
           <div class="row"><strong>When (UTC):</strong> ${esc(p.when || 'n/a')}</div>
           ${whyBlock(p, isAttr)}
@@ -568,6 +580,27 @@
       const badge = foreign ? ' <span class="sev sev-high" style="font-size:9.5px">FOREIGN</span>' : '';
       return `<div class="row"><strong>EEZ:</strong> ${esc(p.eez)}${sov}${badge}</div>`;
     }
+    // Authorization status: foreign vessels graded against registry / RFMO authorizations
+    // (Global Fishing Watch vessel identity). National EEZ licences are not public.
+    const AUTH_BADGE = {
+      authorized: { label: 'AUTHORIZED', cls: 'sev-low' },
+      authorization_lapsed: { label: 'AUTH. LAPSED', cls: 'sev-medium' },
+      no_record: { label: 'NO AUTHORIZATION ON RECORD', cls: 'sev-high' },
+    };
+    const AUTH_PLAIN = {
+      domestic: 'domestic flag (own EEZ)', flag_unknown: 'flag unknown',
+      unverifiable: 'no vessel identity (not checkable)',
+    };
+    function authRow(p) {
+      if (!p.authorization) return '';
+      const auths = p.authorities ? ` <span style="color:var(--muted)">(${esc(p.authorities)})</span>` : '';
+      const imo = p.imo ? ` <span style="color:var(--faint)">&middot; IMO ${esc(p.imo)}</span>` : '';
+      const b = AUTH_BADGE[p.authorization];
+      const body = b
+        ? `<span class="sev ${b.cls}" style="font-size:9.5px">${b.label}</span>${auths}`
+        : `<span style="color:var(--muted)">${esc(AUTH_PLAIN[p.authorization] || p.authorization)}</span>`;
+      return `<div class="row"><strong>Authorization:</strong> ${body}${imo}</div>`;
+    }
 
     function parseShap(s) {
       const out = [];
@@ -603,7 +636,10 @@
           model_calibration: (p.kind === 'ais_fishing_incident' ? MODEL_CAL : null) },
         location: { mpa: p.mpa || null, eez: p.eez || null, eez_sovereign: p.eez_sovereign || null,
           eez_foreign: (p.eez_foreign ?? null), when_utc: p.when || null },
-        vessel: { id: p.vessel || null, name: p.ship_name || null, flag: p.flag || null, ship_type: p.ship_type || null },
+        vessel: { id: p.vessel || null, name: p.ship_name || null, flag: p.flag || null, ship_type: p.ship_type || null,
+          imo: p.imo || null },
+        authorization: { status: p.authorization || null, authorities_on_record: p.authorities || null,
+          source: 'Global Fishing Watch vessel identity (RFMO/registry authorizations); national EEZ licences are not public' },
         provenance: sources,
         integrity: { algorithm: 'sha256', hash: p.evidence_hash || null,
           note: 'SHA-256 over the incident canonical facts; recompute server-side to verify the record is unaltered.' },

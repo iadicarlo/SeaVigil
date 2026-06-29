@@ -70,6 +70,9 @@ def summarize(dossiers: list[dict]) -> dict:
             [d for d in dossiers if d.get("flag")],
             lambda d: to_iso2(d.get("flag")) or str(d.get("flag")).strip().upper(),
         ),
+        # Authorization status: foreign vessels graded against registry/RFMO records.
+        "by_authorization": _count(
+            [d for d in dossiers if d.get("authorization_status")], "authorization_status"),
     }
 
 
@@ -102,6 +105,9 @@ def incidents_to_geojson(dossiers: list[dict]) -> dict:
                     "eez": d.get("eez_name") or "",
                     "eez_sovereign": d.get("eez_sovereign") or "",
                     "eez_foreign": d.get("eez_foreign"),
+                    "authorization": d.get("authorization_status") or "",
+                    "authorities": ", ".join(d.get("authorization_authorities") or []),
+                    "imo": d.get("registry_imo") or "",
                     "evidence_hash": d.get("evidence_hash") or "",
                     "evidence_schema": d.get("evidence_schema") or "",
                     "why": _why(d),
