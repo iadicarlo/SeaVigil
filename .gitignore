@@ -60,3 +60,6 @@ data/authorizations_live.json
 # Rolling AIS buffer for live spoofing (persisted via Actions cache, not committed)
 data/positions/ais_buffer.csv
 data/positions/ais_new.csv
+
+# The open Allen model repo, cloned + cached by the SAR engine workflow (never committed)
+vendor/

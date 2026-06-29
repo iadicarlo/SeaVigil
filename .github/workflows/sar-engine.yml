@@ -1,0 +1,88 @@
+name: SAR engine (sub-day dark vessels)
+
+# Within hours of each Sentinel-1 pass (Copernicus NRT products land under 3h after acquisition),
+# discover new scenes over data/watchlist.json, run our detector on a bounded AOI, cross-match the
+# live AIS buffer (matched / dark / no-coverage), and republish the ?sar view.
+#
+# Needs Copernicus Data Space S3 keys as repo secrets CDSE_S3_KEY and CDSE_S3_SECRET. Without them
+# the run fails loudly (no silent skip). CPU detection is bounded per run (max-scenes, aoi-deg); a
+# full Sentinel-1 scene at radar resolution would need a GPU or tiling, a known scaling step.
+
+on:
+  schedule:
+    - cron: "37 */3 * * *"   # every 3 hours; catches new scenes within ~3h of Copernicus publishing
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sar-engine
+  cancel-in-progress: false
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Conda env (gdal + torch) for the detector, cached
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: vds
+          create-args: >-
+            python=3.11 pytorch torchvision gdal rasterio pyproj shapely
+            scikit-image scikit-learn numpy pandas boto3 mapcalc
+          cache-environment: true
+      - name: Cache the open Allen model repo + Sentinel-1 weights (fixed commit)
+        id: vds-cache
+        uses: actions/cache@v4
+        with:
+          path: vendor/vessel-detection-sentinels
+          key: vds-allen-60b003d
+      - name: Clone the Allen model + pull weights (only on a cache miss)
+        if: steps.vds-cache.outputs.cache-hit != 'true'
+        run: |
+          git lfs install
+          git clone --depth 1 https://github.com/allenai/vessel-detection-sentinels.git \
+            vendor/vessel-detection-sentinels
+          cd vendor/vessel-detection-sentinels
+          git lfs pull --include='data/model_artifacts/sentinel-1/**' --include='torch_weights/**'
+      - name: Restore the rolling AIS buffer (read-only, for cross-match)
+        uses: actions/cache/restore@v4
+        with:
+          path: data/positions/ais_buffer.csv
+          key: ais-buffer-none
+          restore-keys: ais-buffer-
+      - name: Run the SAR engine
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CDSE_S3_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CDSE_S3_SECRET }}
+        run: |
+          if [ -z "$AWS_ACCESS_KEY_ID" ]; then
+            echo "No CDSE_S3_KEY / CDSE_S3_SECRET secret; the SAR engine needs Copernicus S3 access."
+            exit 1
+          fi
+          DETPY="$MAMBA_ROOT_PREFIX/envs/vds/bin/python"
+          uv run python scripts/sar_engine.py \
+            --vds vendor/vessel-detection-sentinels \
+            --detect-python "$DETPY" \
+            --ais-buffer data/positions/ais_buffer.csv \
+            --since-hours 12 --max-scenes 2 --aoi-deg 0.6 --device cpu
+      - name: Commit refreshed ?sar data + state if changed
+        run: |
+          git config user.name "Isma Abdelkader Di Carlo"
+          EU="iadicarlo"; ED="icloud.com"   # composed so cron commits attribute to the owner
+          git config user.email "${EU}@${ED}"
+          git add web/data/sar results/sar data/sar_state.json
+          if git diff --staged --quiet; then echo "No changes this run."; exit 0; fi
+          git commit -m "chore: SAR engine refresh"
+          for attempt in 1 2 3; do
+            if git push; then echo "pushed"; exit 0; fi
+            echo "push rejected; syncing and retrying ($attempt)"
+            git pull --rebase --autostash -X ours origin main || git rebase --abort
+          done
+          echo "push failed after retries"; exit 1

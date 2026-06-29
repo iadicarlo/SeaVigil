@@ -164,7 +164,16 @@ def _finalize_severity(d: dict) -> None:
         d["explanation"]["drivers"].append("near-stationary at acquisition (likely at anchor)")
 
 
-def _match_ais(dossiers, ais_csv, radius_nm=2.0, window_min=30) -> int:
+def _match_ais(dossiers, ais_csv, radius_nm=2.0, coverage_nm=50.0, window_min=30):
+    """Cross-match each SAR detection against the AIS buffer, three ways:
+      matched (True)    : an AIS broadcast within radius_nm and +/- window_min -> identified, broadcasting.
+      dark (False)      : no match, BUT AIS reception existed within coverage_nm at that time, so a
+                          broadcasting vessel would have been received -> genuinely not broadcasting.
+      no coverage (None): no AIS at all nearby in the window -> a reception gap, status unverified.
+    The middle case is the only honest "dark" flag: we call a vessel dark only when we can show we
+    would have received it if it were broadcasting. Offshore, where aisstream is sparse, many
+    detections fall to None rather than False, which is the truthful answer.
+    """
     pts = []
     with open(ais_csv) as f:
         for a in csv.DictReader(f):
@@ -172,18 +181,27 @@ def _match_ais(dossiers, ais_csv, radius_nm=2.0, window_min=30) -> int:
                 pts.append((float(a["timestamp"]), float(a["lat"]), float(a["lon"])))
             except (KeyError, ValueError):
                 continue
-    matched = 0
+    matched = dark = nocov = 0
     for d in dossiers:
         try:
             te = datetime.fromisoformat(d["time_start_utc"].replace("Z", "+00:00")).timestamp()
         except ValueError:
+            d["matched_to_ais"] = None
+            nocov += 1
             continue
-        hit = any(abs(ts - te) <= window_min * 60
-                  and _haversine_nm(d["centroid_lon"], d["centroid_lat"], lo, la) <= radius_nm
-                  for ts, la, lo in pts)
-        d["matched_to_ais"] = hit
-        matched += hit
-    return matched
+        near = [(la, lo) for ts, la, lo in pts if abs(ts - te) <= window_min * 60]
+        if any(_haversine_nm(d["centroid_lon"], d["centroid_lat"], lo, la) <= radius_nm
+               for la, lo in near):
+            d["matched_to_ais"] = True
+            matched += 1
+        elif any(_haversine_nm(d["centroid_lon"], d["centroid_lat"], lo, la) <= coverage_nm
+                 for la, lo in near):
+            d["matched_to_ais"] = False   # reception nearby but no match -> dark
+            dark += 1
+        else:
+            d["matched_to_ais"] = None     # no reception nearby -> coverage gap, unverified
+            nocov += 1
+    return matched, dark, nocov
 
 
 def build(detections_csv: str, ais_csv: str | None = None) -> list[dict]:
@@ -205,9 +223,9 @@ def build(detections_csv: str, ais_csv: str | None = None) -> list[dict]:
                 float(r.get("score") or 0), _f(r, "vessel_speed_k") or 0.0, _heading_deg(r),
                 in_mpa, (m.name if m else None), (m.no_take if m else None), (m.iucn_cat if m else None)))
     if ais_csv:
-        n = _match_ais(dossiers, ais_csv)
-        print(f"AIS matching: {n} of {len(dossiers)} detections matched a broadcast; "
-              f"{len(dossiers) - n} dark")
+        matched, dark, nocov = _match_ais(dossiers, ais_csv)
+        print(f"AIS matching: {matched} matched a broadcast, {dark} dark (reception nearby, no "
+              f"match), {nocov} no coverage (unverified)")
     for d in dossiers:
         _finalize_severity(d)
     return dossiers
