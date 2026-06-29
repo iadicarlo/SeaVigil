@@ -6,13 +6,14 @@ when the vessel's flag (derived from its MMSI) differs from the EEZ sovereign. A
 foreign vessel apparent-fishing inside another state's EEZ is the canonical IUU
 lead; it is not proof (the vessel may be licensed), so the dossier says so.
 
-EEZ boundaries: Marine Regions (Flanders VLIZ), CC BY 4.0. The index reads the same
-simplified ``web/data/eez.geojson`` that the map renders, so the map and the
-dossiers agree on the boundary.
+EEZ boundaries: Marine Regions (Flanders VLIZ), CC BY 4.0. The Python index reads the
+global ``data/eez_tag.geojson.gz`` (every coastal state); the map renders the matching
+``web/tiles/eez.pmtiles``, so the map and the dossiers agree on the boundary.
 """
 
 from __future__ import annotations
 
+import gzip
 import json
 from pathlib import Path
 
@@ -24,24 +25,30 @@ from shapely.geometry import shape
 from seavigil.flags import from_iso3
 
 ROOT = Path(__file__).resolve().parent.parent
-EEZ_GEOJSON = ROOT / "web" / "data" / "eez.geojson"
+# Global EEZ tag set (every coastal state) so any incident worldwide is placed in a
+# jurisdiction and foreign-vs-domestic can be decided. Built by scripts/build_eez_tag.py;
+# gzipped to keep the full-resolution boundary light enough to commit.
+EEZ_GEOJSON = ROOT / "data" / "eez_tag.geojson.gz"
 
 
 class EEZIndex:
-    """STRtree point-in-polygon index over the showcase EEZ polygons."""
+    """STRtree point-in-polygon index over the global EEZ polygons."""
 
     def __init__(self, path: str | Path = EEZ_GEOJSON):
         path = Path(path)
-        self.features: list[dict] = []
-        self._tree = None
         if not path.exists():
-            return
-        data = json.loads(path.read_text())
-        self.features = [f for f in data.get("features", []) if f.get("geometry")]
+            raise FileNotFoundError(
+                f"EEZ tag file not found: {path}. Build it with "
+                "`uv run --with pyogrio --with geopandas python scripts/build_eez_tag.py`."
+            )
+        with gzip.open(path, "rt", encoding="utf-8") as fh:
+            data = json.load(fh)
+        self.features: list[dict] = [f for f in data.get("features", []) if f.get("geometry")]
         geoms = np.array([shape(f["geometry"]) for f in self.features], dtype=object)
-        if len(geoms):
-            shapely.prepare(geoms)  # fast repeated point-in-polygon on large EEZ polygons
-            self._tree = STRtree(geoms)
+        if not len(geoms):
+            raise ValueError(f"EEZ tag file has no usable polygons: {path}")
+        shapely.prepare(geoms)  # fast repeated point-in-polygon on large EEZ polygons
+        self._tree = STRtree(geoms)
 
     def assign(self, lon: float, lat: float) -> dict | None:
         """Return the properties of the EEZ containing (lon, lat), or None."""

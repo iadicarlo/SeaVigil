@@ -2,7 +2,7 @@
 
 - **MPA:** Australia EEZ (outside MPA)
 - **Severity:** MEDIUM (dark vessel inside national EEZ, outside any protected area)
-- **EEZ:** Australia EEZ (Australia)
+- **EEZ:** Australian Exclusive Economic Zone (Australia)
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-01-01T08:29:59Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
@@ -28,7 +28,7 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 - Global Fishing Watch Sentinel-1 SAR vessel detections (Paolo et al., Nature 2024). CC BY-NC 4.0 (non-commercial).
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `07a88bfcdc17e2b2cd70e4dec1b4ab1d9803c6a3585f9e6cf73eae2043116089`
+- **Integrity (SHA-256 of canonical facts):** `69ed7ca094e8deb8da1891de0d6dfb2d35db7aac45a94dc7f1dcd6411fecde43`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

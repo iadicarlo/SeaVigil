@@ -80,6 +80,8 @@
     .stat-row{display:flex;justify-content:space-between;gap:10px;padding:1.5px 0;}
     .mpa-link{cursor:pointer;color:var(--fg);border-bottom:1px dotted transparent;}
     .mpa-link:hover{color:var(--teal-bright);border-bottom-color:var(--teal-bright);}
+    .zone-name{color:var(--fg);}
+    .stat-more{color:var(--muted);font-size:11px;font-style:italic;}
 
     /* detail dossier */
     #detail h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;margin:2px 28px 8px 0;line-height:1.25;}
@@ -143,8 +145,9 @@
       </svg>
       <h1 class="name">Sea<span class="v">Vigil</span></h1>
     </div>
-    <p class="full">Apparent fishing and dark (non-broadcasting) vessels detected inside Marine
-       Protected Areas. Click a marker for the per-incident reason.</p>
+    <p class="full">Five illegal-fishing behaviors flagged in waters worldwide: apparent fishing in
+       Marine Protected Areas, dark (non-broadcasting) vessels, AIS spoofing, going dark, and at-sea
+       transshipment. Click a marker for the per-incident reason and evidence.</p>
     <p class="disclaimer" id="vintage"></p>
     <p class="disclaimer" id="modelink"></p>
     <p class="disclaimer"><a href="about.html">About &amp; methodology</a> (data sources, citations, limits)</p>
@@ -195,8 +198,8 @@
 
     const map = new maplibregl.Map({
       container: 'map',
-      center: [-168, -2],
-      zoom: 1.9,
+      center: [-110, 5],
+      zoom: 1.4,
       attributionControl: { compact: true },
       style: {
         version: 8,
@@ -266,8 +269,10 @@
       const DIR = LIVE ? './data/live' : './data';
       let incidents, tracks, summary;
       try {
+        // no-store: the data is regenerated (cron / near-real-time), so always fetch the
+        // current version rather than a stale cached copy.
         const getJSON = async (p) => {
-          const r = await fetch(p);
+          const r = await fetch(p, { cache: 'no-store' });
           if (!r.ok) throw new Error(`${p} (${r.status})`);
           return r.json();
         };
@@ -330,7 +335,7 @@
       setMode(LIVE, summary);
       renderStats(summary);
       if (LIVE) fitLive(incidents);
-      else map.flyTo({ center: [-168, -2], zoom: 1.9, duration: 0 });
+      else map.flyTo({ center: [-110, 5], zoom: 1.4, duration: 0 });
 
       wireLayerToggles();
       wireInteractions();
@@ -355,12 +360,16 @@
       const v = document.getElementById('vintage');
       v.innerHTML = live
         ? `Live AIS stream (Great Barrier Reef).${asof} <em>Apparent</em> fishing, an inspection lead, not proof.`
-        : 'Illustrative sample of five IUU behaviors: apparent fishing in MPAs, dark-fleet SAR, AIS spoofing, going dark, and at-sea encounters, on real WDPA / EEZ boundaries. Not live. An inspection lead, not proof.';
+        : 'Five IUU behaviors worldwide: apparent fishing in MPAs, dark-fleet SAR, AIS spoofing, going dark, and at-sea encounters. Going-dark and encounters are GFW-published events tagged to the EEZ they fall in across every coastal state; fishing and SAR are sampled in showcase reserves. On real WDPA / EEZ boundaries. Not live. An inspection lead, not proof.';
       document.getElementById('modelink').innerHTML = live
         ? '<a href="./" style="color:var(--fg)">&larr; Back to showcase</a>'
         : '<a href="?live">View the near-real-time monitor &rarr;</a>';
     }
 
+    function flagEmoji(iso2) {
+      if (!iso2 || !/^[A-Za-z]{2}$/.test(iso2)) return '';
+      return String.fromCodePoint(...[...iso2.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65));
+    }
     function renderStats(s) {
       const rows = o => Object.entries(o).map(([k, v]) =>
         `<div class="stat-row"><span>${k}</span><span>${v}</span></div>`).join('');
@@ -373,14 +382,35 @@
         ? `<div class="stat-sub">by severity</div>` + bySev.map(k =>
             `<div class="stat-row"><span><span class="sev sev-${k}">${k}</span></span><span>${sev[k]}</span></div>`).join('')
         : '';
-      const zones = s.by_eez && Object.keys(s.by_eez).length ? s.by_eez : s.by_mpa;
-      const zoneHtml = Object.entries(zones).map(([k, v]) =>
-        `<div class="stat-row"><span class="mpa-link" data-zone="${k.replace(/"/g, '&quot;')}">${k}</span><span>${v}</span></div>`).join('');
+      // Jurisdiction: global data spans 100+ EEZs, so show the busiest and tally the rest.
+      // A row is clickable only when a jump-to view exists for it (the showcase reserves).
+      const zones = (s.by_eez && Object.keys(s.by_eez).length) ? s.by_eez : (s.by_mpa || {});
+      const ze = Object.entries(zones), TOPZ = 8;
+      const hasView = k => !!(MPA_VIEWS[k] || EEZ_VIEWS[k] || EEZ_VIEWS[(k || '').replace(/ \(outside MPA\)$/, '')]);
+      const zoneHtml = ze.slice(0, TOPZ).map(([k, v]) => {
+        const span = hasView(k)
+          ? `<span class="mpa-link" data-zone="${k.replace(/"/g, '&quot;')}">${k}</span>`
+          : `<span class="zone-name">${k}</span>`;
+        return `<div class="stat-row">${span}<span>${v}</span></div>`;
+      }).join('') + (ze.length > TOPZ
+        ? `<div class="stat-row stat-more"><span>and ${ze.length - TOPZ} more EEZs</span><span></span></div>` : '');
+      // Flag state: the classic IUU lens (which flags go dark / transship most).
+      const fe = Object.entries(s.by_flag || {}), TOPF = 6;
+      const flagHtml = fe.length
+        ? `<div class="stat-sub">by flag state</div>` + fe.slice(0, TOPF).map(([k, v]) =>
+            `<div class="stat-row"><span>${flagEmoji(k)} ${k}</span><span>${v}</span></div>`).join('')
+          + (fe.length > TOPF
+            ? `<div class="stat-row stat-more"><span>and ${fe.length - TOPF} more flags</span><span></span></div>` : '')
+        : '';
+      const header = ze.length > 6
+        ? `${s.total} records across ${ze.length} EEZs worldwide`
+        : `${s.total} records in monitored waters`;
       document.getElementById('stats').innerHTML =
-        `<div class="stat-h">${s.total} records in monitored waters</div>
+        `<div class="stat-h">${header}</div>
          <div class="stat-sub">by type</div>${rows(byType)}
          ${sevHtml}
-         <div class="stat-sub">by jurisdiction (EEZ)</div>${zoneHtml}`;
+         <div class="stat-sub">by jurisdiction (EEZ)</div>${zoneHtml}
+         ${flagHtml}`;
       document.querySelectorAll('#stats .mpa-link').forEach(el => {
         el.onclick = () => flyToZone(el.dataset.zone);
       });

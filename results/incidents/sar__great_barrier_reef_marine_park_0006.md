@@ -2,7 +2,7 @@
 
 - **MPA:** Great Barrier Reef Marine Park (WDPA 2628_5)
 - **Severity:** HIGH (dark vessel inside MPA)  ·  boundary WDPA/WD-OECM Jun2026
-- **EEZ:** Australia EEZ (Australia)
+- **EEZ:** Australian Exclusive Economic Zone (Australia)
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-01-01T08:29:59Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
@@ -28,7 +28,7 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 - Global Fishing Watch Sentinel-1 SAR vessel detections (Paolo et al., Nature 2024). CC BY-NC 4.0 (non-commercial).
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `f9163c1a41eeab402ea8eadcf9c8fda9a38e9a98a19fb6ef871357b9e77ca033`
+- **Integrity (SHA-256 of canonical facts):** `c616725d3c84b2ae8ff968823d4fbb32454a910fbd51784c063bdcdc42b69e27`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

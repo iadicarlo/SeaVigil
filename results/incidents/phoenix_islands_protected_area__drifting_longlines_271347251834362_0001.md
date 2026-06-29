@@ -2,7 +2,7 @@
 
 - **MPA:** Phoenix Islands Protected Area (WDPA 309888)
 - **Severity:** MEDIUM (protected area (category not reported))  ·  boundary WDPA/WD-OECM Jun2026
-- **EEZ:** Phoenix Islands EEZ (Kiribati) (Kiribati)
+- **EEZ:** Kiribati Exclusive Economic Zone (Phoenix Group) (Kiribati)
 - **Vessel:** `drifting_longlines_271347251834362`  ·  **gear:** drifting_longlines
 - **When (UTC):** 2014-06-21T02:01:39Z → 2014-06-26T01:02:46Z (119.019 h)
 - **Apparent fishing:** 727 of 1004 in-MPA positions; mean p=0.89, max p=1.00
@@ -35,7 +35,7 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions (s
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
 - **Model confidence:** Fishing probabilities are well-calibrated (Brier 0.0915 on 408,194 held-out positions from vessels not seen in training); read the score as a probability.
-- **Integrity (SHA-256 of canonical facts):** `432af0570bdb4c11f7695427c5a16f88f315bb6cc5ca2da09396447709b7c9bb`
+- **Integrity (SHA-256 of canonical facts):** `e7e9973739f31912110ff04a5dffc6daa9a2dae839cba7c0eca9ae5ce90a3a1d`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

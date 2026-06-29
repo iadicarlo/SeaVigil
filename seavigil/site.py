@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from seavigil import evidence
-from seavigil.flags import emoji_for
+from seavigil.flags import emoji_for, to_iso2
 
 ROOT = Path(__file__).resolve().parent.parent
 INCIDENTS_JSON = ROOT / "results" / "incidents" / "incidents.json"
@@ -53,21 +53,23 @@ def _count(dossiers: list[dict], key, default="unknown") -> dict:
 def summarize(dossiers: list[dict]) -> dict:
     """Breakdown counts for the map's stats panel.
 
-    Note: a *flag-state* breakdown (as in some monitors) is not possible here -- the
-    GFW training labels are anonymized (no flag). That needs GFW vessel-identity data
-    (a later, live-API step). We break down by what the data actually carries.
+    The flag-state tally normalizes every code to ISO2 first (sources mix ISO2 and ISO3,
+    so otherwise one country splits across two rows). The anonymized AIS training labels
+    carry no flag and simply do not contribute to it.
     """
     return {
         "total": len(dossiers),
         "by_type": _count(dossiers, "type", default="ais_fishing_incident"),
         "by_severity": _count([d for d in dossiers if d.get("severity")], "severity"),
         "by_mpa": _count(dossiers, "mpa_name"),
-        # Jurisdiction (EEZ) breakdown: every incident inside a showcase EEZ carries one.
+        # Jurisdiction (EEZ) breakdown: every incident inside an EEZ worldwide carries one.
         "by_eez": _count([d for d in dossiers if d.get("eez_name")], "eez_name"),
         "by_gear": _count(dossiers, "gear"),
-        # Flag-state breakdown is only populated when records carry a flag (real GFW
-        # SAR matched detections); empty for the anonymized AIS training labels.
-        "by_flag": _count([d for d in dossiers if d.get("flag")], "flag"),
+        # Flag-state breakdown, keyed by normalized ISO2 so codes do not double-count.
+        "by_flag": _count(
+            [d for d in dossiers if d.get("flag")],
+            lambda d: to_iso2(d.get("flag")) or str(d.get("flag")).strip().upper(),
+        ),
     }
 
 
@@ -95,7 +97,7 @@ def incidents_to_geojson(dossiers: list[dict]) -> dict:
                     "ship_type": d.get("ship_type") or "",
                     "destination": d.get("destination") or "",
                     "gear": d.get("gear", ""),
-                    "flag": d.get("flag") or "",
+                    "flag": to_iso2(d.get("flag")) or (d.get("flag") or ""),
                     "flag_emoji": emoji_for(d.get("flag")),
                     "eez": d.get("eez_name") or "",
                     "eez_sovereign": d.get("eez_sovereign") or "",

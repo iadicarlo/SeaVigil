@@ -21,6 +21,11 @@ WEB = Path(__file__).resolve().parent.parent / "web"
 
 
 class RangeHandler(SimpleHTTPRequestHandler):
+    def end_headers(self):  # noqa: N802 (stdlib casing)
+        # Dev server: never let the browser cache, so regenerated data shows immediately.
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        super().end_headers()
+
     def send_head(self):  # noqa: N802 (stdlib casing)
         rng = self.headers.get("Range")
         if not rng:

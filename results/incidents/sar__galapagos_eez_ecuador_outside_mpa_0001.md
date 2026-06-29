@@ -2,7 +2,7 @@
 
 - **MPA:** Galapagos EEZ (Ecuador) (outside MPA)
 - **Severity:** MEDIUM (dark vessel inside national EEZ, outside any protected area)
-- **EEZ:** Galapagos EEZ (Ecuador) (Ecuador)
+- **EEZ:** Ecuadorian Exclusive Economic Zone (Galapagos) (Ecuador)
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-01-02T11:42:31Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
@@ -28,7 +28,7 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 - Global Fishing Watch Sentinel-1 SAR vessel detections (Paolo et al., Nature 2024). CC BY-NC 4.0 (non-commercial).
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `f07278ed1836d8399bf465c901d4695d3fe5b564589dcc51e174fbfaf508bb2f`
+- **Integrity (SHA-256 of canonical facts):** `a2520953b188ba84e402ea54df8fb528111d431b5eefbd90a02597622e048e2e`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

@@ -64,8 +64,9 @@ def build_from_gfw_disabling(
 
     Terrestrial AIS cannot see offshore disabling, so the showcase consumes GFW's
     satellite-detected events (the same consume-not-recompute pattern as the SAR dark
-    fleet) and adds the explanation + evidence layer. Only events inside a showcase
-    EEZ are kept, selected round-robin across EEZs and by longest gap for diversity.
+    fleet) and adds the explanation + evidence layer. Events inside any coastal-state
+    EEZ worldwide are kept, selected round-robin across EEZs and by gap-start time for
+    a spread of durations (high-seas disabling, outside every EEZ, is not tagged here).
     """
     cand = []
     with open(csv_path) as f:

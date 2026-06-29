@@ -145,26 +145,41 @@ def _escalate_by_mpa(dossiers: list[dict], mpa_idx: MPAIndex) -> None:
 
 
 def _load_behaviors() -> list[dict]:
-    """Behavioral dossiers from real AIS: spoofing from NOAA terrestrial tracks, and
-    going-dark from GFW's satellite AIS-disabling events (consumed, like the SAR dark
-    fleet, because terrestrial AIS cannot see offshore disabling). Both are optional."""
-    out: list[dict] = []
-    tracks = ROOT / "data" / "positions" / "noaa_tracks.csv"
-    if tracks.exists():
-        import pandas as pd  # noqa: PLC0415
+    """Behavioral dossiers from real AIS data.
 
-        from seavigil import spoofing  # noqa: PLC0415
-        out += spoofing.build_spoofing_dossiers(pd.read_csv(tracks))
+    AIS spoofing comes from NOAA terrestrial tracks (US coastal, the only free AIS feed).
+    Going-dark and at-sea encounters are consumed GLOBALLY from GFW's published satellite
+    datasets (terrestrial AIS cannot see offshore disabling, so we consume like the SAR
+    dark fleet) and tagged to the coastal-state EEZ they fall in, selected round-robin
+    across every EEZ worldwide. The showcase requires all three inputs: a missing one
+    raises rather than silently dropping a behavior.
+    """
+    import pandas as pd  # noqa: PLC0415
+
+    from seavigil import going_dark, spoofing, transshipment  # noqa: PLC0415
+    from seavigil.jurisdiction import EEZIndex  # noqa: PLC0415
+
+    tracks = ROOT / "data" / "positions" / "noaa_tracks.csv"
     disabling = ROOT / "data" / "disabling" / "disabling_events.csv"
-    if disabling.exists():
-        from seavigil import going_dark  # noqa: PLC0415
-        from seavigil.jurisdiction import EEZIndex  # noqa: PLC0415
-        out += going_dark.build_from_gfw_disabling(str(disabling), EEZIndex())
     enc = next((ROOT / "data" / "transshipment").glob("**/potential_transshipment*.csv"), None)
-    if enc is not None:
-        from seavigil import transshipment  # noqa: PLC0415
-        from seavigil.jurisdiction import EEZIndex  # noqa: PLC0415
-        out += transshipment.build_from_gfw_encounters(str(enc), EEZIndex())
+    missing = []
+    if not tracks.exists():
+        missing.append(str(tracks))
+    if not disabling.exists():
+        missing.append(str(disabling))
+    if enc is None:
+        missing.append("data/transshipment/**/potential_transshipment*.csv")
+    if missing:
+        raise FileNotFoundError(
+            "behavior inputs missing (fetch them before regenerating the showcase): "
+            + "; ".join(missing)
+        )
+
+    eez = EEZIndex()  # global EEZ; build once and reuse across both consumed behaviors
+    out: list[dict] = []
+    out += spoofing.build_spoofing_dossiers(pd.read_csv(tracks))
+    out += going_dark.build_from_gfw_disabling(str(disabling), eez, max_events=350, cap_per_eez=6)
+    out += transshipment.build_from_gfw_encounters(str(enc), eez, max_events=200, cap_per_eez=6)
     return out
 
 

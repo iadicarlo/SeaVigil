@@ -36,7 +36,8 @@ def build_from_gfw_encounters(
     min_duration_hr: float = 3.0,
     max_duration_hr: float = 48.0,
 ) -> list[dict]:
-    """Return at-sea encounter dossiers (type ``encounter``) inside the showcase EEZs."""
+    """Return at-sea encounter dossiers (type ``encounter``) inside any coastal-state EEZ
+    worldwide, selected round-robin across EEZs and by longest duration for diversity."""
     cand = []
     with open(csv_path) as f:
         for r in csv.DictReader(f):
