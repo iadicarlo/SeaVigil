@@ -1,19 +1,19 @@
-# Incident `live_ais__bdf7862fdbc4b1`
+# Incident `live_ais__37035f4fff6aec`
 
 - **MPA:** AIS disabling (going dark)
 - **Severity:** HIGH (foreign vessel, no authorization on record)
-- **EEZ:** Brazilian Exclusive Economic Zone (Brazil) -- FOREIGN-flagged vessel
+- **EEZ:** Honduran Exclusive Economic Zone (Honduras) -- FOREIGN-flagged vessel
 - **Authorization:** No authorization on record
-- **Vessel:** 🇸🇬 EAGLE COLATINA  ·  **signal:** AIS gap
-- **When (UTC):** 2026-06-23T15:56:14.000Z → 2026-06-24T18:26:04.000Z
-- **Gap:** 26.5 h dark, 98.0 nm offshore
-- **Where:** -24.626, -42.263
+- **Vessel:** 🇸🇬 MOCKINGBIRD  ·  **signal:** AIS gap
+- **When (UTC):** 2026-06-22T19:33:21.000Z → 2026-06-26T06:06:53.000Z
+- **Gap:** 82.6 h dark, 106.0 nm offshore
+- **Where:** 16.400, -83.630
 
 ## Why this was flagged
 
 _GFW Events gaps dataset (satellite AIS).._
 
-- went dark 98 nm offshore for 26 h
+- went dark 106 nm offshore for 83 h
 - satellite-confirmed AIS gap (GFW Events)
 
 ## Caveats
@@ -27,7 +27,7 @@ _GFW Events gaps dataset (satellite AIS).._
 - NOAA Marine Cadastre AIS (marinecadastre.gov/ais (vessel positions)). US public domain.
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `8fe3592f63b47beed0466176a64926f4b6e760cd54f4bec6f7ff4eb1a10017c1`
+- **Integrity (SHA-256 of canonical facts):** `4638ad2554f26d67dfc8c09619986e1250975ed71807290bae7d8313a676bc15`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

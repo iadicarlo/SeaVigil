@@ -1,19 +1,19 @@
-# Incident `live_ais__ecef2bc5dbd92b`
+# Incident `live_ais__145ba1201b8bed`
 
 - **MPA:** AIS disabling (going dark)
 - **Severity:** HIGH (foreign vessel, no authorization on record)
-- **EEZ:** Fijian Exclusive Economic Zone (Fiji) -- FOREIGN-flagged vessel
+- **EEZ:** Sierra Leonean Exclusive Economic Zone (Sierra Leone) -- FOREIGN-flagged vessel
 - **Authorization:** No authorization on record
-- **Vessel:** 🇳🇿 CAHUNA  ·  **signal:** AIS gap
-- **When (UTC):** 2026-06-24T01:34:00.000Z → 2026-06-24T22:18:52.000Z
-- **Gap:** 20.7 h dark, 83.0 nm offshore
-- **Where:** -20.294, 179.358
+- **Vessel:** 🇱🇷 BERGE DINARA  ·  **signal:** AIS gap
+- **When (UTC):** 2026-06-25T18:17:30.000Z → 2026-06-26T08:49:37.000Z
+- **Gap:** 14.5 h dark, 132.0 nm offshore
+- **Where:** 5.834, -12.934
 
 ## Why this was flagged
 
 _GFW Events gaps dataset (satellite AIS).._
 
-- went dark 83 nm offshore for 21 h
+- went dark 132 nm offshore for 15 h
 - satellite-confirmed AIS gap (GFW Events)
 
 ## Caveats
@@ -27,7 +27,7 @@ _GFW Events gaps dataset (satellite AIS).._
 - NOAA Marine Cadastre AIS (marinecadastre.gov/ais (vessel positions)). US public domain.
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `6b8e1d9d81b90ffa0b19bba1bac4678db49f65ca95c4773215a79eda1a085af7`
+- **Integrity (SHA-256 of canonical facts):** `e512f213547805d9ec1a705380a75a27367c32e16936d971d10842f60e29c6c1`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

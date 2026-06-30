@@ -1,19 +1,19 @@
-# Incident `live_ais__218ae7d4cc4c90`
+# Incident `live_ais__0a5b46aff596ae`
 
 - **MPA:** AIS disabling (going dark)
 - **Severity:** HIGH (foreign vessel, no authorization on record)
-- **EEZ:** Fijian Exclusive Economic Zone (Fiji) -- FOREIGN-flagged vessel
+- **EEZ:** British Exclusive Economic Zone (Bermuda) (United Kingdom) -- FOREIGN-flagged vessel
 - **Authorization:** No authorization on record
-- **Vessel:** 🇫🇴 -99%  ·  **signal:** AIS gap
-- **When (UTC):** 2026-06-24T05:39:20.000Z → 2026-06-24T19:16:11.000Z
-- **Gap:** 13.6 h dark, 145.0 nm offshore
-- **Where:** -20.712, 176.261
+- **Vessel:** 🇺🇸 NAVY SEPTAR 307  ·  **signal:** AIS gap
+- **When (UTC):** 2026-06-23T17:21:11.000Z → 2026-06-26T10:35:18.000Z
+- **Gap:** 65.2 h dark, 67.0 nm offshore
+- **Where:** 33.487, -64.407
 
 ## Why this was flagged
 
 _GFW Events gaps dataset (satellite AIS).._
 
-- went dark 145 nm offshore for 14 h
+- went dark 67 nm offshore for 65 h
 - satellite-confirmed AIS gap (GFW Events)
 
 ## Caveats
@@ -27,7 +27,7 @@ _GFW Events gaps dataset (satellite AIS).._
 - NOAA Marine Cadastre AIS (marinecadastre.gov/ais (vessel positions)). US public domain.
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `c862af7cb432c96cebd8b80cca88bc7b2f7da103fbd9046329371bc967720588`
+- **Integrity (SHA-256 of canonical facts):** `3dc332a05219ffc5a59e852401a2004dcb93818996657e12326253585163891e`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._
