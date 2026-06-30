@@ -44,6 +44,8 @@ The interface is available in **English, Spanish, French, and Portuguese**, and 
 | Global Fishing Watch | data / portal | no | registry data | no (cloud / API) |
 | **SeaVigil** | RSS + page, with reasons | **SHAP + rules** | **RFMO records** | **laptop, open source** |
 
+> Two honest caveats on the SeaVigil row. The **RSS feed** inherits Global Fishing Watch's ~3-4 day event lag for going-dark and encounters (the live map's own AIS behaviors are real-time). The **SHAP** attribution is genuine but shows the fishing classifier leans heavily on vessel speed, so read it as "why this looks like fishing", not evidence of a deep model.
+
 ## How it works
 
 ```
