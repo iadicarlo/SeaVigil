@@ -82,6 +82,27 @@
     .mpa-link:hover{color:var(--teal-bright);border-bottom-color:var(--teal-bright);}
     .zone-name{color:var(--fg);}
     .stat-more{color:var(--muted);font-size:11px;font-style:italic;}
+
+    /* Reserves browser: a collapsed-by-default panel docked bottom-right. Native panel chrome. */
+    #reserves{bottom:16px;right:12px;width:236px;max-height:min(48vh, 420px);overflow:hidden auto;
+      padding:0;font-size:13px;}
+    #reserves[open]{padding-bottom:6px;}
+    #reserves summary{list-style:none;cursor:pointer;user-select:none;padding:11px 14px;
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+      font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--fg);}
+    #reserves summary::-webkit-details-marker{display:none;}
+    #reserves summary:hover{color:var(--teal-bright);}
+    .rsv-chev{color:var(--muted);font-size:11px;transition:transform .15s ease;}
+    #reserves[open] .rsv-chev{transform:rotate(90deg);}
+    .rsv-hint{padding:0 14px 6px;color:var(--faint);font-size:10.5px;}
+    #reserves-list{padding:0 6px 0 14px;}
+    .rsv-row{display:flex;justify-content:space-between;align-items:center;gap:10px;
+      padding:4px 8px 4px 0;cursor:pointer;border-radius:6px;color:var(--fg);line-height:1.3;}
+    .rsv-row:hover{background:rgba(43,212,168,.08);color:var(--teal-bright);}
+    .rsv-row .rsv-name{border-bottom:1px dotted transparent;}
+    .rsv-row:hover .rsv-name{border-bottom-color:var(--teal-bright);}
+    .rsv-row.notake .rsv-tag{color:var(--teal);font-size:9.5px;font-weight:700;text-transform:uppercase;
+      letter-spacing:.4px;flex:0 0 auto;opacity:.85;}
     #header{position:relative;}
     .langsel{position:absolute;top:8px;right:10px;background:#0a1e2d;color:var(--fg);
       border:1px solid #1c3a4f;border-radius:6px;font-size:11px;padding:2px 6px;cursor:pointer;}
@@ -148,7 +169,7 @@
       #header{top:8px;left:8px;right:8px;max-width:none;}
       #header .full{display:none;}
       #stats,#detail{top:auto;bottom:8px;left:8px;right:8px;width:auto;max-height:42vh;}
-      #legend{display:none;}
+      #legend,#reserves{display:none;}
     }
   </style>
 </head>
@@ -216,6 +237,14 @@
   <div id="stats" class="panel"></div>
   <div id="detail" class="panel"></div>
 
+  <!-- Reserves browser: collapsed by default so it stays out of the way; click the
+       summary to expand the list of famous marine reserves, click a row to fly there. -->
+  <details id="reserves" class="panel">
+    <summary><span data-i18n="reserves_title">Marine reserves</span><span class="rsv-chev" aria-hidden="true">▸</span></summary>
+    <div class="rsv-hint" data-i18n="reserves_hint">Jump to a famous reserve.</div>
+    <div id="reserves-list"></div>
+  </details>
+
   <script>
     // ---- i18n (bundled, offline; no external translation service) ----
     const I18N = {
@@ -254,6 +283,7 @@
         why_dark: "AIS gap rule (Welch et al. 2022 criteria)", why_shap: "SHAP, fishing class",
         shap_legend: "Red pushes toward fishing, teal away.", confidence: "Confidence: ",
         data_unavailable: "Data unavailable.", could_not_load: "Could not load {msg}",
+        reserves_title: "Marine reserves", reserves_hint: "Jump to a famous reserve.", reserves_notake: "no-take",
       },
       es: {
         subtitle: "Cinco comportamientos de pesca ilegal señalados en aguas de todo el mundo: pesca aparente en Áreas Marinas Protegidas, buques oscuros (que no emiten), suplantación de AIS, apagado de AIS y transbordo en el mar. Haz clic en un marcador para ver el motivo y la evidencia de cada incidente.",
@@ -290,6 +320,7 @@
         why_dark: "regla de interrupción de AIS (criterios de Welch et al. 2022)", why_shap: "SHAP, clase pesca",
         shap_legend: "El rojo empuja hacia pesca; el verde, en contra.", confidence: "Confianza: ",
         data_unavailable: "Datos no disponibles.", could_not_load: "No se pudo cargar {msg}",
+        reserves_title: "Reservas marinas", reserves_hint: "Salta a una reserva famosa.", reserves_notake: "veda total",
       },
       fr: {
         subtitle: "Cinq comportements de pêche illégale repérés dans les eaux du monde entier : pêche apparente dans les aires marines protégées, navires obscurs (n'émettant pas), usurpation AIS, extinction de l'AIS et transbordement en mer. Cliquez sur un marqueur pour le motif et les preuves de chaque incident.",
@@ -326,6 +357,7 @@
         why_dark: "règle de coupure AIS (critères de Welch et al. 2022)", why_shap: "SHAP, classe pêche",
         shap_legend: "Le rouge pousse vers la pêche, le turquoise à l'opposé.", confidence: "Confiance : ",
         data_unavailable: "Données indisponibles.", could_not_load: "Impossible de charger {msg}",
+        reserves_title: "Réserves marines", reserves_hint: "Aller à une réserve célèbre.", reserves_notake: "réserve intégrale",
       },
       pt: {
         subtitle: "Cinco comportamentos de pesca ilegal sinalizados em águas de todo o mundo: pesca aparente em Áreas Marinhas Protegidas, embarcações ocultas (que não transmitem), falsificação de AIS, desligamento de AIS e transbordo no mar. Clique num marcador para ver o motivo e a evidência de cada incidente.",
@@ -362,6 +394,7 @@
         why_dark: "regra de interrupção de AIS (critérios de Welch et al. 2022)", why_shap: "SHAP, classe pesca",
         shap_legend: "O vermelho puxa para pesca; o verde, ao contrário.", confidence: "Confiança: ",
         data_unavailable: "Dados indisponíveis.", could_not_load: "Não foi possível carregar {msg}",
+        reserves_title: "Reservas marinhas", reserves_hint: "Ir para uma reserva famosa.", reserves_notake: "proteção total",
       },
     };
     let LANG = "en";
@@ -379,6 +412,7 @@
       try { localStorage.setItem("seavigil_lang", LANG); } catch (e) {}
       const sel = document.getElementById("langsel"); if (sel) sel.value = LANG;
       applyStaticI18n();
+      if (typeof renderReserves === "function") renderReserves();
       if (window.__summary) { setMode(window.__mode, window.__summary); renderStats(window.__summary); }
       if (typeof closeDetail === "function") closeDetail();
     }
@@ -447,14 +481,46 @@
     map.on('style.load', () => map.setProjection({ type: 'globe' }));
     new ResizeObserver(() => map.resize()).observe(document.getElementById('map'));
 
-    // Precomputed views so "jump to MPA" never wraps the antimeridian.
+    // Precomputed views so "jump to MPA" never wraps the antimeridian. Keys are the exact
+    // reserve `name` baked into the MPA vector tiles (web/tiles/mpas.pmtiles); centroids/zooms
+    // come from the tileset build (true polygon span, antimeridian-aware). The Reserves browser
+    // and the stats by_mpa links both look up flyToZone() against these keys.
     const MPA_VIEWS = {
       'Galapagos Marine Reserve': { center: [-91.0, -0.4], zoom: 6 },
       'Great Barrier Reef Marine Park': { center: [147.7, -18.3], zoom: 4.8 },
       'Phoenix Islands Protected Area': { center: [-172.0, -3.6], zoom: 5.2 },
       'Papahanaumokuakea Marine National Monument': { center: [-176.0, 25.5], zoom: 4.2 },
-      'Rapa Nui Marine Protected Area': { center: [-109.4, -27.1], zoom: 5.3 },
+      'Rapa Nui Multiple-Use Marine Protected Area': { center: [-109.4, -27.1], zoom: 5.3 },
+      'Rapa Nui Marine Protected Area': { center: [-109.4, -27.1], zoom: 5.3 }, // legacy alias (old tileset / by_mpa label)
+      'Palau National Marine Sanctuary': { center: [133.2326, 6.5131], zoom: 5.2 },
+      'Ascension Island Marine Protected Area': { center: [-14.3577, -7.9422], zoom: 5.7 },
+      'Revillagigedo National Park': { center: [-112.7748, 18.8319], zoom: 6.1 },
+      'Niue Moana Mahu Marine Protected Area': { center: [-168.275, -20.4266], zoom: 6.4 },
+      'Cocos Island (Isla del Coco) National Park': { center: [-87.677, 5.383], zoom: 7.1 },
+      'Coiba National Park & Cordillera de Coiba': { center: [-82.2933, 5.7515], zoom: 6.5 },
+      'Tristan da Cunha Marine Protection Zone': { center: [-11.2006, -38.714], zoom: 5.0 },
+      'Marae Moana (Cook Islands Marine Park)': { center: [-161.6646, -15.5553], zoom: 4.2 },
+      'South Ari Marine Protected Area (Maldives)': { center: [72.8149, 3.5728], zoom: 8.5 },
+      'Yadua Taba Locally Managed Marine Area (Fiji)': { center: [178.1612, -16.5603], zoom: 8.5 },
     };
+    // Ordered reserve list for the Reserves browser (matches the names baked in the tiles).
+    const RESERVE_LIST = [
+      'Galapagos Marine Reserve',
+      'Great Barrier Reef Marine Park',
+      'Papahanaumokuakea Marine National Monument',
+      'Revillagigedo National Park',
+      'Cocos Island (Isla del Coco) National Park',
+      'Coiba National Park & Cordillera de Coiba',
+      'Rapa Nui Multiple-Use Marine Protected Area',
+      'Phoenix Islands Protected Area',
+      'Marae Moana (Cook Islands Marine Park)',
+      'Niue Moana Mahu Marine Protected Area',
+      'Palau National Marine Sanctuary',
+      'Ascension Island Marine Protected Area',
+      'Tristan da Cunha Marine Protection Zone',
+      'South Ari Marine Protected Area (Maldives)',
+      'Yadua Taba Locally Managed Marine Area (Fiji)',
+    ];
     // Jump-to-EEZ (national jurisdiction). Keys match the eez.geojson names; the
     // "(outside MPA)" dark-fleet zone labels map back to their parent EEZ here too.
     const EEZ_VIEWS = {
@@ -469,6 +535,37 @@
       const v = MPA_VIEWS[name] || EEZ_VIEWS[name] || EEZ_VIEWS[(name || '').replace(/ \(outside MPA\)$/, '')];
       if (v) map.flyTo({ ...v, duration: 1500, essential: true });
     };
+
+    // Reserves whose tile carries no_take=true (per the WDPA build); shown with a "no-take" tag.
+    const RESERVE_NO_TAKE = new Set([
+      'Great Barrier Reef Marine Park', 'Papahanaumokuakea Marine National Monument',
+      'Revillagigedo National Park', 'Ascension Island Marine Protected Area',
+      'Coiba National Park & Cordillera de Coiba', 'Niue Moana Mahu Marine Protected Area',
+      'Tristan da Cunha Marine Protection Zone',
+      'South Ari Marine Protected Area (Maldives)', 'Yadua Taba Locally Managed Marine Area (Fiji)',
+    ]);
+    // Reserve names are proper nouns and stay as-is across languages (like the EEZ labels in
+    // the stats panel); only the panel chrome is translated. Build clickable rows that fly to
+    // each reserve's precomputed MPA_VIEWS frame.
+    function renderReserves() {
+      const host = document.getElementById('reserves-list');
+      if (!host) return;
+      host.innerHTML = RESERVE_LIST.map(name => {
+        const nt = RESERVE_NO_TAKE.has(name);
+        const tag = nt ? `<span class="rsv-tag">${t('reserves_notake')}</span>` : '';
+        return `<div class="rsv-row${nt ? ' notake' : ''}" data-zone="${name.replace(/"/g, '&quot;')}" `
+          + `role="button" tabindex="0" title="${name.replace(/"/g, '&quot;')}">`
+          + `<span class="rsv-name">${name}</span>${tag}</div>`;
+      }).join('');
+      host.querySelectorAll('.rsv-row').forEach(el => {
+        const go = () => flyToZone(el.dataset.zone);
+        el.onclick = go;
+        el.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
+      });
+    }
+    // Build the reserve rows once now that RESERVE_LIST / flyToZone exist (the static i18n pass
+    // ran earlier, before these consts, so it could not populate the list itself).
+    renderReserves();
 
     // Detection chips: id -> {url, label}, loaded per source, shown in the dossier.
     const CHIPS = {};
