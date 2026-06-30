@@ -1,9 +1,9 @@
 # Incident `live_enco_5ffd19d011a494`
 
 - **MPA:** At-sea encounter (transshipment)
-- **Severity:** HIGH (foreign vessel, no authorization on record)
+- **Severity:** HIGH (foreign vessel, authorization lapsed)
 - **EEZ:** Kiribati Exclusive Economic Zone (Gilbert Islands) (Kiribati) -- FOREIGN-flagged vessel
-- **Authorization:** No authorization on record
+- **Authorization:** Authorization lapsed before this date: NPFC, SPRFMO  ·  IMO 1033212
 - **Vessel:** 🇨🇳 JIN HUI 68  ·  **signal:** Encounter
 - **When (UTC):** 2026-06-26T08:40:00.000Z → 2026-06-26T11:50:00.000Z
 - **Encounter:** 3.2 h with carrier `577639000` (apparent transshipment)

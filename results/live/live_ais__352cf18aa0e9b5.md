@@ -1,9 +1,9 @@
 # Incident `live_ais__352cf18aa0e9b5`
 
 - **MPA:** AIS disabling (going dark)
-- **Severity:** HIGH (foreign vessel, no authorization on record)
+- **Severity:** HIGH (foreign vessel, authorization lapsed)
 - **EEZ:** Nauruan Exclusive Economic Zone (Nauru) -- FOREIGN-flagged vessel
-- **Authorization:** No authorization on record
+- **Authorization:** Authorization lapsed before this date: FFA, WCPFC  ·  IMO 8924381
 - **Vessel:** 🇨🇳 JIN HUI NO.6  ·  **signal:** AIS gap
 - **When (UTC):** 2026-06-22T00:36:14.000Z → 2026-06-25T08:46:08.000Z
 - **Gap:** 80.2 h dark, 100.0 nm offshore

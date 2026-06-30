@@ -3,7 +3,7 @@
 - **MPA:** AIS disabling (going dark)
 - **Severity:** HIGH (foreign vessel, no authorization on record)
 - **EEZ:** Seychellois Exclusive Economic Zone (Seychelles) -- FOREIGN-flagged vessel
-- **Authorization:** No authorization on record
+- **Authorization:** No authorization on record  ·  IMO 7633399
 - **Vessel:** 🇹🇿 PACIFIC STAR  ·  **signal:** AIS gap
 - **When (UTC):** 2026-06-20T13:33:04.000Z → 2026-06-24T15:40:11.000Z
 - **Gap:** 98.1 h dark, 77.0 nm offshore
