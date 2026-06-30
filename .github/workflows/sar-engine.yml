@@ -57,7 +57,7 @@ jobs:
             vendor/vessel-detection-sentinels
           cd vendor/vessel-detection-sentinels
           git lfs pull --include='data/model_artifacts/sentinel-1/**' --include='torch_weights/**'
-      - name: Run the SAR engine (GFW hotspots + GFW AIS match)
+      - name: Run the SAR engine (GFW hotspots, live AIS dark call)
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.CDSE_S3_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.CDSE_S3_SECRET }}
