@@ -28,7 +28,7 @@ WEB_LIVE = ROOT / "web" / "data" / "live"
 ALERTS_JSON = ROOT / "web" / "data" / "alerts.json"
 ALERTS_RSS = ROOT / "web" / "alerts.xml"
 LIVE_AUTH_CACHE = ROOT / "data" / "authorizations_live.json"
-SITE_URL = "https://iadicarlo.github.io/seavigil"
+SITE_URL = "https://seavigil.org"
 MAX_FEED = 80     # most-recent high-signal events shown in the live view
 MAX_ALERTS = 200  # alert history kept in the feed
 

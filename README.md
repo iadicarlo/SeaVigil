@@ -2,33 +2,35 @@
 
 **A near-real-time, explainable, open-source monitor for illegal-fishing behaviors - with a reason, an authorization check, and an auditable evidence dossier for every flag.**
 
-Live: **https://iadicarlo.github.io/seavigil** - the front page is the near-real-time monitor (our own Sentinel-1 dark-vessel detection merged with live AIS and consumed GFW events); the historical worldwide sample is at `?showcase`, with an [alerts feed](https://iadicarlo.github.io/seavigil/alerts.html).
+Live: **https://seavigil.org** - the front page is the near-real-time monitor (our own Sentinel-1 SAR and Sentinel-2 optical dark-vessel detection, merged with live AIS vessel tracks, going-dark, and at-sea encounters); the historical worldwide sample is at [`?showcase`](https://seavigil.org/?showcase), with an [alerts feed](https://seavigil.org/alerts.html).
 
-SeaVigil flags vessels that show seemingly illegal behavior and, for each one, answers the questions a monitoring platform usually leaves open: *why* was it flagged, *is the vessel authorized* to be there, and *can the record be audited*. It runs as a static site (no server, no cloud account) and the whole pipeline is open source.
+SeaVigil flags vessels that show seemingly illegal behavior and, for each one, answers the questions a monitoring platform usually leaves open: *why* was it flagged, *is the vessel authorized* to be there, and *can the record be audited*. It degrades to a fully static, offline site (no server, no cloud account); the live deployment runs on a single independent, renewable-powered European VPS, with no hyperscaler. The whole pipeline is open source.
 
-It does not try to out-detect [Global Fishing Watch](https://globalfishingwatch.org) (GFW) or reinvent dark-vessel detection; it builds on and consumes their open data. The wedge is the last mile: **per-flag explanation + authorization grading + auditable evidence + near-real-time alerts + offline deployment**, all open.
+It does not try to out-detect [Global Fishing Watch](https://globalfishingwatch.org) (GFW) at planetary scale. SeaVigil runs its **own** vessel detection over the areas it watches and leans on GFW's open data for the open ocean. The wedge is the last mile: **per-flag explanation + authorization grading + auditable evidence + near-real-time alerts + offline deployment**, all open.
 
 ---
 
-## The five behaviors it flags
+## What it flags
 
 | Behavior | How | Source |
 |---|---|---|
 | Apparent fishing in an MPA | RandomForest + SHAP attribution (our model) | GFW labeled AIS (Kroodsma 2018) |
-| Dark vessel (SAR) in an EEZ / reserve | consumed, not recomputed | GFW Sentinel-1 (Paolo 2024) |
+| Dark vessel, SAR and optical, in an EEZ or reserve | **our own detection** on fresh Copernicus scenes | Allen Institute / Skylight model (Beukema 2023); dark-fleet scale (Paolo 2024) |
 | AIS spoofing (impossible movement) | our detector | NOAA AIS + live aisstream |
-| Going dark (AIS disabling) | consumed | GFW gaps (Welch 2022) |
-| At-sea encounter (transshipment) | consumed | GFW encounters (Miller 2018) |
+| Going dark (AIS disabling) | **our own live detection** from the AIS stream, GFW offshore | Welch 2022 |
+| At-sea encounter (transshipment) | **our own live detection**, GFW offshore | Miller 2018 |
 
 Every flag is tagged with the EEZ it falls in (global Marine Regions boundaries) and graded for **authorization**: a foreign-flagged vessel is looked up in the GFW vessel-identity registry and checked against the RFMO / regional authorizations on record (FFA, WCPFC, IOTC, ICCAT, IATTC, CCSBT, CCAMLR), so a bare "foreign" becomes *authorized / authorization lapsed / no authorization on record / domestic*. National EEZ licences are not public, so an empty record means "no public record", not proof.
 
 ## Three ways to see it
 
-- **Near-real-time monitor** (the homepage): our own Sentinel-1 dark-vessel detections merged with live AIS spoofing and the GFW Events API (gaps + encounters, about a 3-4 day lag), filtered to the high-signal subset (a foreign or unauthorized vessel inside another state's EEZ, or a no-take incursion). Our SAR engine refreshes within hours of each satellite pass; the events refresh hourly, by GitHub Actions.
-- **Worldwide showcase** (`?showcase`): an illustrative 584 records across 132 EEZs and 59 flag states, on real WDPA + EEZ boundaries.
-- **Alerts** ([alerts.html](https://iadicarlo.github.io/seavigil/alerts.html) + an [RSS feed](https://iadicarlo.github.io/seavigil/alerts.xml)): new high-severity leads, each carrying its flag, EEZ, authorization status, and reason.
+- **Near-real-time monitor** (the homepage): our own Sentinel-1 SAR and Sentinel-2 optical dark-vessel detections, merged with live AIS - vessel tracks, going-dark, and at-sea encounters read straight from the stream - and GFW's offshore events, filtered to the high-signal subset (a foreign or unauthorized vessel inside another state's EEZ, or a no-take incursion). Our own detection refreshes within hours of each satellite pass; live AIS is seconds to minutes.
+- **Worldwide showcase** ([`?showcase`](https://seavigil.org/?showcase)): an illustrative 584 records across 132 EEZs and 61 flag states, on real WDPA + EEZ boundaries.
+- **Alerts** ([alerts.html](https://seavigil.org/alerts.html) + an [RSS feed](https://seavigil.org/alerts.xml)): new high-severity leads, each carrying its flag, EEZ, authorization status, and reason.
 
-The SAR (dark-vessel) layer can be either **consumed** from GFW or **run by us on demand**. The `?sar` view shows a real run: our own pass of the open, pre-trained **Allen Institute** Sentinel-1 detector (Apache-2.0, the model behind Skylight) over a June 2026 Copernicus scene of the **Galapagos Marine Reserve**, reading just the chosen area of interest straight from the Cloud-Optimized GeoTIFFs on S3 (no bulk download). [`scripts/run_sentinel1_detection.py`](scripts/run_sentinel1_detection.py) runs it locally on CPU, and [`notebooks/sentinel1_vessel_detection.ipynb`](notebooks/sentinel1_vessel_detection.ipynb) runs the same path on a free Colab GPU; [`scripts/sar_detections_to_incidents.py`](scripts/sar_detections_to_incidents.py) then folds the detections (length, heading, fishing-vessel class) into the `?sar` view with jurisdiction, dark-vessel AIS matching, and evidence. So we control where and when we look, instead of waiting for GFW to publish.
+Each dark-vessel detection also saves a **true-color satellite image chip** of the boat, shown in its dossier: the visual proof behind the dot.
+
+SeaVigil runs its **own** Sentinel-1 SAR and Sentinel-2 optical vessel detection on demand over a scene it chooses. [`?sar`](https://seavigil.org/?sar) and [`?s2`](https://seavigil.org/?s2) show real runs of the open, pre-trained **Allen Institute / Skylight** detectors (Apache-2.0, the models behind Skylight) over a recent Copernicus scene of the **Galapagos Marine Reserve**, reading just the chosen area of interest straight from the Cloud-Optimized GeoTIFFs on S3 (no bulk download). [`scripts/run_sentinel1_detection.py`](scripts/run_sentinel1_detection.py) and [`scripts/run_sentinel2_detection.py`](scripts/run_sentinel2_detection.py) run them locally on CPU, and [`scripts/sar_detections_to_incidents.py`](scripts/sar_detections_to_incidents.py) folds the detections (length, heading, fishing-vessel class) into the map with jurisdiction, dark-vessel AIS matching, and evidence. So we control where and when we look, instead of waiting for GFW to publish.
 
 The interface is available in **English, Spanish, French, and Portuguese**, and the site loads **zero external resources** (every library, font, glyph, and the basemap are vendored locally), so it runs fully offline.
 
@@ -39,7 +41,8 @@ Detecting apparent fishing from vessel tracks is a solved, industrialised proble
 - a **per-flag explanation** - a SHAP attribution for *why a position scored as fishing*, and an explicit rule/evidence trail for the other behaviors;
 - an **authorization grade** - "foreign" checked against real RFMO records, not just flag-vs-coast;
 - an **auditable dossier** - a SHA-256 integrity hash over the incident's canonical facts plus full data provenance, downloadable as JSON;
-- **near-real-time alerts that carry all of the above**; and
+- **near-real-time alerts that carry all of the above**;
+- **its own on-demand detection** - the same open vessel-detection models Skylight uses, but run by us over the scene and the moment we choose; and
 - **offline, open-source deployment** - it runs on a laptop with no account, and the whole pipeline is public.
 
 > **Honest scope.** A SeaVigil flag is an *inspection lead*, not courtroom proof. Encrypted VMS outranks public AIS/SAR in fisheries law, and remote-sensing-only prosecutions are rare. SeaVigil tells an officer where to look and why; it does not convict.
@@ -57,7 +60,7 @@ Detecting apparent fishing from vessel tracks is a solved, industrialised proble
 ## How it works
 
 ```
-AIS / SAR / GFW events ─▶ behavior detection ─▶ per-flag reason (SHAP or rule)
+AIS / SAR / optical ─────▶ behavior detection ─▶ per-flag reason (SHAP or rule)
                                   │
         global EEZ + WDPA ──▶ jurisdiction tag ──▶ foreign?
                                   │
@@ -68,10 +71,10 @@ AIS / SAR / GFW events ─▶ behavior detection ─▶ per-flag reason (SHAP or
                              SHA-256 integrity hash · data provenance)
 ```
 
-- **Detection.** A `scikit-learn` RandomForest scores fishing-vs-not per AIS position from interpretable movement features, evaluated on a **vessel-grouped split** against a speed-threshold baseline it must beat, **calibrated** (Brier 0.092 on ~408k held-out positions), with a **SHAP** attribution for every call. The other four behaviors are consumed from GFW's published datasets / API and carry rule-based reasons.
+- **Detection.** A `scikit-learn` RandomForest scores fishing-vs-not per AIS position from interpretable movement features, evaluated on a **vessel-grouped split** against a speed-threshold baseline it must beat, **calibrated** (Brier 0.092 on ~408k held-out positions), with a **SHAP** attribution for every call. Dark (non-broadcasting) vessels are found by **our own** runs of the open Allen Institute / Skylight Sentinel-1 SAR and Sentinel-2 optical detectors over Copernicus scenes; going-dark and at-sea encounters are detected **live from the AIS stream**, with GFW's published datasets supplementing the open ocean. Each non-AIS behavior carries a rule-based reason.
 - **Jurisdiction + authorization.** Every incident is point-in-polygon tagged with its EEZ (the global Marine Regions set) and, where a vessel identity exists, graded against the GFW registry's RFMO authorizations.
-- **Evidence.** Each incident is a structured dossier with a SHA-256 integrity hash and full provenance, downloadable as JSON.
-- **Near-real-time.** An hourly GitHub Action pulls recent GFW events and streams live AIS into a rolling 12h buffer for spoofing, republishing the `?live` view and the alerts feed.
+- **Evidence.** Each incident is a structured dossier with a SHA-256 integrity hash, full provenance, and (for a satellite detection) a true-color image chip of the boat, downloadable as JSON.
+- **Near-real-time.** A continuous AIS ingest ([`tracker/ingest.py`](tracker/ingest.py)) writes positions to a local SQLite database, and [`tracker/server.py`](tracker/server.py) serves the live vessel tracks, going-dark, and encounters from `/live/*` endpoints; the SAR and optical detectors run over fresh Copernicus scenes within hours of each satellite pass. On a static host the `/live/*` endpoints are simply absent and the site falls back to its committed snapshot.
 
 ## Model card and validation
 
@@ -95,7 +98,7 @@ uv run python scripts/fetch_authorizations.py                            # GFW r
 uv run python scripts/swap_real_sar.py && uv run python -m seavigil.site # regenerate web/data
 ```
 
-Run our own Sentinel-1 SAR detection over a scene we choose (needs the open Allen model cloned, a small conda env, and Copernicus S3 keys; the one-time setup is in the script header):
+Run our own Sentinel-1 SAR or Sentinel-2 optical detection over a scene we choose (needs the open Allen models cloned, a small env, and Copernicus S3 keys; the one-time setup is in each script header):
 
 ```bash
 AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... ./vds-env/bin/python scripts/run_sentinel1_detection.py \
@@ -103,18 +106,20 @@ AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... ./vds-env/bin/python scripts/run
   --scene S1D_IW_GRDH_1SDV_20260627T114116_20260627T114145_003421_006075_6BE9_COG.SAFE \
   --bbox -90.5 -0.85 -90.0 -0.35 --out results/sar/predictions.csv
 uv run python scripts/sar_detections_to_incidents.py --detections results/sar/predictions.csv
+# Sentinel-2 optical follows the same path: scripts/run_sentinel2_detection.py
 ```
 
-Run the near-real-time monitor (needs `GFW_TOKEN`; `AISSTREAM_KEY` adds live spoofing):
+Run the live tracker (needs `AISSTREAM_KEY`; the same database backs the live map):
 
 ```bash
-GFW_TOKEN=... AIS_BUFFER=data/positions/ais_buffer.csv uv run python scripts/live_monitor.py
+AISSTREAM_KEY=... uv run --with websockets python tracker/ingest.py   # continuous AIS -> SQLite
+python3 tracker/server.py 8100                                        # serve the site + the /live/* endpoints
 ```
 
-Serve the site locally (Range-capable, required for the PMTiles):
+Serve the static site locally (Range-capable, required for the PMTiles basemap):
 
 ```bash
-python3 scripts/serve.py 8000   # then open http://localhost:8000  (and ?live)
+python3 scripts/serve.py 8000   # then open http://localhost:8000  (and ?sar, ?s2, ?showcase)
 ```
 
 ## Data sources and licenses
@@ -122,9 +127,9 @@ python3 scripts/serve.py 8000   # then open http://localhost:8000  (and ?live)
 | Dataset | Reference | License |
 |---|---|---|
 | GFW labeled AIS training data | Kroodsma et al., *Science* 2018 | CC BY 4.0 |
-| GFW Sentinel-1 SAR detections | Paolo et al., *Nature* 2024 | CC BY-NC 4.0 |
-| Sentinel-1 SAR vessel detector (our on-demand runs) | Allen Institute, vessel-detection-sentinels | Apache-2.0 |
-| Sentinel-1 GRD imagery (our on-demand runs) | Copernicus Data Space Ecosystem (ESA) | free and open |
+| Dark-fleet scale (SAR) | Paolo et al., *Nature* 2024 | CC BY-NC 4.0 |
+| Sentinel-1 SAR + Sentinel-2 optical vessel detectors (our own runs) | Allen Institute / Skylight - Beukema et al., *NeurIPS Computational Sustainability* 2023; SatlasPretrain, Bastani et al., *ICCV* 2023 | Apache-2.0 |
+| Sentinel-1 / Sentinel-2 imagery (our own runs) | Copernicus Data Space Ecosystem (ESA) | free and open |
 | GFW events + vessel identity / authorizations | globalfishingwatch.org API | CC BY-NC 4.0 |
 | AIS disabling (going dark) | Welch et al., *Science Advances* 2022 | CC BY-NC |
 | At-sea transshipment | Miller et al., *Frontiers in Marine Science* 2018 | CC BY-NC |
@@ -133,16 +138,16 @@ python3 scripts/serve.py 8000   # then open http://localhost:8000  (and ?live)
 | Basemap land + borders | Natural Earth | public domain |
 | Live AIS | aisstream.io | free tier |
 
-Consuming GFW's SAR / events (CC BY-NC) and the WDPA layer (non-commercial, display-only) binds SeaVigil to **non-commercial** use. WDPA is shown under the Protected Planet Terms of Use as non-extractable vector tiles, never redistributed as raw GeoJSON. Citation: UNEP-WCMC and IUCN (2026), Protected Planet: The World Database on Protected Areas (WDPA), June 2026, Cambridge, UK, www.protectedplanet.net. Full methodology, calibration, and DOIs: the [About page](https://iadicarlo.github.io/seavigil/about.html).
+Consuming GFW's SAR / events (CC BY-NC) and the WDPA layer (non-commercial, display-only) binds SeaVigil to **non-commercial** use. WDPA is shown under the Protected Planet Terms of Use as non-extractable vector tiles, never redistributed as raw GeoJSON. Citation: UNEP-WCMC and IUCN (2026), Protected Planet: The World Database on Protected Areas (WDPA), June 2026, Cambridge, UK, www.protectedplanet.net. Full methodology, calibration, and DOIs: the [About page](https://seavigil.org/about.html).
 
 ## Honest caveats
 
 - A flag is an **inspection lead**, not proof of illegal activity.
 - "Fishing" is **apparent** (inferred from movement); classifier metrics are on **unseen vessels**, and the labels cover a few gear types (2012-2015).
-- AIS is blind to the **~75% of industrial vessels that don't broadcast** (the dark fleet) and is spoofable; SAR sees them but carries no identity.
+- AIS is blind to the **~75% of industrial vessels that don't broadcast** (the dark fleet) and is spoofable; SAR and optical see them but carry no identity.
 - National EEZ fishing **licences are not public**, so an empty authorization record means "no public record", not proof of illegality.
-- The near-real-time feed has a **~3-4 day lag** (GFW events), and the showcase is an **illustrative curated sample**, not global live coverage.
+- Coverage is **focused, not omniscient**: live AIS is seconds to minutes and our own SAR / optical detection lands within hours of each satellite pass, but coverage is bounded by satellite revisit and the reach of terrestrial AIS, and GFW's offshore events carry their own multi-day lag. The showcase is a fixed historical sample.
 
 ## Credits
 
-Author: Isma Abdelkader Di Carlo. Built on open data from Global Fishing Watch, Marine Regions (Flanders VLIZ), UNEP-WCMC / IUCN, and Natural Earth. License: MIT (code).
+Author: Isma Abdelkader Di Carlo. Built on open data and open models from Global Fishing Watch, the Allen Institute for AI / Skylight, Marine Regions (Flanders VLIZ), UNEP-WCMC / IUCN, and Natural Earth. License: MIT (code).
