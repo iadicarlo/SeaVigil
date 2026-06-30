@@ -42,6 +42,17 @@ def _baseline_line(d: dict) -> str:
     return f"speed rule (<{d['baseline_speed_threshold_knots']} kn) flags {agree:.0f}%{tail}"
 
 
+def _iuu_label(d: dict) -> str:
+    """Short RFMO-IUU sentence for the dossier (empty if the vessel is not matched)."""
+    m = d.get("iuu_match")
+    if not m:
+        return ""
+    src, name = m.get("source", ""), m.get("listed_name", "")
+    if d.get("iuu_listed"):
+        return f"On the {src} RFMO IUU vessel list" + (f" (as '{name}')" if name else "")
+    return f"Possible match to {src} IUU-listed" + (f" '{name}'" if name else "") + " (by name; verify)"
+
+
 def _count(dossiers: list[dict], key, default="unknown") -> dict:
     out: dict = {}
     for d in dossiers:
@@ -107,6 +118,8 @@ def incidents_to_geojson(dossiers: list[dict]) -> dict:
                     "eez_foreign": d.get("eez_foreign"),
                     "authorization": d.get("authorization_status") or "",
                     "authorities": ", ".join(d.get("authorization_authorities") or []),
+                    "iuu_listed": bool(d.get("iuu_listed")),
+                    "iuu_label": _iuu_label(d),
                     "imo": d.get("registry_imo") or "",
                     "evidence_hash": d.get("evidence_hash") or "",
                     "evidence_schema": d.get("evidence_schema") or "",

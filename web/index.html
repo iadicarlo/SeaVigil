@@ -735,10 +735,14 @@
         const idBits = [p.flag, p.ship_type, p.destination ? 'to ' + p.destination : ''].filter(Boolean).join(' &middot; ');
         const kindLabel = t('kind_' + p.kind);
         const kindColor = KIND_COLOR[p.kind] || 'var(--ais)';
+        const iuuBit = p.iuu_listed
+          ? `<div class="row"><span class="sev" style="background:#c0392b;color:#fff;font-weight:700">IUU</span> <span style="color:var(--muted)">${esc(p.iuu_label || '')}</span></div>`
+          : (p.iuu_label ? `<div class="row" style="color:var(--muted)">&#9873; ${esc(p.iuu_label)}</div>` : '');
         detail.innerHTML = `
           <button type="button" class="close" aria-label="${t('close_aria')}">&times;</button>
           <h3>${esc(p.mpa)}</h3>
           <div class="row"><span class="pill" style="background:${kindColor}">${kindLabel}</span> ${sevBit}</div>
+          ${iuuBit}
           <div class="row"><strong>${t('d_vessel')}</strong> ${esc(who)}${scoreBit}</div>
           ${idBits ? `<div class="row" style="color:var(--muted)">${esc(idBits)}</div>` : ''}
           ${eezRow(p)}
