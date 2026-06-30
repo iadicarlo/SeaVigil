@@ -177,7 +177,7 @@
     <p class="full" data-i18n="subtitle">Five illegal-fishing behaviors flagged in waters worldwide: apparent fishing in
        Marine Protected Areas, dark (non-broadcasting) vessels, AIS spoofing, going dark, and at-sea
        transshipment. Click a marker for the per-incident reason and evidence.</p>
-    <p class="disclaimer navlinks"><a href="about.html" data-i18n="about">About &amp; methodology</a> <span style="color:var(--faint)">&middot;</span> <a href="alerts.html" data-i18n="alerts_link">Alerts</a></p>
+    <p class="disclaimer navlinks"><a href="about.html" data-i18n="about">About &amp; methodology</a> <span style="color:var(--faint)">&middot;</span> <a href="alerts.html" data-i18n="alerts_link">Alerts</a> <span style="color:var(--faint)">&middot;</span> <a href="https://github.com/iadicarlo/seavigil" target="_blank" rel="noopener">GitHub</a></p>
     <p class="disclaimer" id="vintage"></p>
     <p class="disclaimer" id="modelink"></p>
   </div>
@@ -606,8 +606,9 @@
 
       setMode(MODE, summary);
       renderStats(summary);
-      if (MODE !== 'showcase') fitLive(incidents);
-      else map.flyTo({ center: [-110, 5], zoom: 1.4, duration: 0 });
+      if (MODE === 'showcase') map.flyTo({ center: [-110, 5], zoom: 1.4, duration: 0 });
+      else if (MODE === 'realtime') map.flyTo({ center: [-25, 12], zoom: 1.5, duration: 0 });
+      else fitLive(incidents);
 
       wireLayerToggles();
       wireInteractions();
