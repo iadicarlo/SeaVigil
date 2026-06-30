@@ -163,12 +163,13 @@
 
     <h3><span class="pill p-sar">Dark vessel (SAR)</span> <span data-i18n="h3_sar">inside an EEZ or reserve</span></h3>
     <p data-i18n-html="p_sar">Vessels that broadcast no AIS ("dark") are the majority of industrial fishing activity. SeaVigil
-    consumes Global Fishing Watch's published Sentinel-1 synthetic-aperture-radar vessel detections
-    (<a href="https://doi.org/10.1038/s41586-023-06825-8" target="_blank" rel="noopener">Paolo et al., 2024</a>);
-    it does not run its own imagery model. A detection not matched to any AIS broadcast, inside a
-    national EEZ, is flagged; severity escalates to high inside a Marine Protected Area. The dossier
-    rationale is attribute-based (unmatched, inside-zone, length, recurrence), not SHAP, because a
-    radar blip carries no movement track to attribute.</p>
+    runs its own Sentinel-1 synthetic-aperture-radar detection (the open Allen Institute model, on the
+    freshest Copernicus scene within hours of each satellite pass) and its own Sentinel-2 optical
+    detection, and saves a true-colour satellite image chip of each detection
+    (<a href="https://doi.org/10.1038/s41586-023-06825-8" target="_blank" rel="noopener">dark-fleet scale: Paolo et al., 2024</a>).
+    A detection not matched to any AIS broadcast, inside a national EEZ, is flagged dark; severity
+    escalates inside a Marine Protected Area. The rationale is attribute-based (unmatched, inside-zone,
+    length, recurrence), not SHAP, because a radar blip carries no movement track.</p>
 
     <h3><span class="pill p-eez">EEZ incursion</span><span data-i18n="h3_eez">, flag, and authorization</span></h3>
     <p data-i18n="p_eez_1">Every incident is tagged with the Exclusive Economic Zone it sits in (point-in-polygon against the
@@ -187,12 +188,13 @@
     lapsed or absent RFMO authorization for a foreign vessel.</p>
 
     <h3 data-i18n="h3_dark">Going dark and at-sea transshipment, worldwide</h3>
-    <p data-i18n-html="p_dark">Both behaviors are demonstrated globally, consumed from Global Fishing Watch's published satellite
-    datasets (terrestrial AIS cannot see them) and tagged to the EEZ they fall in: intentional AIS disabling
+    <p data-i18n-html="p_dark">Going dark (a vessel that was broadcasting and then stops) and at-sea transshipment (two vessels
+    meeting to move a catch) are detected live from the AIS stream, and are also drawn from Global Fishing
+    Watch's published global datasets for the open ocean that terrestrial AIS cannot reach: intentional AIS disabling
     (<a href="https://doi.org/10.1126/sciadv.abq2109" target="_blank" rel="noopener">Welch et al., 2022</a>;
-    a multi-hour gap well offshore, after excluding poor-reception areas) and at-sea transshipment
+    a multi-hour gap well offshore) and transshipment
     (<a href="https://doi.org/10.3389/fmars.2018.00240" target="_blank" rel="noopener">Miller et al., 2018</a>;
-    a fishing vessel and a carrier close together for hours, below a few knots, away from port).</p>
+    a fishing vessel and a carrier together for hours, below a few knots, away from port).</p>
 
     <h2 data-i18n="h2_model">Model and confidence</h2>
     <p data-i18n-html="p_model">The fishing classifier is evaluated on held-out vessels (grouped split, so no vessel appears in
@@ -250,10 +252,12 @@
 
     <h2 data-i18n="h2_limits">Honest limitations</h2>
     <ul>
-      <li data-i18n-html="li_1">The public showcase is an <strong>illustrative curated sample</strong>, not global or live
-      coverage: AIS apparent-fishing incidents from 2013 to 2014 labels, real GFW dark-vessel SAR
-      from 2024, across five reserves and their EEZs. The <code>?live</code> view is genuine
-      near-real-time but sparse (free AIS tier).</li>
+      <li data-i18n-html="li_1">Coverage is <strong>focused, not omniscient</strong>. The live monitor runs our own Sentinel-1
+      SAR and Sentinel-2 optical detection over a watchlist of priority areas (within hours of each
+      satellite pass), plus live AIS tracks and behaviours and Global Fishing Watch's global dark-vessel
+      data offshore. It is bounded by satellite revisit (one to three days) and the coastal reach of
+      terrestrial AIS, and the apparent-fishing classifier is trained on hand-labelled 2013 to 2014 AIS.
+      <code>?showcase</code> is a fixed historical sample across five reserves.</li>
       <li data-i18n="li_2">"Apparent fishing" is inferred from movement, not observed; an alert is an inspection lead,
       not proof of illegal activity.</li>
       <li data-i18n="li_3">AIS is blind to vessels that do not broadcast (about three quarters of industrial fishing
@@ -265,7 +269,9 @@
     </ul>
 
     <footer data-i18n-html="footer">
-      SeaVigil is a non-commercial, public-interest project. The WDPA-derived layer is not covered by
+      SeaVigil is a non-commercial, public-interest project,
+      <a href="https://github.com/iadicarlo/seavigil" target="_blank" rel="noopener">open source on GitHub</a>
+      under the MIT license. &copy; 2026 SeaVigil. The WDPA-derived layer is not covered by
       the project's own license and is subject to the Protected Planet Terms of Use. Citations and
       DOIs above were verified against the publishers. <a href="./">Back to the map</a>.
     </footer>
