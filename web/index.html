@@ -187,6 +187,8 @@
       <span class="dot" style="background:var(--ais);color:var(--ais)"></span><span data-i18n="leg_ais">AIS apparent fishing (SHAP-explained)</span></div>
     <div class="legrow" data-layers="incident-sar"><input type="checkbox" checked />
       <span class="dot" style="background:var(--sar);color:var(--sar)"></span><span data-i18n="leg_sar">Dark vessel (SAR, not broadcasting AIS)</span></div>
+    <div class="legrow" data-layers="incident-optical"><input type="checkbox" checked />
+      <span class="dot" style="background:#34d399;color:#34d399"></span><span data-i18n="leg_optical">Vessel (optical), with satellite photo</span></div>
     <div class="legrow" data-layers="incident-spoof"><input type="checkbox" checked />
       <span class="dot" style="background:#c084fc;color:#c084fc"></span><span data-i18n="leg_spoof">AIS spoofing (impossible movement)</span></div>
     <div class="legrow" data-layers="incident-dark"><input type="checkbox" checked />
@@ -221,7 +223,7 @@
         subtitle: "Five illegal-fishing behaviors flagged in waters worldwide: apparent fishing in Marine Protected Areas, dark (non-broadcasting) vessels, AIS spoofing, going dark, and at-sea transshipment. Click a marker for the per-incident reason and evidence.",
         about: "About & methodology", about_suffix: "(data sources, citations, limits)",
         alerts_link: "Alerts",
-        leg_ais: "AIS apparent fishing (SHAP-explained)", leg_sar: "Dark vessel (SAR, not broadcasting AIS)",
+        leg_ais: "AIS apparent fishing (SHAP-explained)", leg_sar: "Dark vessel (SAR, not broadcasting AIS)", leg_optical: "Vessel (optical), with satellite photo",
         leg_spoof: "AIS spoofing (impossible movement)", leg_dark: "Going dark (AIS disabling, GFW/satellite)",
         leg_enc: "At-sea encounter (transshipment)", leg_tracks: "Vessel tracks",
         leg_mpa: "Marine Protected Area (WDPA)", leg_eez: "Exclusive Economic Zone",
@@ -257,7 +259,7 @@
         subtitle: "Cinco comportamientos de pesca ilegal señalados en aguas de todo el mundo: pesca aparente en Áreas Marinas Protegidas, buques oscuros (que no emiten), suplantación de AIS, apagado de AIS y transbordo en el mar. Haz clic en un marcador para ver el motivo y la evidencia de cada incidente.",
         about: "Acerca y metodología", about_suffix: "(fuentes de datos, citas, límites)",
         alerts_link: "Alertas",
-        leg_ais: "Pesca aparente AIS (explicada con SHAP)", leg_sar: "Buque oscuro (SAR, no emite AIS)",
+        leg_ais: "Pesca aparente AIS (explicada con SHAP)", leg_sar: "Buque oscuro (SAR, no emite AIS)", leg_optical: "Buque (óptico), con foto satelital",
         leg_spoof: "Suplantación de AIS (movimiento imposible)", leg_dark: "Apagado de AIS (desactivación, GFW/satélite)",
         leg_enc: "Encuentro en el mar (transbordo)", leg_tracks: "Trayectorias de buques",
         leg_mpa: "Área Marina Protegida (WDPA)", leg_eez: "Zona Económica Exclusiva",
@@ -293,7 +295,7 @@
         subtitle: "Cinq comportements de pêche illégale repérés dans les eaux du monde entier : pêche apparente dans les aires marines protégées, navires obscurs (n'émettant pas), usurpation AIS, extinction de l'AIS et transbordement en mer. Cliquez sur un marqueur pour le motif et les preuves de chaque incident.",
         about: "À propos et méthodologie", about_suffix: "(sources de données, citations, limites)",
         alerts_link: "Alertes",
-        leg_ais: "Pêche apparente AIS (expliquée par SHAP)", leg_sar: "Navire obscur (SAR, n'émet pas d'AIS)",
+        leg_ais: "Pêche apparente AIS (expliquée par SHAP)", leg_sar: "Navire obscur (SAR, n'émet pas d'AIS)", leg_optical: "Navire (optique), avec photo satellite",
         leg_spoof: "Usurpation AIS (mouvement impossible)", leg_dark: "Extinction de l'AIS (désactivation, GFW/satellite)",
         leg_enc: "Rencontre en mer (transbordement)", leg_tracks: "Trajectoires des navires",
         leg_mpa: "Aire marine protégée (WDPA)", leg_eez: "Zone économique exclusive",
@@ -329,7 +331,7 @@
         subtitle: "Cinco comportamentos de pesca ilegal sinalizados em águas de todo o mundo: pesca aparente em Áreas Marinhas Protegidas, embarcações ocultas (que não transmitem), falsificação de AIS, desligamento de AIS e transbordo no mar. Clique num marcador para ver o motivo e a evidência de cada incidente.",
         about: "Sobre e metodologia", about_suffix: "(fontes de dados, citações, limites)",
         alerts_link: "Alertas",
-        leg_ais: "Pesca aparente AIS (explicada por SHAP)", leg_sar: "Embarcação oculta (SAR, não transmite AIS)",
+        leg_ais: "Pesca aparente AIS (explicada por SHAP)", leg_sar: "Embarcação oculta (SAR, não transmite AIS)", leg_optical: "Embarcação (ótica), com foto de satélite",
         leg_spoof: "Falsificação de AIS (movimento impossível)", leg_dark: "Desligamento de AIS (desativação, GFW/satélite)",
         leg_enc: "Encontro no mar (transbordo)", leg_tracks: "Rotas das embarcações",
         leg_mpa: "Área Marinha Protegida (WDPA)", leg_eez: "Zona Económica Exclusiva",
@@ -813,11 +815,12 @@
     };
     function wireLayerToggles() {
       // AIS and SAR share the incident layers; drive them with a filter instead of visibility.
-      const shown = { ais: true, sar: true, spoof: true, dark: true, enc: true };
+      const shown = { ais: true, sar: true, optical: true, spoof: true, dark: true, enc: true };
       const applyIncidentFilter = () => {
         const kinds = [];
         if (shown.ais) kinds.push('ais_fishing_incident');
-        if (shown.sar) kinds.push('dark_vessel_sar', 'dark_vessel_optical');
+        if (shown.sar) kinds.push('dark_vessel_sar');
+        if (shown.optical) kinds.push('dark_vessel_optical');
         if (shown.spoof) kinds.push('ais_spoofing');
         if (shown.dark) kinds.push('ais_disabling');
         if (shown.enc) kinds.push('encounter');
@@ -832,6 +835,7 @@
           row.classList.toggle('off', !cb.checked);
           if (key === 'incident-ais') { shown.ais = cb.checked; applyIncidentFilter(); }
           else if (key === 'incident-sar') { shown.sar = cb.checked; applyIncidentFilter(); }
+          else if (key === 'incident-optical') { shown.optical = cb.checked; applyIncidentFilter(); }
           else if (key === 'incident-spoof') { shown.spoof = cb.checked; applyIncidentFilter(); }
           else if (key === 'incident-dark') { shown.dark = cb.checked; applyIncidentFilter(); }
           else if (key === 'incident-enc') { shown.enc = cb.checked; applyIncidentFilter(); }
