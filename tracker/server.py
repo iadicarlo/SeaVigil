@@ -105,6 +105,59 @@ def _tracks_geojson() -> bytes:
                        "features": feats}).encode()
 
 
+EVENTS_ENDPOINT = "/live/events.geojson"
+# Going dark: a vessel that was moving and had a real track, then went quiet for a while.
+DARK_GAP_MIN, DARK_LOOKBACK_MIN, DARK_MIN_SPEED, DARK_MIN_POINTS = 25.0, 90.0, 3.0, 5
+# Encounter: two recent, near-stationary vessels essentially on top of each other.
+ENC_RADIUS_DEG, ENC_MAX_SPEED, ENC_FRESH_MIN, ENC_MAX = 0.004, 1.2, 15.0, 400
+
+
+def _events_geojson() -> bytes:
+    """Live behavior events: vessels that went quiet (going dark) and near-stationary pairs
+    (possible at-sea encounters), as point features keyed by kind. A lead, not proof."""
+    feats = []
+    if DB.exists():
+        con = sqlite3.connect(f"file:{DB}?mode=ro", uri=True)
+        try:
+            now = int(time.time())
+            gap, lookback = now - int(DARK_GAP_MIN * 60), now - int(DARK_LOOKBACK_MIN * 60)
+            for mmsi, lat, lon, ts, spd, name, flag in con.execute(
+                    "SELECT v.mmsi,v.lat,v.lon,v.ts,v.speed,v.name,v.flag "
+                    "FROM vessels v JOIN positions p ON p.mmsi=v.mmsi "
+                    "WHERE v.ts BETWEEN ? AND ? AND v.speed>=? "
+                    "GROUP BY v.mmsi HAVING COUNT(p.ts)>=? LIMIT 400",
+                    (lookback, gap, DARK_MIN_SPEED, DARK_MIN_POINTS)):
+                feats.append({"type": "Feature",
+                              "geometry": {"type": "Point", "coordinates": [lon, lat]},
+                              "properties": {"kind": "ais_disabling", "mmsi": mmsi,
+                                             "name": name or "", "flag": flag or "",
+                                             "quiet_min": round((now - ts) / 60.0),
+                                             "last_speed": round(spd or 0.0, 1)}})
+            fresh = now - int(ENC_FRESH_MIN * 60)
+            slow = con.execute("SELECT mmsi,lat,lon,name,flag FROM vessels "
+                               "WHERE ts>=? AND speed<=? LIMIT 1500", (fresh, ENC_MAX_SPEED)).fetchall()
+            n = 0
+            for i in range(len(slow)):
+                mi, la, lo, ni, fi = slow[i]
+                for j in range(i + 1, len(slow)):
+                    mj, lb, lob, nj, fj = slow[j]
+                    if abs(la - lb) <= ENC_RADIUS_DEG and abs(lo - lob) <= ENC_RADIUS_DEG:
+                        feats.append({"type": "Feature",
+                                      "geometry": {"type": "Point",
+                                                   "coordinates": [(lo + lob) / 2, (la + lb) / 2]},
+                                      "properties": {"kind": "encounter", "mmsi": f"{mi} + {mj}",
+                                                     "name": f"{ni or mi} / {nj or mj}",
+                                                     "flag": ((fi or "") + " " + (fj or "")).strip()}})
+                        n += 1
+                        break  # one encounter per vessel is plenty
+                if n >= ENC_MAX:
+                    break
+        finally:
+            con.close()
+    return json.dumps({"type": "FeatureCollection", "generated": int(time.time()),
+                       "features": feats}).encode()
+
+
 class Handler(SimpleHTTPRequestHandler):
     window_min = 60.0
 
@@ -126,6 +179,9 @@ class Handler(SimpleHTTPRequestHandler):
             return
         if route == TRACKS_ENDPOINT:
             self._send_json(_tracks_geojson())
+            return
+        if route == EVENTS_ENDPOINT:
+            self._send_json(_events_geojson())
             return
         super().do_GET()
 

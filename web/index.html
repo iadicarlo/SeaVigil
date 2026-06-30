@@ -573,6 +573,18 @@
             0, '#7fd8c4', 20, '#4d8ea0', 60, '#2c5566'],
           'circle-opacity': 0.7, 'circle-stroke-color': '#06161f', 'circle-stroke-width': 0.4 } });
 
+      // Live behavior events from the live AIS: going dark (yellow) and at-sea encounters (cyan),
+      // drawn as bright markers above the dots. Fed by /live/events.geojson.
+      map.addSource('live_events', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+      map.addLayer({ id: 'live-event-glow', type: 'circle', source: 'live_events',
+        paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 7, 9, 13],
+          'circle-color': ['match', ['get', 'kind'], 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#ffd24a'],
+          'circle-opacity': 0.22, 'circle-blur': 0.9 } });
+      map.addLayer({ id: 'live-event-pts', type: 'circle', source: 'live_events',
+        paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 3.5, 9, 6],
+          'circle-color': ['match', ['get', 'kind'], 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#ffd24a'],
+          'circle-stroke-color': '#06161f', 'circle-stroke-width': 1 } });
+
       // incidents (generateId for feature-state hover/selected)
       map.addSource('incidents', { type: 'geojson', data: incidents, generateId: true });
       map.addLayer({ id: 'incident-glow', type: 'circle', source: 'incidents',
@@ -639,7 +651,7 @@
       pill.querySelector('#lp-n').textContent = fc.features.length;
       pill.classList.toggle('stale', !fc.features.length);
     }
-    let _trackTimer = null;
+    let _trackTimer = null, _eventTimer = null;
     async function pollLiveTracks() {
       let fc;
       try {
@@ -650,13 +662,25 @@
       const src = map.getSource('live_tracks');
       if (src) src.setData(fc);
     }
+    async function pollLiveEvents() {
+      let fc;
+      try {
+        const r = await fetch('./live/events.geojson', { cache: 'no-store' });
+        if (!r.ok) return;
+        fc = await r.json();
+      } catch (e) { return; }  // transient blip: keep the last events
+      const src = map.getSource('live_events');
+      if (src) src.setData(fc);
+    }
     function startLivePolling() {
       pollLiveShips(); _liveTimer = setInterval(pollLiveShips, 8000);
       pollLiveTracks(); _trackTimer = setInterval(pollLiveTracks, 30000);
+      pollLiveEvents(); _eventTimer = setInterval(pollLiveEvents, 25000);
     }
     function stopLivePolling() {
       if (_liveTimer) { clearInterval(_liveTimer); _liveTimer = null; }
       if (_trackTimer) { clearInterval(_trackTimer); _trackTimer = null; }
+      if (_eventTimer) { clearInterval(_eventTimer); _eventTimer = null; }
     }
     function wireLiveShips() {
       const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: true, offset: 8 });
@@ -671,6 +695,18 @@
       });
       map.on('mouseenter', 'live-ship-dots', () => { map.getCanvas().style.cursor = 'pointer'; });
       map.on('mouseleave', 'live-ship-dots', () => { map.getCanvas().style.cursor = ''; });
+      map.on('click', 'live-event-pts', (e) => {
+        const p = e.features[0].properties, c = e.features[0].geometry.coordinates.slice();
+        const isDark = p.kind === 'ais_disabling';
+        const title = isDark ? 'Went dark' : 'At-sea encounter';
+        const who = (p.name && p.name !== '') ? p.name : ('MMSI ' + p.mmsi);
+        const detail = isDark ? `${p.quiet_min} min quiet, last seen at ${p.last_speed} kn`
+          : 'two near-stationary vessels together';
+        popup.setLngLat(c).setHTML(`<b>${title}</b><br>${who}<br>${detail}`
+          + `<br><span style="color:var(--muted)">A lead, not proof</span>`).addTo(map);
+      });
+      map.on('mouseenter', 'live-event-pts', () => { map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', 'live-event-pts', () => { map.getCanvas().style.cursor = ''; });
     }
 
     function mergeSummaries(list) {
