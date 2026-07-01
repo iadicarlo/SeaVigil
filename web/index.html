@@ -239,6 +239,8 @@
       <span class="swatch-line"></span><span data-i18n="leg_mpa">Marine Protected Area (WDPA)</span></div>
     <div class="legrow" data-layers="eez"><input type="checkbox" checked />
       <span class="swatch-line" style="border-color:#7ea8e0;border-top-style:dashed;box-shadow:none"></span><span data-i18n="leg_eez">Exclusive Economic Zone</span></div>
+    <div class="legrow" data-layers="sar-density"><input type="checkbox" checked />
+      <span class="dot" style="background:#8bd4c0;color:#8bd4c0;opacity:.65"></span><span data-i18n="leg_sardensity">Dark-fleet SAR density (GFW 2024)</span></div>
     <div class="leghint" data-i18n="leghint">Circle size = model fishing-score. Click a detection for its dossier.</div>
   </div>
 
@@ -262,7 +264,7 @@
         alerts_link: "Alerts",
         leg_ais: "AIS apparent fishing (SHAP-explained)", leg_sar: "Dark vessel (SAR, not broadcasting AIS)", leg_optical: "Vessel (optical), with satellite photo",
         leg_spoof: "AIS position anomaly (possible GNSS jamming)", leg_dark: "Going dark (AIS disabling, GFW/satellite)",
-        leg_enc: "At-sea encounter (transshipment)", leg_tracks: "Vessel tracks", leg_liveships: "Broadcasting vessel (live AIS)",
+        leg_enc: "At-sea encounter (transshipment)", leg_tracks: "Vessel tracks", leg_liveships: "Broadcasting vessel (live AIS)", leg_sardensity: "Dark-fleet SAR density (GFW 2024)",
         leg_mpa: "Marine Protected Area (WDPA)", leg_eez: "Exclusive Economic Zone",
         leghint: "Circle size = model fishing-score. Click a detection for its dossier.",
         cr_data: "Data:", cr_mpa: "MPA boundaries", cr_display: "display only", cr_eez: "EEZs",
@@ -310,7 +312,7 @@
         alerts_link: "Alertas",
         leg_ais: "Pesca aparente AIS (explicada con SHAP)", leg_sar: "Buque oscuro (SAR, no emite AIS)", leg_optical: "Buque (óptico), con foto satelital",
         leg_spoof: "Anomalía de posición AIS (posible interferencia GNSS)", leg_dark: "Apagado de AIS (desactivación, GFW/satélite)",
-        leg_enc: "Encuentro en el mar (transbordo)", leg_tracks: "Trayectorias de buques", leg_liveships: "Buque emitiendo (AIS en vivo)",
+        leg_enc: "Encuentro en el mar (transbordo)", leg_tracks: "Trayectorias de buques", leg_liveships: "Buque emitiendo (AIS en vivo)", leg_sardensity: "Densidad SAR de flota oscura (GFW 2024)",
         leg_mpa: "Área Marina Protegida (WDPA)", leg_eez: "Zona Económica Exclusiva",
         leghint: "Tamaño del círculo = puntuación de pesca del modelo. Haz clic en una detección para ver su expediente.",
         cr_data: "Datos:", cr_mpa: "Límites de AMP", cr_display: "solo visualización", cr_eez: "ZEE",
@@ -358,7 +360,7 @@
         alerts_link: "Alertes",
         leg_ais: "Pêche apparente AIS (expliquée par SHAP)", leg_sar: "Navire obscur (SAR, n'émet pas d'AIS)", leg_optical: "Navire (optique), avec photo satellite",
         leg_spoof: "Anomalie de position AIS (brouillage GNSS possible)", leg_dark: "Extinction de l'AIS (désactivation, GFW/satellite)",
-        leg_enc: "Rencontre en mer (transbordement)", leg_tracks: "Trajectoires des navires", leg_liveships: "Navire en émission (AIS en direct)",
+        leg_enc: "Rencontre en mer (transbordement)", leg_tracks: "Trajectoires des navires", leg_liveships: "Navire en émission (AIS en direct)", leg_sardensity: "Densité SAR de la flotte obscure (GFW 2024)",
         leg_mpa: "Aire marine protégée (WDPA)", leg_eez: "Zone économique exclusive",
         leghint: "Taille du cercle = score de pêche du modèle. Cliquez sur une détection pour son dossier.",
         cr_data: "Données :", cr_mpa: "limites des AMP", cr_display: "affichage seul", cr_eez: "ZEE",
@@ -406,7 +408,7 @@
         alerts_link: "Alertas",
         leg_ais: "Pesca aparente AIS (explicada por SHAP)", leg_sar: "Embarcação oculta (SAR, não transmite AIS)", leg_optical: "Embarcação (ótica), com foto de satélite",
         leg_spoof: "Anomalia de posição AIS (possível interferência GNSS)", leg_dark: "Desligamento de AIS (desativação, GFW/satélite)",
-        leg_enc: "Encontro no mar (transbordo)", leg_tracks: "Rotas das embarcações", leg_liveships: "Embarcação a emitir (AIS ao vivo)",
+        leg_enc: "Encontro no mar (transbordo)", leg_tracks: "Rotas das embarcações", leg_liveships: "Embarcação a emitir (AIS ao vivo)", leg_sardensity: "Densidade SAR da frota oculta (GFW 2024)",
         leg_mpa: "Área Marinha Protegida (WDPA)", leg_eez: "Zona Económica Exclusiva",
         leghint: "Tamanho do círculo = pontuação de pesca do modelo. Clique numa deteção para ver o seu dossiê.",
         cr_data: "Dados:", cr_mpa: "limites de AMP", cr_display: "apenas exibição", cr_eez: "ZEE",
@@ -719,6 +721,25 @@
         filter: ['==', ['get', 'id'], '__none__'],
         paint: { 'line-color': '#ffd27f', 'line-width': 2, 'line-opacity': 0.95 } });
 
+      // GFW global SAR dark-vessel detection density (2024), fetched once and shipped static as
+      // display context: the worldwide footprint of the non-broadcasting fleet, drawn beneath
+      // everything and fading out as you zoom in so our own flags stay legible.
+      map.addSource('sar_density', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+      map.addLayer({ id: 'sar-density-heat', type: 'heatmap', source: 'sar_density', maxzoom: 7,
+        paint: {
+          'heatmap-weight': ['interpolate', ['linear'], ['get', 'n'], 0, 0, 5, 0.35, 60, 1],
+          'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 0, 0.6, 6, 1.5],
+          'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 0, 2, 4, 9, 6, 20],
+          'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 5, 0.55, 7, 0],
+          'heatmap-color': ['interpolate', ['linear'], ['heatmap-density'],
+            0, 'rgba(0,0,0,0)', 0.2, 'rgba(43,120,168,0.35)', 0.5, 'rgba(80,180,200,0.55)',
+            0.8, 'rgba(150,220,140,0.72)', 1, 'rgba(240,220,120,0.88)'] } });
+      if (MODE === 'realtime' || MODE === 'showcase') {
+        getJSON('./data/sar_density.geojson')
+          .then(g => { if (g && g.features && g.features.length) map.getSource('sar_density').setData(g); })
+          .catch(() => {});
+      }
+
       // Live vessel tracks: each broadcasting vessel's recent path (last few hours), fed by
       // /live/tracks.geojson. Drawn faint and beneath the live dots, so a boat's movement reads.
       map.addSource('live_tracks', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
@@ -787,6 +808,10 @@
       if (!(MODE === 'realtime' || MODE === 'live')) {
         const lr = document.querySelector('.legrow[data-layers="live-ships"]');
         if (lr) lr.style.display = 'none';   // no live broadcasting vessels outside the live views
+      }
+      if (!(MODE === 'realtime' || MODE === 'showcase')) {
+        const sd = document.querySelector('.legrow[data-layers="sar-density"]');
+        if (sd) sd.style.display = 'none';   // density base only loads on the main + historical views
       }
       wireInteractions();
       wireLiveShips();
@@ -1029,6 +1054,7 @@
       'incident-sar': ['incident-glow', 'incident-pts'],
       'tracks': ['track-lines', 'track-hi', 'track-hi-glow', 'live-track-lines'],
       'live-ships': ['live-ship-dots'],
+      'sar-density': ['sar-density-heat'],
       'mpas': ['mpa-fill', 'mpa-glow', 'mpa-line', 'mpa-labels'],
       'eez': ['eez-line', 'eez-labels'],
     };
