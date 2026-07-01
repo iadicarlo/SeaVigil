@@ -44,7 +44,7 @@
 
     #header{top:12px;left:12px;max-width:330px;}
     #legend{bottom:16px;left:12px;font-size:12.5px;max-width:330px;}
-    #stats{top:12px;right:12px;width:236px;max-height:calc(100vh - 24px);overflow-y:auto;font-size:13px;}
+    #stats{top:12px;right:12px;width:236px;max-height:58vh;overflow-y:auto;font-size:13px;}
     #detail{top:12px;right:12px;width:300px;max-height:calc(100vh - 24px);overflow-y:auto;display:none;font-size:12.5px;}
 
     .brand{display:flex;align-items:center;gap:9px;margin:0 0 6px;}
@@ -84,7 +84,7 @@
     .stat-more{color:var(--muted);font-size:11px;font-style:italic;}
 
     /* Reserves browser: a collapsed-by-default panel docked bottom-right. Native panel chrome. */
-    #reserves{bottom:16px;right:12px;width:236px;max-height:min(48vh, 420px);overflow:hidden auto;
+    #reserves{bottom:16px;right:12px;width:236px;max-height:min(34vh, 340px);overflow:hidden auto;
       padding:0;font-size:13px;}
     #reserves[open]{padding-bottom:6px;}
     #reserves summary{list-style:none;cursor:pointer;user-select:none;padding:11px 14px;
@@ -154,6 +154,19 @@
       box-shadow:0 0 7px #7fd8c4;animation:lppulse 2s infinite;}
     #livepill.stale .lp-dot{background:#6b7d86;box-shadow:none;animation:none;}
     @keyframes lppulse{50%{opacity:.35;}}
+    /* Map credit: the vendored maplibre compact-attribution CSS is incomplete, so the <details>
+       control otherwise renders expanded across the bottom and collides with the count pill.
+       Collapse it to a small info button; click to reveal. */
+    details.maplibregl-ctrl-attrib{background:rgba(8,22,32,.82);border:1px solid var(--panel-border);border-radius:999px;}
+    details.maplibregl-ctrl-attrib>summary{cursor:pointer;list-style:none;width:22px;height:22px;
+      display:flex;align-items:center;justify-content:center;color:var(--muted);font:italic 700 12px Georgia,serif;}
+    details.maplibregl-ctrl-attrib>summary::-webkit-details-marker{display:none;}
+    details.maplibregl-ctrl-attrib>summary::after{content:'i';}
+    details.maplibregl-ctrl-attrib:not([open]) .maplibregl-ctrl-attrib-inner{display:none;}
+    details.maplibregl-ctrl-attrib[open]{border-radius:10px;}
+    details.maplibregl-ctrl-attrib[open]>summary{width:auto;height:auto;justify-content:flex-end;padding:2px 8px 0;}
+    details.maplibregl-ctrl-attrib[open] .maplibregl-ctrl-attrib-inner{display:block;padding:2px 10px 8px;
+      color:var(--muted);font-size:10.5px;line-height:1.5;max-width:min(72vw,540px);}
     /* Live-vessel popup, matched to the dark map skin */
     .maplibregl-popup-content{background:var(--panel);color:var(--fg);border:1px solid var(--panel-border);
       border-radius:8px;font-size:12px;line-height:1.5;box-shadow:0 4px 18px rgba(0,0,0,.4);}
@@ -223,15 +236,6 @@
     <div class="legrow" data-layers="eez"><input type="checkbox" checked />
       <span class="swatch-line" style="border-color:#7ea8e0;border-top-style:dashed;box-shadow:none"></span><span data-i18n="leg_eez">Exclusive Economic Zone</span></div>
     <div class="leghint" data-i18n="leghint">Circle size = model fishing-score. Click a detection for its dossier.</div>
-    <div class="credits"><span data-i18n="cr_data">Data:</span> AIS labels &amp; Sentinel-1 SAR detections
-      <a href="https://globalfishingwatch.org" target="_blank" rel="noopener">Global Fishing Watch</a>
-      (CC BY / CC BY-NC; Paolo et al., <em>Nature</em> 2024) &middot; <span data-i18n="cr_mpa">MPA boundaries</span>
-      <a href="https://www.protectedplanet.net" target="_blank" rel="noopener">Protected Planet</a>
-      (UNEP-WCMC &amp; IUCN 2026, <span data-i18n="cr_display">display only</span>) &middot; <span data-i18n="cr_eez">EEZs</span>
-      <a href="https://www.marineregions.org" target="_blank" rel="noopener">Marine Regions</a>
-      (Flanders VLIZ, CC BY 4.0) &middot; <span data-i18n="cr_basemap">basemap land &amp; borders</span>
-      <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener">Natural Earth</a>
-      (<span data-i18n="cr_pd">public domain</span>)</div>
   </div>
 
   <div id="stats" class="panel"></div>
@@ -478,6 +482,9 @@
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: true, visualizePitch: true }), 'top-right');
     map.addControl(new maplibregl.ScaleControl({ unit: 'nautical' }), 'bottom-left');
+    // Vendored maplibre lacks the compact-attribution CSS; keep the credit collapsed to its info
+    // button by default so it never spans the bottom or collides with the live count pill.
+    map.on('load', () => { const a = document.querySelector('.maplibregl-ctrl-attrib'); if (a) a.open = false; });
     map.on('style.load', () => map.setProjection({ type: 'globe' }));
     new ResizeObserver(() => map.resize()).observe(document.getElementById('map'));
 
@@ -685,7 +692,7 @@
           'circle-stroke-color': '#06161f', 'circle-stroke-width': 1 } });
 
       // incidents (generateId for feature-state hover/selected)
-      map.addSource('incidents', { type: 'geojson', data: incidents, generateId: true });
+      map.addSource('incidents', { type: 'geojson', data: incidents, generateId: true, attribution: 'Detections &amp; AIS labels © Global Fishing Watch (CC BY / CC BY-NC)' });
       map.addLayer({ id: 'incident-glow', type: 'circle', source: 'incidents',
         paint: {
           'circle-radius': ['interpolate', ['linear'], ['coalesce', ['get', 'score'], 0.8], 0.5, 9, 1, 16],
