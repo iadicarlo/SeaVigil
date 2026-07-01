@@ -9,10 +9,13 @@ and "here is the boat, fishing, broadcasting nothing." Chips older than --keep-d
 detection has aged out of the view, are pruned, so the gallery stays current and small.
 
 Runs on the always-on box, where the CDSE S3 keys (CDSE_S3_KEY / CDSE_S3_SECRET) and the geo
-deps (rasterio, boto3, pillow, numpy) live. Currently Sentinel-2 optical; Sentinel-1 SAR is in
-radar geometry and needs GCP-based geocoding, a later add.
+deps (rasterio, boto3, pillow, numpy) live. Two sources: --source s2 crops a true-color optical
+window; --source sar crops a grayscale Sentinel-1 window. S1 GRD is delivered in radar geometry
+(GCP-geolocated, no north-up affine), so the SAR path warps each scene through a WarpedVRT to
+map (lat, lon) to pixels correctly, which a plain windowed read cannot do.
 
   CDSE_S3_KEY=... CDSE_S3_SECRET=... ~/geoenv/bin/python scripts/make_chips.py --source s2
+  CDSE_S3_KEY=... CDSE_S3_SECRET=... ~/geoenv/bin/python scripts/make_chips.py --source sar --max 200
 """
 
 from __future__ import annotations
@@ -25,6 +28,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 S2_L1C = "Sentinel-2/MSI/L1C"
+S1_SAR = "Sentinel-1/SAR"
 
 
 def _s2_bands(s3, scene: str) -> dict:
@@ -64,9 +68,62 @@ def _crop_rgb(bands: dict, lat: float, lon: float, half_m: float = 750.0, size: 
                       stretch(band(bands["B02"]))])
 
 
+def _s1_date(scene: str) -> str:
+    """YYYY-MM-DD from an S1 scene stem (…_20260620T190819_…)."""
+    import re
+    m = re.search(r"_(\d{8})T\d{6}_", scene)
+    d = m.group(1) if m else "00000000"
+    return f"{d[:4]}-{d[4:6]}-{d[6:8]}"
+
+
+def _s1_vv_key(s3, scene: str):
+    """The vv (else vh) measurement GeoTIFF key for an S1 GRD scene stem, or None."""
+    import re
+    m = re.search(r"_(\d{8})T\d{6}_", scene)
+    if not m:
+        return None
+    d = m.group(1)
+    coll = "IW_GRDH_1S-COG" if scene.endswith("_COG") else "IW_GRDH_1S"
+    prefix = f"{S1_SAR}/{coll}/{d[:4]}/{d[4:6]}/{d[6:8]}/{scene}.SAFE/measurement/"
+    got: dict = {}
+    for page in s3.get_paginator("list_objects_v2").paginate(Bucket="eodata", Prefix=prefix):
+        for o in page.get("Contents", []):
+            parts = o["Key"].split("/")[-1].split("-")
+            if len(parts) > 3 and parts[3] in ("vv", "vh"):
+                got[parts[3]] = o["Key"]
+    return got.get("vv") or got.get("vh")
+
+
+def _crop_sar(key: str, lat: float, lon: float, half_m: float = 750.0, size: int = 256):
+    """A size x size grayscale SAR crop centered on (lat, lon).
+
+    S1 GRD COGs are geolocated by ground-control points, not a north-up affine, so we open the
+    scene through a WarpedVRT (EPSG:3857) and let gdal resolve (lat, lon) -> pixel. A percentile
+    stretch on the in-scene pixels leaves calm sea near black and the bright vessel return white.
+    """
+    import numpy as np
+    import rasterio
+    from rasterio.enums import Resampling
+    from rasterio.vrt import WarpedVRT
+    from rasterio.warp import transform as warp_transform
+    from rasterio.windows import from_bounds
+
+    with rasterio.open(f"/vsis3/eodata/{key}") as src:
+        with WarpedVRT(src, crs="EPSG:3857", resampling=Resampling.bilinear) as vrt:
+            xs, ys = warp_transform("EPSG:4326", "EPSG:3857", [lon], [lat])
+            win = from_bounds(xs[0] - half_m, ys[0] - half_m, xs[0] + half_m, ys[0] + half_m,
+                              vrt.transform)
+            a = vrt.read(1, window=win, out_shape=(size, size),
+                         boundless=True, fill_value=0).astype("float32")
+    inside = a[a > 0]
+    lo, hi = (np.percentile(inside, (2, 98)) if inside.size else (0.0, 1.0))
+    return np.clip((a - lo) / (hi - lo + 1e-6) * 255, 0, 255).astype("uint8")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Crop Copernicus image chips for SeaVigil detections")
-    ap.add_argument("--source", default="s2", choices=["s2"], help="s2 optical (sar is a later add)")
+    ap.add_argument("--source", default="s2", choices=["s2", "sar"],
+                    help="s2 optical true-color, or sar Sentinel-1 grayscale")
     ap.add_argument("--keep-days", type=float, default=30.0, help="prune chips older than this")
     ap.add_argument("--max", type=int, default=60, help="cap chips generated per run")
     a = ap.parse_args()
@@ -102,7 +159,8 @@ def main() -> None:
             (chips_dir / Path(ent["url"]).name).unlink(missing_ok=True)
             del index[cid]
 
-    band_cache: dict = {}
+    is_sar = a.source == "sar"
+    scene_cache: dict = {}
     made = 0
     for d in dets:
         cid, scene = d.get("incident_id"), d.get("scene_id")
@@ -114,21 +172,28 @@ def main() -> None:
         if made >= a.max:
             break
         try:
-            if scene not in band_cache:
-                band_cache[scene] = _s2_bands(s3, scene)
-            bands = band_cache[scene]
-            if not all(b in bands for b in ("B02", "B03", "B04")):
-                print(f"  no RGB bands for {scene[:24]}; skipping {cid}")
-                continue
-            rgb = _crop_rgb(bands, float(lat), float(lon))
-            if int(np.asarray(rgb).max()) == 0:
+            if scene not in scene_cache:
+                scene_cache[scene] = _s1_vv_key(s3, scene) if is_sar else _s2_bands(s3, scene)
+            res = scene_cache[scene]
+            if is_sar:
+                if not res:
+                    print(f"  no vv/vh tiff for {scene[:24]}; skipping {cid}")
+                    continue
+                arr = _crop_sar(res, float(lat), float(lon))
+                pil, label = Image.fromarray(arr, mode="L"), f"Sentinel-1 SAR · {_s1_date(scene)}"
+            else:
+                if not (res and all(b in res for b in ("B02", "B03", "B04"))):
+                    print(f"  no RGB bands for {scene[:24]}; skipping {cid}")
+                    continue
+                arr = _crop_rgb(res, float(lat), float(lon))
+                pil = Image.fromarray(arr)
+                label = f"Sentinel-2 · {scene[11:15]}-{scene[15:17]}-{scene[17:19]}"
+            if int(np.asarray(arr).max()) == 0:
                 print(f"  blank crop for {cid}; skipping")
                 continue
             fname = f"{cid}.png"
-            Image.fromarray(rgb).save(chips_dir / fname)
-            y, m, dd = scene[11:15], scene[15:17], scene[17:19]
-            index[cid] = {"url": f"./data/{a.source}/chips/{fname}",
-                          "label": f"Sentinel-2 · {y}-{m}-{dd}", "ts": now}
+            pil.save(chips_dir / fname)
+            index[cid] = {"url": f"./data/{a.source}/chips/{fname}", "label": label, "ts": now}
             made += 1
             print(f"  chip {cid} <- {scene[:24]}")
         except Exception as e:  # noqa: BLE001 - one bad scene must not stop the rest
