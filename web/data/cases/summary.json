@@ -1,19 +1,19 @@
 {
- "n_detections": 742,
- "n_cases": 538,
- "n_corroborated_multi_sensor": 4,
+ "n_detections": 421,
+ "n_cases": 251,
+ "n_corroborated_multi_sensor": 0,
  "by_sensor_count": {
-  "1": 534,
-  "2": 4
+  "1": 251
  },
  "generated_from": [
   "incidents",
   "live",
   "sar",
-  "behaviors"
+  "behaviors",
+  "s2"
  ],
  "review": {
-  "total_cases": 538,
+  "total_cases": 251,
   "reviewed": 0,
   "confirmed": 0,
   "dismissed": 0,

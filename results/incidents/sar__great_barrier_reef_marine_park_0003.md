@@ -1,20 +1,20 @@
 # Dark-vessel detection `sar__great_barrier_reef_marine_park_0003`
 
-- **MPA:** Great Barrier Reef Marine Park (WDPA 2628_5)
-- **Severity:** HIGH (dark vessel inside MPA)  ·  boundary WDPA/WD-OECM Jun2026
+- **MPA:** Great Barrier Reef Marine Park
+- **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
 - **EEZ:** Australian Exclusive Economic Zone (Australia)
-- **Authorization:** No vessel identity; authorization not checkable
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-01-01T08:29:59Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
-- **Where:** -17.360, 146.780
+- **Where:** -23.800, 151.210
 
 ## Why this was flagged
 
 _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
-- inside MPA: Great Barrier Reef Marine Park (within Australia EEZ)
+- inside MPA: Great Barrier Reef Marine Park
 - not broadcasting AIS (dark vessel)
+- satellite detections in window: 5
 
 ## Caveats
 
@@ -29,7 +29,7 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 - Global Fishing Watch Sentinel-1 SAR vessel detections (Paolo et al., Nature 2024). CC BY-NC 4.0 (non-commercial).
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `e546d87c3a2c5ffa5838a5521861f4bf5bedb9e2746eb8a629bd5a15d26b4ff6`
+- **Integrity (SHA-256 of canonical facts):** `a07514c449961f4d341d483f5738f4a29805fc9c1c88408b59a274146e8a36a1`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

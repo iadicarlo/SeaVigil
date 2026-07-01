@@ -1,15 +1,14 @@
 # Incident `phoenix_islands_protected_area__drifting_longlines_251022003811177_0013`
 
-- **MPA:** Phoenix Islands Protected Area (WDPA 309888)
-- **Severity:** MEDIUM (protected area (category not reported))  ·  boundary WDPA/WD-OECM Jun2026
+- **MPA:** Phoenix Islands Protected Area
+- **Severity:** HIGH (strict no-take reserve)  ·  boundary sample-approx-2024
 - **EEZ:** Kiribati Exclusive Economic Zone (Phoenix Group) (Kiribati)
-- **Authorization:** No vessel identity; authorization not checkable
 - **Vessel:** `drifting_longlines_251022003811177`  ·  **gear:** drifting_longlines
 - **When (UTC):** 2014-12-14T19:02:23Z → 2014-12-14T22:16:53Z (3.242 h)
-- **Apparent fishing:** 174 of 176 in-MPA positions; mean p=0.84, max p=0.96
+- **Apparent fishing:** 174 of 176 in-MPA positions; mean p=0.85, max p=0.96
 - **Where:** -3.466, -170.168 (centroid)
 - **Track:** 176 positions, (-3.579, -170.142) → (-3.375, -170.297)
-- **Vs. speed baseline:** the trivial rule (speed < 10.7 kn) also flags 100% of these positions; here the speed rule alone suffices.
+- **Vs. speed baseline:** the trivial rule (speed < 10.7 kn) also flags 100% of these positions; the rule agrees on this slow visit, but globally the model beats the speed rule by a wide margin (PR-AUC 0.93 vs 0.40), rejecting slow non-fishing transits and catching fast working passes.
 
 ## Why this was flagged
 
@@ -17,11 +16,11 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions (s
 
 | feature | mean value | mean SHAP |
 |---|---:|---:|
-| `speed_roll_mean` | 6.110 | +0.088 |
-| `speed` | 6.098 | +0.077 |
-| `distance_from_shore` | 66842.888 | +0.068 |
+| `speed_roll_mean` | 6.120 | +0.090 |
+| `speed` | 6.098 | +0.076 |
+| `distance_from_shore` | 66842.888 | +0.069 |
 | `hour_sin` | -0.719 | +0.044 |
-| `hour_cos` | 0.657 | +0.043 |
+| `hour_cos` | 0.657 | +0.044 |
 
 ## Caveats
 
@@ -36,7 +35,7 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions (s
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
 - **Model confidence:** Fishing probabilities are well-calibrated (Brier 0.0915 on 408,194 held-out positions from vessels not seen in training); read the score as a probability.
-- **Integrity (SHA-256 of canonical facts):** `e941034deeb133eeb8562b18641546897f3d697b9ebe38aa6f799f99886d683f`
+- **Integrity (SHA-256 of canonical facts):** `7b36823f3d05a5238c8f9aae310b318dbf91904b12a7b562e22ef01df5f540d6`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

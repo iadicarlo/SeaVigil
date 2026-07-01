@@ -1,20 +1,20 @@
 # Dark-vessel detection `sar__great_barrier_reef_marine_park_0001`
 
-- **MPA:** Great Barrier Reef Marine Park (WDPA 2628_5)
-- **Severity:** HIGH (dark vessel inside MPA)  ·  boundary WDPA/WD-OECM Jun2026
-- **EEZ:** Australian Exclusive Economic Zone (Australia)
-- **Authorization:** No vessel identity; authorization not checkable
+- **MPA:** Great Barrier Reef Marine Park
+- **Severity:** LOW (multi-use protected area)  ·  boundary sample-approx-2024
+- **EEZ:** Papua New Guinean Exclusive Economic Zone (Papua New Guinea)
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
 - **When (UTC):** 2024-01-01T08:29:59Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
-- **Where:** -19.710, 148.080
+- **Where:** -10.620, 148.930
 
 ## Why this was flagged
 
 _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
-- inside MPA: Great Barrier Reef Marine Park (within Australia EEZ)
+- inside MPA: Great Barrier Reef Marine Park
 - not broadcasting AIS (dark vessel)
+- satellite detections in window: 6
 
 ## Caveats
 
@@ -29,7 +29,7 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 - Global Fishing Watch Sentinel-1 SAR vessel detections (Paolo et al., Nature 2024). CC BY-NC 4.0 (non-commercial).
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `449a3c702e0cfd5a8cd8ce07befdf624e028e006a62efdf160909d0ebf531f68`
+- **Integrity (SHA-256 of canonical facts):** `de4c215dae4d200261050f61d10cda1fa9a70df4c1519ae2aef2ed7ab72b731a`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._

@@ -1,20 +1,20 @@
 # Dark-vessel detection `sar__galapagos_marine_reserve_0012`
 
-- **MPA:** Galapagos Marine Reserve (WDPA 11753)
-- **Severity:** HIGH (dark vessel inside MPA)  ·  boundary WDPA/WD-OECM Jun2026
+- **MPA:** Galápagos Marine Reserve
+- **Severity:** HIGH (no-take / national-park protection)  ·  boundary sample-approx-2024
 - **EEZ:** Ecuadorian Exclusive Economic Zone (Galapagos) (Ecuador)
-- **Authorization:** No vessel identity; authorization not checkable
 - **Vessel:** (dark -- no AIS identity)  ·  **source:** SAR (dark)
-- **When (UTC):** 2024-03-31T11:51:02Z
+- **When (UTC):** 2024-01-02T11:42:31Z
 - **Length:** n/a  ·  **broadcasting AIS:** no (dark)  ·  **GFW fishing-score:** n/a (Portal-only)
-- **Where:** -0.850, -91.510
+- **Where:** -0.430, -90.820
 
 ## Why this was flagged
 
 _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 
-- inside MPA: Galapagos Marine Reserve (within Galapagos EEZ (Ecuador))
+- inside MPA: Galápagos Marine Reserve
 - not broadcasting AIS (dark vessel)
+- satellite detections in window: 1
 
 ## Caveats
 
@@ -29,7 +29,7 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 - Global Fishing Watch Sentinel-1 SAR vessel detections (Paolo et al., Nature 2024). CC BY-NC 4.0 (non-commercial).
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `28c9d18b181953c365b13308678e11a02a3c38fa243ab37b1f7ad843062ec572`
+- **Integrity (SHA-256 of canonical facts):** `67dc1f01c69e9d557385d63335d3a0688b4b87ca4c451148174922cb5b486793`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._
