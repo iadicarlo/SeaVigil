@@ -860,17 +860,18 @@
       // Jurisdiction: global data spans 100+ EEZs, so show the busiest and tally the rest.
       // A row is clickable only when a jump-to view exists for it (the showcase reserves).
       const zones = (s.by_eez && Object.keys(s.by_eez).length) ? s.by_eez : (s.by_mpa || {});
-      const ze = Object.entries(zones), TOPZ = 8;
+      const ze = Object.entries(zones), TOPZ = 3;
       const hasView = k => !!(MPA_VIEWS[k] || EEZ_VIEWS[k] || EEZ_VIEWS[(k || '').replace(/ \(outside MPA\)$/, '')]);
+      const shortZone = k => (k || '').replace(/ Exclusive Economic Zone/g, ' EEZ');
       const zoneHtml = ze.slice(0, TOPZ).map(([k, v]) => {
         const span = hasView(k)
-          ? `<span class="mpa-link" data-zone="${k.replace(/"/g, '&quot;')}">${k}</span>`
-          : `<span class="zone-name">${k}</span>`;
+          ? `<span class="mpa-link" data-zone="${k.replace(/"/g, '&quot;')}">${shortZone(k)}</span>`
+          : `<span class="zone-name">${shortZone(k)}</span>`;
         return `<div class="stat-row">${span}<span>${v}</span></div>`;
       }).join('') + (ze.length > TOPZ
         ? `<div class="stat-row stat-more"><span>${t('more_eez', { n: ze.length - TOPZ })}</span><span></span></div>` : '');
       // Flag state: the classic IUU lens (which flags go dark / transship most).
-      const fe = Object.entries(s.by_flag || {}), TOPF = 6;
+      const fe = Object.entries(s.by_flag || {}), TOPF = 4;
       const flagHtml = fe.length
         ? `<div class="stat-sub">${t('by_flag')}</div>` + fe.slice(0, TOPF).map(([k, v]) =>
             `<div class="stat-row"><span>${flagEmoji(k)} ${k}</span><span>${v}</span></div>`).join('')
