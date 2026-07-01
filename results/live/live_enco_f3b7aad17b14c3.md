@@ -1,20 +1,20 @@
-# Incident `live_enco_651fc3dac16632`
+# Incident `live_enco_f3b7aad17b14c3`
 
 - **MPA:** At-sea encounter (transshipment)
 - **Severity:** HIGH (foreign vessel, no authorization on record)
-- **EEZ:** Argentinian Exclusive Economic Zone (Argentina) -- FOREIGN-flagged vessel
+- **EEZ:** Chinese Exclusive Economic Zone (China) -- FOREIGN-flagged vessel
 - **Authorization:** No authorization on record
-- **Vessel:** 🇺🇾 DARTESA II  ·  **signal:** Encounter
-- **When (UTC):** 2026-06-26T07:40:00.000Z → 2026-06-26T22:50:00.000Z
-- **Encounter:** 15.2 h with carrier `770576184` (apparent transshipment)
-- **Where:** -35.340, -56.929
+- **Vessel:** 🇨🇽 60037-4 90%  ·  **signal:** Encounter
+- **When (UTC):** 2026-06-27T14:10:00.000Z → 2026-06-27T20:20:00.000Z
+- **Encounter:** 6.2 h with carrier `600000370` (apparent transshipment)
+- **Where:** 22.431, 117.145
 
 ## Why this was flagged
 
 _GFW Events encounters dataset (Miller et al. 2018).._
 
-- two vessels within range for 15 h
-- counterpart: DARTESA I
+- two vessels within range for 6 h
+- counterpart: 60037
 - two-vessel at-sea encounter (GFW Events)
 
 ## Caveats
@@ -27,7 +27,7 @@ _GFW Events encounters dataset (Miller et al. 2018).._
 
 - WDPA / WD-OECM (World Database on Protected Areas) (UNEP-WCMC and IUCN (2026), June 2026). Protected Planet Terms of Use (non-commercial, display-only).
 - Marine Regions Exclusive Economic Zones v12 (Flanders Marine Institute (2024), DOI 10.14284/632). CC BY 4.0.
-- **Integrity (SHA-256 of canonical facts):** `7f74db8bf21d2c15078b8fcfc6073be684a863a6c8ed89b92896fec655c979b1`
+- **Integrity (SHA-256 of canonical facts):** `6cb843b4b7cba3ddb276e4a861bd14c3be65e58146e42b0a2cde5c07d8e2155d`
 - **Evidence schema:** seavigil-evidence-1.0
 
 _Apparent activity and an inspection lead, not proof of illegality. AIS and SAR evidence have known coverage gaps and spoofing risks; verify against authoritative sources before any enforcement action._
