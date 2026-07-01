@@ -25,24 +25,31 @@ non-commercial.
   satellite pass, and it saves a **true-color satellite photo of every detection**: a dark vessel
   stops being a dot and becomes a picture of the boat.
 - **Detects live AIS behavior** from a continuous stream: apparent fishing (a calibrated,
-  SHAP-explained classifier), going dark, and at-sea encounters.
+  SHAP-explained classifier), going dark, at-sea encounters, and the AIS data-integrity leads working
+  mariners say they trust (impossible movement / GNSS jamming, a moored vessel that is actually under
+  way, one MMSI carrying more than one name), each with its most likely innocent explanation attached.
 - **Grades jurisdiction and authorization.** Every flag is tagged with the EEZ it sits in and, where a
   vessel identity exists, checked against the RFMO authorizations on record, so a bare "foreign"
   becomes *authorized / authorization lapsed / no authorization on record / domestic*.
 - **Packages each flag as an auditable dossier:** the reason, the place and time, the satellite photo,
   a SHA-256 integrity hash, and full data provenance, downloadable as JSON.
 
-**What is genuinely ours (and what isn't).** Detection at planetary scale is Global Fishing Watch's
-work, and MPA-incursion alerting already ships free (Skylight). SeaVigil runs the same open detection
-over its own scenes and adds the last mile no one ships together: the per-flag explanation, the
-authorization grade against real RFMO records, the satellite photo, the auditable dossier, and an
-offline, sovereign, open deployment for an authority that cannot depend on a foreign cloud login.
+**What is genuinely ours (and what isn't).** Detection at planetary scale, multi-sensor fusion, and
+near-real-time alerting are all now free and commoditized (Global Fishing Watch, Skylight), and even
+the "inspection lead, not proof" honesty is shared. SeaVigil does not reinvent any of that. Its wedge
+is the one intersection the cloud platforms do not occupy: **open-source, offline and air-gappable,
+sovereign, and a per-flag auditable dossier** - the reason, the authorization grade against real RFMO
+records, the satellite photo, and a tamper-evident evidence hash, for an authority that cannot (or
+will not) depend on a foreign cloud login.
 
 **Honest limits.** A flag is an *inspection lead, not courtroom proof* (encrypted VMS outranks public
 AIS/SAR in fisheries law). "Fishing" is apparent, inferred from movement. AIS is blind to the ~75% of
 industrial vessels that do not broadcast (the dark fleet) and is spoofable; SAR and optical see them
 but carry no identity. National EEZ licences are not public, so an empty authorization record means
-"no public record", not proof. Non-commercial (built on open GFW + WDPA data and open models).
+"no public record", not proof. It is a **targeting and evidence layer, not an enforcement one**: it
+does not supply the patrol boat, the jurisdiction, or the owner behind a shell company, and it is
+blind to crew and labor conditions and to small artisanal boats; its value is a better-targeted
+inspection per patrol-day. Non-commercial (built on open GFW + WDPA data and open models).
 
 **Proof points.** The fishing classifier is calibrated (**Brier 0.092** on ~408k held-out positions,
 vessel-grouped split). Validated against the **CCAMLR IUU list**: of 18 listed vessels, GFW's registry

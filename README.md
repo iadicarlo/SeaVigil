@@ -16,9 +16,11 @@ It does not try to out-detect [Global Fishing Watch](https://globalfishingwatch.
 |---|---|---|
 | Apparent fishing in an MPA | RandomForest + SHAP attribution (our model) | GFW labeled AIS (Kroodsma 2018) |
 | Dark vessel, SAR and optical, in an EEZ or reserve | **our own detection** on fresh Copernicus scenes | Allen Institute / Skylight model (Beukema 2023); dark-fleet scale (Paolo 2024) |
-| AIS spoofing (impossible movement) | our detector | NOAA AIS + live aisstream |
+| Position anomaly (possible GNSS jamming / spoofing) | our detector | NOAA AIS + live aisstream |
 | Going dark (AIS disabling) | **our own live detection** from the AIS stream, GFW offshore | Welch 2022 |
 | At-sea encounter (transshipment) | **our own live detection**, GFW offshore | Miller 2018 |
+
+Plus three **data-integrity leads** on the live monitor, the AIS anomalies working mariners say they actually trust: **nav-status vs motion** (broadcasting *moored* while the track shows real transit), **identity change** (one MMSI carrying more than one vessel name), and the position anomaly above. Each is context for an analyst to check, never proof, and never rolled into a flag's confidence. Every flag also carries its most likely **innocent explanation**, so it reads as a lead to check, not an accusation.
 
 Every flag is tagged with the EEZ it falls in (global Marine Regions boundaries) and graded for **authorization**: a foreign-flagged vessel is looked up in the GFW vessel-identity registry and checked against the RFMO / regional authorizations on record (FFA, WCPFC, IOTC, ICCAT, IATTC, CCSBT, CCAMLR), so a bare "foreign" becomes *authorized / authorization lapsed / no authorization on record / domestic*. National EEZ licences are not public, so an empty record means "no public record", not proof.
 
@@ -134,6 +136,7 @@ Consuming GFW's SAR / events (CC BY-NC) and the WDPA layer (non-commercial, disp
 - A flag is an **inspection lead, not courtroom proof**: encrypted VMS outranks public AIS/SAR in fisheries law and remote-sensing-only prosecutions are rare, so it tells an officer where to look and why, it does not convict.
 - "Fishing" is **apparent** (inferred from movement); classifier metrics are on **unseen vessels**, and the labels cover a few gear types (2012-2015).
 - AIS is blind to the **~75% of industrial vessels that don't broadcast** (the dark fleet) and is spoofable; SAR and optical see them but carry no identity.
+- SeaVigil is a **targeting and evidence layer, not an enforcement one**: it does not supply the patrol asset, jurisdiction, or state will an interdiction needs, and it is blind to crew and labor conditions and to small artisanal (under ~12 m) boats. Its value is a better-targeted inspection per patrol-day, and a defensible packet to attach to the hull.
 - National EEZ fishing **licences are not public**, so an empty authorization record means "no public record", not proof of illegality.
 - Coverage is **focused, not omniscient**: live AIS is seconds to minutes and our own SAR / optical detection lands within hours of each satellite pass, but coverage is bounded by satellite revisit and the reach of terrestrial AIS, and GFW's offshore events carry their own multi-day lag. The showcase is a fixed historical sample.
 
