@@ -109,9 +109,9 @@ def _positions_geojson(window_min: float) -> bytes:
             now = int(time.time())
             cutoff = now - int(window_min * 60)
             cur = con.execute(
-                "SELECT mmsi,lat,lon,ts,speed,course,name,flag,ship_type,destination "
+                "SELECT mmsi,lat,lon,ts,speed,course,name,flag,ship_type,destination,imo,callsign,nav_status "
                 "FROM vessels WHERE ts>=? ORDER BY ts DESC LIMIT ?", (cutoff, MAX_FEATURES))
-            for mmsi, lat, lon, ts, sog, cog, name, flag, stype, dest in cur:
+            for mmsi, lat, lon, ts, sog, cog, name, flag, stype, dest, imo, callsign, navst in cur:
                 feats.append({
                     "type": "Feature",
                     "geometry": {"type": "Point", "coordinates": [lon, lat]},
@@ -119,6 +119,8 @@ def _positions_geojson(window_min: float) -> bytes:
                         "mmsi": mmsi, "name": name or "", "flag": flag or "",
                         "speed": round(sog or 0.0, 1), "course": round(cog or 0.0),
                         "ship_type": stype or "", "destination": dest or "",
+                        "imo": imo or "", "callsign": callsign or "",
+                        "nav_status": navst if navst is not None else "",
                         "age_min": round((now - ts) / 60.0, 1),
                     },
                 })
@@ -130,9 +132,45 @@ def _positions_geojson(window_min: float) -> bytes:
 
 
 TRACKS_ENDPOINT = "/live/tracks.geojson"
-TRACK_WINDOW_MIN = 180.0   # how far back each drawn track reaches
-MIN_TRACK_POINTS = 3       # a line needs at least this many fixes to be worth drawing
+TRACK_WINDOW_MIN = 180.0    # how far back each drawn track reaches
+MIN_TRACK_POINTS = 3        # a line needs at least this many fixes to be worth drawing
 MAX_TRACKS = 2000
+TRACK_SPLIT_MAX_KN = 60.0   # a hop faster than this (and > 2 nm) is a duplicate-MMSI teleport
+
+
+def _unwrap_lonlat(seg: list) -> list:
+    """Shift longitudes so a track never draws the long way around the globe (antimeridian)."""
+    if not seg:
+        return seg
+    out = [[seg[0][0], seg[0][1]]]
+    for lon, lat in seg[1:]:
+        prev = out[-1][0]
+        while lon - prev > 180:
+            lon -= 360
+        while lon - prev < -180:
+            lon += 360
+        out.append([lon, lat])
+    return out
+
+
+def _split_track(fixes: list) -> list:
+    """Split a vessel's (ts, lat, lon) fixes into plausible segments, breaking the line wherever a hop
+    implies an impossible speed (a duplicate-MMSI teleport that otherwise draws a line across the whole
+    map). Each returned segment is an unwrapped [lon, lat] list of >= 2 points."""
+    segs, cur, prev = [], [], None
+    for ts, lat, lon in fixes:
+        if prev is not None:
+            dnm = _haversine_nm(prev[1], prev[2], lat, lon)
+            implied = dnm / max((ts - prev[0]) / 3600.0, 1e-6)
+            if dnm > 2.0 and implied > TRACK_SPLIT_MAX_KN:   # teleport: end this segment, start a new one
+                if len(cur) >= 2:
+                    segs.append(_unwrap_lonlat(cur))
+                cur = []
+        cur.append([lon, lat])
+        prev = (ts, lat, lon)
+    if len(cur) >= 2:
+        segs.append(_unwrap_lonlat(cur))
+    return segs
 
 
 def _tracks_geojson() -> bytes:
@@ -149,13 +187,18 @@ def _tracks_geojson() -> bytes:
                 "SELECT mmsi,ts,lat,lon FROM positions WHERE ts>=? ORDER BY mmsi,ts",
                 (cutoff,)).fetchall()
             for mmsi, grp in groupby(rows, key=lambda r: r[0]):
-                pts = [[r[3], r[2]] for r in grp]   # [lon, lat] in time order
-                if len(pts) < MIN_TRACK_POINTS:
+                fixes = [(r[1], r[2], r[3]) for r in grp]   # (ts, lat, lon) in time order
+                if len(fixes) < MIN_TRACK_POINTS:
+                    continue
+                segs = _split_track(fixes)
+                if not segs:
                     continue
                 name, flag = ident.get(mmsi, ("", ""))
+                geom = ({"type": "LineString", "coordinates": segs[0]} if len(segs) == 1
+                        else {"type": "MultiLineString", "coordinates": segs})
                 feats.append({
                     "type": "Feature",
-                    "geometry": {"type": "LineString", "coordinates": pts},
+                    "geometry": geom,
                     "properties": {"mmsi": mmsi, "name": name or "", "flag": flag or ""},
                 })
                 if len(feats) >= MAX_TRACKS:

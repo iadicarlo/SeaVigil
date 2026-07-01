@@ -226,6 +226,8 @@
       <span class="dot" style="background:#22d3ee;color:#22d3ee"></span><span data-i18n="leg_enc">At-sea encounter (transshipment)</span></div>
     <div class="legrow" data-layers="tracks"><input type="checkbox" checked />
       <span class="swatch-line" style="border-color:#5fb6c4;box-shadow:0 0 6px #5fb6c4"></span><span data-i18n="leg_tracks">Vessel tracks</span></div>
+    <div class="legrow" data-layers="live-ships"><input type="checkbox" checked />
+      <span class="dot" style="background:#7fd8c4;color:#7fd8c4"></span><span data-i18n="leg_liveships">Broadcasting vessel (live AIS)</span></div>
     <div class="legrow" data-layers="mpas"><input type="checkbox" checked />
       <span class="swatch-line"></span><span data-i18n="leg_mpa">Marine Protected Area (WDPA)</span></div>
     <div class="legrow" data-layers="eez"><input type="checkbox" checked />
@@ -253,7 +255,7 @@
         alerts_link: "Alerts",
         leg_ais: "AIS apparent fishing (SHAP-explained)", leg_sar: "Dark vessel (SAR, not broadcasting AIS)", leg_optical: "Vessel (optical), with satellite photo",
         leg_spoof: "AIS position anomaly (possible GNSS jamming)", leg_dark: "Going dark (AIS disabling, GFW/satellite)",
-        leg_enc: "At-sea encounter (transshipment)", leg_tracks: "Vessel tracks",
+        leg_enc: "At-sea encounter (transshipment)", leg_tracks: "Vessel tracks", leg_liveships: "Broadcasting vessel (live AIS)",
         leg_mpa: "Marine Protected Area (WDPA)", leg_eez: "Exclusive Economic Zone",
         leghint: "Circle size = model fishing-score. Click a detection for its dossier.",
         cr_data: "Data:", cr_mpa: "MPA boundaries", cr_display: "display only", cr_eez: "EEZs",
@@ -301,7 +303,7 @@
         alerts_link: "Alertas",
         leg_ais: "Pesca aparente AIS (explicada con SHAP)", leg_sar: "Buque oscuro (SAR, no emite AIS)", leg_optical: "Buque (óptico), con foto satelital",
         leg_spoof: "Anomalía de posición AIS (posible interferencia GNSS)", leg_dark: "Apagado de AIS (desactivación, GFW/satélite)",
-        leg_enc: "Encuentro en el mar (transbordo)", leg_tracks: "Trayectorias de buques",
+        leg_enc: "Encuentro en el mar (transbordo)", leg_tracks: "Trayectorias de buques", leg_liveships: "Buque emitiendo (AIS en vivo)",
         leg_mpa: "Área Marina Protegida (WDPA)", leg_eez: "Zona Económica Exclusiva",
         leghint: "Tamaño del círculo = puntuación de pesca del modelo. Haz clic en una detección para ver su expediente.",
         cr_data: "Datos:", cr_mpa: "Límites de AMP", cr_display: "solo visualización", cr_eez: "ZEE",
@@ -349,7 +351,7 @@
         alerts_link: "Alertes",
         leg_ais: "Pêche apparente AIS (expliquée par SHAP)", leg_sar: "Navire obscur (SAR, n'émet pas d'AIS)", leg_optical: "Navire (optique), avec photo satellite",
         leg_spoof: "Anomalie de position AIS (brouillage GNSS possible)", leg_dark: "Extinction de l'AIS (désactivation, GFW/satellite)",
-        leg_enc: "Rencontre en mer (transbordement)", leg_tracks: "Trajectoires des navires",
+        leg_enc: "Rencontre en mer (transbordement)", leg_tracks: "Trajectoires des navires", leg_liveships: "Navire en émission (AIS en direct)",
         leg_mpa: "Aire marine protégée (WDPA)", leg_eez: "Zone économique exclusive",
         leghint: "Taille du cercle = score de pêche du modèle. Cliquez sur une détection pour son dossier.",
         cr_data: "Données :", cr_mpa: "limites des AMP", cr_display: "affichage seul", cr_eez: "ZEE",
@@ -397,7 +399,7 @@
         alerts_link: "Alertas",
         leg_ais: "Pesca aparente AIS (explicada por SHAP)", leg_sar: "Embarcação oculta (SAR, não transmite AIS)", leg_optical: "Embarcação (ótica), com foto de satélite",
         leg_spoof: "Anomalia de posição AIS (possível interferência GNSS)", leg_dark: "Desligamento de AIS (desativação, GFW/satélite)",
-        leg_enc: "Encontro no mar (transbordo)", leg_tracks: "Rotas das embarcações",
+        leg_enc: "Encontro no mar (transbordo)", leg_tracks: "Rotas das embarcações", leg_liveships: "Embarcação a emitir (AIS ao vivo)",
         leg_mpa: "Área Marinha Protegida (WDPA)", leg_eez: "Zona Económica Exclusiva",
         leghint: "Tamanho do círculo = pontuação de pesca do modelo. Clique numa deteção para ver o seu dossiê.",
         cr_data: "Dados:", cr_mpa: "limites de AMP", cr_display: "apenas exibição", cr_eez: "ZEE",
@@ -755,6 +757,10 @@
 
       wireLayerToggles();
       hideEmptyDetectionRows(incidents);
+      if (!(MODE === 'realtime' || MODE === 'live')) {
+        const lr = document.querySelector('.legrow[data-layers="live-ships"]');
+        if (lr) lr.style.display = 'none';   // no live broadcasting vessels outside the live views
+      }
       wireInteractions();
       wireLiveShips();
       if (MODE === 'realtime' || MODE === 'live') startLivePolling();
@@ -833,10 +839,19 @@
         // an incident flag sits on top here: let its dossier handler own the click
         if (map.queryRenderedFeatures(e.point, { layers: ['incident-pts'] }).length) return;
         const p = e.features[0].properties, c = e.features[0].geometry.coordinates.slice();
-        const nm = (p.name && p.name !== '') ? p.name : ('MMSI ' + p.mmsi);
+        const named = p.name && p.name !== '';
+        const nm = named ? p.name : ('MMSI ' + p.mmsi);
         const fl = p.flag ? (' ' + flagEmoji(p.flag) + ' ' + p.flag) : '';
-        const ty = p.ship_type ? ('<br>' + p.ship_type) : '';
-        popup.setLngLat(c).setHTML(`<b>${nm}</b>${fl}${ty}<br>${p.speed} kn · ${p.age_min} min`).addTo(map);
+        const bits = [];
+        if (named) bits.push('MMSI ' + p.mmsi);
+        if (p.imo) bits.push('IMO ' + esc(p.imo));
+        if (p.callsign) bits.push(esc(p.callsign));
+        if (p.ship_type) bits.push(esc(p.ship_type));
+        if (p.destination) bits.push('&#8594; ' + esc(p.destination));
+        const NAV = { 0: 'under way', 1: 'at anchor', 3: 'restricted', 5: 'moored', 7: 'fishing', 8: 'sailing' };
+        const nav = (p.nav_status !== '' && p.nav_status != null && NAV[p.nav_status]) ? ` &middot; ${NAV[p.nav_status]}` : '';
+        const idline = bits.length ? `<br><span style="color:var(--muted);font-size:11px">${bits.join(' &middot; ')}</span>` : '';
+        popup.setLngLat(c).setHTML(`<b>${esc(nm)}</b>${fl}${idline}<br>${p.speed} kn${nav} &middot; ${p.age_min} min ago`).addTo(map);
       });
       map.on('mouseenter', 'live-ship-dots', () => { map.getCanvas().style.cursor = 'pointer'; });
       map.on('mouseleave', 'live-ship-dots', () => { map.getCanvas().style.cursor = ''; });
@@ -980,6 +995,7 @@
       'incident-ais': ['incident-glow', 'incident-pts'], // AIS filtered visually below; toggles all points
       'incident-sar': ['incident-glow', 'incident-pts'],
       'tracks': ['track-lines', 'track-hi', 'track-hi-glow', 'live-track-lines'],
+      'live-ships': ['live-ship-dots'],
       'mpas': ['mpa-fill', 'mpa-glow', 'mpa-line', 'mpa-labels'],
       'eez': ['eez-line', 'eez-labels'],
     };
