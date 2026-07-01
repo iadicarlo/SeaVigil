@@ -85,6 +85,14 @@ def _iso2(mmsi: str) -> str:
         return ""
 
 
+def _ensure_columns(con: sqlite3.Connection, table: str, cols: dict[str, str]) -> None:
+    """Add any missing columns to an existing table (migrates a live DB in place)."""
+    have = {r[1] for r in con.execute(f"PRAGMA table_info({table})")}
+    for name, decl in cols.items():
+        if name not in have:
+            con.execute(f"ALTER TABLE {table} ADD COLUMN {name} {decl}")
+
+
 def _connect(db_path: Path) -> sqlite3.Connection:
     con = sqlite3.connect(str(db_path))
     con.execute("PRAGMA journal_mode=WAL")        # let the server read while we write
@@ -94,17 +102,30 @@ def _connect(db_path: Path) -> sqlite3.Connection:
             mmsi TEXT PRIMARY KEY,
             lat REAL, lon REAL, ts INTEGER,
             speed REAL, course REAL,
-            name TEXT, flag TEXT, ship_type TEXT, destination TEXT
+            name TEXT, flag TEXT, ship_type TEXT, destination TEXT,
+            imo TEXT, callsign TEXT, nav_status INTEGER
         )
     """)
     con.execute("CREATE INDEX IF NOT EXISTS vessels_ts ON vessels(ts)")
     con.execute("""
         CREATE TABLE IF NOT EXISTS positions (
-            mmsi TEXT, ts INTEGER, lat REAL, lon REAL
+            mmsi TEXT, ts INTEGER, lat REAL, lon REAL, speed REAL, nav_status INTEGER
         )
     """)
     con.execute("CREATE INDEX IF NOT EXISTS positions_mmsi_ts ON positions(mmsi, ts)")
     con.execute("CREATE INDEX IF NOT EXISTS positions_ts ON positions(ts)")
+    # Identity over time: one row per observed (name, imo, callsign) change per MMSI, so a
+    # recycled transponder or a name swap is recorded rather than lost to the latest-wins upsert.
+    con.execute("""
+        CREATE TABLE IF NOT EXISTS identity_history (
+            mmsi TEXT, ts INTEGER, name TEXT, imo TEXT, callsign TEXT
+        )
+    """)
+    con.execute("CREATE INDEX IF NOT EXISTS identity_history_mmsi ON identity_history(mmsi)")
+    con.execute("CREATE INDEX IF NOT EXISTS identity_history_ts ON identity_history(ts)")
+    # Migrate an older database (the VPS runs a live one that predates these columns).
+    _ensure_columns(con, "vessels", {"imo": "TEXT", "callsign": "TEXT", "nav_status": "INTEGER"})
+    _ensure_columns(con, "positions", {"speed": "REAL", "nav_status": "INTEGER"})
     con.commit()
     return con
 
@@ -124,16 +145,21 @@ def _boxes(bbox: str | None) -> list:
 
 def _upsert(con: sqlite3.Connection, rows: list[tuple]) -> None:
     # Newest position per MMSI wins; identity fields keep their last known non-empty value.
+    # nav_status rides with the position report, so it tracks the latest fix (like speed).
     con.executemany("""
-        INSERT INTO vessels (mmsi, lat, lon, ts, speed, course, name, flag, ship_type, destination)
-        VALUES (?,?,?,?,?,?,?,?,?,?)
+        INSERT INTO vessels (mmsi, lat, lon, ts, speed, course, name, flag, ship_type, destination,
+                             imo, callsign, nav_status)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
         ON CONFLICT(mmsi) DO UPDATE SET
             lat=excluded.lat, lon=excluded.lon, ts=excluded.ts,
             speed=excluded.speed, course=excluded.course,
             name=COALESCE(NULLIF(excluded.name,''), vessels.name),
             flag=COALESCE(NULLIF(excluded.flag,''), vessels.flag),
             ship_type=COALESCE(NULLIF(excluded.ship_type,''), vessels.ship_type),
-            destination=COALESCE(NULLIF(excluded.destination,''), vessels.destination)
+            destination=COALESCE(NULLIF(excluded.destination,''), vessels.destination),
+            imo=COALESCE(NULLIF(excluded.imo,''), vessels.imo),
+            callsign=COALESCE(NULLIF(excluded.callsign,''), vessels.callsign),
+            nav_status=excluded.nav_status
         WHERE excluded.ts >= vessels.ts
     """, rows)
     con.commit()
@@ -145,9 +171,10 @@ async def _run(key: str, boxes: list, prune_hours: float, heartbeat_s: float) ->
     con = _connect(DB)
     sub = {"APIKey": key, "BoundingBoxes": boxes,
            "FilterMessageTypes": ["PositionReport", "ShipStaticData"]}
-    statics: dict[str, dict] = {}   # MMSI -> last seen name / destination / ship_type
+    statics: dict[str, dict] = {}   # MMSI -> last seen name / destination / ship_type / imo / callsign
+    last_identity: dict[str, tuple] = {}  # MMSI -> last (name, imo, callsign) recorded, for change detection
     pending: list[tuple] = []       # buffered vessel rows (latest fix), flushed in batches
-    pos_pending: list[tuple] = []   # buffered track points (mmsi, ts, lat, lon)
+    pos_pending: list[tuple] = []   # buffered track points (mmsi, ts, lat, lon, speed, nav_status)
     last_pos: dict[str, int] = {}   # MMSI -> ts of its last stored track point (downsample)
     total = 0
     last_commit = last_beat = last_prune = time.time()
@@ -168,15 +195,31 @@ async def _run(key: str, boxes: list, prune_hours: float, heartbeat_s: float) ->
 
                     if mt == "ShipStaticData":
                         sd = m["Message"]["ShipStaticData"]
+                        imo_raw = sd.get("ImoNumber") or 0   # integer; 0 means none broadcast
                         st = {"name": (sd.get("Name") or meta.get("ShipName") or "").strip(),
                               "destination": (sd.get("Destination") or "").strip(),
-                              "ship_type": _ship_type_label(sd.get("Type"))}
+                              "ship_type": _ship_type_label(sd.get("Type")),
+                              "imo": str(imo_raw) if imo_raw else "",
+                              "callsign": (sd.get("CallSign") or "").strip()}
                         statics[mmsi] = st
                         con.execute(
                             "UPDATE vessels SET name=COALESCE(NULLIF(?,''),name), "
                             "destination=COALESCE(NULLIF(?,''),destination), "
-                            "ship_type=COALESCE(NULLIF(?,''),ship_type) WHERE mmsi=?",
-                            (st["name"], st["destination"], st["ship_type"], mmsi))
+                            "ship_type=COALESCE(NULLIF(?,''),ship_type), "
+                            "imo=COALESCE(NULLIF(?,''),imo), "
+                            "callsign=COALESCE(NULLIF(?,''),callsign) WHERE mmsi=?",
+                            (st["name"], st["destination"], st["ship_type"],
+                             st["imo"], st["callsign"], mmsi))
+                        # Log an identity the moment (name, imo, callsign) differs from the last one
+                        # seen for this MMSI, so a swap survives the latest-wins vessels upsert. These
+                        # fields are raw self-reported AIS, never treated as verified identity.
+                        ident = (st["name"], st["imo"], st["callsign"])
+                        if any(ident) and last_identity.get(mmsi) != ident:
+                            last_identity[mmsi] = ident
+                            con.execute(
+                                "INSERT INTO identity_history (mmsi, ts, name, imo, callsign) "
+                                "VALUES (?,?,?,?,?)",
+                                (mmsi, int(time.time()), st["name"], st["imo"], st["callsign"]))
                         continue
 
                     if mt != "PositionReport":
@@ -186,12 +229,15 @@ async def _run(key: str, boxes: list, prune_hours: float, heartbeat_s: float) ->
                     if lat is None or lon is None:
                         continue
                     ts = _epoch(meta.get("time_utc")) or int(time.time())
+                    sog = pr.get("Sog") or 0.0
+                    nav = pr.get("NavigationalStatus")   # 0-15; 1 at anchor, 5 moored
                     st = statics.get(mmsi, {})
-                    pending.append((mmsi, lat, lon, ts, pr.get("Sog") or 0.0, pr.get("Cog") or 0.0,
+                    pending.append((mmsi, lat, lon, ts, sog, pr.get("Cog") or 0.0,
                                     st.get("name", ""), _iso2(mmsi),
-                                    st.get("ship_type", ""), st.get("destination", "")))
+                                    st.get("ship_type", ""), st.get("destination", ""),
+                                    st.get("imo", ""), st.get("callsign", ""), nav))
                     if ts - last_pos.get(mmsi, 0) >= 30:   # keep ~1 track point / 30s / vessel
-                        pos_pending.append((mmsi, ts, lat, lon))
+                        pos_pending.append((mmsi, ts, lat, lon, sog, nav))
                         last_pos[mmsi] = ts
                     total += 1
 
@@ -201,7 +247,8 @@ async def _run(key: str, boxes: list, prune_hours: float, heartbeat_s: float) ->
                         pending.clear()
                         if pos_pending:
                             con.executemany(
-                                "INSERT INTO positions (mmsi, ts, lat, lon) VALUES (?,?,?,?)", pos_pending)
+                                "INSERT INTO positions (mmsi, ts, lat, lon, speed, nav_status) "
+                                "VALUES (?,?,?,?,?,?)", pos_pending)
                             con.commit()
                             pos_pending.clear()
                         last_commit = now
@@ -214,6 +261,7 @@ async def _run(key: str, boxes: list, prune_hours: float, heartbeat_s: float) ->
                         cutoff = int(now) - int(prune_hours * 3600)
                         con.execute("DELETE FROM vessels WHERE ts < ?", (cutoff,))
                         con.execute("DELETE FROM positions WHERE ts < ?", (cutoff,))
+                        con.execute("DELETE FROM identity_history WHERE ts < ?", (cutoff,))
                         con.commit()
                         last_prune = now
         except KeyboardInterrupt:

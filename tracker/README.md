@@ -44,7 +44,20 @@ pill at the bottom shows how many are live. Click one for MMSI, name, flag, spee
   `--seconds N` stops after N seconds (0 = forever) for a supervised restart or a test. Pass a
   negative-longitude box with the equals form: `--bbox=-1.0,49.5,5.0,52.5`.
 - `server.py` serves `web/` plus `/live/positions.geojson` (vessels seen in the last
-  `TRACKER_WINDOW_MIN` minutes, default 60). Range support for PMTiles.
+  `TRACKER_WINDOW_MIN` minutes, default 60), `/live/tracks.geojson`, and `/live/events.geojson`.
+  Range support for PMTiles.
+- `/live/events.geojson` carries live leads, each a lead not proof: **going dark** (a moving
+  vessel gone quiet), **at-sea encounter** (two near-stationary vessels together), and three
+  data-integrity leads named by working mariners on r/AIS and r/maritime as the AIS anomalies they
+  actually trust: **position anomaly** (`ais_spoofing`, physically impossible movement, as often
+  GNSS jamming as spoofing), **nav-status vs motion** (`navstatus_mismatch`, broadcasting
+  moored / at anchor while the track shows real transit), and **identity change**
+  (`identity_change`, one MMSI carrying more than one vessel name). None is rolled into a case's
+  confidence; they are context for an analyst.
+- Ingest captures the raw self-reported integrity fields the messages already carry:
+  `NavigationalStatus` and per-fix speed on `positions`, `ImoNumber` / `CallSign` / `nav_status`
+  on `vessels`, and an `identity_history` table logging each (name, imo, callsign) change per MMSI.
+  These are never treated as verified identity. `_connect` migrates an older database in place.
 - `tracker.db` is regenerated and gitignored; never committed.
 
 ## Lifting to an always-on host

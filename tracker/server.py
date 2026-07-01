@@ -28,8 +28,18 @@ import sys
 import time
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from itertools import groupby
+from math import asin, cos, radians, sin, sqrt
 from pathlib import Path
 from urllib.parse import unquote
+
+
+def _haversine_nm(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Great-circle distance in nautical miles."""
+    la1, la2 = radians(lat1), radians(lat2)
+    dphi, dlmb = radians(lat2 - lat1), radians(lon2 - lon1)
+    a = sin(dphi / 2) ** 2 + cos(la1) * cos(la2) * sin(dlmb / 2) ** 2
+    return 3440.065 * 2 * asin(min(1.0, sqrt(a)))
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
@@ -110,6 +120,101 @@ EVENTS_ENDPOINT = "/live/events.geojson"
 DARK_GAP_MIN, DARK_LOOKBACK_MIN, DARK_MIN_SPEED, DARK_MIN_POINTS = 25.0, 90.0, 3.0, 5
 # Encounter: two recent, near-stationary vessels essentially on top of each other.
 ENC_RADIUS_DEG, ENC_MAX_SPEED, ENC_FRESH_MIN, ENC_MAX = 0.004, 1.2, 15.0, 400
+# Position anomaly (kind ais_spoofing): impossible movement in a vessel's own fixes. Same
+# thresholds as seavigil/spoofing.py: a jump of >= this many nm implying > this many knots,
+# flagged only on a sustained pattern. GNSS jamming / faulty GPS as often as deliberate spoofing.
+JUMP_MIN_NM, JUMP_MAX_SPEED_KN, JUMP_MIN_ANOM, JUMP_LOOKBACK_MIN = 2.0, 60.0, 3, 180.0
+# Nav-status vs motion: broadcasting at-anchor(1)/moored(5) while the track shows real transit.
+# Only the moving-while-moored branch (the clean, practitioner-named signal); a data-integrity lead.
+NAV_MOORED, NAV_LOOKBACK_MIN, NAV_MIN_FIXES, NAV_MIN_SPEED, NAV_MIN_MOVE_NM = (1, 5), 30.0, 5, 1.0, 0.3
+# Identity change: one MMSI broadcasting >= 2 distinct (aggressively normalized) names in the window.
+IDENT_LOOKBACK_MIN = 360.0
+
+
+def _integrity_features(con: sqlite3.Connection, now: int) -> list:
+    """Data-integrity leads from the live AIS: position anomaly, nav-status-vs-motion, and identity
+    change. Each is context for an analyst to check, never proof and never rolled into a case's
+    confidence. Motivated by working mariners on r/AIS and r/maritime, who named these (impossible
+    position variance, a wrong AIS status, a recycled identity) as the AIS anomalies they trust."""
+    out: list = []
+
+    # Position anomaly: a vessel's own fixes imply physically impossible movement.
+    jstart = now - int(JUMP_LOOKBACK_MIN * 60)
+    jident = {m: (nm, fl) for m, nm, fl in con.execute(
+        "SELECT mmsi,name,flag FROM vessels WHERE ts>=?", (jstart,))}
+    jrows = con.execute(
+        "SELECT mmsi,ts,lat,lon FROM positions WHERE ts>=? ORDER BY mmsi,ts", (jstart,)).fetchall()
+    for mmsi, grp in groupby(jrows, key=lambda r: r[0]):
+        pts = list(grp)
+        if len(pts) < JUMP_MIN_ANOM + 1:
+            continue
+        anom, worst, prev = 0, 0.0, None
+        for _, ts_i, la, lo in pts:
+            if prev is not None:
+                dnm = _haversine_nm(prev[1], prev[2], la, lo)
+                implied = dnm / max((ts_i - prev[0]) / 3600.0, 1e-6)
+                if dnm >= JUMP_MIN_NM and implied > JUMP_MAX_SPEED_KN:
+                    anom += 1
+                    worst = max(worst, implied)
+            prev = (ts_i, la, lo)
+        if anom >= JUMP_MIN_ANOM:
+            nm, fl = jident.get(mmsi, ("", ""))
+            out.append({"type": "Feature",
+                        "geometry": {"type": "Point", "coordinates": [pts[-1][3], pts[-1][2]]},
+                        "properties": {"kind": "ais_spoofing", "mmsi": mmsi,
+                                       "name": nm or "", "flag": fl or "",
+                                       "anomaly_count": anom, "max_implied_speed_kn": round(worst)}})
+
+    # Nav-status vs motion: broadcasting moored / at anchor while the fixes show real transit.
+    nstart = now - int(NAV_LOOKBACK_MIN * 60)
+    nident = {m: (nm, fl, stt) for m, nm, fl, stt in con.execute(
+        "SELECT mmsi,name,flag,nav_status FROM vessels WHERE ts>=?", (nstart,))}
+    nrows = con.execute(
+        "SELECT mmsi,ts,lat,lon,speed FROM positions WHERE ts>=? AND nav_status IN (1,5) "
+        "ORDER BY mmsi,ts", (nstart,)).fetchall()
+    for mmsi, grp in groupby(nrows, key=lambda r: r[0]):
+        pts = list(grp)
+        if len(pts) < NAV_MIN_FIXES:
+            continue
+        nm, fl, cur = nident.get(mmsi, ("", "", None))
+        if cur not in NAV_MOORED:   # must still be broadcasting moored / at anchor now
+            continue
+        max_sog = max((p[4] or 0.0) for p in pts)
+        moved = _haversine_nm(pts[0][2], pts[0][3], pts[-1][2], pts[-1][3])  # net displacement
+        if max_sog >= NAV_MIN_SPEED and moved >= NAV_MIN_MOVE_NM:
+            sogs = sorted((p[4] or 0.0) for p in pts)
+            out.append({"type": "Feature",
+                        "geometry": {"type": "Point", "coordinates": [pts[-1][3], pts[-1][2]]},
+                        "properties": {"kind": "navstatus_mismatch", "mmsi": mmsi,
+                                       "name": nm or "", "flag": fl or "",
+                                       "reported_status": "moored" if cur == 5 else "at anchor",
+                                       "sog_median": round(sogs[len(sogs) // 2], 1),
+                                       "moved_nm": round(moved, 2),
+                                       "window_min": round((pts[-1][1] - pts[0][1]) / 60.0)}})
+
+    # Identity change: one MMSI carrying more than one distinct vessel name over the window. Names
+    # normalized hard (uppercase, alphanumerics only) so punctuation / spacing / prefix noise does
+    # not masquerade as a swap. Name-only, weaker than an IMO check; explicitly a lead.
+    istart = now - int(IDENT_LOOKBACK_MIN * 60)
+    hist: dict = {}
+    for mmsi, nm in con.execute(
+            "SELECT mmsi,name FROM identity_history WHERE ts>=? AND name<>''", (istart,)):
+        key = re.sub(r"[^A-Z0-9]", "", (nm or "").upper())
+        if len(key) >= 3:
+            hist.setdefault(mmsi, {}).setdefault(key, nm)
+    for mmsi, names in hist.items():
+        if len(names) < 2:
+            continue
+        row = con.execute("SELECT lat,lon,flag FROM vessels WHERE mmsi=?", (mmsi,)).fetchone()
+        if not row:
+            continue
+        la, lo, fl = row
+        joined = " / ".join(list(names.values())[:4])
+        out.append({"type": "Feature",
+                    "geometry": {"type": "Point", "coordinates": [lo, la]},
+                    "properties": {"kind": "identity_change", "mmsi": mmsi, "flag": fl or "",
+                                   "name": joined, "names": joined, "name_count": len(names)}})
+    return out
 
 
 def _events_geojson() -> bytes:
@@ -152,6 +257,14 @@ def _events_geojson() -> bytes:
                         break  # one encounter per vessel is plenty
                 if n >= ENC_MAX:
                     break
+
+            # Data-integrity leads (position anomaly, nav-status vs motion, identity change), guarded
+            # so a DB not yet migrated right after a deploy still returns the going-dark / encounter
+            # events instead of failing the whole endpoint.
+            try:
+                feats.extend(_integrity_features(con, now))
+            except sqlite3.OperationalError:
+                pass
         finally:
             con.close()
     return json.dumps({"type": "FeatureCollection", "generated": int(time.time()),

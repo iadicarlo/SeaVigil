@@ -721,11 +721,11 @@
       map.addSource('live_events', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
       map.addLayer({ id: 'live-event-glow', type: 'circle', source: 'live_events',
         paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 7, 9, 13],
-          'circle-color': ['match', ['get', 'kind'], 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#ffd24a'],
+          'circle-color': ['match', ['get', 'kind'], 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', 'ais_spoofing', '#c084fc', 'navstatus_mismatch', '#2dd4bf', 'identity_change', '#f472b6', '#ffd24a'],
           'circle-opacity': 0.22, 'circle-blur': 0.9 } });
       map.addLayer({ id: 'live-event-pts', type: 'circle', source: 'live_events',
         paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 3.5, 9, 6],
-          'circle-color': ['match', ['get', 'kind'], 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', '#ffd24a'],
+          'circle-color': ['match', ['get', 'kind'], 'ais_disabling', '#ffd24a', 'encounter', '#22d3ee', 'ais_spoofing', '#c084fc', 'navstatus_mismatch', '#2dd4bf', 'identity_change', '#f472b6', '#ffd24a'],
           'circle-stroke-color': '#06161f', 'circle-stroke-width': 1 } });
 
       // incidents (generateId for feature-state hover/selected)
@@ -841,15 +841,21 @@
       map.on('mouseleave', 'live-ship-dots', () => { map.getCanvas().style.cursor = ''; });
       map.on('click', 'live-event-pts', (e) => {
         const p = e.features[0].properties, c = e.features[0].geometry.coordinates.slice();
-        const isDark = p.kind === 'ais_disabling';
-        const title = isDark ? 'Went dark' : 'At-sea encounter';
         const who = (p.name && p.name !== '') ? p.name : ('MMSI ' + p.mmsi);
-        const detail = isDark ? `${p.quiet_min} min quiet, last seen at ${p.last_speed} kn`
-          : 'two near-stationary vessels together';
+        const TITLES = { ais_disabling: 'Went dark', encounter: 'At-sea encounter',
+          ais_spoofing: 'Position anomaly', navstatus_mismatch: 'AIS status vs motion',
+          identity_change: 'Identity change' };
+        const title = TITLES[p.kind] || 'Live event';
+        let detail = '';
+        if (p.kind === 'ais_disabling') detail = `${p.quiet_min} min quiet, last seen at ${p.last_speed} kn`;
+        else if (p.kind === 'encounter') detail = 'two near-stationary vessels together';
+        else if (p.kind === 'ais_spoofing') detail = `${p.anomaly_count} impossible jumps, up to ${p.max_implied_speed_kn} kn`;
+        else if (p.kind === 'navstatus_mismatch') detail = `broadcasting "${esc(p.reported_status)}" but moved ${p.moved_nm} nm (${p.sog_median} kn) over ${p.window_min} min`;
+        else if (p.kind === 'identity_change') detail = `one MMSI, ${p.name_count} names: ${esc(p.names)}`;
         const _inno = t('innocent_' + p.kind);
         const innoLine = (_inno && _inno !== 'innocent_' + p.kind)
           ? `<br><span style="color:var(--muted);font-size:11px">${_inno}</span>` : '';
-        popup.setLngLat(c).setHTML(`<b>${title}</b><br>${who}<br>${detail}${innoLine}`
+        popup.setLngLat(c).setHTML(`<b>${title}</b><br>${esc(who)}<br>${detail}${innoLine}`
           + `<br><span style="color:var(--muted)">A lead, not proof</span>`).addTo(map);
       });
       map.on('mouseenter', 'live-event-pts', () => { map.getCanvas().style.cursor = 'pointer'; });
