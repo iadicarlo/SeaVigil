@@ -136,6 +136,9 @@ def _boxes(bbox: str | None) -> list:
         b = [float(x) for x in bbox.split(",")]   # lon_min,lat_min,lon_max,lat_max (GeoJSON order)
         return [[[b[1], b[0]], [b[3], b[2]]]]
     wl = json.loads(WATCHLIST.read_text())
+    # Prefer the broad AIS-display sweep; fall back to the SAR-priority areas.
+    if wl.get("ais_coverage"):
+        return [[[b[1], b[0]], [b[3], b[2]]] for b in wl["ais_coverage"]]
     out = []
     for a in wl["areas"]:
         lon0, lat0, lon1, lat1 = a["bbox"]

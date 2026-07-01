@@ -25,6 +25,7 @@ import posixpath
 import re
 import sqlite3
 import sys
+import threading
 import time
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -40,6 +41,56 @@ def _haversine_nm(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     dphi, dlmb = radians(lat2 - lat1), radians(lon2 - lon1)
     a = sin(dphi / 2) ** 2 + cos(la1) * cos(la2) * sin(dlmb / 2) ** 2
     return 3440.065 * 2 * asin(min(1.0, sqrt(a)))
+
+
+# TTL response cache: at global AIS scale the live endpoints recompute at most once per TTL no
+# matter how many browsers poll, so a modest VPS stays responsive.
+_CACHE: dict = {}
+_CACHE_LOCK = threading.Lock()
+
+
+def _cached(key: str, ttl: float, build) -> bytes:
+    now = time.time()
+    with _CACHE_LOCK:
+        hit = _CACHE.get(key)
+        if hit and now - hit[0] < ttl:
+            return hit[1]
+    body = build()  # built outside the lock so a slow build does not serialize every request
+    with _CACHE_LOCK:
+        _CACHE[key] = (time.time(), body)
+    return body
+
+
+def _load_areas() -> list:
+    """The IUU-priority boxes. Live positions/tracks are shown globally for context, but behavior
+    and integrity detection is scoped to these offshore hotspots: run globally, going-dark and
+    encounters would fire on every crowded port/anchorage (noise), not on illegal fishing."""
+    try:
+        wl = json.loads((ROOT / "data" / "watchlist.json").read_text())
+        return [(a["bbox"][1], a["bbox"][0], a["bbox"][3], a["bbox"][2]) for a in wl.get("areas", [])]
+    except Exception:  # noqa: BLE001 - a missing/broken watchlist must not take the server down
+        return []
+
+
+_AREAS = _load_areas()
+
+
+def _area_clause(lat_col: str, lon_col: str):
+    """SQL (fragment, params) restricting a query to the IUU-priority boxes. '1' means no boxes."""
+    if not _AREAS:
+        return "1", []
+    parts, params = [], []
+    for lat0, lon0, lat1, lon1 in _AREAS:
+        parts.append(f"({lat_col} BETWEEN ? AND ? AND {lon_col} BETWEEN ? AND ?)")
+        params += [lat0, lat1, lon0, lon1]
+    return "(" + " OR ".join(parts) + ")", params
+
+
+def _in_areas(lat: float, lon: float) -> bool:
+    """True if a point is inside any IUU-priority box (or if no boxes are configured)."""
+    if not _AREAS:
+        return True
+    return any(lat0 <= lat <= lat1 and lon0 <= lon <= lon1 for lat0, lon0, lat1, lon1 in _AREAS)
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
@@ -142,8 +193,10 @@ def _integrity_features(con: sqlite3.Connection, now: int) -> list:
     jstart = now - int(JUMP_LOOKBACK_MIN * 60)
     jident = {m: (nm, fl) for m, nm, fl in con.execute(
         "SELECT mmsi,name,flag FROM vessels WHERE ts>=?", (jstart,))}
+    jclause, jp = _area_clause("lat", "lon")
     jrows = con.execute(
-        "SELECT mmsi,ts,lat,lon FROM positions WHERE ts>=? ORDER BY mmsi,ts", (jstart,)).fetchall()
+        "SELECT mmsi,ts,lat,lon FROM positions WHERE ts>=? AND " + jclause
+        + " ORDER BY mmsi,ts LIMIT 120000", (jstart, *jp)).fetchall()
     for mmsi, grp in groupby(jrows, key=lambda r: r[0]):
         pts = list(grp)
         if len(pts) < JUMP_MIN_ANOM + 1:
@@ -169,9 +222,10 @@ def _integrity_features(con: sqlite3.Connection, now: int) -> list:
     nstart = now - int(NAV_LOOKBACK_MIN * 60)
     nident = {m: (nm, fl, stt) for m, nm, fl, stt in con.execute(
         "SELECT mmsi,name,flag,nav_status FROM vessels WHERE ts>=?", (nstart,))}
+    nclause, np_ = _area_clause("lat", "lon")
     nrows = con.execute(
-        "SELECT mmsi,ts,lat,lon,speed FROM positions WHERE ts>=? AND nav_status IN (1,5) "
-        "ORDER BY mmsi,ts", (nstart,)).fetchall()
+        "SELECT mmsi,ts,lat,lon,speed FROM positions WHERE ts>=? AND nav_status IN (1,5) AND "
+        + nclause + " ORDER BY mmsi,ts LIMIT 60000", (nstart, *np_)).fetchall()
     for mmsi, grp in groupby(nrows, key=lambda r: r[0]):
         pts = list(grp)
         if len(pts) < NAV_MIN_FIXES:
@@ -209,6 +263,8 @@ def _integrity_features(con: sqlite3.Connection, now: int) -> list:
         if not row:
             continue
         la, lo, fl = row
+        if not _in_areas(la, lo):   # scope identity leads to the IUU areas, like the others
+            continue
         joined = " / ".join(list(names.values())[:4])
         out.append({"type": "Feature",
                     "geometry": {"type": "Point", "coordinates": [lo, la]},
@@ -226,12 +282,13 @@ def _events_geojson() -> bytes:
         try:
             now = int(time.time())
             gap, lookback = now - int(DARK_GAP_MIN * 60), now - int(DARK_LOOKBACK_MIN * 60)
+            gd_clause, gd_p = _area_clause("v.lat", "v.lon")
             for mmsi, lat, lon, ts, spd, name, flag in con.execute(
                     "SELECT v.mmsi,v.lat,v.lon,v.ts,v.speed,v.name,v.flag "
                     "FROM vessels v JOIN positions p ON p.mmsi=v.mmsi "
-                    "WHERE v.ts BETWEEN ? AND ? AND v.speed>=? "
+                    "WHERE v.ts BETWEEN ? AND ? AND v.speed>=? AND " + gd_clause + " "
                     "GROUP BY v.mmsi HAVING COUNT(p.ts)>=? LIMIT 400",
-                    (lookback, gap, DARK_MIN_SPEED, DARK_MIN_POINTS)):
+                    (lookback, gap, DARK_MIN_SPEED, *gd_p, DARK_MIN_POINTS)):
                 feats.append({"type": "Feature",
                               "geometry": {"type": "Point", "coordinates": [lon, lat]},
                               "properties": {"kind": "ais_disabling", "mmsi": mmsi,
@@ -239,22 +296,37 @@ def _events_geojson() -> bytes:
                                              "quiet_min": round((now - ts) / 60.0),
                                              "last_speed": round(spd or 0.0, 1)}})
             fresh = now - int(ENC_FRESH_MIN * 60)
+            enc_clause, enc_p = _area_clause("lat", "lon")
             slow = con.execute("SELECT mmsi,lat,lon,name,flag FROM vessels "
-                               "WHERE ts>=? AND speed<=? LIMIT 1500", (fresh, ENC_MAX_SPEED)).fetchall()
-            n = 0
-            for i in range(len(slow)):
-                mi, la, lo, ni, fi = slow[i]
-                for j in range(i + 1, len(slow)):
-                    mj, lb, lob, nj, fj = slow[j]
+                               "WHERE ts>=? AND speed<=? AND " + enc_clause + " LIMIT 4000",
+                               (fresh, ENC_MAX_SPEED, *enc_p)).fetchall()
+            # A real at-sea transshipment: at least one vessel TRANSITED to the meeting point (a fishing
+            # boat coming to a drifting carrier), while two vessels parked in a port/anchorage never
+            # moved. AIS nav-status is too unreliable to lean on (GIGO), so gate on observed motion:
+            # pair each recently-under-way "arriver" (>= 3 kn in the last 90 min) with any near-stationary
+            # partner. Kills the dominant port-cluster false positive at global scale.
+            moved_recently = {m for (m,) in con.execute(
+                "SELECT mmsi FROM positions WHERE ts>=? GROUP BY mmsi HAVING MAX(speed) >= 3.0",
+                (now - int(90 * 60),))}
+            arrivers = [r for r in slow if r[0] in moved_recently]
+            n, seen = 0, set()
+            for ma, la, lo, na, fa in arrivers:
+                if ma in seen:
+                    continue
+                for mp, lb, lob, np_, fp in slow:
+                    if mp == ma or mp in seen:
+                        continue
                     if abs(la - lb) <= ENC_RADIUS_DEG and abs(lo - lob) <= ENC_RADIUS_DEG:
+                        seen.add(ma)
+                        seen.add(mp)
                         feats.append({"type": "Feature",
                                       "geometry": {"type": "Point",
                                                    "coordinates": [(lo + lob) / 2, (la + lb) / 2]},
-                                      "properties": {"kind": "encounter", "mmsi": f"{mi} + {mj}",
-                                                     "name": f"{ni or mi} / {nj or mj}",
-                                                     "flag": ((fi or "") + " " + (fj or "")).strip()}})
+                                      "properties": {"kind": "encounter", "mmsi": f"{ma} + {mp}",
+                                                     "name": f"{na or ma} / {np_ or mp}",
+                                                     "flag": ((fa or "") + " " + (fp or "")).strip()}})
                         n += 1
-                        break  # one encounter per vessel is plenty
+                        break  # one encounter per arriver is plenty
                 if n >= ENC_MAX:
                     break
 
@@ -288,13 +360,13 @@ class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):  # noqa: N802 (stdlib casing)
         route = self.path.split("?", 1)[0]
         if route == LIVE_ENDPOINT:
-            self._send_json(_positions_geojson(self.window_min))
+            self._send_json(_cached("positions", 7.0, lambda: _positions_geojson(self.window_min)))
             return
         if route == TRACKS_ENDPOINT:
-            self._send_json(_tracks_geojson())
+            self._send_json(_cached("tracks", 25.0, _tracks_geojson))
             return
         if route == EVENTS_ENDPOINT:
-            self._send_json(_events_geojson())
+            self._send_json(_cached("events", 20.0, _events_geojson))
             return
         super().do_GET()
 
