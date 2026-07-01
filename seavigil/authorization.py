@@ -38,7 +38,7 @@ _UA = "SeaVigil/1.0 (research; contact via github.com/iadicarlo/seavigil)"
 STATUS_LABEL = {
     "authorized": "Authorization on record (current)",
     "authorization_lapsed": "Authorization lapsed before this date",
-    "no_record": "No authorization on record",
+    "no_record": "No public authorization record (check coastal state)",
     "domestic": "Domestic flag (own EEZ)",
     "flag_unknown": "Flag unknown; authorization not checkable",
     "unverifiable": "No vessel identity; authorization not checkable",
