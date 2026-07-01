@@ -122,6 +122,7 @@ def incidents_to_geojson(dossiers: list[dict]) -> dict:
                     "iuu_listed": bool(d.get("iuu_listed")),
                     "iuu_label": _iuu_label(d),
                     "imo": d.get("registry_imo") or "",
+                    "next_port": d.get("next_port"),  # carrier's next port call (port-call provenance)
                     "evidence_hash": d.get("evidence_hash") or "",
                     "evidence_schema": d.get("evidence_schema") or "",
                     "why": _why(d),

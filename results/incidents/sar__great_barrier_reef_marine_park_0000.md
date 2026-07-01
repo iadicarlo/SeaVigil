@@ -16,6 +16,10 @@ _SAR detection attributes (no AIS track or identity; not SHAP-explainable)._
 - not broadcasting AIS (dark vessel)
 - satellite detections in window: 6
 
+## Could be innocent
+
+A radar contact with no AIS may be a vessel not required to broadcast, sea clutter, or fixed infrastructure; treat as a lead to confirm.
+
 ## Caveats
 
 - Dark vessel: detected by satellite SAR but not broadcasting AIS.

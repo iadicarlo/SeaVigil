@@ -22,6 +22,10 @@ _mean per-position SHAP (fishing class) over the incident's fishing positions._
 | `distance_from_shore` | 47800.500 | -0.018 |
 | `hour_cos` | 0.276 | +0.018 |
 
+## Could be innocent
+
+Apparent-fishing movement can also be slow transit or drifting; the model rejects most such cases but not all.
+
 ## Caveats
 
 - Apparent fishing inferred from AIS movement, not proven illegal fishing.
