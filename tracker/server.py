@@ -106,7 +106,7 @@ DB = HERE / "tracker.db"
 CONTACT_LOG = HERE / "contact_inbox.jsonl"   # gitignored; every submission is stored here
 _CONTACT_HITS: dict = {}                     # ip -> [timestamps], a light per-IP rate limit
 LIVE_ENDPOINT = "/live/positions.geojson"
-MAX_FEATURES = 20000  # newest-N cap; gzip keeps the payload small. Higher = fairer to sparse-AIS
+MAX_FEATURES = 40000  # newest-N cap; gzip keeps the payload small. Higher = fairer to sparse-AIS
                       # regions (Indian Ocean, S. Atlantic, Latin America), whose vessels update less
                       # often and were being truncated out by the busy North-Atlantic feed.
 
