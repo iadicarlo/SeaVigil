@@ -1,9 +1,9 @@
 # Incident `live_enco_db731bcee097f2`
 
 - **MPA:** At-sea encounter (transshipment)
-- **Severity:** HIGH (foreign vessel, no authorization on record)
+- **Severity:** HIGH (foreign vessel, authorization lapsed)
 - **EEZ:** Kiribati Exclusive Economic Zone (Line Group) (Kiribati) -- FOREIGN-flagged vessel
-- **Authorization:** No public authorization record (check coastal state)  ·  IMO 9150652
+- **Authorization:** Authorization lapsed before this date: FFA, WCPFC  ·  IMO 1066790
 - **Vessel:** 🇫🇲 PACIFIC ENTERPRISE 7  ·  **signal:** Encounter
 - **When (UTC):** 2026-06-28T00:00:00.000Z → 2026-06-28T23:50:00.000Z
 - **Encounter:** 23.8 h with carrier `352241000` (apparent transshipment)

@@ -1,9 +1,9 @@
 # Incident `live_enco_95ea9ccd96b9ba`
 
 - **MPA:** At-sea encounter (transshipment)
-- **Severity:** HIGH (foreign vessel, no authorization on record)
+- **Severity:** HIGH (foreign vessel, authorization lapsed)
 - **EEZ:** Maltese Exclusive Economic Zone (Malta) -- FOREIGN-flagged vessel
-- **Authorization:** No public authorization record (check coastal state)
+- **Authorization:** Authorization lapsed before this date: GFCM, ICCAT  ·  IMO 8688157
 - **Vessel:** 🇨🇾 MFV RANIA  ·  **signal:** Encounter
 - **When (UTC):** 2026-06-28T16:30:00.000Z → 2026-06-28T23:50:00.000Z
 - **Encounter:** 7.3 h with carrier `247121260` (apparent transshipment)

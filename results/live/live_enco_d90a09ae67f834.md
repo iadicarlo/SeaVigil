@@ -1,9 +1,9 @@
 # Incident `live_enco_d90a09ae67f834`
 
 - **MPA:** At-sea encounter (transshipment)
-- **Severity:** HIGH (foreign vessel, no authorization on record)
+- **Severity:** HIGH (foreign vessel, authorization lapsed)
 - **EEZ:** French Exclusive Economic Zone (France) -- FOREIGN-flagged vessel
-- **Authorization:** No public authorization record (check coastal state)
+- **Authorization:** Authorization lapsed before this date: ICCAT, NEAFC  ·  IMO 8684694
 - **Vessel:** 🇪🇸 BASALDUA  ·  **signal:** Encounter
 - **When (UTC):** 2026-06-28T16:10:00.000Z → 2026-06-28T23:50:00.000Z
 - **Encounter:** 7.7 h with carrier `250500096` (apparent transshipment)

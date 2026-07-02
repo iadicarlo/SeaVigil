@@ -1,9 +1,9 @@
 # Incident `live_ais__9b8417471cdc52`
 
 - **MPA:** AIS disabling (going dark)
-- **Severity:** HIGH (foreign vessel, authorization lapsed)
+- **Severity:** HIGH (foreign vessel, no authorization on record)
 - **EEZ:** Kiribati Exclusive Economic Zone (Line Group) (Kiribati) -- FOREIGN-flagged vessel
-- **Authorization:** Authorization lapsed before this date: FFA, WCPFC  ·  IMO 9764271
+- **Authorization:** No public authorization record (check coastal state)
 - **Vessel:** 🇹🇼 FONG KUO NO.688  ·  **signal:** AIS gap
 - **When (UTC):** 2026-06-26T04:21:27.000Z → 2026-06-27T04:21:41.000Z
 - **Gap:** 24.0 h dark, 86.0 nm offshore

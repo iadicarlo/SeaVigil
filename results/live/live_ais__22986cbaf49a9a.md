@@ -1,9 +1,9 @@
 # Incident `live_ais__22986cbaf49a9a`
 
 - **MPA:** AIS disabling (going dark)
-- **Severity:** HIGH (foreign vessel, authorization lapsed)
+- **Severity:** HIGH (foreign vessel, no authorization on record)
 - **EEZ:** Micronesian Exclusive Economic Zone (Micronesia) -- FOREIGN-flagged vessel
-- **Authorization:** Authorization lapsed before this date: FFA, WCPFC  ·  IMO 8747252
+- **Authorization:** No public authorization record (check coastal state)
 - **Vessel:** 🇹🇼 WIN FAR 636  ·  **signal:** AIS gap
 - **When (UTC):** 2026-06-27T07:46:58.000Z → 2026-06-27T20:37:12.000Z
 - **Gap:** 12.8 h dark, 94.0 nm offshore
